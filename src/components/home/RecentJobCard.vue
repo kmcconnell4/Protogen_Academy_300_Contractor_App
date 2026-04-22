@@ -3,50 +3,74 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import jobs from '@/data/jobs.json'
-import orders from '@/data/orders.json'
-import products from '@/data/products.json'
 import StatusBadge from '@/components/shared/StatusBadge.vue'
 
 const { t } = useI18n()
 const router = useRouter()
 
-// Most recently updated active job (not Closed)
+// Most recently updated non-closed job
 const recentJob = computed(() =>
   [...jobs]
     .filter((j) => j.status !== 'Closed')
     .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))[0] ?? null
 )
 
-const productCount = computed(() => {
-  if (!recentJob.value) return 0
-  const jobOrders = orders.filter((o) => o.jobId === recentJob.value.id)
-  const productIds = new Set(jobOrders.flatMap((o) => o.lineItems.map((li) => li.productId)))
-  return productIds.size
-})
-
-const orderCount = computed(() =>
-  recentJob.value ? orders.filter((o) => o.jobId === recentJob.value.id).length : 0
-)
+const quoteCount = computed(() => recentJob.value?.quoteIds?.length ?? 0)
+const orderCount = computed(() => recentJob.value?.orderIds?.length ?? 0)
+const inspectionCount = computed(() => recentJob.value?.inspectionIds?.length ?? 0)
 </script>
 
 <template>
-  <div v-if="recentJob" class="bg-surface border border-border rounded-xl p-4 border-l-4 border-l-brand">
-    <div class="flex items-center justify-between gap-2 mb-1">
-      <p class="text-white font-bold text-lg leading-tight">{{ recentJob.name }}</p>
-      <StatusBadge :status="recentJob.status" />
+  <div v-if="recentJob" class="bg-surface border border-border rounded-xl overflow-hidden">
+
+    <!-- Job identity: status badge + type + name + address -->
+    <div class="px-4 pt-4 pb-4">
+      <div class="flex items-center justify-between gap-3 mb-3">
+        <StatusBadge :status="recentJob.status" />
+        <p class="text-text-secondary text-[11px] font-bold uppercase tracking-[0.1em]">
+          {{ recentJob.type }}
+        </p>
+      </div>
+      <h2
+        class="text-[1.625rem] font-[800] leading-tight text-white mb-1"
+        style="font-family: var(--font-heading);"
+      >
+        {{ recentJob.name }}
+      </h2>
+      <p class="text-text-secondary text-sm truncate">{{ recentJob.address }}</p>
     </div>
-    <p class="text-text-secondary text-sm mb-3">
-      {{ t('home.products_count', { count: productCount }) }} &middot;
-      {{ t('home.orders_count', { count: orderCount }) }}
-    </p>
-    <button
-      class="w-full h-[52px] rounded-lg bg-interactive text-white font-bold text-base"
-      @click="router.push({ name: 'job-detail', params: { id: recentJob.id } })"
-    >
-      {{ t('home.open_job') }} →
-    </button>
+
+    <!-- Stats row: 3 key numbers at a glance, 1px dividers between columns -->
+    <div class="border-t border-border grid grid-cols-3 divide-x divide-border">
+      <div class="flex flex-col items-center justify-center py-3 gap-0.5">
+        <p class="text-white font-bold text-xl tabular-nums leading-none">{{ quoteCount }}</p>
+        <p class="text-text-secondary text-[10px] font-bold uppercase tracking-wider">Quotes</p>
+      </div>
+      <div class="flex flex-col items-center justify-center py-3 gap-0.5">
+        <p class="text-white font-bold text-xl tabular-nums leading-none">{{ orderCount }}</p>
+        <p class="text-text-secondary text-[10px] font-bold uppercase tracking-wider">Orders</p>
+      </div>
+      <div class="flex flex-col items-center justify-center py-3 gap-0.5">
+        <p class="text-white font-bold text-xl tabular-nums leading-none">{{ inspectionCount }}</p>
+        <p class="text-text-secondary text-[10px] font-bold uppercase tracking-wider">Inspections</p>
+      </div>
+    </div>
+
+    <!-- CTA: full-width, primary action -->
+    <div class="px-4 py-4 border-t border-border">
+      <button
+        class="w-full h-[52px] rounded-lg bg-interactive text-white font-bold text-base tracking-wide transition-opacity active:opacity-80"
+        @click="router.push({ name: 'job-detail', params: { id: recentJob.id } })"
+      >
+        {{ t('home.open_job') }} →
+      </button>
+    </div>
   </div>
-  <div v-else class="text-text-secondary text-sm text-center py-6">
-    {{ t('home.no_alerts') }}
+
+  <!-- Empty state: teaches the interface -->
+  <div v-else class="bg-surface border border-border rounded-xl px-4 py-8 text-center">
+    <p class="text-white font-bold mb-1">No active jobs</p>
+    <p class="text-text-secondary text-sm">Jobs you're working on will appear here.</p>
   </div>
 </template>
+

@@ -5,24 +5,38 @@ import { useRecentlyViewed } from '@/composables/useRecentlyViewed'
 const router = useRouter()
 const { recentlyViewed } = useRecentlyViewed()
 
-const typeIcon = { product: '📦', document: '📄' }
-
 function navigate(item) {
   router.push({ name: item.routeName, params: item.routeParams })
 }
 </script>
 
 <template>
-  <div v-if="recentlyViewed.length" class="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
+  <!-- Horizontal scroll row: no padding so it bleeds to screen edges -->
+  <div v-if="recentlyViewed.length" class="flex gap-2 overflow-x-auto no-scrollbar px-4 pb-1">
     <button
       v-for="item in recentlyViewed"
       :key="item.id"
-      class="shrink-0 flex items-center gap-1.5 px-3 py-2 bg-surface border border-border rounded-full text-sm font-bold text-white max-w-[160px]"
+      class="shrink-0 inline-flex items-center gap-2 h-[40px] px-3 rounded-lg bg-surface border border-border text-white text-sm font-bold whitespace-nowrap transition-opacity active:opacity-75"
       @click="navigate(item)"
     >
-      <span>{{ typeIcon[item.type] ?? '📄' }}</span>
-      <span class="truncate">{{ item.name }}</span>
+      <!-- Type indicator: subtle filled icon -->
+      <span
+        class="shrink-0 w-4 h-4 rounded-sm flex items-center justify-center text-[10px]"
+        :class="item.type === 'product' ? 'bg-interactive/20 text-interactive' : 'bg-brand/20 text-highlight'"
+      >
+        {{ item.type === 'product' ? '⬡' : '⬗' }}
+      </span>
+      <span class="truncate max-w-[120px]">{{ item.name }}</span>
     </button>
+    <!-- Trailing spacer for natural scroll boundary -->
+    <div class="shrink-0 w-4" aria-hidden="true" />
   </div>
-  <p v-else class="text-text-secondary text-sm italic">Nothing viewed yet.</p>
+
+  <!-- Empty state: teaches the interface, not just "nothing here" -->
+  <div v-else class="px-4">
+    <p class="text-text-secondary text-sm">
+      Products and documents you open will appear here for quick return.
+    </p>
+  </div>
 </template>
+

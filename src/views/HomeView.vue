@@ -10,32 +10,49 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <main class="flex flex-col gap-6 pb-24 px-4 pt-4">
-    <GreetingWeather />
+  <main class="flex flex-col pb-24 bg-bg">
+    <!-- Greeting: generous top space, comfortable bottom clearance before alerts -->
+    <div class="px-4 pt-7 pb-5">
+      <GreetingWeather />
+    </div>
+
+    <!-- Alerts: renders flush, horizontal scroll bleeds to edges -->
     <AlertCards />
-    <section>
-      <h2 class="text-xs font-bold tracking-widest uppercase text-text-secondary mb-3">
+
+    <!-- Recent job: primary action zone -->
+    <section class="px-4 mt-6">
+      <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-text-secondary mb-3">
         {{ t('home.section_continue') }}
-      </h2>
+      </p>
       <RecentJobCard />
     </section>
-    <section>
-      <h2 class="text-xs font-bold tracking-widest uppercase text-text-secondary mb-3">
+
+    <!-- Recently viewed: label padded, row bleeds to edges for natural scroll -->
+    <section class="mt-7">
+      <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-text-secondary mb-3 px-4">
         {{ t('home.section_recently_viewed') }}
-      </h2>
+      </p>
       <RecentlyViewed />
     </section>
-    <section>
-      <h2 class="text-xs font-bold tracking-widest uppercase text-text-secondary mb-3">
+
+    <!-- Quick access -->
+    <section class="px-4 mt-7">
+      <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-text-secondary mb-3">
         {{ t('home.section_quick_access') }}
-      </h2>
+      </p>
       <QuickAccess />
     </section>
-    <router-link
-      to="/jobs/new"
-      class="flex items-center justify-center w-full min-h-[52px] rounded-xl bg-interactive text-white font-bold text-base tracking-wide"
-    >
-      + {{ t('home.cta_new_job') }}
-    </router-link>
+
+    <!-- CTA: generous separation, full-width, primary interactive blue -->
+    <div class="px-4 mt-8">
+      <router-link
+        to="/jobs/new"
+        class="flex items-center justify-center w-full h-[52px] rounded-xl bg-interactive text-white font-bold text-base tracking-wide transition-opacity active:opacity-80"
+        style="font-family: var(--font-body);"
+      >
+        + {{ t('home.cta_new_job') }}
+      </router-link>
+    </div>
   </main>
 </template>
+

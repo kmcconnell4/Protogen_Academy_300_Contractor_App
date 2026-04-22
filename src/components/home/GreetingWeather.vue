@@ -5,29 +5,45 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
 const hour = new Date().getHours()
-const greetingKey = computed(() => {
-  if (hour < 12) return 'home.greeting_morning'
-  if (hour < 17) return 'home.greeting_afternoon'
-  return 'home.greeting_evening'
+const greetingLabel = computed(() => {
+  if (hour < 12) return 'Good morning'
+  if (hour < 17) return 'Good afternoon'
+  return 'Good evening'
 })
 
-// Mock: tie weather to the most recent active job's location
+// Mock: weather tied to most recent active job location
 const weather = {
   city: 'Cincinnati, OH',
-  condition: '⛅',
+  icon: '⛅',
   temp: '64°F',
+  condition: 'Partly cloudy',
 }
 
 const contractorFirstName = 'Marcus'
 </script>
 
 <template>
-  <div class="flex flex-col gap-0.5">
-    <h2 class="text-2xl font-bold text-white">
-      {{ t(greetingKey, { name: contractorFirstName }) }} 👋
-    </h2>
-    <p class="text-text-secondary text-sm font-medium">
-      📍 {{ weather.city }} &nbsp; {{ weather.condition }} {{ weather.temp }}
-    </p>
+  <div class="flex items-end justify-between gap-4">
+    <!-- Name display: the visual anchor of the home screen -->
+    <div class="flex flex-col gap-1 min-w-0">
+      <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-text-secondary">
+        {{ greetingLabel }},
+      </p>
+      <h1
+        class="text-[3rem] leading-[0.9] font-[800] tracking-tight text-white truncate"
+        style="font-family: var(--font-heading);"
+      >
+        {{ contractorFirstName }}
+      </h1>
+    </div>
+
+    <!-- Weather: right-aligned utility widget, secondary info -->
+    <div class="flex flex-col items-end gap-0.5 shrink-0 pb-1">
+      <p class="text-white font-bold text-xl leading-none">{{ weather.temp }}</p>
+      <p class="text-text-secondary text-[11px] font-medium leading-snug text-right">
+        {{ weather.icon }} {{ weather.city }}
+      </p>
+    </div>
   </div>
 </template>
+

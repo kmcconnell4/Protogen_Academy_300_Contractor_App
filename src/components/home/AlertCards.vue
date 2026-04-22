@@ -13,43 +13,46 @@ const router = useRouter()
 const alerts = computed(() => {
   const items = []
 
-  // Inspection responses overdue / pending
+  // Inspection responses — overdue first, then pending
   inspections
     .filter((i) => i.status === 'Pending Response' || i.status === 'Response Overdue')
     .forEach((i) => {
       const job = jobs.find((j) => j.id === i.jobId)
       items.push({
         id: i.id,
+        type: 'Inspection',
         urgency: i.status === 'Response Overdue' ? 'error' : 'amber',
-        message: t('alerts.inspection_due'),
+        heading: i.status === 'Response Overdue' ? 'Response overdue' : 'Response required',
         jobName: job?.name ?? '',
         route: { name: 'job-detail', params: { id: i.jobId } },
       })
     })
 
-  // Quotes awaiting contractor (submitted but not yet approved/rejected)
+  // Quotes awaiting approval
   quotes
     .filter((q) => q.status === 'Submitted')
     .forEach((q) => {
       const job = jobs.find((j) => j.id === q.jobId)
       items.push({
         id: q.id,
+        type: 'Quote',
         urgency: 'amber',
-        message: `Quote v${q.version} awaiting approval`,
+        heading: `v${q.version} awaiting approval`,
         jobName: job?.name ?? '',
         route: { name: 'job-detail', params: { id: q.jobId } },
       })
     })
 
-  // Orders shipped (not yet delivered)
+  // Orders shipped — positive signal
   orders
     .filter((o) => o.status === 'Shipped')
     .forEach((o) => {
       const job = jobs.find((j) => j.id === o.jobId)
       items.push({
         id: o.id,
+        type: 'Order',
         urgency: 'emerald',
-        message: t('alerts.order_shipped'),
+        heading: 'Shipment in transit',
         jobName: job?.name ?? '',
         route: { name: 'job-detail', params: { id: o.jobId } },
       })
@@ -58,31 +61,56 @@ const alerts = computed(() => {
   return items
 })
 
-const urgencyColor = {
-  error:   'bg-error',
-  amber:   'bg-amber',
-  emerald: 'bg-emerald',
+// Per-urgency visual config — background tint, border, and type label color
+const config = {
+  amber:   { bg: 'bg-amber/15',   border: 'border-amber/30',   label: 'text-amber' },
+  error:   { bg: 'bg-error/15',   border: 'border-error/30',   label: 'text-error' },
+  emerald: { bg: 'bg-emerald/15', border: 'border-emerald/30', label: 'text-emerald' },
 }
 </script>
 
 <template>
   <section v-if="alerts.length">
-    <h2 class="text-xs font-bold tracking-widest uppercase text-text-secondary mb-3">
-      ⚠️ {{ t('home.section_action_required') }}
-    </h2>
-    <div class="flex gap-3 overflow-x-auto pb-1 no-scrollbar">
+    <!-- Section header: urgency label left, count right -->
+    <div class="flex items-center justify-between px-4 mb-3">
+      <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-amber">
+        Action Required
+      </p>
+      <span class="text-[11px] font-bold text-text-secondary tabular-nums">
+        {{ alerts.length }} {{ alerts.length === 1 ? 'item' : 'items' }}
+      </span>
+    </div>
+
+    <!-- Horizontally scrollable card row: px-4 aligns cards with page grid -->
+    <div class="flex gap-3 overflow-x-auto no-scrollbar px-4 pb-1">
       <button
-        v-for="alert in alerts"
+        v-for="(alert, i) in alerts"
         :key="alert.id"
-        class="shrink-0 w-72 bg-surface border border-border rounded-xl p-4 text-left flex items-start gap-3"
+        :class="[
+          'shrink-0 w-[272px] flex flex-col gap-2 rounded-xl p-4 text-left border',
+          'transition-opacity active:opacity-75',
+          config[alert.urgency].bg,
+          config[alert.urgency].border,
+        ]"
+        :style="{ animationDelay: `${i * 40}ms` }"
         @click="router.push(alert.route)"
       >
-        <span :class="['mt-1 w-2.5 h-2.5 rounded-full shrink-0', urgencyColor[alert.urgency]]" />
-        <div class="min-w-0">
-          <p class="text-white font-bold text-sm leading-snug">{{ alert.message }}</p>
-          <p class="text-text-secondary text-xs mt-0.5 truncate">{{ alert.jobName }}</p>
-        </div>
+        <!-- Alert type: all-caps label in urgency color -->
+        <p :class="['text-[11px] font-bold uppercase tracking-[0.12em]', config[alert.urgency].label]">
+          {{ alert.type }}
+        </p>
+        <!-- Alert heading: bold, white, primary content -->
+        <p class="text-white font-bold text-[0.9375rem] leading-snug">
+          {{ alert.heading }}
+        </p>
+        <!-- Job name: secondary, clipped to one line -->
+        <p class="text-text-secondary text-xs font-medium truncate">
+          {{ alert.jobName }}
+        </p>
       </button>
+      <!-- Trailing spacer to reveal peek of overflow on last card -->
+      <div class="shrink-0 w-4" aria-hidden="true" />
     </div>
   </section>
 </template>
+

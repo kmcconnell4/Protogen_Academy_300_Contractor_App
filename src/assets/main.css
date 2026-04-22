@@ -5,6 +5,13 @@
    and CSS custom properties (--color-brand, etc.) automatically.
    ─────────────────────────────────────────────────────────────────────────── */
 @theme {
+  /* Typography */
+  --font-heading: 'Big Shoulders Display', system-ui, sans-serif;
+  --font-body:    'Barlow', system-ui, sans-serif;
+
+  /* Easing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
   /* Brand blues */
   --color-brand:          #164da6;
   --color-interactive:    #2E6FD8;
@@ -83,12 +90,14 @@
     font-size: var(--font-size-base);
     -webkit-tap-highlight-color: transparent;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   body {
     background-color: var(--color-bg);
     color: var(--color-text-primary);
-    font-family: Inter, system-ui, sans-serif;
+    font-family: var(--font-body);
     font-weight: 500;
     min-height: 100dvh;
   }
@@ -101,5 +110,18 @@
     min-height: var(--tap-target-min);
     display: inline-flex;
     align-items: center;
+  }
+}
+
+/* ─── Custom utilities ───────────────────────────────────────────────────────
+   Added to the utilities layer so they can be used as Tailwind classes.
+   ─────────────────────────────────────────────────────────────────────────── */
+@layer utilities {
+  /* Hide scrollbars while preserving scroll functionality */
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 }
