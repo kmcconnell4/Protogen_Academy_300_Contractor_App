@@ -34,31 +34,11 @@
 }
 
 /* ─── Explicit CSS custom properties ────────────────────────────────────────
-   Mirrors the @theme tokens for use in arbitrary CSS (e.g. var(--color-brand)).
+   Non-color tokens not covered by @theme — used in arbitrary CSS via var().
    ─────────────────────────────────────────────────────────────────────────── */
 :root {
-  /* Brand */
-  --color-brand:           #164da6;
-  --color-interactive:     #2E6FD8;
-  --color-highlight:       #5B9BF0;
-
-  /* Backgrounds */
-  --color-bg:              #151C28;
-  --color-surface:         #1E2A3E;
-  --color-surface-alt:     #243044;
-  --color-nav:             #0F1520;
-
   /* Text */
   --color-text-primary:    #ffffff;
-  --color-text-secondary:  #A8B8D0;
-
-  /* Borders */
-  --color-border:          #2E3A52;
-
-  /* Functional */
-  --color-amber:           #F5A623;
-  --color-emerald:         #4ACA6E;
-  --color-error:           #FF4C4C;
 
   /* Typography */
   --font-size-base:        16px;

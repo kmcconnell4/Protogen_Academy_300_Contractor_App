@@ -1,8 +1,10 @@
 <script setup>
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useFormatDate } from '@/composables/useFormatDate'
 
 const { t } = useI18n()
+const { formatDate } = useFormatDate()
 
 const props = defineProps({
   inspectionId: { type: String, required: true },
@@ -44,7 +46,7 @@ function submit() {
       <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M20 6L9 17l-5-5" />
       </svg>
-      {{ t('inspections.response_submitted', { date: new Date().toISOString().slice(0, 10) }) }}
+      {{ t('inspections.response_submitted', { date: formatDate(new Date().toISOString().slice(0, 10)) }) }}
     </div>
   </div>
 </template>

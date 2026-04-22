@@ -102,7 +102,7 @@ const categoryCounts = computed(() =>
           ]"
           @click="activeCategory = cat"
         >
-          {{ cat }}
+          {{ t('catalog.categories.' + cat) || cat }}
           <span :class="['ml-1.5 tabular-nums', activeCategory === cat ? 'text-white/60' : 'text-text-secondary/50']">
             {{ categoryCounts[cat] }}
           </span>

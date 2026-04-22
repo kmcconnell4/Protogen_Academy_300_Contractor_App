@@ -37,6 +37,7 @@
     "section_recent_contractors": "Contratistas Vistos Recientemente",
     "no_recent_contractors": "Los contratistas que visites aparecerán aquí.",
     "contractor_active_jobs": "{count} trabajo activo | {count} trabajos activos",
+    "view_contractor_jobs": "Ver trabajos de {name}",
     "recently_viewed_empty": "Los productos y documentos que abras aparecerán aquí."
   },
   "jobs": {
@@ -149,6 +150,16 @@
       "PDS": "FTD",
       "SDS": "FSD",
       "Spec": "Spec"
+    },
+    "categories": {
+      "TPO Membrane": "Membrana TPO",
+      "EPDM Membrane": "Membrana EPDM",
+      "Insulation": "Aislamiento",
+      "Accessories": "Accesorios",
+      "Flashing": "Vierteaguas",
+      "Sheet Metal": "Lámina Metálica",
+      "System Packages": "Paquetes de Sistema",
+      "Adhesives": "Adhesivos"
     }
   },
   "documents": {
@@ -171,6 +182,13 @@
     "title": "Videos de Capacitación",
     "count": "{count} video | {count} videos",
     "filter_all": "Todos",
+    "categories": {
+      "Installation": "Instalación",
+      "Warranty": "Garantía",
+      "Detailing": "Detalles",
+      "Admin": "Administración",
+      "Training": "Capacitación"
+    },
     "filter_installation": "Instalación",
     "filter_warranty": "Garantía",
     "filter_detailing": "Detalles",

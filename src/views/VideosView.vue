@@ -46,7 +46,7 @@ const filtered = computed(() => {
         ]"
         @click="activeCategory = cat"
       >
-        {{ cat === 'All' ? t('videos.filter_all') : cat }}
+        {{ cat === 'All' ? t('videos.filter_all') : (t('videos.categories.' + cat) || cat) }}
       </button>
     </div>
 

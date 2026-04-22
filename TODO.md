@@ -78,7 +78,7 @@ Issues identified in a full codebase scan on 2026-04-22. Organized by severity.
 
 ### Localization Gaps
 
-- [ ] **`ProductCatalogView.vue` and `VideosView.vue` — Category chip labels are raw data strings** (e.g. `"Membranes"`, `"Installation"`) with no i18n translation key. French and Spanish users see English category names. Add translation keys or document that categories are data-driven.
+- [x] **`ProductCatalogView.vue` and `VideosView.vue` — Category chip labels are raw data strings** (e.g. `"Membranes"`, `"Installation"`) with no i18n translation key. French and Spanish users see English category names. Add translation keys or document that categories are data-driven.
 
 ### Design System — Visual Consistency
 
@@ -94,17 +94,17 @@ Issues identified in a full codebase scan on 2026-04-22. Organized by severity.
 
 ## P3 — Low Priority / Polish
 
-- [ ] **`VideoCard.vue` — Thumbnail `<img>` missing `loading="lazy"`.** All video thumbnails load immediately. Add `loading="lazy"` for performance on slower connections. `src/components/videos/VideoCard.vue`
+- [x] **`VideoCard.vue` — Thumbnail `<img>` missing `loading="lazy"`.** All video thumbnails load immediately. Add `loading="lazy"` for performance on slower connections. `src/components/videos/VideoCard.vue`
 
-- [ ] **No page transition animations.** The design system specifies `opacity + translateY` entrances for page navigation, but `<RouterView>` has no `<Transition>` wrapper. Implement subtle entry transitions to add purposeful motion. `src/App.vue`
+- [x] **No page transition animations.** The design system specifies `opacity + translateY` entrances for page navigation, but `<RouterView>` has no `<Transition>` wrapper. Implement subtle entry transitions to add purposeful motion. `src/App.vue`
 
-- [ ] **`main.css` — CSS custom properties defined twice.** The `@theme {}` block generates `--color-*` custom properties automatically in Tailwind v4; the duplicate `:root {}` block is redundant. Remove the redundant `:root {}` block to reduce maintenance surface. `src/assets/main.css`
+- [x] **`main.css` — CSS custom properties defined twice.** The `@theme {}` block generates `--color-*` custom properties automatically in Tailwind v4; the duplicate `:root {}` block is redundant. Remove the redundant `:root {}` block to reduce maintenance surface. `src/assets/main.css`
 
-- [ ] **`InspectionResponseForm.vue` — Success confirmation uses raw `ISO.slice(0, 10)` string** for the submitted date instead of the app's `formatDate` pattern. Use the same formatting for consistency. `src/components/inspections/InspectionResponseForm.vue`
+- [x] **`InspectionResponseForm.vue` — Success confirmation uses raw `ISO.slice(0, 10)` string** for the submitted date instead of the app's `formatDate` pattern. Use the same formatting for consistency. `src/components/inspections/InspectionResponseForm.vue`
 
-- [ ] **`ProductCard.vue` — Click tracks to "recently viewed" but does not navigate anywhere.** There is no product detail route. This is acceptable for the current demo scope, but the `cursor-pointer` and `active:bg-surface-alt` affordances imply navigation. Either add a product detail view or remove the click affordance. `src/components/products/ProductCard.vue`
+- [x] **`ProductCard.vue` — Click tracks to "recently viewed" but does not navigate anywhere.** There is no product detail route. This is acceptable for the current demo scope, but the `cursor-pointer` and `active:bg-surface-alt` affordances imply navigation. Either add a product detail view or remove the click affordance. `src/components/products/ProductCard.vue`
 
-- [ ] **`RecentContractors.vue` — No accessible label on contractor buttons** describing their navigation destination. Cards just say the company name. Add a descriptive `aria-label` such as `"View jobs for Rivera Roofing LLC"`. `src/components/home/RecentContractors.vue`
+- [x] **`RecentContractors.vue` — No accessible label on contractor buttons** describing their navigation destination. Cards just say the company name. Add a descriptive `aria-label` such as `"View jobs for Rivera Roofing LLC"`. `src/components/home/RecentContractors.vue`
 
 ---
 

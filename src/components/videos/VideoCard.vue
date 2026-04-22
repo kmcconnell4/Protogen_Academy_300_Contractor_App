@@ -13,6 +13,7 @@ const props = defineProps({
     <img
       :src="video.thumbnailUrl"
       :alt="video.title"
+      loading="lazy"
       class="w-full aspect-video object-cover"
     />
     <div class="p-4 flex flex-col gap-2 flex-1">

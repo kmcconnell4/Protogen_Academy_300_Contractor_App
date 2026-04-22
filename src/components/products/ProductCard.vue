@@ -41,8 +41,7 @@ function track() {
 <template>
   <div
     role="article"
-    class="bg-surface border border-border rounded-xl p-4 flex flex-col gap-3 cursor-pointer active:bg-surface-alt transition-colors"
-    @click="track"
+    class="bg-surface border border-border rounded-xl p-4 flex flex-col gap-3"
   >
 
     <!-- Category + SKU meta row -->
@@ -89,7 +88,7 @@ function track() {
           'inline-flex items-center gap-1 h-[28px] px-2.5 rounded text-[11px] font-[700] uppercase tracking-[0.08em] leading-none transition-opacity hover:opacity-80',
           docTypeConfig[doc.type]?.cls ?? 'bg-surface-alt text-text-secondary',
         ]"
-        @click.stop
+        @click="track"
       >
         <!-- Mini document icon -->
         <svg class="w-3 h-3 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

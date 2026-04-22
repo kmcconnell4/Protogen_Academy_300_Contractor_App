@@ -10,8 +10,27 @@ setupRole()
 <template>
   <div class="flex flex-col min-h-dvh bg-bg text-white">
     <NavBar />
-    <RouterView class="flex-1" />
+    <RouterView v-slot="{ Component }" class="flex-1">
+      <Transition name="page" mode="out-in">
+        <component :is="Component" class="flex-1" />
+      </Transition>
+    </RouterView>
     <BottomNav />
   </div>
 </template>
+
+<style>
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(6px);
+}
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+</style>
 
