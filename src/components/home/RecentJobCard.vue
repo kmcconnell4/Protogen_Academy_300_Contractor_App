@@ -59,7 +59,7 @@ const inspectionCount = computed(() => recentJob.value?.inspectionIds?.length ??
     <!-- CTA: full-width, primary action -->
     <div class="px-4 py-4 border-t border-border">
       <button
-        class="w-full h-tap rounded-lg bg-interactive text-white font-bold text-base tracking-wide transition-opacity active:opacity-80"
+        class="flex items-center justify-center w-full h-tap rounded-lg bg-interactive text-white font-bold text-base tracking-wide transition-opacity active:opacity-80"
         @click="router.push({ name: 'job-detail', params: { id: recentJob.id } })"
       >
         {{ t('home.open_job') }}

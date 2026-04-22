@@ -15,7 +15,7 @@ const { role } = useRole()
 <template>
   <main class="flex flex-col pb-24 bg-bg">
     <!-- Greeting: generous top space, comfortable bottom clearance before alerts -->
-    <div class="px-4 pt-7 pb-5">
+    <div class="px-4 pt-7 pb-8">
       <GreetingWeather />
     </div>
 

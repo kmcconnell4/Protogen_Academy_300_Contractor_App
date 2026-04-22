@@ -139,7 +139,7 @@ const severityConfig = {
       <!-- Rep: mark reviewed -->
       <div v-if="role === 'rep' && localStatus !== 'Reviewed'">
         <button
-          class="w-full h-tap rounded-xl bg-interactive font-[700] text-white transition-opacity active:opacity-80"
+          class="flex items-center justify-center w-full h-tap rounded-xl bg-interactive font-[700] text-white transition-opacity active:opacity-80"
           @click="localStatus = 'Reviewed'"
         >
           {{ t('inspections.mark_reviewed') }}

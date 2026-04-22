@@ -58,9 +58,6 @@ const allFilters = computed(() => {
 
     <!-- Page header -->
     <div class="px-4 pt-6 pb-5 border-b border-border">
-      <p class="text-[11px] font-[700] uppercase tracking-[0.12em] text-text-secondary mb-1 leading-none">
-        {{ t('jobs.count', { count: filtered.length }, filtered.length) }}
-      </p>
       <h1
         class="text-[2.25rem] font-[800] text-white leading-none"
         style="font-family: var(--font-heading);"
@@ -110,30 +107,16 @@ const allFilters = computed(() => {
         </button>
       </div>
 
-      <!-- Sort toggle -->
-      <div class="flex items-center gap-1">
-        <span class="text-[11px] font-[600] uppercase tracking-widest text-text-secondary mr-0.5">
-          {{ t('jobs.sort_label') }}:
-        </span>
-        <button
-          :class="[
-            'h-[44px] px-3 rounded-lg text-[11px] font-[700] uppercase tracking-[0.08em] transition-colors',
-            sortBy === 'updated' ? 'bg-surface-alt text-white' : 'text-text-secondary',
-          ]"
-          @click="sortBy = 'updated'"
-        >
-          {{ t('jobs.sort_updated') }}
-        </button>
-        <button
-          :class="[
-            'h-[44px] px-3 rounded-lg text-[11px] font-[700] uppercase tracking-[0.08em] transition-colors',
-            sortBy === 'name' ? 'bg-surface-alt text-white' : 'text-text-secondary',
-          ]"
-          @click="sortBy = 'name'"
-        >
-          {{ t('jobs.sort_name') }}
-        </button>
-      </div>
+      <!-- Sort toggle: single tap-to-cycle button -->
+      <button
+        class="flex items-center gap-1.5 h-[36px] px-2.5 rounded-lg text-[11px] font-[700] uppercase tracking-widest text-text-secondary transition-colors hover:text-white"
+        @click="sortBy = sortBy === 'updated' ? 'name' : 'updated'"
+      >
+        <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M8 18V6M5 9l3-3 3 3M16 6v12M13 15l3 3 3-3" />
+        </svg>
+        {{ sortBy === 'updated' ? t('jobs.sort_updated') : t('jobs.sort_name') }}
+      </button>
 
     </div>
 

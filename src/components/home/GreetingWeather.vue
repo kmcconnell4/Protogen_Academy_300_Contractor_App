@@ -26,7 +26,7 @@ const weather = {
     <!-- Name display: the visual anchor of the home screen -->
     <div class="flex flex-col gap-1 min-w-0">
       <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-text-secondary">
-        {{ greetingLabel }},
+        {{ greetingLabel }}
       </p>
       <h1
         class="text-[3rem] leading-[0.9] font-[800] tracking-tight text-white truncate"

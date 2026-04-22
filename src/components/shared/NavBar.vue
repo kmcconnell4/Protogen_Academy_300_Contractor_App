@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-import RoleSwitcher from './RoleSwitcher.vue'
 import SearchOverlay from '@/components/search/SearchOverlay.vue'
 
 const { t } = useI18n()
@@ -24,8 +23,6 @@ const searchOpen = ref(false)
 
     <!-- Actions -->
     <div class="flex items-center gap-0.5">
-      <RoleSwitcher compact />
-
       <!-- Search -->
       <button
         class="h-[52px] w-[52px] flex items-center justify-center rounded-lg text-text-secondary transition-colors hover:text-white active:text-white"
