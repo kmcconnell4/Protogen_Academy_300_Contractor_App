@@ -1,0 +1,69 @@
+[
+  {
+    "id": "q1",
+    "contractorId": "c1",
+    "jobId": "j1",
+    "jobName": "Westfield Office Complex Re-Roof",
+    "createdDate": "2026-03-01",
+    "status": "Approved",
+    "lineItems": [
+      { "description": "TPO 60-mil Membrane", "quantity": 120, "unitPrice": 85, "total": 10200 },
+      { "description": "Insulation Board R-30", "quantity": 120, "unitPrice": 40, "total": 4800 },
+      { "description": "Labor – Tear-off & Installation", "quantity": 1, "unitPrice": 18000, "total": 18000 }
+    ],
+    "subtotal": 33000,
+    "tax": 2310,
+    "grandTotal": 35310,
+    "notes": ""
+  },
+  {
+    "id": "q2",
+    "contractorId": "c1",
+    "jobId": "j5",
+    "jobName": "Summit School District Admin Building",
+    "createdDate": "2026-04-10",
+    "status": "Submitted",
+    "lineItems": [
+      { "description": "TPO 60-mil Membrane", "quantity": 95, "unitPrice": 85, "total": 8075 },
+      { "description": "Walkway Pads", "quantity": 50, "unitPrice": 12, "total": 600 },
+      { "description": "Labor – Installation", "quantity": 1, "unitPrice": 14000, "total": 14000 }
+    ],
+    "subtotal": 22675,
+    "tax": 1587,
+    "grandTotal": 24262,
+    "notes": "Awaiting district board approval before proceeding."
+  },
+  {
+    "id": "q3",
+    "contractorId": "c2",
+    "jobId": "j4",
+    "jobName": "Lakeside Retail Strip Mall",
+    "createdDate": "2026-02-10",
+    "status": "Rejected",
+    "lineItems": [
+      { "description": "PVC 50-mil Membrane", "quantity": 85, "unitPrice": 92, "total": 7820 },
+      { "description": "Labor – Installation", "quantity": 1, "unitPrice": 12000, "total": 12000 }
+    ],
+    "subtotal": 19820,
+    "tax": 1387,
+    "grandTotal": 21207,
+    "notes": "Rejected – missing energy code compliance docs."
+  },
+  {
+    "id": "q4",
+    "contractorId": "c2",
+    "jobId": "j3",
+    "jobName": "Riverside Medical Parking Garage",
+    "createdDate": "2026-03-25",
+    "status": "Draft",
+    "lineItems": [
+      { "description": "Coated Base Sheet", "quantity": 40, "unitPrice": 55, "total": 2200 },
+      { "description": "Cap Sheet", "quantity": 40, "unitPrice": 65, "total": 2600 },
+      { "description": "Labor – Repair", "quantity": 1, "unitPrice": 6500, "total": 6500 }
+    ],
+    "subtotal": 11300,
+    "tax": 791,
+    "grandTotal": 12091,
+    "notes": ""
+  }
+]
