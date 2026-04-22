@@ -52,14 +52,14 @@ const { role } = useRole()
       <router-link
         v-if="role === 'contractor'"
         to="/jobs"
-        class="flex items-center justify-center w-full h-[52px] rounded-xl bg-interactive text-white font-bold text-base tracking-wide transition-opacity active:opacity-80"
+        class="flex items-center justify-center w-full h-tap rounded-xl bg-interactive text-white font-bold text-base tracking-wide transition-opacity active:opacity-80"
         style="font-family: var(--font-body);"
       >
         + {{ t('home.cta_new_job') }}
       </router-link>
       <button
         v-else
-        class="flex items-center justify-center w-full h-[52px] rounded-xl bg-amber text-bg font-bold text-base tracking-wide transition-opacity active:opacity-80"
+        class="flex items-center justify-center w-full h-tap rounded-xl bg-amber text-bg font-bold text-base tracking-wide transition-opacity active:opacity-80"
         style="font-family: var(--font-body);"
       >
         + {{ t('home.cta_add_contractor') }}

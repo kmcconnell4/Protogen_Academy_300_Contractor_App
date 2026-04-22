@@ -52,6 +52,8 @@
     "sort_updated": "Última Actualización",
     "sort_name": "Nombre",
     "no_jobs": "No se encontraron trabajos.",
+    "filtered_by": "Mostrando trabajos de",
+    "clear_filter": "Mostrar Todos",
     "last_updated": "Actualizado {date}",
     "tabs": {
       "overview": "Resumen",
@@ -150,6 +152,7 @@
   },
   "documents": {
     "title": "Biblioteca de Documentos",
+    "count": "{count} documento | {count} documentos",
     "search_placeholder": "Buscar documentos…",
     "filter_all": "Todos",
     "filter_pds": "FTD",
@@ -165,6 +168,7 @@
   },
   "videos": {
     "title": "Videos de Capacitación",
+    "count": "{count} video | {count} videos",
     "filter_all": "Todos",
     "filter_installation": "Instalación",
     "filter_warranty": "Garantía",
@@ -190,6 +194,7 @@
   },
   "profile": {
     "title": "Perfil y Configuración",
+    "section_label": "Cuenta",
     "name": "Nombre",
     "company": "Empresa",
     "region": "Región",

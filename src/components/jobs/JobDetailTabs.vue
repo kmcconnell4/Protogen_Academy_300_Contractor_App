@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n'
 import quotes from '@/data/quotes.json'
 import orders from '@/data/orders.json'
 import inspections from '@/data/inspections.json'
+import reps from '@/data/reps.json'
 import QuoteVersionList from '@/components/quotes/QuoteVersionList.vue'
 import OrderList from '@/components/orders/OrderList.vue'
 import InspectionCard from '@/components/inspections/InspectionCard.vue'
@@ -19,6 +20,8 @@ const activeTab = ref('overview')
 const jobQuotes     = computed(() => quotes.filter((q) => props.job.quoteIds.includes(q.id)))
 const jobOrders     = computed(() => orders.filter((o) => props.job.orderIds.includes(o.id)))
 const jobInspections = computed(() => inspections.filter((i) => props.job.inspectionIds.includes(i.id)))
+
+const repName = computed(() => reps.find((r) => r.id === props.job.repId)?.name ?? props.job.repId)
 
 const tabs = computed(() => [
   { key: 'overview',     label: t('jobs.tabs.overview'),     count: null },
@@ -102,7 +105,7 @@ function formatDate(iso) {
             </div>
             <div class="px-4 py-3 flex items-center justify-between gap-3">
               <p class="text-[11px] font-[700] uppercase tracking-[0.1em] text-text-secondary shrink-0">{{ t('jobs.detail.assigned_rep') }}</p>
-              <p class="text-white font-[600] text-[15px]">{{ job.repId }}</p>
+              <p class="text-white font-[600] text-[15px]">{{ repName }}</p>
             </div>
           </div>
         </div>

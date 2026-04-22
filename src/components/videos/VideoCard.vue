@@ -25,7 +25,7 @@ const props = defineProps({
         :href="video.videoUrl"
         target="_blank"
         rel="noopener noreferrer"
-        class="mt-2 inline-flex items-center justify-center h-[52px] rounded-lg bg-interactive text-white font-bold text-sm"
+        class="mt-2 inline-flex items-center justify-center h-tap rounded-lg bg-interactive text-white font-bold text-sm"
       >
         ▶ {{ t('videos.watch') }}
       </a>

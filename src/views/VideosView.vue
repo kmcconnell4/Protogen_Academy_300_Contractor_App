@@ -16,16 +16,30 @@ const filtered = computed(() => {
 </script>
 
 <template>
-  <main class="flex flex-col gap-4 pb-24 px-4 pt-4">
-    <h1 class="text-xl font-bold text-white">{{ t('videos.title') }}</h1>
+  <main class="flex flex-col pb-24">
+
+    <!-- Page header -->
+    <div class="px-4 pt-6 pb-5 border-b border-border">
+      <p class="text-[11px] font-[700] uppercase tracking-[0.12em] text-text-secondary mb-1 leading-none">
+        {{ t('videos.count', { count: filtered.length }, filtered.length) }}
+      </p>
+      <h1
+        class="text-[2.25rem] font-[800] text-white leading-none"
+        style="font-family: var(--font-heading);"
+      >
+        {{ t('videos.title') }}
+      </h1>
+    </div>
+
+    <div class="px-4 pt-4 flex flex-col gap-4">
 
     <!-- Category filter chips -->
-    <div class="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
+    <div class="flex gap-2 overflow-x-auto pb-0.5 no-scrollbar -mx-4 px-4">
       <button
         v-for="cat in ['All', ...CATEGORIES]"
         :key="cat"
         :class="[
-          'shrink-0 px-3 py-1.5 rounded-full text-sm font-bold tracking-wide transition-colors',
+          'shrink-0 h-[52px] px-3.5 rounded-lg text-[11px] font-[700] uppercase tracking-[0.1em] transition-colors',
           activeCategory === cat
             ? 'bg-interactive text-white'
             : 'bg-surface text-text-secondary border border-border',
@@ -41,5 +55,7 @@ const filtered = computed(() => {
       <VideoCard v-for="video in filtered" :key="video.id" :video="video" />
     </div>
     <p v-else class="text-text-secondary text-center py-8">{{ t('videos.no_videos') }}</p>
+
+    </div>
   </main>
 </template>

@@ -20,31 +20,31 @@ Issues identified in a full codebase scan on 2026-04-22. Organized by severity.
 
 ### Tap Target Violations (Outdoor / Gloved-Hand Failures)
 
-- [ ] **`JobsView.vue` — Sort toggle buttons are `h-[34px]`,** well below any minimum. `src/views/JobsView.vue`
+- [x] **`JobsView.vue` — Sort toggle buttons are `h-[34px]`,** well below any minimum. `src/views/JobsView.vue`
 
-- [ ] **`JobsView.vue` and `ProductCatalogView.vue` — Status/category filter chips are `h-[40px]`.** Below both the 44px WCAG minimum and the 52px design-system minimum. `src/views/JobsView.vue`, `src/views/ProductCatalogView.vue`
+- [x] **`JobsView.vue` and `ProductCatalogView.vue` — Status/category filter chips are `h-[40px]`.** Below both the 44px WCAG minimum and the 52px design-system minimum. `src/views/JobsView.vue`, `src/views/ProductCatalogView.vue`
 
-- [ ] **`DocumentLibraryView.vue` — Filter chips use `py-1.5` with no fixed height**, making them smaller than the minimum. `src/views/DocumentLibraryView.vue`
+- [x] **`DocumentLibraryView.vue` — Filter chips use `py-1.5` with no fixed height**, making them smaller than the minimum. `src/views/DocumentLibraryView.vue`
 
-- [ ] **`RecentlyViewed.vue` — Chip buttons are `h-[40px]`.** Below minimum. `src/components/home/RecentlyViewed.vue`
+- [x] **`RecentlyViewed.vue` — Chip buttons are `h-[40px]`.** Below minimum. `src/components/home/RecentlyViewed.vue`
 
 ### Outdoor Mode Ineffectiveness
 
-- [ ] **Outdoor Mode doesn't upscale hardcoded height classes.** The feature sets `--tap-target-min: 60px`, but dozens of buttons use Tailwind height utilities (`h-[44px]`, `h-[40px]`, `h-[34px]`) that ignore the CSS variable. The CSS `min-height` rule in `@layer base` only applies to elements that don't already have an explicit height class. Audit all interactive elements and replace fixed `h-[]` with `min-h-[var(--tap-target-min)]` or a Tailwind token equivalent. `src/assets/main.css` + multiple components
+- [x] **Outdoor Mode doesn't upscale hardcoded height classes.** The feature sets `--tap-target-min: 60px`, but dozens of buttons use Tailwind height utilities (`h-[44px]`, `h-[40px]`, `h-[34px]`) that ignore the CSS variable. The CSS `min-height` rule in `@layer base` only applies to elements that don't already have an explicit height class. Audit all interactive elements and replace fixed `h-[]` with `min-h-[var(--tap-target-min)]` or a Tailwind token equivalent. `src/assets/main.css` + multiple components
 
 ### Design System Inconsistencies
 
-- [ ] **`DocumentLibraryView.vue` and `VideosView.vue` page headers** use plain `text-xl font-bold` without the Big Shoulders Display font family (`font-family: var(--font-heading)`) and without the section overline label (e.g. "42 DOCUMENTS") used in every other view. Align with the JobsView / ProductCatalogView header pattern. `src/views/DocumentLibraryView.vue`, `src/views/VideosView.vue`
+- [x] **`DocumentLibraryView.vue` and `VideosView.vue` page headers** use plain `text-xl font-bold` without the Big Shoulders Display font family (`font-family: var(--font-heading)`) and without the section overline label (e.g. "42 DOCUMENTS") used in every other view. Align with the JobsView / ProductCatalogView header pattern. `src/views/DocumentLibraryView.vue`, `src/views/VideosView.vue`
 
-- [ ] **`ProfileView.vue` heading** (`<h1 class="text-xl font-bold text-white">`) doesn't use Big Shoulders Display and lacks the overline label. Inconsistent with all other views. `src/views/ProfileView.vue`
+- [x] **`ProfileView.vue` heading** (`<h1 class="text-xl font-bold text-white">`) doesn't use Big Shoulders Display and lacks the overline label. Inconsistent with all other views. `src/views/ProfileView.vue`
 
 ### Data / Logic Issues
 
-- [ ] **`GreetingWeather.vue` — Contractor first name is hardcoded** as `'Marcus'`. It should pull from the same mock `profile` object used in `ProfileView.vue` (or a shared data source). `src/components/home/GreetingWeather.vue`
+- [x] **`GreetingWeather.vue` — Contractor first name is hardcoded** as `'Marcus'`. It should pull from the same mock `profile` object used in `ProfileView.vue` (or a shared data source). `src/components/home/GreetingWeather.vue`
 
-- [ ] **`RecentContractors.vue` — All contractor cards navigate to `/jobs` without filtering.** Clicking any contractor just shows all jobs. Should pass a contractor identifier so the Jobs view can pre-filter, or navigate to a contractor-scoped job list. `src/components/home/RecentContractors.vue`
+- [x] **`RecentContractors.vue` — All contractor cards navigate to `/jobs` without filtering.** Clicking any contractor just shows all jobs. Should pass a contractor identifier so the Jobs view can pre-filter, or navigate to a contractor-scoped job list. `src/components/home/RecentContractors.vue`
 
-- [ ] **`JobDetailTabs.vue` — Overview tab shows raw `job.repId`** (an ID string like `"REP-001"`) as the "Assigned Rep" value. Should look up the rep's display name from a data source. `src/components/jobs/JobDetailTabs.vue`
+- [x] **`JobDetailTabs.vue` — Overview tab shows raw `job.repId`** (an ID string like `"REP-001"`) as the "Assigned Rep" value. Should look up the rep's display name from a data source. `src/components/jobs/JobDetailTabs.vue`
 
 ---
 

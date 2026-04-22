@@ -124,4 +124,15 @@
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
+
+  /*
+   * Outdoor-aware tap target height.
+   * Uses the CSS custom property so .outdoor-mode on <body> automatically
+   * scales this up from 52px → 60px without any JS or extra class toggling.
+   * Use on primary CTA buttons instead of h-[52px].
+   */
+  .h-tap {
+    height: var(--tap-target-min);
+    min-height: var(--tap-target-min);
+  }
 }

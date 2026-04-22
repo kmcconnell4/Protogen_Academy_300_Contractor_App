@@ -50,6 +50,8 @@
     "sort_updated": "Última Atualização",
     "sort_name": "Nome",
     "no_jobs": "Nenhuma obra encontrada.",
+    "filtered_by": "Exibindo trabalhos de",
+    "clear_filter": "Mostrar Todos",
     "last_updated": "Atualizado em {date}",
     "tabs": {
       "overview": "Visão Geral",
@@ -148,7 +150,7 @@
   },
   "documents": {
     "title": "Biblioteca de Documentos",
-    "search_placeholder": "Buscar documentos…",
+    "count": "{count} documento | {count} documentos",
     "filter_all": "Todos",
     "filter_pds": "FTD",
     "filter_sds": "FSD",
@@ -163,6 +165,7 @@
   },
   "videos": {
     "title": "Vídeos de Treinamento",
+    "count": "{count} vídeo | {count} vídeos",
     "filter_all": "Todos",
     "filter_installation": "Instalação",
     "filter_warranty": "Garantia",
@@ -188,6 +191,7 @@
   },
   "profile": {
     "title": "Perfil e Configurações",
+    "section_label": "Conta",
     "name": "Nome",
     "company": "Empresa",
     "region": "Região",

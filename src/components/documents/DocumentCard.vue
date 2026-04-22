@@ -46,7 +46,7 @@ function handleDownload() {
       :href="doc.fileUrl"
       target="_blank"
       rel="noopener noreferrer"
-      class="mt-1 inline-flex items-center justify-center h-[52px] rounded-lg bg-interactive text-white font-bold text-sm"
+      class="mt-1 inline-flex items-center justify-center h-tap rounded-lg bg-interactive text-white font-bold text-sm"
       @click="handleDownload"
     >
       ↓ {{ t('documents.download') }}

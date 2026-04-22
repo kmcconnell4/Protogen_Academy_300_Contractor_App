@@ -1,17 +1,30 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRoute } from 'vue-router'
 import jobs from '@/data/jobs.json'
+import contractors from '@/data/contractors.json'
 import JobCard from '@/components/jobs/JobCard.vue'
 
 const { t } = useI18n()
+const route = useRoute()
 
 const STATUSES = ['Bid', 'In Progress', 'Inspection', 'Warranty', 'Closed']
 const activeFilter = ref('All')
 const sortBy = ref('updated')
 
+// Contractor filter applied when navigating from the rep's contractor cards
+const contractorId = computed(() => route.query.contractor ?? null)
+const contractorName = computed(() => {
+  if (!contractorId.value) return null
+  return contractors.find((c) => c.id === contractorId.value)?.name ?? null
+})
+
 const filtered = computed(() => {
   let list = jobs
+  if (contractorId.value) {
+    list = list.filter((j) => j.contractorId === contractorId.value)
+  }
   if (activeFilter.value !== 'All') {
     list = list.filter((j) => j.status === activeFilter.value)
   }
@@ -23,13 +36,14 @@ const filtered = computed(() => {
   return list
 })
 
-// Build filter chips with per-status counts
+// Build filter chips with per-status counts (scoped to contractor if filtered)
+const baseList = computed(() => contractorId.value ? jobs.filter((j) => j.contractorId === contractorId.value) : jobs)
 const allFilters = computed(() => {
   const counts = Object.fromEntries(
-    STATUSES.map((s) => [s, jobs.filter((j) => j.status === s).length]),
+    STATUSES.map((s) => [s, baseList.value.filter((j) => j.status === s).length]),
   )
   return [
-    { label: t('jobs.filter_all'), value: 'All', count: jobs.length },
+    { label: t('jobs.filter_all'), value: 'All', count: baseList.value.length },
     ...STATUSES.map((s) => ({
       label: t(`jobs.filter_${s.toLowerCase().replace(' ', '_')}`),
       value: s,
@@ -53,6 +67,21 @@ const allFilters = computed(() => {
       >
         {{ t('jobs.title') }}
       </h1>
+      <!-- Contractor filter banner: shown when navigated from a rep's contractor card -->
+      <div v-if="contractorName" class="mt-3 flex items-center gap-2">
+        <span class="text-[11px] font-[700] uppercase tracking-[0.1em] text-text-secondary">
+          {{ t('jobs.filtered_by') }}:
+        </span>
+        <span class="inline-flex items-center gap-1.5 bg-interactive/20 text-highlight text-[11px] font-[700] uppercase tracking-[0.1em] px-2.5 py-1 rounded">
+          {{ contractorName }}
+        </span>
+        <router-link
+          :to="{ name: 'jobs' }"
+          class="ml-auto text-[11px] font-[700] text-text-secondary hover:text-white transition-colors"
+        >
+          {{ t('jobs.clear_filter') }}
+        </router-link>
+      </div>
     </div>
 
     <!-- Filters + sort -->
@@ -64,7 +93,7 @@ const allFilters = computed(() => {
           v-for="f in allFilters"
           :key="f.value"
           :class="[
-            'shrink-0 h-[40px] px-3.5 rounded-lg text-[11px] font-[700] uppercase tracking-[0.1em] transition-colors',
+            'shrink-0 h-[52px] px-3.5 rounded-lg text-[11px] font-[700] uppercase tracking-[0.1em] transition-colors',
             activeFilter === f.value
               ? 'bg-interactive text-white'
               : 'bg-surface text-text-secondary border border-border',
@@ -88,7 +117,7 @@ const allFilters = computed(() => {
         </span>
         <button
           :class="[
-            'h-[34px] px-3 rounded-lg text-[11px] font-[700] uppercase tracking-[0.08em] transition-colors',
+            'h-[44px] px-3 rounded-lg text-[11px] font-[700] uppercase tracking-[0.08em] transition-colors',
             sortBy === 'updated' ? 'bg-surface-alt text-white' : 'text-text-secondary',
           ]"
           @click="sortBy = 'updated'"
@@ -97,7 +126,7 @@ const allFilters = computed(() => {
         </button>
         <button
           :class="[
-            'h-[34px] px-3 rounded-lg text-[11px] font-[700] uppercase tracking-[0.08em] transition-colors',
+            'h-[44px] px-3 rounded-lg text-[11px] font-[700] uppercase tracking-[0.08em] transition-colors',
             sortBy === 'name' ? 'bg-surface-alt text-white' : 'text-text-secondary',
           ]"
           @click="sortBy = 'name'"

@@ -150,7 +150,7 @@ function formatDate(iso) {
 
       <!-- Rep: mark reviewed -->
       <div v-if="role === 'rep' && inspection.status !== 'Reviewed'">
-        <button class="w-full h-[52px] rounded-xl bg-interactive font-[700] text-white">
+        <button class="w-full h-tap rounded-xl bg-interactive font-[700] text-white">
           {{ t('inspections.mark_reviewed') }}
         </button>
       </div>

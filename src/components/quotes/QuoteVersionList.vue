@@ -128,10 +128,10 @@ function formatDate(iso) {
           v-if="role === 'rep' && quote.status === 'Submitted'"
           class="flex gap-2 p-4 pt-0"
         >
-          <button class="flex-1 h-[52px] rounded-lg bg-emerald font-[700] text-nav">
+          <button class="flex-1 h-tap rounded-lg bg-emerald font-[700] text-nav">
             {{ t('quotes.approve') }}
           </button>
-          <button class="flex-1 h-[52px] rounded-lg bg-error font-[700] text-white">
+          <button class="flex-1 h-tap rounded-lg bg-error font-[700] text-white">
             {{ t('quotes.reject') }}
           </button>
         </div>

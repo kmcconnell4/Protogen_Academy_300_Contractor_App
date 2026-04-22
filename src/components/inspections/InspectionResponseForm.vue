@@ -32,7 +32,7 @@ function submit() {
       />
       <button
         :disabled="!response.trim()"
-        class="mt-3 w-full h-[52px] rounded-xl bg-interactive text-white font-bold disabled:opacity-40"
+        class="mt-3 w-full h-tap rounded-xl bg-interactive text-white font-bold disabled:opacity-40"
         @click="submit"
       >
         {{ t('inspections.submit_response') }}

@@ -52,6 +52,8 @@
     "sort_updated": "Last Updated",
     "sort_name": "Name",
     "no_jobs": "No jobs found.",
+    "filtered_by": "Showing jobs for",
+    "clear_filter": "Show All",
     "last_updated": "Updated {date}",
     "tabs": {
       "overview": "Overview",
@@ -150,6 +152,7 @@
   },
   "documents": {
     "title": "Document Library",
+    "count": "{count} document | {count} documents",
     "search_placeholder": "Search documents…",
     "filter_all": "All",
     "filter_pds": "PDS",
@@ -165,6 +168,7 @@
   },
   "videos": {
     "title": "Training Videos",
+    "count": "{count} video | {count} videos",
     "filter_all": "All",
     "filter_installation": "Installation",
     "filter_warranty": "Warranty",
@@ -190,6 +194,7 @@
   },
   "profile": {
     "title": "Profile & Settings",
+    "section_label": "Account",
     "name": "Name",
     "company": "Company",
     "region": "Region",

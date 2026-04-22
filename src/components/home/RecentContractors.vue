@@ -24,7 +24,7 @@ const contractorsWithStats = computed(() =>
       v-for="contractor in contractorsWithStats"
       :key="contractor.id"
       class="shrink-0 w-[220px] flex flex-col gap-2 rounded-xl p-4 text-left bg-surface border border-border transition-opacity active:opacity-75"
-      @click="router.push({ name: 'jobs' })"
+      @click="router.push({ name: 'jobs', query: { contractor: contractor.id } })"
     >
       <!-- Company name + contact -->
       <div class="min-w-0">

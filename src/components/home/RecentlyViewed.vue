@@ -18,7 +18,7 @@ function navigate(item) {
     <button
       v-for="item in recentlyViewed"
       :key="item.id"
-      class="shrink-0 inline-flex items-center gap-2 h-[40px] px-3 rounded-lg bg-surface border border-border text-white text-sm font-bold whitespace-nowrap transition-opacity active:opacity-75"
+      class="shrink-0 inline-flex items-center gap-2 h-tap px-3 rounded-lg bg-surface border border-border text-white text-sm font-bold whitespace-nowrap transition-opacity active:opacity-75"
       @click="navigate(item)"
     >
       <!-- Type indicator: subtle filled icon -->

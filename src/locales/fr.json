@@ -52,6 +52,8 @@
     "sort_updated": "Dernière Mise à Jour",
     "sort_name": "Nom",
     "no_jobs": "Aucun chantier trouvé.",
+    "filtered_by": "Chantiers pour",
+    "clear_filter": "Tout afficher",
     "last_updated": "Mis à jour {date}",
     "tabs": {
       "overview": "Aperçu",
@@ -150,6 +152,7 @@
   },
   "documents": {
     "title": "Bibliothèque de Documents",
+    "count": "{count} document | {count} documents",
     "search_placeholder": "Rechercher des documents…",
     "filter_all": "Tous",
     "filter_pds": "FTP",
@@ -165,6 +168,7 @@
   },
   "videos": {
     "title": "Vidéos de Formation",
+    "count": "{count} vidéo | {count} vidéos",
     "filter_all": "Tous",
     "filter_installation": "Installation",
     "filter_warranty": "Garantie",
@@ -190,6 +194,7 @@
   },
   "profile": {
     "title": "Profil et Paramètres",
+    "section_label": "Compte",
     "name": "Nom",
     "company": "Entreprise",
     "region": "Région",

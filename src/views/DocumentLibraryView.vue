@@ -33,8 +33,22 @@ const filtered = computed(() => {
 </script>
 
 <template>
-  <main class="flex flex-col gap-4 pb-24 px-4 pt-4">
-    <h1 class="text-xl font-bold text-white">{{ t('documents.title') }}</h1>
+  <main class="flex flex-col pb-24">
+
+    <!-- Page header -->
+    <div class="px-4 pt-6 pb-5 border-b border-border">
+      <p class="text-[11px] font-[700] uppercase tracking-[0.12em] text-text-secondary mb-1 leading-none">
+        {{ t('documents.count', { count: filtered.length }, filtered.length) }}
+      </p>
+      <h1
+        class="text-[2.25rem] font-[800] text-white leading-none"
+        style="font-family: var(--font-heading);"
+      >
+        {{ t('documents.title') }}
+      </h1>
+    </div>
+
+    <div class="px-4 pt-4 flex flex-col gap-3">
 
     <!-- Search input -->
     <input
@@ -45,20 +59,20 @@ const filtered = computed(() => {
     />
 
     <!-- Type filter chips -->
-    <div class="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
-      <button
-        v-for="type in ['All', ...DOC_TYPES]"
-        :key="type"
-        :class="[
-          'shrink-0 px-3 py-1.5 rounded-full text-sm font-bold tracking-wide transition-colors',
-          activeType === type
-            ? 'bg-interactive text-white'
-            : 'bg-surface text-text-secondary border border-border',
-        ]"
-        @click="activeType = type"
-      >
-        {{ type === 'All' ? t('documents.filter_all') : type }}
-      </button>
+    <div class="flex gap-2 overflow-x-auto pb-1 no-scrollbar -mx-4 px-4">
+        <button
+          v-for="type in ['All', ...DOC_TYPES]"
+          :key="type"
+          :class="[
+            'shrink-0 h-[52px] px-3.5 rounded-lg text-[11px] font-[700] uppercase tracking-[0.1em] transition-colors',
+            activeType === type
+              ? 'bg-interactive text-white'
+              : 'bg-surface text-text-secondary border border-border',
+          ]"
+          @click="activeType = type"
+        >
+          {{ type === 'All' ? t('documents.filter_all') : type }}
+        </button>
     </div>
 
     <!-- Product filter -->
@@ -75,5 +89,6 @@ const filtered = computed(() => {
       <DocumentCard v-for="doc in filtered" :key="doc.id" :doc="doc" />
     </div>
     <p v-else class="text-text-secondary text-center py-8">{{ t('documents.no_documents') }}</p>
+  </div>
   </main>
 </template>

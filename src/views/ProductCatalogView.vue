@@ -77,7 +77,7 @@ const categoryCounts = computed(() =>
       <div class="flex gap-2 overflow-x-auto pb-0.5 no-scrollbar -mx-4 px-4">
         <button
           :class="[
-            'shrink-0 h-[40px] px-3.5 rounded-lg text-[11px] font-[700] uppercase tracking-[0.1em] transition-colors',
+            'shrink-0 h-[52px] px-3.5 rounded-lg text-[11px] font-[700] uppercase tracking-[0.1em] transition-colors',
             activeCategory === 'All'
               ? 'bg-interactive text-white'
               : 'bg-surface text-text-secondary border border-border',
@@ -94,7 +94,7 @@ const categoryCounts = computed(() =>
           v-for="cat in CATEGORIES"
           :key="cat"
           :class="[
-            'shrink-0 h-[40px] px-3.5 rounded-lg text-[11px] font-[700] uppercase tracking-[0.1em] transition-colors',
+            'shrink-0 h-[52px] px-3.5 rounded-lg text-[11px] font-[700] uppercase tracking-[0.1em] transition-colors',
             activeCategory === cat
               ? 'bg-interactive text-white'
               : 'bg-surface text-text-secondary border border-border',

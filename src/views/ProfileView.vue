@@ -4,23 +4,31 @@ import { useLocale } from '@/composables/useLocale'
 import { useOutdoorMode } from '@/composables/useOutdoorMode'
 import { useRole } from '@/composables/useRole'
 import RoleSwitcher from '@/components/shared/RoleSwitcher.vue'
+import profile from '@/data/profile.json'
 
 const { t } = useI18n()
 const { currentLocale, supportedLocales, setLocale } = useLocale()
 const { isOutdoorMode, toggle: toggleOutdoor } = useOutdoorMode()
 const { role } = useRole()
-
-// Mock contractor profile — replace with real data source when auth is added
-const profile = {
-  name: 'Marcus Rivera',
-  company: 'Rivera Roofing LLC',
-  region: 'Ohio / Indiana',
-}
 </script>
 
 <template>
-  <main class="flex flex-col gap-6 pb-24 px-4 pt-4">
-    <h1 class="text-xl font-bold text-white">{{ t('profile.title') }}</h1>
+  <main class="flex flex-col pb-24">
+
+    <!-- Page header -->
+    <div class="px-4 pt-6 pb-5 border-b border-border">
+      <p class="text-[11px] font-[700] uppercase tracking-[0.12em] text-text-secondary mb-1 leading-none">
+        {{ t('profile.section_label') }}
+      </p>
+      <h1
+        class="text-[2.25rem] font-[800] text-white leading-none"
+        style="font-family: var(--font-heading);"
+      >
+        {{ t('profile.title') }}
+      </h1>
+    </div>
+
+    <div class="flex flex-col gap-6 px-4 pt-5">
 
     <!-- Contractor info -->
     <section class="bg-surface border border-border rounded-xl p-4 flex flex-col gap-3">
@@ -82,5 +90,6 @@ const profile = {
         </button>
       </div>
     </section>
+    </div>
   </main>
 </template>

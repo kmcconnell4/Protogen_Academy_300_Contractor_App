@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import profile from '@/data/profile.json'
 
 const { t } = useI18n()
 
@@ -18,8 +19,6 @@ const weather = {
   temp: '64°F',
   condition: 'Partly cloudy',
 }
-
-const contractorFirstName = 'Marcus'
 </script>
 
 <template>
@@ -33,7 +32,7 @@ const contractorFirstName = 'Marcus'
         class="text-[3rem] leading-[0.9] font-[800] tracking-tight text-white truncate"
         style="font-family: var(--font-heading);"
       >
-        {{ contractorFirstName }}
+        {{ profile.firstName }}
       </h1>
     </div>
 
