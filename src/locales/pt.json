@@ -18,7 +18,7 @@
     "section_recently_viewed": "Visualizados Recentemente",
     "section_quick_access": "Acesso Rápido",
     "cta_new_job": "Ver Obras",
-    "open_job": "Abrir Obra",
+    "open_job": "Ver Obra",
     "quick_docs": "Documentos",
     "quick_videos": "Vídeos",
     "no_alerts": "Nenhum item pendente.",
@@ -35,7 +35,7 @@
     "no_active_jobs": "Sem obras ativas",
     "no_active_jobs_hint": "Os trabalhos em andamento aparecerão aqui.",
     "cta_add_contractor": "Adicionar Contratante",
-    "section_recent_contractors": "Contratantes Vistos Recentemente",
+    "section_recent_contractors": "Seus Contratantes",
     "no_recent_contractors": "Os contratantes que você visualizar aparecerão aqui.",
     "contractor_active_jobs": "{count} obra ativa | {count} obras ativas",
     "view_contractor_jobs": "Ver obras de {name}",
@@ -48,16 +48,20 @@
     "filter_bid": "Proposta",
     "filter_in_progress": "Em Andamento",
     "filter_inspection": "Inspeção",
+    "filter_under_inspection": "Em Inspeção",
     "filter_warranty": "Garantia",
     "filter_closed": "Encerrada",
     "status_bid": "Proposta",
     "status_in_progress": "Em Andamento",
-    "status_inspection": "Inspeção",
+    "status_inspection": "Em Inspeção",
     "status_warranty": "Garantia",
     "status_closed": "Encerrada",
     "sort_updated": "Última Atualização",
     "sort_name": "Nome",
+    "detail_updated": "Última Atualização",
     "no_jobs": "Nenhuma obra encontrada.",
+    "no_jobs_filtered": "Nenhuma obra corresponde a este filtro.",
+    "no_jobs_contractor": "Nenhuma obra encontrada para {name}.",
     "filtered_by": "Exibindo trabalhos de",
     "clear_filter": "Mostrar Todos",
     "last_updated": "Atualizado em {date}",
@@ -134,6 +138,7 @@
     "response_placeholder": "Descreva as ações corretivas tomadas…",
     "submit_response": "Enviar Resposta",
     "response_submitted": "Resposta enviada em {date}",
+    "response_submitted_confirmation": "Resposta enviada. Seu representante Carlisle a revisará em breve.",
     "reviewed_on": "Revisado em {date}",
     "mark_reviewed": "Marcar como Revisado",
     "finding_resolved": "✓ Resolvido",
@@ -141,7 +146,7 @@
     "no_inspections": "Nenhuma inspeção para esta obra."
   },
   "catalog": {
-    "title": "Catálogo de Produtos",
+    "title": "Catálogo",
     "search_placeholder": "Buscar por nome ou SKU…",
     "filter_all": "Todos",
     "sku": "SKU",
@@ -151,6 +156,7 @@
     "documents": "Documentos",
     "count": "{count} produto | {count} produtos",
     "no_products": "Nenhum produto encontrado.",
+    "no_products_filtered": "Nenhum produto encontrado. Tente limpar sua pesquisa ou filtro.",
     "doc_types": {
       "PDS": "FTD",
       "SDS": "FSD",
@@ -168,7 +174,7 @@
     }
   },
   "documents": {
-    "title": "Biblioteca de Documentos",
+    "title": "Documentos",
     "count": "{count} documento | {count} documentos",
     "filter_all": "Todos",
     "filter_pds": "FTD",
@@ -180,10 +186,11 @@
     "updated": "Atualizado",
     "file_size": "Tamanho",
     "associated_product": "Produto",
-    "no_documents": "Nenhum documento encontrado."
+    "no_documents": "Nenhum documento encontrado.",
+    "no_documents_filtered": "Nenhum documento encontrado. Tente limpar sua pesquisa ou filtro."
   },
   "videos": {
-    "title": "Vídeos de Treinamento",
+    "title": "Vídeos",
     "count": "{count} vídeo | {count} vídeos",
     "filter_all": "Todos",
     "categories": {
@@ -201,7 +208,8 @@
     "duration": "Duração",
     "watch": "Assistir",
     "published": "Publicado em",
-    "no_videos": "Nenhum vídeo encontrado."
+    "no_videos": "Nenhum vídeo encontrado.",
+    "no_videos_filtered": "Nenhum vídeo encontrado. Tente limpar sua pesquisa ou filtro."
   },
   "search": {
     "placeholder": "Buscar obras, produtos, documentos…",
@@ -212,6 +220,8 @@
     "results_quotes": "Cotações",
     "results_documents": "Documentos",
     "results_videos": "Vídeos",
+    "results_orders": "Pedidos",
+    "results_inspections": "Inspeções",
     "no_results": "Nenhum resultado para \"{query}\"",
     "searching": "Pesquisando…"
   },

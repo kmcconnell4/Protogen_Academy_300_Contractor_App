@@ -4,7 +4,7 @@
     "home_tab": "Home",
     "jobs": "Jobs",
     "catalog": "Catalog",
-    "docs": "Docs",
+    "docs": "Documents",
     "videos": "Videos",
     "search": "Search",
     "profile": "Profile"
@@ -18,7 +18,7 @@
     "section_recently_viewed": "Recently Viewed",
     "section_quick_access": "Quick Access",
     "cta_new_job": "View Jobs",
-    "open_job": "Open Job",
+    "open_job": "View Job",
     "quick_docs": "Docs",
     "quick_videos": "Videos",
     "no_alerts": "No action items right now.",
@@ -36,7 +36,7 @@
     "no_active_jobs_hint": "Jobs you're working on will appear here.",
     "recently_viewed_empty": "Products and documents you open will appear here for quick return.",
     "cta_add_contractor": "Add Contractor",
-    "section_recent_contractors": "Recently Viewed Contractors",
+    "section_recent_contractors": "Your Contractors",
     "no_recent_contractors": "Contractors you view will appear here.",
     "contractor_active_jobs": "{count} active job | {count} active jobs",
     "view_contractor_jobs": "View jobs for {name}"
@@ -50,16 +50,20 @@
     "filter_bid": "Bid",
     "filter_in_progress": "In Progress",
     "filter_inspection": "Inspection",
+    "filter_under_inspection": "Under Inspection",
     "filter_warranty": "Warranty",
     "filter_closed": "Closed",
     "status_bid": "Bid",
     "status_in_progress": "In Progress",
-    "status_inspection": "Inspection",
+    "status_inspection": "Under Inspection",
     "status_warranty": "Warranty",
     "status_closed": "Closed",
     "sort_updated": "Last Updated",
     "sort_name": "Name",
+    "detail_updated": "Last Updated",
     "no_jobs": "No jobs found.",
+    "no_jobs_filtered": "No jobs match this filter.",
+    "no_jobs_contractor": "No jobs found for {name}.",
     "filtered_by": "Showing jobs for",
     "clear_filter": "Show All",
     "last_updated": "Updated {date}",
@@ -136,6 +140,7 @@
     "response_placeholder": "Describe corrective actions taken…",
     "submit_response": "Submit Response",
     "response_submitted": "Response submitted {date}",
+    "response_submitted_confirmation": "Response submitted. Your Carlisle rep will review it shortly.",
     "reviewed_on": "Reviewed {date}",
     "mark_reviewed": "Mark as Reviewed",
     "finding_resolved": "✓ Resolved",
@@ -143,7 +148,7 @@
     "no_inspections": "No inspections for this job."
   },
   "catalog": {
-    "title": "Product Catalog",
+    "title": "Catalog",
     "search_placeholder": "Search by name or SKU…",
     "filter_all": "All",
     "sku": "SKU",
@@ -153,6 +158,7 @@
     "documents": "Documents",
     "count": "{count} product | {count} products",
     "no_products": "No products found.",
+    "no_products_filtered": "No products found. Try clearing your search or filter.",
     "doc_types": {
       "PDS": "PDS",
       "SDS": "SDS",
@@ -170,7 +176,7 @@
     }
   },
   "documents": {
-    "title": "Document Library",
+    "title": "Documents",
     "count": "{count} document | {count} documents",
     "search_placeholder": "Search documents…",
     "filter_all": "All",
@@ -183,10 +189,11 @@
     "updated": "Updated",
     "file_size": "File Size",
     "associated_product": "Product",
-    "no_documents": "No documents found."
+    "no_documents": "No documents found.",
+    "no_documents_filtered": "No documents found. Try clearing your search or filter."
   },
   "videos": {
-    "title": "Training Videos",
+    "title": "Videos",
     "count": "{count} video | {count} videos",
     "filter_all": "All",
     "categories": {
@@ -204,7 +211,8 @@
     "duration": "Duration",
     "watch": "Watch",
     "published": "Published",
-    "no_videos": "No videos found."
+    "no_videos": "No videos found.",
+    "no_videos_filtered": "No videos found. Try clearing your search or filter."
   },
   "search": {
     "placeholder": "Search jobs, products, docs…",
@@ -215,6 +223,8 @@
     "results_quotes": "Quotes",
     "results_documents": "Documents",
     "results_videos": "Videos",
+    "results_orders": "Orders",
+    "results_inspections": "Inspections",
     "no_results": "No results for \"{query}\"",
     "searching": "Searching…"
   },

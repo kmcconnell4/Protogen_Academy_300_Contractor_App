@@ -33,28 +33,28 @@ const { role } = useRole()
     <!-- Contractor info -->
     <section class="bg-surface border border-border rounded-xl p-4 flex flex-col gap-3">
       <div>
-        <p class="text-xs font-bold uppercase tracking-widest text-text-secondary mb-0.5">{{ t('profile.name') }}</p>
+        <p class="section-label text-text-secondary mb-0.5">{{ t('profile.name') }}</p>
         <p class="text-white font-bold">{{ profile.name }}</p>
       </div>
       <div>
-        <p class="text-xs font-bold uppercase tracking-widest text-text-secondary mb-0.5">{{ t('profile.company') }}</p>
+        <p class="section-label text-text-secondary mb-0.5">{{ t('profile.company') }}</p>
         <p class="text-white font-bold">{{ profile.company }}</p>
       </div>
       <div>
-        <p class="text-xs font-bold uppercase tracking-widest text-text-secondary mb-0.5">{{ t('profile.region') }}</p>
+        <p class="section-label text-text-secondary mb-0.5">{{ t('profile.region') }}</p>
         <p class="text-white font-bold">{{ profile.region }}</p>
       </div>
     </section>
 
     <!-- Role switcher -->
     <section class="bg-surface border border-border rounded-xl p-4">
-      <p class="text-xs font-bold uppercase tracking-widest text-text-secondary mb-3">{{ t('profile.role') }}</p>
+      <p class="section-label text-text-secondary mb-3">{{ t('profile.role') }}</p>
       <RoleSwitcher />
     </section>
 
     <!-- Language selector -->
     <section class="bg-surface border border-border rounded-xl p-4">
-      <p class="text-xs font-bold uppercase tracking-widest text-text-secondary mb-3">{{ t('profile.language') }}</p>
+      <p class="section-label text-text-secondary mb-3">{{ t('profile.language') }}</p>
       <label for="language-select" class="sr-only">{{ t('profile.language') }}</label>
       <select
         id="language-select"

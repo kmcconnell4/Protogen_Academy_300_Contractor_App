@@ -19,7 +19,7 @@ const contractorsWithStats = computed(() =>
 
 <template>
   <!-- Horizontal scroll of contractor cards for Sales Rep home view -->
-  <div class="flex gap-3 overflow-x-auto no-scrollbar px-4 pb-1">
+  <div v-if="contractorsWithStats.length" class="flex gap-3 overflow-x-auto no-scrollbar px-4 pb-1">
     <button
       v-for="contractor in contractorsWithStats"
       :key="contractor.id"
@@ -51,5 +51,10 @@ const contractorsWithStats = computed(() =>
 
     <!-- Trailing spacer for natural scroll boundary -->
     <div class="shrink-0 w-4" aria-hidden="true" />
+  </div>
+
+  <!-- Empty state -->
+  <div v-else class="px-4">
+    <p class="text-text-secondary text-sm">{{ t('home.no_recent_contractors') }}</p>
   </div>
 </template>

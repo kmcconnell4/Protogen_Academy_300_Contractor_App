@@ -18,7 +18,7 @@
     "section_recently_viewed": "Visto Recientemente",
     "section_quick_access": "Acceso Rápido",
     "cta_new_job": "Ver Trabajos",
-    "open_job": "Abrir Trabajo",
+    "open_job": "Ver Trabajo",
     "quick_docs": "Documentos",
     "quick_videos": "Videos",
     "no_alerts": "Sin elementos pendientes.",
@@ -35,7 +35,7 @@
     "no_active_jobs": "Sin trabajos activos",
     "no_active_jobs_hint": "Los trabajos en progreso aparecerán aquí.",
     "cta_add_contractor": "Agregar Contratista",
-    "section_recent_contractors": "Contratistas Vistos Recientemente",
+    "section_recent_contractors": "Sus Contratistas",
     "no_recent_contractors": "Los contratistas que visites aparecerán aquí.",
     "contractor_active_jobs": "{count} trabajo activo | {count} trabajos activos",
     "view_contractor_jobs": "Ver trabajos de {name}",
@@ -50,16 +50,20 @@
     "filter_bid": "Oferta",
     "filter_in_progress": "En Progreso",
     "filter_inspection": "Inspección",
+    "filter_under_inspection": "Bajo Inspección",
     "filter_warranty": "Garantía",
     "filter_closed": "Cerrado",
     "status_bid": "Oferta",
     "status_in_progress": "En Progreso",
-    "status_inspection": "Inspección",
+    "status_inspection": "Bajo Inspección",
     "status_warranty": "Garantía",
     "status_closed": "Cerrado",
     "sort_updated": "Última Actualización",
     "sort_name": "Nombre",
+    "detail_updated": "Última Actualización",
     "no_jobs": "No se encontraron trabajos.",
+    "no_jobs_filtered": "No se encontraron trabajos con este filtro.",
+    "no_jobs_contractor": "No se encontraron trabajos para {name}.",
     "filtered_by": "Mostrando trabajos de",
     "clear_filter": "Mostrar Todos",
     "last_updated": "Actualizado {date}",
@@ -136,6 +140,7 @@
     "response_placeholder": "Describa las acciones correctivas tomadas…",
     "submit_response": "Enviar Respuesta",
     "response_submitted": "Respuesta enviada {date}",
+    "response_submitted_confirmation": "Respuesta enviada. Su representante de Carlisle la revisará en breve.",
     "reviewed_on": "Revisado {date}",
     "mark_reviewed": "Marcar como Revisado",
     "finding_resolved": "✓ Resuelto",
@@ -143,7 +148,7 @@
     "no_inspections": "No hay inspecciones para este trabajo."
   },
   "catalog": {
-    "title": "Catálogo de Productos",
+    "title": "Catálogo",
     "search_placeholder": "Buscar por nombre o SKU…",
     "filter_all": "Todos",
     "sku": "SKU",
@@ -153,6 +158,7 @@
     "documents": "Documentos",
     "count": "{count} producto | {count} productos",
     "no_products": "No se encontraron productos.",
+    "no_products_filtered": "No se encontraron productos. Intente borrar su búsqueda o filtro.",
     "doc_types": {
       "PDS": "FTD",
       "SDS": "FSD",
@@ -170,7 +176,7 @@
     }
   },
   "documents": {
-    "title": "Biblioteca de Documentos",
+    "title": "Documentos",
     "count": "{count} documento | {count} documentos",
     "search_placeholder": "Buscar documentos…",
     "filter_all": "Todos",
@@ -183,10 +189,11 @@
     "updated": "Actualizado",
     "file_size": "Tamaño",
     "associated_product": "Producto",
-    "no_documents": "No se encontraron documentos."
+    "no_documents": "No se encontraron documentos.",
+    "no_documents_filtered": "No se encontraron documentos. Intente borrar su búsqueda o filtro."
   },
   "videos": {
-    "title": "Videos de Capacitación",
+    "title": "Videos",
     "count": "{count} video | {count} videos",
     "filter_all": "Todos",
     "categories": {
@@ -204,7 +211,8 @@
     "duration": "Duración",
     "watch": "Ver",
     "published": "Publicado",
-    "no_videos": "No se encontraron videos."
+    "no_videos": "No se encontraron videos.",
+    "no_videos_filtered": "No se encontraron videos. Intente borrar su búsqueda o filtro."
   },
   "search": {
     "placeholder": "Buscar trabajos, productos, documentos…",
@@ -215,6 +223,8 @@
     "results_quotes": "Cotizaciones",
     "results_documents": "Documentos",
     "results_videos": "Videos",
+    "results_orders": "Órdenes",
+    "results_inspections": "Inspecciones",
     "no_results": "Sin resultados para \"{query}\"",
     "searching": "Buscando…"
   },

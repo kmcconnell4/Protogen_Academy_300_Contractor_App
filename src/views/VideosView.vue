@@ -66,7 +66,18 @@ const filtered = computed(() => {
     <div v-if="filtered.length" class="grid grid-cols-1 gap-4 sm:grid-cols-2">
       <VideoCard v-for="video in filtered" :key="video.id" :video="video" />
     </div>
-    <p v-else class="text-text-secondary text-center py-8">{{ t('videos.no_videos') }}</p>
+    <div v-else class="py-12 text-center flex flex-col items-center gap-3">
+      <p class="text-text-secondary text-[15px]">
+        {{ searchQuery.trim() || activeCategory !== 'All' ? t('videos.no_videos_filtered') : t('videos.no_videos') }}
+      </p>
+      <button
+        v-if="searchQuery.trim() || activeCategory !== 'All'"
+        class="text-highlight text-[13px] font-[700] uppercase tracking-[0.1em] hover:underline"
+        @click="searchQuery = ''; activeCategory = 'All'"
+      >
+        {{ t('videos.filter_all') }}
+      </button>
+    </div>
 
     </div>
   </main>

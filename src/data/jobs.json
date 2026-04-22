@@ -36,7 +36,7 @@
     "name": "Riverside Industrial Facility",
     "address": "1955 River Road, Dayton, OH 45404",
     "type": "Industrial",
-    "status": "Inspection",
+    "status": "Under Inspection",
     "contractorId": "contractor-001",
     "repId": "rep-002",
     "createdAt": "2026-01-05",

@@ -12,9 +12,11 @@ const { formatDate } = useFormatDate()
 
 const props = defineProps({
   inspection: { type: Object, required: true },
+  isExpanded:  { type: Boolean, default: false },
 })
 
-const isExpanded = ref(false)
+const emit = defineEmits(['toggle'])
+
 // Tracks rep's client-side "Mark as Reviewed" action
 const localStatus = ref(props.inspection.status)
 
@@ -37,7 +39,7 @@ const severityConfig = {
     <button
       class="w-full flex items-start justify-between gap-3 p-4 text-left active:bg-surface-alt transition-colors"
       :aria-expanded="isExpanded"
-      @click="isExpanded = !isExpanded"
+      @click="emit('toggle')"
     >
       <div class="min-w-0">
         <p

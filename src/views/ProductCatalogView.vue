@@ -126,9 +126,18 @@ const categoryCounts = computed(() =>
       <div v-if="filtered.length" class="grid grid-cols-1 gap-3 sm:grid-cols-2">
         <ProductCard v-for="product in filtered" :key="product.id" :product="product" />
       </div>
-      <p v-else class="text-text-secondary text-center py-12 text-[15px]">
-        {{ t('catalog.no_products') }}
-      </p>
+      <div v-else class="py-12 text-center flex flex-col items-center gap-3">
+        <p class="text-text-secondary text-[15px]">
+          {{ searchQuery.trim() || activeCategory !== 'All' ? t('catalog.no_products_filtered') : t('catalog.no_products') }}
+        </p>
+        <button
+          v-if="searchQuery.trim() || activeCategory !== 'All'"
+          class="text-highlight text-[13px] font-[700] uppercase tracking-[0.1em] hover:underline"
+          @click="searchQuery = ''; activeCategory = 'All'"
+        >
+          {{ t('catalog.filter_all') }}
+        </button>
+      </div>
     </div>
 
   </main>

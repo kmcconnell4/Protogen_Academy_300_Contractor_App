@@ -66,11 +66,13 @@ function handleKeydown(e) {
 
 // Navigation targets per category
 const ROUTE_MAP = {
-  jobs:      (item) => ({ name: 'job-detail', params: { id: item.id } }),
-  products:  (item) => ({ name: 'catalog', query: { product: item.id } }),
-  quotes:    (item) => ({ name: 'job-detail', params: { id: item.jobId } }),
-  documents: (item) => ({ name: 'documents', query: { search: item.name } }),
-  videos:    (item) => ({ name: 'videos', query: { search: item.title } }),
+  jobs:        (item) => ({ name: 'job-detail', params: { id: item.id } }),
+  products:    (item) => ({ name: 'catalog', query: { product: item.id } }),
+  quotes:      (item) => ({ name: 'job-detail', params: { id: item.jobId } }),
+  documents:   (item) => ({ name: 'documents', query: { search: item.name } }),
+  videos:      (item) => ({ name: 'videos', query: { search: item.title } }),
+  orders:      (item) => ({ name: 'job-detail', params: { id: item.jobId }, query: { tab: 'orders' } }),
+  inspections: (item) => ({ name: 'job-detail', params: { id: item.jobId }, query: { tab: 'inspections' } }),
 }
 
 function navigate(type, item) {
@@ -118,14 +120,30 @@ const CAT_CONFIG = {
     color: 'text-amber',
     bg:    'bg-amber/15',
   },
+  orders: {
+    label: (item) => item.poNumber,
+    sub:   (item) => `${item.carrier ?? ''} · ${item.status}`.replace(/^·\s*/, ''),
+    icon:  'truck',
+    color: 'text-interactive',
+    bg:    'bg-interactive/15',
+  },
+  inspections: {
+    label: (item) => item.type,
+    sub:   (item) => `${item.status} · ${item.repName ?? ''}`.replace(/·\s*$/, ''),
+    icon:  'clipboard',
+    color: 'text-highlight',
+    bg:    'bg-highlight/15',
+  },
 }
 
 const CATEGORY_LABELS = {
-  jobs:      () => t('search.results_jobs'),
-  products:  () => t('search.results_products'),
-  quotes:    () => t('search.results_quotes'),
-  documents: () => t('search.results_documents'),
-  videos:    () => t('search.results_videos'),
+  jobs:        () => t('search.results_jobs'),
+  products:    () => t('search.results_products'),
+  quotes:      () => t('search.results_quotes'),
+  documents:   () => t('search.results_documents'),
+  videos:      () => t('search.results_videos'),
+  orders:      () => t('search.results_orders'),
+  inspections: () => t('search.results_inspections'),
 }
 
 // Quick-jump categories shown when no query is entered
@@ -296,6 +314,18 @@ const QUICK_JUMPS = [
                       <!-- Play -->
                       <svg v-else-if="CAT_CONFIG[type]?.icon === 'play'" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                         <polygon points="5 3 19 12 5 21 5 3" />
+                      </svg>
+                      <!-- Truck (orders) -->
+                      <svg v-else-if="CAT_CONFIG[type]?.icon === 'truck'" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="1" y="3" width="15" height="13" rx="1" />
+                        <path d="M16 8h4l3 5v3h-7V8z" />
+                        <circle cx="5.5" cy="18.5" r="2.5" />
+                        <circle cx="18.5" cy="18.5" r="2.5" />
+                      </svg>
+                      <!-- Clipboard (inspections) -->
+                      <svg v-else-if="CAT_CONFIG[type]?.icon === 'clipboard'" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2" />
+                        <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
                       </svg>
                     </span>
                   </div>

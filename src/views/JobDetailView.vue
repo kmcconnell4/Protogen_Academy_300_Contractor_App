@@ -42,7 +42,7 @@ function goBack() {
         >
           <path d="M15 18l-6-6 6-6" />
         </svg>
-        {{ t('jobs.title') }}
+        {{ t('common.back') }}
       </button>
     </div>
 
@@ -115,7 +115,13 @@ function goBack() {
     </div>
 
     <div v-else class="px-4 py-12 text-center">
-      <p class="text-error font-[700]">{{ t('jobs.not_found') }}</p>
+      <p class="text-text-secondary font-[700]">{{ t('jobs.not_found') }}</p>
+      <router-link
+        :to="{ name: 'jobs' }"
+        class="inline-flex items-center gap-1.5 mt-4 text-highlight text-[13px] font-[700] uppercase tracking-[0.1em] hover:underline"
+      >
+        {{ t('jobs.title') }}
+      </router-link>
     </div>
 
   </main>

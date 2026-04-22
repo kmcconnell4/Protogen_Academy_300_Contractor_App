@@ -8,6 +8,16 @@ import OrderLineItems from './OrderLineItems.vue'
 const { t } = useI18n()
 const { formatDate } = useFormatDate()
 
+const CARRIER_URLS = {
+  'ABF Freight':  (n) => `https://www.abf.com/logistics/tracking?pro=${n}`,
+  'R+L Carriers': (n) => `https://www.rlcarriers.com/freight/shipping/shipment-tracking?probill=${n}`,
+}
+
+function trackingUrl(order) {
+  const builder = CARRIER_URLS[order.carrier]
+  return builder ? builder(order.trackingNumber) : null
+}
+
 const props = defineProps({
   orders: { type: Array, required: true },
 })
@@ -74,7 +84,14 @@ function toggle(id) {
           </div>
           <div v-if="order.trackingNumber" class="flex flex-col gap-0.5">
             <span class="text-[10px] font-[700] uppercase tracking-[0.1em] text-text-secondary">{{ t('orders.tracking') }}</span>
-            <span class="text-white text-[13px] font-[600] font-mono">{{ order.trackingNumber }}</span>
+            <a
+              v-if="trackingUrl(order)"
+              :href="trackingUrl(order)"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-highlight text-[13px] font-[600] font-mono underline underline-offset-2 hover:text-white transition-colors"
+            >{{ order.trackingNumber }}</a>
+            <span v-else class="text-white text-[13px] font-[600] font-mono">{{ order.trackingNumber }}</span>
           </div>
           <div v-if="order.shippedAt" class="flex flex-col gap-0.5">
             <span class="text-[10px] font-[700] uppercase tracking-[0.1em] text-text-secondary">{{ t('orders.shipped') }}</span>

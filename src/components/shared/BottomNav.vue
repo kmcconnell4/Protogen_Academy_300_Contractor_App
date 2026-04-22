@@ -11,6 +11,7 @@ const navTabs = [
   { label: 'nav.catalog', route: 'catalog' },
   { label: 'nav.docs',    route: 'documents' },
   { label: 'nav.videos',  route: 'videos' },
+  { label: 'nav.profile', route: 'profile' },
 ]
 
 function isActive(routeName) {
@@ -53,6 +54,11 @@ function isActive(routeName) {
       <!-- Videos -->
       <svg v-else-if="tab.route === 'videos'" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <polygon points="5 3 19 12 5 21 5 3" />
+      </svg>
+      <!-- Profile -->
+      <svg v-else-if="tab.route === 'profile'" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+        <circle cx="12" cy="7" r="4" />
       </svg>
 
       <span class="text-[10px] font-[700] uppercase tracking-[0.08em] leading-none">{{ t(tab.label) }}</span>

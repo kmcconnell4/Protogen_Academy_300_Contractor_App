@@ -13,7 +13,7 @@ const statusKeyMap = {
   // Job statuses
   'Bid':              'jobs.status_bid',
   'In Progress':      'jobs.status_in_progress',
-  'Inspection':       'jobs.status_inspection',
+  'Under Inspection':  'jobs.status_inspection',
   'Warranty':         'jobs.status_warranty',
   'Closed':           'jobs.status_closed',
   // Inspection statuses
@@ -38,7 +38,7 @@ const colorMap = {
   // Job statuses
   'Bid':              'bg-amber/90 text-nav',
   'In Progress':      'bg-interactive text-white',
-  'Inspection':       'bg-highlight/90 text-nav',
+  'Under Inspection': 'bg-highlight/90 text-nav',
   'Warranty':         'bg-emerald text-nav',
   'Closed':           'bg-surface-alt text-text-secondary',
   // Inspection statuses

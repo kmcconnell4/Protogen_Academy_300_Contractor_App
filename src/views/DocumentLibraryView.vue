@@ -96,7 +96,18 @@ const filtered = computed(() => {
     <div v-if="filtered.length" class="flex flex-col gap-3">
       <DocumentCard v-for="doc in filtered" :key="doc.id" :doc="doc" />
     </div>
-    <p v-else class="text-text-secondary text-center py-8">{{ t('documents.no_documents') }}</p>
+    <div v-else class="py-12 text-center flex flex-col items-center gap-3">
+      <p class="text-text-secondary text-[15px]">
+        {{ searchQuery.trim() || activeType !== 'All' || activeProduct !== 'All' ? t('documents.no_documents_filtered') : t('documents.no_documents') }}
+      </p>
+      <button
+        v-if="searchQuery.trim() || activeType !== 'All' || activeProduct !== 'All'"
+        class="text-highlight text-[13px] font-[700] uppercase tracking-[0.1em] hover:underline"
+        @click="searchQuery = ''; activeType = 'All'; activeProduct = 'All'"
+      >
+        {{ t('documents.filter_all') }}
+      </button>
+    </div>
   </div>
   </main>
 </template>

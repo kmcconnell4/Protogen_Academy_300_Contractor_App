@@ -4,6 +4,8 @@ import products from '@/data/products.json'
 import quotes from '@/data/quotes.json'
 import documents from '@/data/documents.json'
 import videos from '@/data/videos.json'
+import orders from '@/data/orders.json'
+import inspections from '@/data/inspections.json'
 
 const query = ref('')
 
@@ -45,6 +47,18 @@ export function useSearch() {
         (v) =>
           v.title.toLowerCase().includes(q) ||
           v.category.toLowerCase().includes(q)
+      ),
+      orders: orders.filter(
+        (o) =>
+          o.poNumber.toLowerCase().includes(q) ||
+          (o.carrier ?? '').toLowerCase().includes(q) ||
+          (o.trackingNumber ?? '').toLowerCase().includes(q)
+      ),
+      inspections: inspections.filter(
+        (i) =>
+          i.type.toLowerCase().includes(q) ||
+          i.status.toLowerCase().includes(q) ||
+          (i.repName ?? '').toLowerCase().includes(q)
       ),
     }
   })

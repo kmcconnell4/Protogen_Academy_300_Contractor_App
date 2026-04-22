@@ -20,6 +20,7 @@ const props = defineProps({
 })
 
 const activeTab = ref('overview')
+const expandedInspectionId = ref(null)
 
 const jobQuotes     = computed(() => quotes.filter((q) => props.job.quoteIds.includes(q.id)))
 const jobOrders     = computed(() => orders.filter((o) => props.job.orderIds.includes(o.id)))
@@ -103,7 +104,7 @@ onMounted(() => {
               <p class="text-white font-[600] text-[15px]">{{ formatDate(job.createdAt) }}</p>
             </div>
             <div class="px-4 py-3 flex items-center justify-between gap-3">
-              <p class="text-[11px] font-[700] uppercase tracking-[0.1em] text-text-secondary shrink-0">{{ t('jobs.sort_updated') }}</p>
+              <p class="text-[11px] font-[700] uppercase tracking-[0.1em] text-text-secondary shrink-0">{{ t('jobs.detail_updated') }}</p>
               <p class="text-white font-[600] text-[15px]">{{ formatDate(job.updatedAt) }}</p>
             </div>
             <div class="px-4 py-3 flex items-center justify-between gap-3">
@@ -140,6 +141,8 @@ onMounted(() => {
             v-for="inspection in jobInspections"
             :key="inspection.id"
             :inspection="inspection"
+            :is-expanded="expandedInspectionId === inspection.id"
+            @toggle="expandedInspectionId = expandedInspectionId === inspection.id ? null : inspection.id"
           />
         </template>
         <p v-else class="text-text-secondary text-center py-12 text-[15px]">{{ t('inspections.no_inspections') }}</p>

@@ -9,7 +9,7 @@ import JobCard from '@/components/jobs/JobCard.vue'
 const { t } = useI18n()
 const route = useRoute()
 
-const STATUSES = ['Bid', 'In Progress', 'Inspection', 'Warranty', 'Closed']
+const STATUSES = ['Bid', 'In Progress', 'Under Inspection', 'Warranty', 'Closed']
 const activeFilter = ref('All')
 const sortBy = ref('updated')
 
@@ -142,9 +142,31 @@ const allFilters = computed(() => {
       <div v-if="filtered.length" class="flex flex-col gap-3">
         <JobCard v-for="job in filtered" :key="job.id" :job="job" />
       </div>
-      <p v-else class="text-center text-text-secondary text-[15px] py-12">
-        {{ t('jobs.no_jobs') }}
-      </p>
+      <div v-else class="py-12 text-center flex flex-col items-center gap-3">
+        <p v-if="contractorId" class="text-text-secondary text-[15px]">
+          {{ t('jobs.no_jobs_contractor', { name: contractorName ?? '' }) }}
+        </p>
+        <p v-else-if="activeFilter !== 'All'" class="text-text-secondary text-[15px]">
+          {{ t('jobs.no_jobs_filtered') }}
+        </p>
+        <p v-else class="text-text-secondary text-[15px]">
+          {{ t('jobs.no_jobs') }}
+        </p>
+        <button
+          v-if="activeFilter !== 'All'"
+          class="text-highlight text-[13px] font-[700] uppercase tracking-[0.1em] hover:underline"
+          @click="activeFilter = 'All'"
+        >
+          {{ t('jobs.clear_filter') }}
+        </button>
+        <router-link
+          v-if="contractorId"
+          :to="{ name: 'jobs' }"
+          class="text-highlight text-[13px] font-[700] uppercase tracking-[0.1em] hover:underline"
+        >
+          {{ t('jobs.clear_filter') }}
+        </router-link>
+      </div>
     </div>
 
   </main>

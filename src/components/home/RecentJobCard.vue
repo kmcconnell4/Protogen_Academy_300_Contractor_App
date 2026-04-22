@@ -62,7 +62,10 @@ const inspectionCount = computed(() => recentJob.value?.inspectionIds?.length ??
         class="w-full h-tap rounded-lg bg-interactive text-white font-bold text-base tracking-wide transition-opacity active:opacity-80"
         @click="router.push({ name: 'job-detail', params: { id: recentJob.id } })"
       >
-        {{ t('home.open_job') }} →
+        {{ t('home.open_job') }}
+        <svg class="ml-1.5 w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M9 18l6-6-6-6" />
+        </svg>
       </button>
     </div>
   </div>

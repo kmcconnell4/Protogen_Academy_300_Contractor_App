@@ -18,7 +18,7 @@
     "section_recently_viewed": "Récemment Consulté",
     "section_quick_access": "Accès Rapide",
     "cta_new_job": "Voir les Chantiers",
-    "open_job": "Ouvrir le Chantier",
+    "open_job": "Voir le Chantier",
     "quick_docs": "Documents",
     "quick_videos": "Vidéos",
     "no_alerts": "Aucun élément en attente.",
@@ -35,7 +35,7 @@
     "no_active_jobs": "Aucun chantier actif",
     "no_active_jobs_hint": "Les chantiers en cours apparaîtront ici.",
     "cta_add_contractor": "Ajouter un Entrepreneur",
-    "section_recent_contractors": "Entrepreneurs Consultés Récemment",
+    "section_recent_contractors": "Vos Entrepreneurs",
     "no_recent_contractors": "Les entrepreneurs que vous consultez apparaîtront ici.",
     "contractor_active_jobs": "{count} chantier actif | {count} chantiers actifs",
     "view_contractor_jobs": "Voir les chantiers de {name}",
@@ -50,16 +50,20 @@
     "filter_bid": "Offre",
     "filter_in_progress": "En Cours",
     "filter_inspection": "Inspection",
+    "filter_under_inspection": "En Inspection",
     "filter_warranty": "Garantie",
     "filter_closed": "Fermé",
     "status_bid": "Offre",
     "status_in_progress": "En Cours",
-    "status_inspection": "Inspection",
+    "status_inspection": "En Inspection",
     "status_warranty": "Garantie",
     "status_closed": "Fermé",
     "sort_updated": "Dernière Mise à Jour",
     "sort_name": "Nom",
+    "detail_updated": "Dernière Mise à Jour",
     "no_jobs": "Aucun chantier trouvé.",
+    "no_jobs_filtered": "Aucun chantier ne correspond à ce filtre.",
+    "no_jobs_contractor": "Aucun chantier trouvé pour {name}.",
     "filtered_by": "Chantiers pour",
     "clear_filter": "Tout afficher",
     "last_updated": "Mis à jour {date}",
@@ -136,6 +140,7 @@
     "response_placeholder": "Décrivez les mesures correctives prises…",
     "submit_response": "Soumettre la Réponse",
     "response_submitted": "Réponse soumise le {date}",
+    "response_submitted_confirmation": "Réponse soumise. Votre représentant Carlisle l’examinera sous peu.",
     "reviewed_on": "Examiné le {date}",
     "mark_reviewed": "Marquer comme Examiné",
     "finding_resolved": "✓ Résolu",
@@ -143,7 +148,7 @@
     "no_inspections": "Aucune inspection pour ce chantier."
   },
   "catalog": {
-    "title": "Catalogue Produits",
+    "title": "Catalogue",
     "search_placeholder": "Rechercher par nom ou SKU…",
     "filter_all": "Tous",
     "sku": "SKU",
@@ -153,6 +158,7 @@
     "documents": "Documents",
     "count": "{count} produit | {count} produits",
     "no_products": "Aucun produit trouvé.",
+    "no_products_filtered": "Aucun produit trouvé. Essayez d’effacer votre recherche ou filtre.",
     "doc_types": {
       "PDS": "FTP",
       "SDS": "FDS",
@@ -170,7 +176,7 @@
     }
   },
   "documents": {
-    "title": "Bibliothèque de Documents",
+    "title": "Documents",
     "count": "{count} document | {count} documents",
     "search_placeholder": "Rechercher des documents…",
     "filter_all": "Tous",
@@ -183,10 +189,11 @@
     "updated": "Mis à jour",
     "file_size": "Taille",
     "associated_product": "Produit",
-    "no_documents": "Aucun document trouvé."
+    "no_documents": "Aucun document trouvé.",
+    "no_documents_filtered": "Aucun document trouvé. Essayez d’effacer votre recherche ou filtre."
   },
   "videos": {
-    "title": "Vidéos de Formation",
+    "title": "Vidéos",
     "count": "{count} vidéo | {count} vidéos",
     "filter_all": "Tous",
     "categories": {
@@ -204,7 +211,8 @@
     "duration": "Durée",
     "watch": "Regarder",
     "published": "Publié le",
-    "no_videos": "Aucune vidéo trouvée."
+    "no_videos": "Aucune vidéo trouvée.",
+    "no_videos_filtered": "Aucune vidéo trouvée. Essayez d’effacer votre recherche ou filtre."
   },
   "search": {
     "placeholder": "Rechercher chantiers, produits, documents…",
@@ -215,6 +223,8 @@
     "results_quotes": "Devis",
     "results_documents": "Documents",
     "results_videos": "Vidéos",
+    "results_orders": "Commandes",
+    "results_inspections": "Inspections",
     "no_results": "Aucun résultat pour \"{query}\"",
     "searching": "Recherche…"
   },
