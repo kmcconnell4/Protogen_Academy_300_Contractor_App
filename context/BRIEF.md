@@ -1,4 +1,4 @@
-# 🏗️ Carlisle Contractor Portal — GitHub Copilot Brief (v4)
+# 🏗️ Carlisle Contractor Portal — GitHub Copilot Brief (v5)
 
 ## Project Overview
 A mobile-first demo web app for roofing contractors to manage their relationship with Carlisle SynTec. **Jobs are the central entity** — all orders, quotes, and inspections are children of a job. Two user roles exist — **Contractors** and **Carlisle Sales Reps** — toggled via a role switcher (no auth required for demo).
@@ -79,40 +79,54 @@ The primary landing screen — purpose-built for a contractor on a job site.
 
 ### 2. Jobs
 - List of jobs with status badge and last updated date
-- Filter/sort by status (Bid, In Progress, Inspection, Warranty, Closed)
+- Filter/sort by status (Bid, In Progress, Under Inspection, Warranty, Closed)
 - Tap a job → **Job Detail Page**
 
 ### 3. Job Detail Page (Tabbed)
 Tabs: **Overview · Quotes · Orders · Inspections**
 
-- **Overview tab:** Job name, address, type, status, assigned rep, creation date
-- **Quotes tab:** List of quote versions (v1, v2…) with status (Draft, Submitted, Approved, Rejected). Tap to view line items (product name, qty, unit price, total). Sales Rep can approve/reject.
-- **Orders tab:** List of orders with status (Processing, Shipped, Delivered). Tap to view line items linked to products. Each product links to its documents.
-- **Inspections tab:** List of inspections with pass/fail badge. Tap to view findings and submit a contractor response. Sales Rep can mark as reviewed.
+- **Overview tab:** Job name, address (tappable — opens Google/Apple Maps for directions), type, status, assigned rep, creation date
+- **Quotes tab:** List of quote versions with status (Draft, Submitted, Approved, Rejected, Ordered). Tap to view line items. Contractor can add a new quote. Sales Rep can approve/reject. Approved quotes show a "Place Order" button that finalizes them as an order.
+- **Orders tab:** List of orders with status (Processing, Shipped, Delivered). Tap to view line items linked to products.
+- **Inspections tab:** Expanding an inspection shows each **finding** individually — with its photos, a per-finding response textarea, an upload affordance for a remediation photo, and a "Mark Resolved" toggle. A single "Submit Response" button sends all finding responses. Sales Rep can mark the inspection as reviewed.
 
-### 4. Product Catalog
-- Searchable/filterable grid of all products from `products.json`
-- Each product card shows name, SKU, category, and document links (PDS, SDS, Spec)
-- Documents open as a modal or navigate to the Document Library filtered by that product
+### 4. Create Job
+- Accessible via a floating action button (FAB) fixed `bottom-24 right-4` — visible on all pages, contractor role only
+- Form fields: Job Name, Address, Type (Commercial / Residential / Multi-Unit), Square Footage
+- On submit: creates a new reactive job, navigates to the new Job Detail page
+- Route: `/jobs/new`
 
-### 5. Document Library
-- List/grid of all documents filterable by type (PDS / SDS / Spec) and by product
-- Each document card shows name, type badge, associated product, and a mock download link
+### 5. Create Quote
+- Accessible from the Quotes tab on Job Detail (contractor role only)
+- Line item builder: product selector, description (auto-fills from product), qty, unit price (auto-fills, editable), row total computed
+- Computed subtotal, tax (8%), and grand total
+- On submit: quote appears immediately in the job's Quotes tab
+- Route: `/jobs/:id/quotes/new`
 
-### 6. Training Videos
-- Grid of video cards with thumbnail, title, and duration
-- Standalone module — not tied to jobs or products
-- Mock video links (static thumbnails + placeholder href)
+### 6. Product Detail
+- Each product card navigates to `/catalog/:id`
+- Not a top-level nav destination — accessed from search results or product cards
+- Sections: hero (placeholder image, name, SKU, category, price/unit), Description, Related Documents (filtered by `product.documentIds`), Related Videos (matched by category), Installation Notes
 
-### 7. Universal Search
-- Persistent search icon in the top nav bar
-- Searches across: Jobs (by name/address), Products (by name/SKU), Quotes (by job name/status), Documents (by name/type), Videos (by title)
+### 7. Document Library
+- No longer a dedicated nav destination — documents are accessed via **Global Search**
+- Document search results open the file directly in a new tab (`window.open`)
+
+### 8. Training Videos
+- Grid of video cards with thumbnail, title, category, and duration
+- Each card is fully tappable (no separate Watch button) — opens `videoUrl` in a new tab
+- Accessible from the bottom nav (Videos tab) and from Search results
+
+### 9. Global Search
+- Full-page view at `/search` — the **center tab** of the bottom nav
+- Searches across: Jobs, Products, Quotes, Orders, Inspections, Documents, Videos
 - Results grouped by category with tap-to-navigate
-- Implemented as a full-screen overlay on mobile
+- Products → Product Detail page; Documents → opens file in new tab; Videos → opens video in new tab
 
-### 8. Profile & Settings
+### 10. Profile & Settings
 - Language selector: **English, Spanish, French, Portuguese**
 - Role switcher (mirrored here from nav for convenience)
+- Outdoor Mode toggle
 - Mock contractor profile info (name, company, region)
 
 ---
@@ -128,27 +142,25 @@ The primary user journey this screen enables is: **Job → Product → Document.
 
 ```
 ┌─────────────────────────────────┐
-│  ☰  Carlisle          🔍  👤   │  ← Top nav
+│  Good morning, Marcus           │
+│  📍 Cincinnati, OH  64°F        │  ← No top bar — starts directly with content
 ├─────────────────────────────────┤
-│  Good morning, Marcus 👋        │
-│  📍 Cincinnati, OH  ⛅ 64°F    │  ← Weather tied to active job location
-├─────────────────────────────────┤
-│  ⚠️  ACTION REQUIRED            │
+│  ACTION REQUIRED                │
 │  ┌─────────────────────────┐   │
-│  │ 🔴 Inspection response  │   │  ← Alert cards, swipeable
-│  │    due · Elm St Reroof  │   │
+│  │ Inspection response due │   │  ← Alert cards, swipeable
+│  │    · Elm St Reroof      │   │
 │  └─────────────────────────┘   │
 │  ┌─────────────────────────┐   │
-│  │ 🟡 Quote v2 awaiting    │   │
+│  │ Quote v2 awaiting       │   │
 │  │    approval · Park Ave  │   │
 │  └─────────────────────────┘   │
 ├─────────────────────────────────┤
 │  CONTINUE WHERE YOU LEFT OFF    │
 │  ┌─────────────────────────┐   │
 │  │ Elm St Commercial       │   │  ← Most recent job, large card
-│  │ 🟢 In Progress          │   │
+│  │ In Progress             │   │
 │  │ 3 products · 2 orders   │   │
-│  │         → Open Job      │   │
+│  │         View Job  ›     │   │
 │  └─────────────────────────┘   │
 ├─────────────────────────────────┤
 │  RECENTLY VIEWED                │
@@ -157,19 +169,19 @@ The primary user journey this screen enables is: **Job → Product → Document.
 ├─────────────────────────────────┤
 │  QUICK ACCESS                   │
 │  ┌──────────┐  ┌──────────┐    │
-│  │ 📄 Docs  │  │ 🎥 Videos│    │  ← 2-up grid, large tap targets
+│  │  Search  │  │  Videos  │    │  ← 2-up grid, large tap targets
 │  └──────────┘  └──────────┘    │
-├─────────────────────────────────┤
-│  [+  Start New Job / Quote    ] │  ← Full-width CTA, Interactive Blue (#2E6FD8)
 └─────────────────────────────────┘
-│  Jobs │ Catalog │ Docs │ Videos  │  ← Bottom nav
+│  Home │ Jobs │ [⊕ Search] │ Videos │ Profile  │  ← Bottom nav
+                                            [+]  ← FAB fixed bottom-right (contractor only)
 ```
 
 ### Section-by-Section Breakdown
 
-#### 1. Top Bar
-- Carlisle logo (left), Search icon + Profile avatar (right)
-- Persistent across all screens — not part of the scroll
+#### 1. Global Chrome
+- **No top navigation bar.** The app uses bottom navigation only.
+- Bottom nav: **5 tabs — Home · Jobs · Search (center, visually featured with filled circle) · Videos · Profile**
+- A **floating action button (FAB)** — `fixed bottom-24 right-4` — provides job creation, visible on every page, contractor role only
 
 #### 2. Greeting + Weather Widget
 - Personalized greeting using contractor's first name
@@ -201,14 +213,9 @@ The primary user journey this screen enables is: **Job → Product → Document.
 - Tap navigates directly back to that product or document
 
 #### 6. Quick Access
-- Two large equal-width cards: **Documents** and **Videos**
+- Two large equal-width cards: **Search** and **Videos**
 - Contractor's #1 use case — prominent placement
-- Tap goes directly to the full Document Library or Video Library
-
-#### 7. Start New Job / Quote CTA
-- Full-width button in Interactive Blue (`#2E6FD8`) at bottom of scroll
-- Opens a modal or navigates to job creation flow
-- Kept at bottom intentionally — creation is less frequent than retrieval
+- Tapping Search goes to `/search`; Tapping Videos goes to `/videos`
 
 ### Key UX Decisions & Rationale
 
@@ -218,8 +225,8 @@ The primary user journey this screen enables is: **Job → Product → Document.
 | Weather tied to job location | Directly relevant to their work — not a gimmick |
 | Alerts above the job card | Urgent items must be seen before anything else |
 | Recently viewed as chips, not a list | Fast one-tap recovery without leaving the home screen |
-| Docs & Videos as large tap targets | Primary use case deserves primary real estate |
-| CTA at the bottom | Creation is less frequent than retrieval — don't front-load it |
+| Search & Videos as large tap targets | Primary cross-cutting use cases deserve primary real estate |
+| FAB for job creation | Creation is less frequent than retrieval — persistent but unobtrusive |
 | No stats or charts | On a roof with gloves — data visualization is noise |
 
 ### Sales Rep Home Screen (Role Switch)
@@ -228,7 +235,7 @@ When role is toggled to **Sales Rep**, the home screen adapts:
 - "Action Required" shows quotes pending approval and inspection responses to review — **across all contractors**
 - "Continue Where You Left Off" becomes **"Recently Viewed Contractors"**
 - Quick Access becomes **"All Jobs"** and **"Contractor Accounts"**
-- CTA changes to **"Add Contractor"**
+- FAB is hidden (rep role cannot create jobs)
 
 ---
 
@@ -436,7 +443,8 @@ This should be implemented as a CSS class on `<body>` (e.g. `class="outdoor-mode
 ---
 
 ### Layout
-- **Mobile-first:** bottom navigation bar with icons + labels for Jobs, Catalog, Docs, Videos
+- **Mobile-first:** bottom navigation bar with **5 tabs — Home · Jobs · Search (center) · Videos · Profile**. No top navigation bar.
+- **FAB:** `position: fixed; bottom: 6rem; right: 1rem` — contractor role only, routes to `/jobs/new`
 - **Desktop breakpoint:** left sidebar nav using `--color-nav` background
 - Tailwind utility classes throughout — extend `tailwind.config.js` with the custom color tokens above
 - No custom CSS files beyond `main.css` for the custom property definitions
@@ -448,15 +456,15 @@ This should be implemented as a CSS class on `<body>` (e.g. `class="outdoor-mode
 /src
   /components
     /home         (GreetingWeather, AlertCards, RecentJobCard, RecentlyViewed, QuickAccess)
-    /jobs         (JobCard, JobStatusBadge, JobDetailTabs)
+    /jobs         (JobCard, JobDetailTabs)
     /quotes       (QuoteVersionList, QuoteLineItems)
     /orders       (OrderList, OrderLineItems)
-    /inspections  (InspectionCard, InspectionResponseForm)
-    /products     (ProductCard, ProductCatalog)
-    /documents    (DocumentCard, DocumentLibrary)
-    /videos       (VideoCard, VideoLibrary)
-    /search       (SearchOverlay, SearchResultGroup)
-    /shared       (NavBar, BottomNav, RoleSwitcher, StatusBadge)
+    /inspections  (InspectionCard, InspectionFindingResponse)
+    /products     (ProductCard)
+    /documents    (DocumentCard)
+    /videos       (VideoCard)
+    /search       (SearchResultGroup)
+    /shared       (BottomNav, CreateJobFab, RoleSwitcher, StatusBadge, DocTypeBadge)
   /data
     jobs.json / quotes.json / orders.json
     inspections.json / products.json
@@ -466,16 +474,22 @@ This should be implemented as a CSS class on `<body>` (e.g. `class="outdoor-mode
   /views
     HomeView.vue
     JobsView.vue / JobDetailView.vue
-    ProductCatalogView.vue / DocumentLibraryView.vue
+    CreateJobView.vue           ← /jobs/new
+    CreateQuoteView.vue         ← /jobs/:id/quotes/new
+    SearchView.vue              ← /search (center nav tab)
+    ProductDetailView.vue       ← /catalog/:id
     VideosView.vue / ProfileView.vue
   /router
     index.js
   /composables
-    useRole.js        (provide/inject role state)
-    useSearch.js      (cross-entity search logic)
-    useLocale.js      (language preference + localStorage persistence)
+    useRole.js            (provide/inject role state)
+    useSearch.js          (cross-entity search — consumes reactive data composables)
+    useLocale.js          (language preference + localStorage persistence)
     useRecentlyViewed.js  (track + retrieve recently viewed products/docs)
     useOutdoorMode.js     (toggle outdoor mode class on body + persist in localStorage)
+    useJobsData.js        (module-level reactive jobs ref; addJob, jobById)
+    useQuotesData.js      (module-level reactive quotes ref; addQuote, finalizeQuoteAsOrder)
+    useOrdersData.js      (module-level reactive orders ref; addOrder, ordersByJobId)
   App.vue
   main.js
 ```
