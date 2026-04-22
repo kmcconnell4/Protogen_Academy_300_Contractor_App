@@ -16,9 +16,9 @@ Issues identified in a full codebase scan on 2026-04-22. Organized by severity.
 
 - [x] **`style.css` is the Vite boilerplate file** with neon purple (`#aa3bff`) as its accent color — a design token explicitly banned in this project. The file is not imported anywhere, but its presence is a risk. Delete it. `src/style.css`
 
-- [ ] **`StatusBadge.vue` — Status text is never translated.** `StatusBadge` renders `{{ status }}` — the raw data string — directly. Every user regardless of locale sees English values: "In Progress", "Shipped", "Pending Response", etc. Quote statuses in `QuoteVersionList` are the only ones translated, creating inconsistency. Add a lookup map keyed on `status` that calls `t()` using the `status_*` keys already defined in each locale. `src/components/shared/StatusBadge.vue`
+- [x] **`StatusBadge.vue` — Status text is never translated.** `StatusBadge` renders `{{ status }}` — the raw data string — directly. Every user regardless of locale sees English values: "In Progress", "Shipped", "Pending Response", etc. Quote statuses in `QuoteVersionList` are the only ones translated, creating inconsistency. Add a lookup map keyed on `status` that calls `t()` using the `status_*` keys already defined in each locale. `src/components/shared/StatusBadge.vue`
 
-- [ ] **`HomeView.vue` — "Start New Job / Quote" CTA copy promises creation, but routes to the jobs list.** The button reads `t('home.cta_new_job')` → `"Start New Job / Quote"` but navigates to `/jobs`. There is no creation flow. The mismatch breaks user trust immediately. Until a `/jobs/new` route exists, change the copy to `"View Jobs"` (or `"Go to Jobs"`) and update the i18n key accordingly. `src/views/HomeView.vue`, `src/locales/en.json`
+- [x] **`HomeView.vue` — "Start New Job / Quote" CTA copy promises creation, but routes to the jobs list.** The button reads `t('home.cta_new_job')` → `"Start New Job / Quote"` but navigates to `/jobs`. There is no creation flow. The mismatch breaks user trust immediately. Until a `/jobs/new` route exists, change the copy to `"View Jobs"` (or `"Go to Jobs"`) and update the i18n key accordingly. `src/views/HomeView.vue`, `src/locales/en.json`
 
 ---
 

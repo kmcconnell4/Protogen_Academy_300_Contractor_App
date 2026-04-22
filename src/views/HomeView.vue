@@ -55,7 +55,7 @@ const { role } = useRole()
         class="flex items-center justify-center w-full h-tap rounded-xl bg-interactive text-white font-bold text-base tracking-wide transition-opacity active:opacity-80"
         style="font-family: var(--font-body);"
       >
-        + {{ t('home.cta_new_job') }}
+        {{ t('home.cta_new_job') }}
       </router-link>
       <button
         v-else
