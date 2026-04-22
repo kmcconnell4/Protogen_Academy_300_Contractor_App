@@ -56,6 +56,7 @@
   "quotes": {
     "title": "Cotizaciones",
     "version": "Versión {version}",
+    "latest": "Más reciente",
     "status_draft": "Borrador",
     "status_submitted": "Enviada",
     "status_approved": "Aprobada",

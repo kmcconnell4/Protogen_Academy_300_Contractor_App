@@ -11,57 +11,102 @@ const props = defineProps({
 
 const expandedId = ref(null)
 
-const statusColor = {
-  Processing: 'bg-amber text-bg',
-  Shipped:    'bg-interactive text-white',
-  Delivered:  'bg-emerald text-bg',
+const statusConfig = {
+  Processing: { cls: 'bg-amber/90 text-nav' },
+  Shipped:    { cls: 'bg-interactive text-white' },
+  Delivered:  { cls: 'bg-emerald text-nav' },
+  Cancelled:  { cls: 'bg-error text-white' },
 }
 
 function toggle(id) {
   expandedId.value = expandedId.value === id ? null : id
 }
+
+function formatDate(iso) {
+  if (!iso) return null
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'short', day: 'numeric', year: 'numeric',
+  }).format(new Date(iso + 'T00:00:00'))
+}
 </script>
 
 <template>
   <div class="flex flex-col gap-3">
+
     <div
       v-for="order in orders"
       :key="order.id"
       class="bg-surface border border-border rounded-xl overflow-hidden"
     >
+
+      <!-- Header row -->
       <button
-        class="w-full flex items-center justify-between gap-3 p-4 text-left"
+        class="w-full flex items-start justify-between gap-3 p-4 text-left active:bg-surface-alt transition-colors"
         @click="toggle(order.id)"
       >
-        <div>
-          <p class="text-white font-bold text-sm">{{ order.poNumber }}</p>
-          <p class="text-text-secondary text-xs mt-0.5">{{ t('orders.ordered') }} {{ order.orderedAt }}</p>
+        <div class="min-w-0">
+          <p
+            class="text-white font-[800] text-lg leading-none tracking-tight"
+            style="font-family: var(--font-heading);"
+          >
+            {{ order.poNumber }}
+          </p>
+          <p class="text-text-secondary text-[13px] mt-1">
+            {{ t('orders.ordered') }} {{ formatDate(order.orderedAt) }}
+          </p>
         </div>
-        <span :class="['px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-widest shrink-0', statusColor[order.status]]">
-          {{ t(`orders.status_${order.status.toLowerCase()}`) }}
-        </span>
+
+        <div class="flex items-center gap-2 shrink-0">
+          <span
+            :class="[
+              'inline-flex items-center px-2.5 py-[5px] rounded text-[11px] font-[700] uppercase tracking-widest leading-none',
+              statusConfig[order.status]?.cls ?? 'bg-surface-alt text-text-secondary',
+            ]"
+          >
+            {{ t(`orders.status_${order.status.toLowerCase()}`) }}
+          </span>
+          <svg
+            :class="['w-4 h-4 text-text-secondary transition-transform duration-200', expandedId === order.id ? 'rotate-180' : '']"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </div>
       </button>
+
+      <!-- Expanded shipping details + line items -->
       <div v-if="expandedId === order.id" class="border-t border-border">
-        <div class="p-4 flex flex-col gap-2 text-sm text-text-secondary">
-          <div v-if="order.carrier" class="flex justify-between">
-            <span>{{ t('orders.carrier') }}</span>
-            <span class="text-white font-bold">{{ order.carrier }}</span>
+
+        <!-- Shipping metadata strip -->
+        <div class="bg-surface-alt px-4 py-3 flex flex-wrap gap-x-6 gap-y-2 border-b border-border">
+          <div v-if="order.carrier" class="flex flex-col gap-0.5">
+            <span class="text-[10px] font-[700] uppercase tracking-[0.1em] text-text-secondary">{{ t('orders.carrier') }}</span>
+            <span class="text-white text-[13px] font-[600]">{{ order.carrier }}</span>
           </div>
-          <div v-if="order.trackingNumber" class="flex justify-between">
-            <span>{{ t('orders.tracking') }}</span>
-            <span class="text-white font-bold font-mono">{{ order.trackingNumber }}</span>
+          <div v-if="order.trackingNumber" class="flex flex-col gap-0.5">
+            <span class="text-[10px] font-[700] uppercase tracking-[0.1em] text-text-secondary">{{ t('orders.tracking') }}</span>
+            <span class="text-white text-[13px] font-[600] font-mono">{{ order.trackingNumber }}</span>
           </div>
-          <div v-if="order.shippedAt" class="flex justify-between">
-            <span>{{ t('orders.shipped') }}</span>
-            <span class="text-white">{{ order.shippedAt }}</span>
+          <div v-if="order.shippedAt" class="flex flex-col gap-0.5">
+            <span class="text-[10px] font-[700] uppercase tracking-[0.1em] text-text-secondary">{{ t('orders.shipped') }}</span>
+            <span class="text-white text-[13px] font-[600]">{{ formatDate(order.shippedAt) }}</span>
           </div>
-          <div v-if="order.deliveredAt" class="flex justify-between">
-            <span>{{ t('orders.delivered') }}</span>
-            <span class="text-white">{{ order.deliveredAt }}</span>
+          <div v-if="order.deliveredAt" class="flex flex-col gap-0.5">
+            <span class="text-[10px] font-[700] uppercase tracking-[0.1em] text-emerald/80">{{ t('orders.delivered') }}</span>
+            <span class="text-emerald text-[13px] font-[600]">{{ formatDate(order.deliveredAt) }}</span>
           </div>
         </div>
+
         <OrderLineItems :line-items="order.lineItems" />
+
       </div>
     </div>
+
   </div>
 </template>

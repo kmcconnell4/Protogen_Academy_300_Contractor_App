@@ -28,8 +28,8 @@ function getProduct(productId) {
       </div>
       <button
         v-if="getProduct(item.productId)"
-        class="shrink-0 text-xs font-bold text-highlight underline"
-        @click="router.push({ name: 'catalog' })"
+        class="shrink-0 inline-flex items-center gap-1 h-[30px] px-2.5 rounded bg-interactive/15 text-highlight text-[11px] font-[700] uppercase tracking-[0.08em]"
+        @click="router.push({ name: 'catalog', query: { product: item.productId } })"
       >
         {{ t('orders.view_product') }}
       </button>

@@ -8,9 +8,9 @@ Work through these prompts in order for best results:
 
 3. *"Build the JobsView with a filterable list of jobs using `jobs.json`. Each job card should show name, address, status badge, and last updated date."* ✅
 
-4. *"Build the JobDetailView with four tabs: Overview, Quotes, Orders, Inspections. Each tab loads related data by matching the jobId from the route params. The Quotes tab should support multiple versioned quotes (v1, v2). The Orders tab should link to the product detail page."*
+4. *"Build the JobDetailView with four tabs: Overview, Quotes, Orders, Inspections. Each tab loads related data by matching the jobId from the route params. The Quotes tab should support multiple versioned quotes (v1, v2). The Orders tab should link to the product detail page."* ✅
 
-5. *"Build the ProductCatalogView using `products.json`. Each product card shows name, SKU, category, and links to its associated documents (PDS, SDS, Spec) from `documents.json`."*
+5. *"Build the ProductCatalogView using `products.json`. Each product card shows name, SKU, category, and links to its associated documents (PDS, SDS, Spec) from `documents.json`."* ✅
 
 6. *"Add a universal search overlay component triggered from the top nav. It should search across jobs, products, quotes, documents, and videos from their JSON files and group results by category. On mobile, render as a full-screen overlay."*
 
