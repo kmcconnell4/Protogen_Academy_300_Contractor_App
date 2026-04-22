@@ -1,5 +1,4 @@
 <script setup>
-import NavBar from '@/components/shared/NavBar.vue'
 import BottomNav from '@/components/shared/BottomNav.vue'
 import { setupRole } from '@/composables/useRole'
 
@@ -9,7 +8,6 @@ setupRole()
 
 <template>
   <div class="flex flex-col min-h-dvh bg-bg text-white">
-    <NavBar />
     <RouterView v-slot="{ Component }" class="flex-1">
       <Transition name="page" mode="out-in">
         <component :is="Component" class="flex-1" />

@@ -18,14 +18,9 @@ const routes = [
     component: () => import('@/views/JobDetailView.vue'),
   },
   {
-    path: '/catalog',
-    name: 'catalog',
-    component: () => import('@/views/ProductCatalogView.vue'),
-  },
-  {
-    path: '/documents',
-    name: 'documents',
-    component: () => import('@/views/DocumentLibraryView.vue'),
+    path: '/search',
+    name: 'search',
+    component: () => import('@/views/SearchView.vue'),
   },
   {
     path: '/videos',
@@ -36,6 +31,17 @@ const routes = [
     path: '/profile',
     name: 'profile',
     component: () => import('@/views/ProfileView.vue'),
+  },
+  // Legacy routes — redirect to search
+  {
+    path: '/catalog',
+    name: 'catalog',
+    redirect: { name: 'search' },
+  },
+  {
+    path: '/documents',
+    name: 'documents',
+    redirect: { name: 'search' },
   },
 ]
 
