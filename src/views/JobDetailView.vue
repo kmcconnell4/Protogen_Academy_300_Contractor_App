@@ -77,37 +77,6 @@ function goBack() {
           </svg>
           <p class="text-text-secondary text-[13px]">{{ job.address }}</p>
         </div>
-
-        <!-- Stats counter row -->
-        <div class="grid grid-cols-3 divide-x divide-border border border-border rounded-xl mt-4 overflow-hidden">
-          <div class="flex flex-col items-center py-3 gap-0.5">
-            <p
-              class="text-white font-[800] text-xl leading-none"
-              style="font-family: var(--font-heading);"
-            >{{ job.quoteIds.length }}</p>
-            <p class="text-[10px] font-[700] uppercase tracking-[0.1em] text-text-secondary">
-              {{ t('jobs.tabs.quotes') }}
-            </p>
-          </div>
-          <div class="flex flex-col items-center py-3 gap-0.5">
-            <p
-              class="text-white font-[800] text-xl leading-none"
-              style="font-family: var(--font-heading);"
-            >{{ job.orderIds.length }}</p>
-            <p class="text-[10px] font-[700] uppercase tracking-[0.1em] text-text-secondary">
-              {{ t('jobs.tabs.orders') }}
-            </p>
-          </div>
-          <div class="flex flex-col items-center py-3 gap-0.5">
-            <p
-              class="text-white font-[800] text-xl leading-none"
-              style="font-family: var(--font-heading);"
-            >{{ job.inspectionIds.length }}</p>
-            <p class="text-[10px] font-[700] uppercase tracking-[0.1em] text-text-secondary">
-              {{ t('jobs.tabs.inspections') }}
-            </p>
-          </div>
-        </div>
       </div>
 
       <JobDetailTabs :job="job" />

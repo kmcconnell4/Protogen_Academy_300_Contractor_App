@@ -58,12 +58,23 @@ const allFilters = computed(() => {
 
     <!-- Page header -->
     <div class="px-4 pt-6 pb-5 border-b border-border">
-      <h1
-        class="text-[2.25rem] font-[800] text-white leading-none"
-        style="font-family: var(--font-heading);"
-      >
-        {{ t('jobs.title') }}
-      </h1>
+      <div class="flex items-center justify-between gap-3">
+        <h1
+          class="text-[2.25rem] font-[800] text-white leading-none"
+          style="font-family: var(--font-heading);"
+        >
+          {{ t('jobs.title') }}
+        </h1>
+        <button
+          class="shrink-0 inline-flex items-center gap-1.5 h-[40px] px-4 rounded-lg bg-interactive text-white text-[13px] font-[700] tracking-wide transition-opacity active:opacity-80"
+          @click="router.push({ name: 'jobs' })"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 5v14M5 12h14" />
+          </svg>
+          {{ t('common.new') }}
+        </button>
+      </div>
       <!-- Contractor filter banner: shown when navigated from a rep's contractor card -->
       <div v-if="contractorName" class="mt-3 flex items-center gap-2">
         <span class="text-[11px] font-[700] uppercase tracking-[0.1em] text-text-secondary">

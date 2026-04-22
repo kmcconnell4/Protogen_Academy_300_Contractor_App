@@ -14,27 +14,31 @@ const props = defineProps({
 </script>
 
 <template>
-  <button
-    class="w-full text-left bg-surface border border-border rounded-xl p-4 flex flex-col transition-colors active:bg-surface-alt"
+  <div
+    class="w-full bg-surface border border-border rounded-xl overflow-hidden cursor-pointer transition-colors active:bg-surface-alt flex flex-col"
+    role="button"
+    :tabindex="0"
     @click="router.push({ name: 'job-detail', params: { id: job.id } })"
+    @keydown.enter="router.push({ name: 'job-detail', params: { id: job.id } })"
   >
-    <!-- Job type — context label at top -->
-    <p class="text-[11px] font-[700] uppercase tracking-[0.12em] text-text-secondary leading-none">
-      {{ job.type }}
-    </p>
+    <div class="w-full px-4 pt-4 pb-4 flex flex-col gap-2">
+      <!-- Job type — context label at top -->
+      <p class="text-[11px] font-[700] uppercase tracking-[0.12em] text-text-secondary leading-none">
+        {{ job.type }}
+      </p>
 
-    <!-- Name + address — identity zone -->
-    <div class="mt-2 min-w-0">
+      <!-- Name -->
       <h3
-        class="text-white font-[800] leading-tight text-[1.25rem] truncate"
+        class="text-white font-[800] leading-tight text-[1.625rem]"
         style="font-family: var(--font-heading);"
       >
         {{ job.name }}
       </h3>
-      <div class="flex items-start gap-1.5 mt-1.5">
-        <!-- Location pin icon -->
+
+      <!-- Address with location pin -->
+      <div class="flex items-start gap-1.5">
         <svg
-          class="w-3.5 h-3.5 text-text-secondary shrink-0 mt-[1px]"
+          class="w-3.5 h-3.5 text-text-secondary shrink-0 mt-[2px]"
           viewBox="0 0 24 24"
           fill="currentColor"
           aria-hidden="true"
@@ -49,12 +53,12 @@ const props = defineProps({
       </div>
     </div>
 
-    <!-- Status badge + updated date — action zone -->
-    <div class="mt-3 flex items-center justify-between gap-3 pt-3 border-t border-border">
+    <!-- Status badge + updated date: border spans full card width -->
+    <div class="w-full border-t border-border px-4 py-3 flex items-center justify-between gap-3">
       <StatusBadge :status="job.status" />
-      <p class="text-text-secondary text-[12px] shrink-0">
+      <p class="text-text-secondary text-[12px]">
         {{ t('jobs.last_updated', { date: formatDate(job.updatedAt) }) }}
       </p>
     </div>
-  </button>
+  </div>
 </template>
