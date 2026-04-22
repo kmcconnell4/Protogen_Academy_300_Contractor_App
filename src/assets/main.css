@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+/* ─── Tailwind v4 custom design tokens ──────────────────────────────────────
+   Tokens defined here become both Tailwind utility classes (bg-brand, etc.)
+   and CSS custom properties (--color-brand, etc.) automatically.
+   ─────────────────────────────────────────────────────────────────────────── */
+@theme {
+  /* Brand blues */
+  --color-brand:          #164da6;
+  --color-interactive:    #2E6FD8;
+  --color-highlight:      #5B9BF0;
+
+  /* Backgrounds & surfaces */
+  --color-bg:             #151C28;
+  --color-surface:        #1E2A3E;
+  --color-surface-alt:    #243044;
+  --color-nav:            #0F1520;
+
+  /* Functional / status */
+  --color-amber:          #F5A623;
+  --color-emerald:        #4ACA6E;
+  --color-error:          #FF4C4C;
+
+  /* Text & borders */
+  --color-text-secondary: #A8B8D0;
+  --color-border:         #2E3A52;
+}
+
+/* ─── Explicit CSS custom properties ────────────────────────────────────────
+   Mirrors the @theme tokens for use in arbitrary CSS (e.g. var(--color-brand)).
+   ─────────────────────────────────────────────────────────────────────────── */
+:root {
+  /* Brand */
+  --color-brand:           #164da6;
+  --color-interactive:     #2E6FD8;
+  --color-highlight:       #5B9BF0;
+
+  /* Backgrounds */
+  --color-bg:              #151C28;
+  --color-surface:         #1E2A3E;
+  --color-surface-alt:     #243044;
+  --color-nav:             #0F1520;
+
+  /* Text */
+  --color-text-primary:    #ffffff;
+  --color-text-secondary:  #A8B8D0;
+
+  /* Borders */
+  --color-border:          #2E3A52;
+
+  /* Functional */
+  --color-amber:           #F5A623;
+  --color-emerald:         #4ACA6E;
+  --color-error:           #FF4C4C;
+
+  /* Typography */
+  --font-size-base:        16px;
+  --font-weight-min:       500;
+
+  /* Spacing */
+  --tap-target-min:        52px;
+}
+
+/* ─── Outdoor mode ───────────────────────────────────────────────────────────
+   Applied as a class on <body> via useOutdoorMode composable.
+   ─────────────────────────────────────────────────────────────────────────── */
+.outdoor-mode {
+  --font-size-base:        18px;
+  --tap-target-min:        60px;
+  --color-text-secondary:  #ffffff;
+}
+
+.outdoor-mode * {
+  animation-duration: 0.001ms !important;
+  transition-duration: 0.001ms !important;
+}
+
+/* ─── Base layer ─────────────────────────────────────────────────────────────
+   Global HTML defaults for the outdoor/gloved-hand context.
+   ─────────────────────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    font-size: var(--font-size-base);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    font-family: Inter, system-ui, sans-serif;
+    font-weight: 500;
+    min-height: 100dvh;
+  }
+
+  /* Enforce minimum tap target on interactive elements */
+  button,
+  a,
+  [role="button"],
+  [role="tab"] {
+    min-height: var(--tap-target-min);
+    display: inline-flex;
+    align-items: center;
+  }
+}

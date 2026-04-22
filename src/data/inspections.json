@@ -1,0 +1,116 @@
+[
+  {
+    "id": "inspection-001",
+    "jobId": "job-001",
+    "type": "Mid-Project",
+    "status": "Pending Response",
+    "conductedAt": "2026-03-28",
+    "conductedBy": "rep-001",
+    "repName": "Sarah Thornton",
+    "overallResult": null,
+    "responseSubmittedAt": null,
+    "reviewedAt": null,
+    "findings": [
+      {
+        "id": "finding-001-01",
+        "category": "Seam Quality",
+        "severity": "Minor",
+        "description": "Two seam welds on the north slope show incomplete fusion in 6-inch sections. Requires heat gun re-weld.",
+        "photoUrls": ["https://placehold.co/600x400?text=Finding+01a", "https://placehold.co/600x400?text=Finding+01b"],
+        "resolved": false
+      },
+      {
+        "id": "finding-001-02",
+        "category": "Flashing",
+        "severity": "Major",
+        "description": "Penetration flashing at HVAC curbs on east side does not meet Carlisle CW-25 spec. Flashing must be replaced before membrane can be warranted.",
+        "photoUrls": ["https://placehold.co/600x400?text=Finding+02"],
+        "resolved": false
+      }
+    ],
+    "contractorResponse": null
+  },
+  {
+    "id": "inspection-002",
+    "jobId": "job-003",
+    "type": "Phase 1 Sign-Off",
+    "status": "Response Overdue",
+    "conductedAt": "2026-02-14",
+    "conductedBy": "rep-002",
+    "repName": "James Kowalczyk",
+    "overallResult": null,
+    "responseSubmittedAt": null,
+    "reviewedAt": null,
+    "findings": [
+      {
+        "id": "finding-002-01",
+        "category": "Substrate",
+        "severity": "Major",
+        "description": "Existing roof deck shows moisture saturation in two 8x8 sections near drain #3 and drain #7. Deck replacement required before new system installation.",
+        "photoUrls": ["https://placehold.co/600x400?text=Moisture+Finding"],
+        "resolved": false
+      }
+    ],
+    "contractorResponse": null
+  },
+  {
+    "id": "inspection-003",
+    "jobId": "job-003",
+    "type": "Pre-Warranty Final",
+    "status": "Reviewed",
+    "conductedAt": "2026-03-19",
+    "conductedBy": "rep-002",
+    "repName": "James Kowalczyk",
+    "overallResult": "Pass",
+    "responseSubmittedAt": "2026-03-22",
+    "reviewedAt": "2026-03-25",
+    "findings": [
+      {
+        "id": "finding-003-01",
+        "category": "General",
+        "severity": "None",
+        "description": "Phase 1 area passes all Carlisle warranty requirements. Seams tested to spec. Flashings complete.",
+        "photoUrls": [],
+        "resolved": true
+      }
+    ],
+    "contractorResponse": "All Phase 1 items addressed per Carlisle spec. Replaced 2 sections of wet deck, re-flashed both affected drains, and passed seam probe test. Ready for warranty registration."
+  },
+  {
+    "id": "inspection-004",
+    "jobId": "job-004",
+    "type": "Final Warranty Inspection",
+    "status": "Reviewed",
+    "conductedAt": "2025-10-08",
+    "conductedBy": "rep-001",
+    "repName": "Sarah Thornton",
+    "overallResult": "Pass",
+    "responseSubmittedAt": "2025-10-10",
+    "reviewedAt": "2025-10-14",
+    "findings": [],
+    "contractorResponse": "No issues found. System installed per Carlisle specifications. Ready for 20-year warranty registration."
+  },
+  {
+    "id": "inspection-005",
+    "jobId": "job-005",
+    "type": "Final Warranty Inspection",
+    "status": "Reviewed",
+    "conductedAt": "2025-11-04",
+    "conductedBy": "rep-002",
+    "repName": "James Kowalczyk",
+    "overallResult": "Pass",
+    "responseSubmittedAt": "2025-11-06",
+    "reviewedAt": "2025-11-10",
+    "findings": [
+      {
+        "id": "finding-005-01",
+        "category": "Edge Metal",
+        "severity": "Minor",
+        "description": "Drip edge on the west fascia has a 4-foot section with improper overlap. Corrected on-site during inspection.",
+        "photoUrls": [],
+        "resolved": true
+      }
+    ],
+    "contractorResponse": "Drip edge overlap corrected on-site per rep direction. All other system components meet Carlisle specifications."
+  }
+]

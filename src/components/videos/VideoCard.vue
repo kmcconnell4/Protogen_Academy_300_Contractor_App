@@ -1,0 +1,34 @@
+<script setup>
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
+const props = defineProps({
+  video: { type: Object, required: true },
+})
+</script>
+
+<template>
+  <div class="bg-surface border border-border rounded-xl overflow-hidden flex flex-col">
+    <img
+      :src="video.thumbnailUrl"
+      :alt="video.title"
+      class="w-full aspect-video object-cover"
+    />
+    <div class="p-4 flex flex-col gap-2 flex-1">
+      <p class="text-white font-bold leading-snug">{{ video.title }}</p>
+      <p class="text-text-secondary text-xs">
+        {{ video.category }} &middot; {{ t('videos.duration') }}: {{ video.duration }}
+      </p>
+      <p class="text-text-secondary text-sm line-clamp-2 flex-1">{{ video.description }}</p>
+      <a
+        :href="video.videoUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-2 inline-flex items-center justify-center h-[52px] rounded-lg bg-interactive text-white font-bold text-sm"
+      >
+        ▶ {{ t('videos.watch') }}
+      </a>
+    </div>
+  </div>
+</template>

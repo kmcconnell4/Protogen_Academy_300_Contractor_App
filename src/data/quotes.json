@@ -1,0 +1,140 @@
+[
+  {
+    "id": "quote-001",
+    "jobId": "job-001",
+    "version": 1,
+    "status": "Approved",
+    "createdAt": "2026-02-12",
+    "submittedAt": "2026-02-14",
+    "approvedAt": "2026-02-17",
+    "repId": "rep-001",
+    "subtotal": 48200.00,
+    "tax": 3856.00,
+    "total": 52056.00,
+    "lineItems": [
+      { "productId": "prod-001", "description": "WeatherBond TPO 60-mil Membrane", "qty": 185, "unit": "sq", "unitPrice": 180.00, "total": 33300.00 },
+      { "productId": "prod-004", "description": "CavGard Polyiso Insulation 2-in", "qty": 185, "unit": "sq", "unitPrice": 58.00, "total": 10730.00 },
+      { "productId": "prod-005", "description": "SecurTAPE 6-in Seam Tape", "qty": 24, "unit": "roll", "unitPrice": 19.00, "total": 456.00 },
+      { "productId": "prod-006", "description": "Sure-Grip Insulation Fasteners", "qty": 3700, "unit": "ea", "unitPrice": 0.47, "total": 1739.00 },
+      { "productId": "prod-007", "description": "FlashBand Self-Adhesive Flashing 6-in", "qty": 10, "unit": "roll", "unitPrice": 197.50, "total": 1975.00 }
+    ]
+  },
+  {
+    "id": "quote-002",
+    "jobId": "job-001",
+    "version": 2,
+    "status": "Submitted",
+    "createdAt": "2026-03-01",
+    "submittedAt": "2026-03-03",
+    "approvedAt": null,
+    "repId": "rep-001",
+    "subtotal": 51800.00,
+    "tax": 4144.00,
+    "total": 55944.00,
+    "lineItems": [
+      { "productId": "prod-001", "description": "WeatherBond TPO 60-mil Membrane", "qty": 185, "unit": "sq", "unitPrice": 180.00, "total": 33300.00 },
+      { "productId": "prod-003", "description": "FleeceBACK TPO Membrane", "qty": 20, "unit": "sq", "unitPrice": 230.00, "total": 4600.00 },
+      { "productId": "prod-004", "description": "CavGard Polyiso Insulation 3-in", "qty": 185, "unit": "sq", "unitPrice": 72.00, "total": 13320.00 },
+      { "productId": "prod-005", "description": "SecurTAPE 6-in Seam Tape", "qty": 24, "unit": "roll", "unitPrice": 19.00, "total": 456.00 },
+      { "productId": "prod-006", "description": "Sure-Grip Insulation Fasteners", "qty": 3700, "unit": "ea", "unitPrice": 0.47, "total": 1739.00 }
+    ]
+  },
+  {
+    "id": "quote-003",
+    "jobId": "job-002",
+    "version": 1,
+    "status": "Draft",
+    "createdAt": "2026-03-30",
+    "submittedAt": null,
+    "approvedAt": null,
+    "repId": "rep-001",
+    "subtotal": 91200.00,
+    "tax": 7296.00,
+    "total": 98496.00,
+    "lineItems": [
+      { "productId": "prod-002", "description": "EPDM Sure-Seal Membrane 60-mil", "qty": 320, "unit": "sq", "unitPrice": 155.00, "total": 49600.00 },
+      { "productId": "prod-004", "description": "CavGard Polyiso Insulation 2-in", "qty": 320, "unit": "sq", "unitPrice": 58.00, "total": 18560.00 },
+      { "productId": "prod-006", "description": "Sure-Grip Insulation Fasteners", "qty": 6400, "unit": "ea", "unitPrice": 0.47, "total": 3008.00 },
+      { "productId": "prod-008", "description": "Coated Metal Drip Edge", "qty": 420, "unit": "lf", "unitPrice": 7.20, "total": 3024.00 },
+      { "productId": "prod-007", "description": "FlashBand Self-Adhesive Flashing 9-in", "qty": 24, "unit": "roll", "unitPrice": 252.00, "total": 6048.00 }
+    ]
+  },
+  {
+    "id": "quote-004",
+    "jobId": "job-003",
+    "version": 1,
+    "status": "Approved",
+    "createdAt": "2026-01-08",
+    "submittedAt": "2026-01-10",
+    "approvedAt": "2026-01-14",
+    "repId": "rep-002",
+    "subtotal": 178400.00,
+    "tax": 14272.00,
+    "total": 192672.00,
+    "lineItems": [
+      { "productId": "prod-001", "description": "WeatherBond TPO 60-mil Membrane", "qty": 540, "unit": "sq", "unitPrice": 180.00, "total": 97200.00 },
+      { "productId": "prod-004", "description": "CavGard Polyiso Insulation 2.5-in", "qty": 540, "unit": "sq", "unitPrice": 65.00, "total": 35100.00 },
+      { "productId": "prod-009", "description": "RUSS Single-Ply System Kit", "qty": 10, "unit": "kit", "unitPrice": 3800.00, "total": 38000.00 },
+      { "productId": "prod-006", "description": "Sure-Grip Insulation Fasteners", "qty": 10800, "unit": "ea", "unitPrice": 0.47, "total": 5076.00 },
+      { "productId": "prod-005", "description": "SecurTAPE 6-in Seam Tape", "qty": 54, "unit": "roll", "unitPrice": 19.00, "total": 1026.00 }
+    ]
+  },
+  {
+    "id": "quote-005",
+    "jobId": "job-004",
+    "version": 1,
+    "status": "Approved",
+    "createdAt": "2025-08-16",
+    "submittedAt": "2025-08-18",
+    "approvedAt": "2025-08-22",
+    "repId": "rep-001",
+    "subtotal": 38600.00,
+    "tax": 3088.00,
+    "total": 41688.00,
+    "lineItems": [
+      { "productId": "prod-002", "description": "EPDM Sure-Seal Membrane 45-mil", "qty": 128, "unit": "sq", "unitPrice": 138.00, "total": 17664.00 },
+      { "productId": "prod-004", "description": "CavGard Polyiso Insulation 2-in", "qty": 128, "unit": "sq", "unitPrice": 58.00, "total": 7424.00 },
+      { "productId": "prod-010", "description": "EPDM Bonding Adhesive (5-gal)", "qty": 64, "unit": "pail", "unitPrice": 148.00, "total": 9472.00 },
+      { "productId": "prod-008", "description": "Coated Metal Drip Edge", "qty": 280, "unit": "lf", "unitPrice": 7.20, "total": 2016.00 }
+    ]
+  },
+  {
+    "id": "quote-006",
+    "jobId": "job-005",
+    "version": 1,
+    "status": "Approved",
+    "createdAt": "2025-04-05",
+    "submittedAt": "2025-04-07",
+    "approvedAt": "2025-04-12",
+    "repId": "rep-002",
+    "subtotal": 142500.00,
+    "tax": 11400.00,
+    "total": 153900.00,
+    "lineItems": [
+      { "productId": "prod-001", "description": "WeatherBond TPO 60-mil Membrane", "qty": 412, "unit": "sq", "unitPrice": 180.00, "total": 74160.00 },
+      { "productId": "prod-003", "description": "FleeceBACK TPO Membrane", "qty": 60, "unit": "sq", "unitPrice": 230.00, "total": 13800.00 },
+      { "productId": "prod-004", "description": "CavGard Polyiso Insulation 3-in", "qty": 412, "unit": "sq", "unitPrice": 72.00, "total": 29664.00 },
+      { "productId": "prod-009", "description": "RUSS Single-Ply System Kit", "qty": 6, "unit": "kit", "unitPrice": 3800.00, "total": 22800.00 }
+    ]
+  },
+  {
+    "id": "quote-007",
+    "jobId": "job-006",
+    "version": 1,
+    "status": "Approved",
+    "createdAt": "2026-03-17",
+    "submittedAt": "2026-03-19",
+    "approvedAt": "2026-03-24",
+    "repId": "rep-001",
+    "subtotal": 268400.00,
+    "tax": 21472.00,
+    "total": 289872.00,
+    "lineItems": [
+      { "productId": "prod-002", "description": "EPDM Sure-Seal Membrane 60-mil", "qty": 785, "unit": "sq", "unitPrice": 155.00, "total": 121675.00 },
+      { "productId": "prod-004", "description": "CavGard Polyiso Insulation 2-in", "qty": 785, "unit": "sq", "unitPrice": 58.00, "total": 45530.00 },
+      { "productId": "prod-010", "description": "EPDM Bonding Adhesive (5-gal)", "qty": 392, "unit": "pail", "unitPrice": 148.00, "total": 58016.00 },
+      { "productId": "prod-006", "description": "Sure-Grip Insulation Fasteners", "qty": 15700, "unit": "ea", "unitPrice": 0.47, "total": 7379.00 },
+      { "productId": "prod-008", "description": "Coated Metal Drip Edge", "qty": 1850, "unit": "lf", "unitPrice": 7.20, "total": 13320.00 }
+    ]
+  }
+]
