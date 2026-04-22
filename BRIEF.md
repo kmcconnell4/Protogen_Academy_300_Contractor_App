@@ -249,6 +249,54 @@ This app is used **on rooftops, in direct sunlight, with one hand, often with gl
 
 ---
 
+### Brand Personality
+
+> "The Cadillac of construction materials. Expensive, but the best of the best. High quality, reliable."
+
+**In 3 words: precise · authoritative · durable**
+
+This is not a rough field tool — it is the premium tier of the roofing industry. Every surface should feel engineered and considered, not assembled. The physical analogy: the stamped-metal spec plate on a piece of professional tooling, or the label sewn inside a Carhartt jacket made in Detroit. Expensive without being showy. Confident without being loud.
+
+---
+
+### Emotional Goals
+
+When a contractor opens this app on a job site, they should feel:
+
+- **Confident** — I know exactly where to go
+- **Fast** — get me to the document and get out of my way
+
+Every navigation decision, information hierarchy choice, and interaction pattern should serve these two feelings. If a design choice creates hesitation or requires thought, it is wrong.
+
+---
+
+### References & Anti-References
+
+**References (aim for or surpass):**
+- Carlisle's own Elevate Technical App — this portal should feel more polished and faster than it
+- Angi's List — but more rugged, more premium, zero consumer-facing softness
+
+**Anti-references (explicitly avoid):**
+- Generic Tailwind admin templates — same-card grids, cyan accents, identical spacing everywhere
+- Consumer-soft apps — rounded-everything, pastel states, playful or casual microcopy
+- Procore-style corporate heaviness — dense nav trees, overwhelming sidebar structures
+
+---
+
+### Design Principles
+
+1. **Premium over rugged.** The Cadillac of contractor apps. Every surface feels engineered and precise. If a choice looks "good enough," keep pushing until it looks intentional.
+
+2. **Speed is the offering.** The most recent job, the most urgent alert, and the document library must be reachable in one or two taps from anywhere. Navigation must never require thought.
+
+3. **Outdoor-first legibility.** Every contrast, size, and weight decision must pass a "direct sunlight + gloves" mental test. Solid-fill badges only. Filled icons only. No thin-stroke anything.
+
+4. **Authoritative hierarchy.** The most important information on any screen should be unmistakably obvious. Status readable at a glance. Secondary info recedes. Nothing competes.
+
+5. **Purposeful motion only.** Transitions that orient (page entry, tab switch, accordion expand) are correct. Decorative animation is noise in a time-pressured field context.
+
+---
+
 ### Color Palette
 
 All colors are defined as CSS custom properties in `main.css` and mapped to Tailwind's config via `tailwind.config.js`.
@@ -337,11 +385,16 @@ Define these in `/src/assets/main.css`:
 
 ### Typography & Sizing
 
+**Typefaces:**
+- **Display / headings:** `Big Shoulders Display` (Google Fonts) — Wide, compressed, premium-industrial. Chicago manufacturing heritage. Reads as authoritative and engineered, not corporate or startup. Use for screen titles, section headings, and large status labels.
+- **UI / body:** `Barlow` (Google Fonts) — Originally designed for military/official communications. Exceptional legibility at small sizes in data-dense UI contexts. No startup-font associations. Use for all body text, labels, buttons, and nav items.
+
+**Sizing rules:**
 - **Minimum body font size: 16px** — bump from typical 14px
 - **Minimum font weight: 500 (medium)** — thin strokes (300/400) vanish in glare
-- **All-caps + letter-spacing** for section labels and status badges — faster to scan than mixed case
+- **All-caps + letter-spacing (`tracking-widest`)** for section labels and status badges — faster to scan than mixed case outdoors
 - **Bold (700) for all text below 18px**
-- Use a clean, modern sans-serif — avoid thin display fonts
+- **Big Shoulders Display** for headings only — never for body copy or long-form content
 
 ---
 
@@ -351,9 +404,23 @@ Define these in `/src/assets/main.css`:
 - **Icons:** filled variants only — stroke/outline icons thin out visually outdoors
 - **Buttons:** minimum height `52px` (not 44px) — larger target for gloved hands
 - **Buttons:** full-width wherever possible on mobile
-- **Cards:** subtle left-edge accent border in `#164da6` to create visual separation without relying on shadows alone
+- **Cards:** differentiate with full border (`border border-border`) + background tint (`bg-surface`) — do NOT use side-stripe accent borders (border-left/border-right wider than 1px); side-stripes are visually weak and inconsistent with the premium aesthetic
 - **Bottom nav:** large icons (28px+) with text labels — never icons alone
-- **Avoid:** gradients on interactive elements, thin dividing lines under 1px, gray-on-gray text combinations
+- **Avoid:** gradients on interactive elements, thin dividing lines under 1px, gray-on-gray text combinations, glassmorphism, cyan/neon accent colors
+
+---
+
+### Motion
+
+**Principle:** Transitions that orient the user (page entry, tab switch, accordion expand/collapse) are correct. Decorative animation is noise in a time-pressured field context and should never be used.
+
+**Rules:**
+- Use `grid-template-rows` transitions for expand/collapse animations — never animate `height` directly
+- Use `opacity` + `translateY` for page/section entrances — never `scale` on large containers
+- Easing: `ease-out` or `cubic-bezier(0.16, 1, 0.3, 1)` (expo-out) — natural deceleration
+- No bounce, no elastic easing — they feel dated and wrong in a professional tool
+- No decorative hover sparkles, scroll-triggered reveals, or floating elements
+- **Outdoor Mode** disables all transitions and animations via `animation-duration: 0.001ms; transition-duration: 0.001ms`
 
 ---
 
