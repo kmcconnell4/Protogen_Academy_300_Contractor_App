@@ -39,10 +39,11 @@ function handleDownload() {
       :href="doc.fileUrl"
       target="_blank"
       rel="noopener noreferrer"
-      class="mt-1 inline-flex items-center justify-center h-tap rounded-lg bg-interactive text-white font-bold text-sm"
+      class="mt-1 inline-flex items-center justify-center gap-2 h-tap rounded-lg bg-interactive text-white font-bold text-sm"
       @click="handleDownload"
     >
-      ↓ {{ t('documents.download') }}
+      <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      {{ t('documents.download') }}
     </a>
   </div>
 </template>

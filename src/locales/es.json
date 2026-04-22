@@ -10,9 +10,6 @@
     "profile": "Perfil"
   },
   "home": {
-    "greeting_morning": "Buenos días, {name}",
-    "greeting_afternoon": "Buenas tardes, {name}",
-    "greeting_evening": "Buenas noches, {name}",
     "section_action_required": "Acción Requerida",
     "section_continue": "Continuar Donde Lo Dejó",
     "section_recently_viewed": "Visto Recientemente",
@@ -143,7 +140,7 @@
     "response_submitted_confirmation": "Respuesta enviada. Su representante de Carlisle la revisará en breve.",
     "reviewed_on": "Revisado {date}",
     "mark_reviewed": "Marcar como Revisado",
-    "finding_resolved": "✓ Resuelto",
+    "finding_resolved": "Resuelto",
     "no_findings": "No se registraron hallazgos.",
     "no_inspections": "No hay inspecciones para este trabajo."
   },
@@ -203,11 +200,6 @@
       "Admin": "Administración",
       "Training": "Capacitación"
     },
-    "filter_installation": "Instalación",
-    "filter_warranty": "Garantía",
-    "filter_detailing": "Detalles",
-    "filter_admin": "Administración",
-    "filter_training": "Capacitación",
     "duration": "Duración",
     "watch": "Ver",
     "published": "Publicado",
@@ -270,6 +262,7 @@
     "back": "Atrás",
     "view_all": "Ver Todo",
     "sq_ft": "pie²",
-    "coming_soon": "Próximamente"
+    "coming_soon": "Próximamente",
+    "unknown_rep": "Inspector Desconocido"
   }
 }

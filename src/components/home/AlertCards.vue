@@ -126,5 +126,15 @@ const config = {
       <div class="shrink-0 w-4" aria-hidden="true" />
     </div>
   </section>
+
+  <!-- All-clear: no alerts — keep section visible to prevent layout jump -->
+  <section v-else class="px-4">
+    <div class="flex items-center gap-2">
+      <svg class="w-4 h-4 text-emerald shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 6L9 17l-5-5" />
+      </svg>
+      <p class="text-text-secondary text-[13px] font-[600]">{{ t('home.no_alerts') }}</p>
+    </div>
+  </section>
 </template>
 

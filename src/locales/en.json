@@ -10,9 +10,6 @@
     "profile": "Profile"
   },
   "home": {
-    "greeting_morning": "Good morning, {name}",
-    "greeting_afternoon": "Good afternoon, {name}",
-    "greeting_evening": "Good evening, {name}",
     "section_action_required": "Action Required",
     "section_continue": "Continue Where You Left Off",
     "section_recently_viewed": "Recently Viewed",
@@ -143,7 +140,7 @@
     "response_submitted_confirmation": "Response submitted. Your Carlisle rep will review it shortly.",
     "reviewed_on": "Reviewed {date}",
     "mark_reviewed": "Mark as Reviewed",
-    "finding_resolved": "✓ Resolved",
+    "finding_resolved": "Resolved",
     "no_findings": "No findings recorded.",
     "no_inspections": "No inspections for this job."
   },
@@ -203,11 +200,6 @@
       "Admin": "Admin",
       "Training": "Training"
     },
-    "filter_installation": "Installation",
-    "filter_warranty": "Warranty",
-    "filter_detailing": "Detailing",
-    "filter_admin": "Admin",
-    "filter_training": "Training",
     "duration": "Duration",
     "watch": "Watch",
     "published": "Published",
@@ -270,6 +262,7 @@
     "back": "Back",
     "view_all": "View All",
     "sq_ft": "sq ft",
-    "coming_soon": "Coming soon"
+    "coming_soon": "Coming soon",
+    "unknown_rep": "Unknown Rep"
   }
 }

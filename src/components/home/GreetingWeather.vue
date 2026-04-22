@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import profile from '@/data/profile.json'
+import jobs from '@/data/jobs.json'
 
 const { t } = useI18n()
 
@@ -12,12 +13,21 @@ const greetingLabel = computed(() => {
   return t('home.greeting_label_evening')
 })
 
-// Mock: weather tied to most recent active job location
+// Derive city from the most recently updated non-closed job address
+// Address format: "123 Street, City, ST 00000" — extract "City, ST"
+const weatherCity = computed(() => {
+  const recentJob = [...jobs]
+    .filter((j) => j.status !== 'Closed')
+    .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))[0]
+  if (!recentJob) return null
+  const parts = recentJob.address.split(', ')
+  if (parts.length < 3) return null
+  return `${parts[1]}, ${parts[2].split(' ')[0]}`
+})
+
+// Mock: temperature — static for demo purposes
 const weather = {
-  city: 'Cincinnati, OH',
-  icon: '⛅',
   temp: '64°F',
-  condition: 'Partly cloudy',
 }
 </script>
 
@@ -37,7 +47,7 @@ const weather = {
     </div>
 
     <!-- Weather: right-aligned utility widget, secondary info -->
-    <div class="flex flex-col items-end gap-0.5 shrink-0 pb-1">
+    <div v-if="weatherCity" class="flex flex-col items-end gap-0.5 shrink-0 pb-1">
       <p class="text-white font-bold text-xl leading-none">{{ weather.temp }}</p>
       <div class="flex items-center gap-1 text-text-secondary text-[11px] font-medium leading-snug">
         <!-- Partly cloudy SVG icon -->
@@ -45,7 +55,7 @@ const weather = {
           <path d="M12 2v1M4.22 4.22l.7.7M2 12h1M4.22 19.78l.7-.7M12 20v1M19.78 19.78l-.7-.7M22 12h-1M19.78 4.22l-.7.7" />
           <path d="M9 18H7a4 4 0 010-8 5 5 0 019.9-1A3.5 3.5 0 0118 16H9" />
         </svg>
-        {{ weather.city }}
+        {{ weatherCity }}
       </div>
     </div>
   </div>

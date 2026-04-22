@@ -10,9 +10,6 @@
     "profile": "Profil"
   },
   "home": {
-    "greeting_morning": "Bonjour, {name}",
-    "greeting_afternoon": "Bon après-midi, {name}",
-    "greeting_evening": "Bonsoir, {name}",
     "section_action_required": "Action Requise",
     "section_continue": "Reprendre Où Vous En Étiez",
     "section_recently_viewed": "Récemment Consulté",
@@ -143,7 +140,7 @@
     "response_submitted_confirmation": "Réponse soumise. Votre représentant Carlisle l’examinera sous peu.",
     "reviewed_on": "Examiné le {date}",
     "mark_reviewed": "Marquer comme Examiné",
-    "finding_resolved": "✓ Résolu",
+    "finding_resolved": "Résolu",
     "no_findings": "Aucune constatation enregistrée.",
     "no_inspections": "Aucune inspection pour ce chantier."
   },
@@ -203,11 +200,6 @@
       "Admin": "Administration",
       "Training": "Formation"
     },
-    "filter_installation": "Installation",
-    "filter_warranty": "Garantie",
-    "filter_detailing": "Détails",
-    "filter_admin": "Administration",
-    "filter_training": "Formation",
     "duration": "Durée",
     "watch": "Regarder",
     "published": "Publié le",
@@ -270,6 +262,7 @@
     "back": "Retour",
     "view_all": "Voir Tout",
     "sq_ft": "pi²",
-    "coming_soon": "Bientôt disponible"
+    "coming_soon": "Bientôt disponible",
+    "unknown_rep": "Inspecteur Inconnu"
   }
 }

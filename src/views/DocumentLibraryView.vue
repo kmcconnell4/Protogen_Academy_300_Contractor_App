@@ -77,7 +77,7 @@ const filtered = computed(() => {
           ]"
           @click="activeType = type"
         >
-          {{ type === 'All' ? t('documents.filter_all') : type }}
+          {{ type === 'All' ? t('documents.filter_all') : t(`documents.filter_${type.toLowerCase()}`) }}
         </button>
     </div>
 

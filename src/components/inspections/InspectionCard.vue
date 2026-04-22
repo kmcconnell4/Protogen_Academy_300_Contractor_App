@@ -50,7 +50,7 @@ const severityConfig = {
         </p>
         <p class="text-text-secondary text-[13px] mt-1">
           {{ t('inspections.conducted') }} {{ formatDate(inspection.conductedAt) }}
-          &middot; {{ inspection.repName }}
+          &middot; {{ inspection.repName || t('common.unknown_rep') }}
         </p>
         <!-- Pass / Fail result line -->
         <div
@@ -108,7 +108,10 @@ const severityConfig = {
               </span>
               <span class="text-text-secondary text-[12px] font-[700] uppercase tracking-[0.08em]">{{ finding.category }}</span>
               <!-- Resolved checkmark -->
-              <span v-if="finding.resolved" class="ml-auto text-emerald text-[12px] font-[700]">{{ t('inspections.finding_resolved') }}</span>
+              <span v-if="finding.resolved" class="ml-auto inline-flex items-center gap-1 text-emerald text-[12px] font-[700]">
+                <svg class="w-3 h-3 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                {{ t('inspections.finding_resolved') }}
+              </span>
             </div>
             <p class="text-white text-[14px] leading-snug">{{ finding.description }}</p>
           </div>
