@@ -61,20 +61,20 @@ Phases are ordered by dependency. Complete Phase 1 before starting Phases 5, 7, 
 ## Remaining Polish (P2)
 
 ### Copy & Labels
-- [ ] **`jobs.sort_updated` key reused as a field label.** Add dedicated `jobs.detail_updated: "Last Updated"` key and use it in `JobDetailTabs` Overview. `src/components/jobs/JobDetailTabs.vue`, `src/locales/en.json`
-- [ ] **`home.section_recent_contractors` is factually wrong.** Section shows all contractors, not recently viewed. Change label to `"Your Contractors"`. `src/components/home/RecentContractors.vue`, `src/locales/en.json`
-- [ ] **`"Inspection"` job status reads as a type, not a state.** Rename to `"Under Inspection"` in `src/data/jobs.json` and all referencing components/locale keys. `src/components/shared/StatusBadge.vue`
-- [ ] **`home.open_job` CTA reads "Open Job →".** Change copy to "View Job" and replace raw `→` with an inline SVG chevron. `src/locales/en.json`, `src/components/home/RecentJobCard.vue`
-- [ ] **Nav label / page heading mismatches.** Standardize: `"Videos"` everywhere (BottomNav + page heading). `src/views/VideosView.vue`, `src/locales/en.json`
+- [x] **`jobs.sort_updated` key reused as a field label.** Add dedicated `jobs.detail_updated: "Last Updated"` key and use it in `JobDetailTabs` Overview. `src/components/jobs/JobDetailTabs.vue`, `src/locales/en.json`
+- [x] **`home.section_recent_contractors` is factually wrong.** Section shows all contractors, not recently viewed. Change label to `"Your Contractors"`. `src/components/home/RecentContractors.vue`, `src/locales/en.json`
+- [x] **`"Inspection"` job status reads as a type, not a state.** Rename to `"Under Inspection"` in `src/data/jobs.json` and all referencing components/locale keys. `src/components/shared/StatusBadge.vue`
+- [x] **`home.open_job` CTA reads "Open Job →".** Change copy to "View Job" and replace raw `→` with an inline SVG chevron. `src/locales/en.json`, `src/components/home/RecentJobCard.vue`
+- [x] **Nav label / page heading mismatches.** Standardize: `"Videos"` everywhere (BottomNav + page heading). `src/views/VideosView.vue`, `src/locales/en.json`
 
 ### Empty States
-- [ ] **`jobs.no_jobs` used for both filter-empty and truly-empty states.** Add `jobs.no_jobs_filtered: "No jobs match this filter."` and use it conditionally when `activeFilter !== 'All'`. `src/views/JobsView.vue`, `src/locales/en.json`
-- [ ] **Jobs empty state ignores active contractor filter.** Render `"No jobs found for {contractorName}."` when `contractorId` is set, with a "Show All Jobs" clear button. `src/views/JobsView.vue`
-- [ ] **Inspection success confirmation reuses the timestamp key.** Add `inspections.response_submitted_confirmation` for the success state copy. `src/components/inspections/InspectionResponseForm.vue`, `src/locales/en.json`
-- [ ] **Job detail back button always reads "Jobs".** Change to `t('common.back')` → `"Back"`. `src/views/JobDetailView.vue`
+- [x] **`jobs.no_jobs` used for both filter-empty and truly-empty states.** Add `jobs.no_jobs_filtered: "No jobs match this filter."` and use it conditionally when `activeFilter !== 'All'`. `src/views/JobsView.vue`, `src/locales/en.json`
+- [x] **Jobs empty state ignores active contractor filter.** Render `"No jobs found for {contractorName}."` when `contractorId` is set, with a "Show All Jobs" clear button. `src/views/JobsView.vue`
+- [x] **Inspection success confirmation reuses the timestamp key.** Add `inspections.response_submitted_confirmation` for the success state copy. `src/components/inspections/InspectionResponseForm.vue`, `src/locales/en.json`
+- [x] **Job detail back button always reads "Jobs".** Change to `t('common.back')` → `"Back"`. `src/views/JobDetailView.vue`
 
 ### Information Architecture
-- [ ] **Tracking numbers are plain text.** Wrap in `<a :href="trackingUrl(order)" target="_blank" rel="noopener">` constructed from `order.carrier` field (UPS, FedEx, etc.). `src/components/orders/OrderList.vue`
-- [ ] **Three different accordion expand behaviors.** Standardize Orders, Quotes, and Inspections on the `expandedId` pattern (one open at a time). `src/components/orders/OrderList.vue`, `src/components/quotes/QuoteVersionList.vue`, `src/components/inspections/InspectionCard.vue`
-- [ ] **"Job not found" uses `text-error` (red).** An absent job is not a destructive failure. Change to `text-text-secondary` and add a "Go to Jobs" router-link. `src/views/JobDetailView.vue`
-- [ ] **`RecentContractors.vue` has no empty state.** Add `v-if="contractorsWithStats.length"` guard with a `v-else` message. `src/components/home/RecentContractors.vue`
+- [x] **Tracking numbers are plain text.** Wrap in `<a :href="trackingUrl(order)" target="_blank" rel="noopener">` constructed from `order.carrier` field (UPS, FedEx, etc.). `src/components/orders/OrderList.vue`
+- [x] **Three different accordion expand behaviors.** Standardize Orders, Quotes, and Inspections on the `expandedId` pattern (one open at a time). `src/components/orders/OrderList.vue`, `src/components/quotes/QuoteVersionList.vue`, `src/components/inspections/InspectionCard.vue`
+- [x] **"Job not found" uses `text-error` (red).** An absent job is not a destructive failure. Change to `text-text-secondary` and add a "Go to Jobs" router-link. `src/views/JobDetailView.vue`
+- [x] **`RecentContractors.vue` has no empty state.** Add `v-if="contractorsWithStats.length"` guard with a `v-else` message. `src/components/home/RecentContractors.vue`
