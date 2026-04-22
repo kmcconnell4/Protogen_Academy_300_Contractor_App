@@ -12,7 +12,7 @@ Work through these prompts in order for best results:
 
 5. *"Build the ProductCatalogView using `products.json`. Each product card shows name, SKU, category, and links to its associated documents (PDS, SDS, Spec) from `documents.json`."* ✅
 
-6. *"Add a universal search overlay component triggered from the top nav. It should search across jobs, products, quotes, documents, and videos from their JSON files and group results by category. On mobile, render as a full-screen overlay."*
+6. *"Add a universal search overlay component triggered from the top nav. It should search across jobs, products, quotes, documents, and videos from their JSON files and group results by category. On mobile, render as a full-screen overlay."* ✅
 
 7. *"Implement vue-i18n with locale files for English, Spanish, French, and Portuguese. Replace all hardcoded UI strings in every component with translation keys. Add a language selector dropdown to ProfileView.vue. Persist the choice in localStorage."*
 
