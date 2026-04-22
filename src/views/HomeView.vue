@@ -51,7 +51,7 @@ const { role } = useRole()
     <div class="px-4 mt-8">
       <router-link
         v-if="role === 'contractor'"
-        to="/jobs/new"
+        to="/jobs"
         class="flex items-center justify-center w-full h-[52px] rounded-xl bg-interactive text-white font-bold text-base tracking-wide transition-opacity active:opacity-80"
         style="font-family: var(--font-body);"
       >

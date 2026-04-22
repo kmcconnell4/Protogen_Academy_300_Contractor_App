@@ -6,13 +6,13 @@ Issues identified in a full codebase scan on 2026-04-22. Organized by severity.
 
 ## P0 — Blocking / Fix Immediately
 
-- [ ] **`HomeView.vue` — "Start New Job" CTA routes to `/jobs/new`, which doesn't exist.** The link matches the `job-detail` route with `id = 'new'`, showing the "Job not found" error state. Either create a `/jobs/new` route or change the link target. `src/views/HomeView.vue`
+- [x] **`HomeView.vue` — "Start New Job" CTA routes to `/jobs/new`, which doesn't exist.** The link matches the `job-detail` route with `id = 'new'`, showing the "Job not found" error state. Either create a `/jobs/new` route or change the link target. `src/views/HomeView.vue`
 
-- [ ] **`NavBar.vue` — Search and Profile icon buttons are 44×44px,** below the 52px minimum tap target required by the design system. Change `h-[44px] w-[44px]` → `h-[52px] w-[52px]` (or `min-h-[52px] min-w-[52px]`). `src/components/shared/NavBar.vue`
+- [x] **`NavBar.vue` — Search and Profile icon buttons are 44×44px,** below the 52px minimum tap target required by the design system. Change `h-[44px] w-[44px]` → `h-[52px] w-[52px]` (or `min-h-[52px] min-w-[52px]`). `src/components/shared/NavBar.vue`
 
-- [ ] **`JobDetailView.vue` — Back button is `h-[44px]`,** below the 52px minimum. `src/views/JobDetailView.vue`
+- [x] **`JobDetailView.vue` — Back button is `h-[44px]`,** below the 52px minimum. `src/views/JobDetailView.vue`
 
-- [ ] **`style.css` is the Vite boilerplate file** with neon purple (`#aa3bff`) as its accent color — a design token explicitly banned in this project. The file is not imported anywhere, but its presence is a risk. Delete it. `src/style.css`
+- [x] **`style.css` is the Vite boilerplate file** with neon purple (`#aa3bff`) as its accent color — a design token explicitly banned in this project. The file is not imported anywhere, but its presence is a risk. Delete it. `src/style.css`
 
 ---
 

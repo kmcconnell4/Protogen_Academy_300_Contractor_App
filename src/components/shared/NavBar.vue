@@ -27,7 +27,7 @@ const searchOpen = ref(false)
 
       <!-- Search -->
       <button
-        class="h-[44px] w-[44px] flex items-center justify-center rounded-lg text-text-secondary transition-colors hover:text-white active:text-white"
+        class="h-[52px] w-[52px] flex items-center justify-center rounded-lg text-text-secondary transition-colors hover:text-white active:text-white"
         :aria-label="t('nav.search')"
         @click="searchOpen = true"
       >
@@ -39,7 +39,7 @@ const searchOpen = ref(false)
 
       <!-- Profile -->
       <button
-        class="h-[44px] w-[44px] flex items-center justify-center rounded-lg text-text-secondary transition-colors hover:text-white active:text-white"
+        class="h-[52px] w-[52px] flex items-center justify-center rounded-lg text-text-secondary transition-colors hover:text-white active:text-white"
         :aria-label="t('nav.profile')"
         @click="router.push({ name: 'profile' })"
       >
