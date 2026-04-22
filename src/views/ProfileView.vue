@@ -59,7 +59,7 @@ const { role } = useRole()
       <select
         id="language-select"
         :value="currentLocale"
-        class="w-full h-[52px] px-4 rounded-xl bg-surface-alt border border-border text-white text-base focus:outline-none focus:border-highlight"
+        class="w-full h-[52px] px-4 pr-10 rounded-xl bg-surface-alt border border-border text-white text-base focus:outline-none focus:border-highlight"
         @change="setLocale($event.target.value)"
       >
         <option v-for="loc in supportedLocales" :key="loc" :value="loc">
@@ -77,16 +77,17 @@ const { role } = useRole()
         </div>
         <button
           :class="[
-            'relative shrink-0 w-14 h-7 rounded-full transition-colors',
+            'relative shrink-0 w-[52px] h-[28px] rounded-full transition-colors duration-200',
             isOutdoorMode ? 'bg-interactive' : 'bg-surface-alt',
           ]"
+          :style="isOutdoorMode ? {} : { boxShadow: 'inset 0 0 0 1.5px #2E3A52' }"
           :aria-pressed="isOutdoorMode"
           @click="toggleOutdoor"
         >
           <span
             :class="[
-              'absolute top-0.5 left-0.5 w-6 h-6 rounded-full bg-white transition-transform',
-              isOutdoorMode ? 'translate-x-7' : 'translate-x-0',
+              'absolute top-[4px] left-[4px] w-5 h-5 rounded-full bg-white shadow transition-transform duration-200',
+              isOutdoorMode ? 'translate-x-6' : 'translate-x-0',
             ]"
           />
         </button>

@@ -14,6 +14,24 @@ const searchQuery = ref('')
 const activeType = ref('All')
 const activeProduct = ref('All')
 
+// Counts scoped only to search/product filter (not type) so chips show meaningful numbers
+const typeCounts = computed(() => {
+  let base = documents
+  if (activeProduct.value !== 'All') {
+    base = base.filter((d) => d.productId === activeProduct.value)
+  }
+  if (searchQuery.value.trim()) {
+    const q = searchQuery.value.trim().toLowerCase()
+    base = base.filter((d) => d.name.toLowerCase().includes(q) || d.type.toLowerCase().includes(q))
+  }
+  return Object.fromEntries(
+    ['All', ...DOC_TYPES].map((t) => [
+      t,
+      t === 'All' ? base.length : base.filter((d) => d.type === t).length,
+    ])
+  )
+})
+
 onMounted(() => {
   if (route.query.search) searchQuery.value = route.query.search
 })
@@ -43,9 +61,6 @@ const filtered = computed(() => {
 
     <!-- Page header -->
     <div class="px-4 pt-6 pb-5 border-b border-border">
-      <p class="text-[11px] font-[700] uppercase tracking-[0.12em] text-text-secondary mb-1 leading-none">
-        {{ t('documents.count', { count: filtered.length }, filtered.length) }}
-      </p>
       <h1
         class="text-[2.25rem] font-[800] text-white leading-none"
         style="font-family: var(--font-heading);"
@@ -78,6 +93,12 @@ const filtered = computed(() => {
           @click="activeType = type"
         >
           {{ type === 'All' ? t('documents.filter_all') : t(`documents.filter_${type.toLowerCase()}`) }}
+          <span
+            :class="[
+              'ml-1.5 tabular-nums',
+              activeType === type ? 'text-white/60' : 'text-text-secondary/50',
+            ]"
+          >{{ typeCounts[type] }}</span>
         </button>
     </div>
 

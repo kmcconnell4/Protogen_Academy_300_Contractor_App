@@ -66,10 +66,10 @@ const allFilters = computed(() => {
           {{ t('jobs.title') }}
         </h1>
         <button
-          class="shrink-0 inline-flex items-center gap-1.5 h-[40px] px-4 rounded-lg bg-interactive text-white text-[13px] font-[700] tracking-wide transition-opacity active:opacity-80"
+          class="shrink-0 inline-flex items-center gap-1.5 h-[32px] px-3 rounded-lg bg-interactive text-white text-[12px] font-[700] uppercase tracking-widest transition-opacity active:opacity-80"
           @click="router.push({ name: 'jobs' })"
         >
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 5v14M5 12h14" />
           </svg>
           {{ t('common.new') }}

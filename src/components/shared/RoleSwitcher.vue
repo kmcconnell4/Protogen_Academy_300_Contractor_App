@@ -27,7 +27,7 @@ const props = defineProps({
   <div v-else class="flex rounded-xl overflow-hidden border border-border">
     <button
       :class="[
-        'flex-1 h-tap font-bold text-sm transition-colors',
+        'flex-1 flex items-center justify-center h-tap font-bold text-sm transition-colors',
         role === 'contractor' ? 'bg-interactive text-white' : 'bg-surface text-text-secondary',
       ]"
       @click="setRole('contractor')"
@@ -36,7 +36,7 @@ const props = defineProps({
     </button>
     <button
       :class="[
-        'flex-1 h-tap font-bold text-sm transition-colors',
+        'flex-1 flex items-center justify-center h-tap font-bold text-sm transition-colors',
         role === 'rep' ? 'bg-amber text-bg' : 'bg-surface text-text-secondary',
       ]"
       @click="setRole('rep')"
