@@ -59,7 +59,7 @@ const { role } = useRole()
       <select
         id="language-select"
         :value="currentLocale"
-        class="w-full h-[52px] px-4 pr-10 rounded-xl bg-surface-alt border border-border text-white text-base focus:outline-none focus:border-highlight"
+        class="select-field w-full h-[52px] px-4 rounded-xl bg-surface-alt border border-border text-white text-base focus:outline-none focus:border-highlight"
         @change="setLocale($event.target.value)"
       >
         <option v-for="loc in supportedLocales" :key="loc" :value="loc">
