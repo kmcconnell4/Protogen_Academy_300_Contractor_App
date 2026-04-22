@@ -32,7 +32,11 @@
     "alert_count": "{count} item | {count} items",
     "no_active_jobs": "No active jobs",
     "no_active_jobs_hint": "Jobs you're working on will appear here.",
-    "recently_viewed_empty": "Products and documents you open will appear here for quick return."
+    "recently_viewed_empty": "Products and documents you open will appear here for quick return.",
+    "cta_add_contractor": "Add Contractor",
+    "section_recent_contractors": "Recently Viewed Contractors",
+    "no_recent_contractors": "Contractors you view will appear here.",
+    "contractor_active_jobs": "{count} active job | {count} active jobs"
   },
   "jobs": {
     "title": "Jobs",

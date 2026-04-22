@@ -32,6 +32,10 @@
     "alert_count": "{count} elemento | {count} elementos",
     "no_active_jobs": "Sin trabajos activos",
     "no_active_jobs_hint": "Los trabajos en progreso aparecerán aquí.",
+    "cta_add_contractor": "Agregar Contratista",
+    "section_recent_contractors": "Contratistas Vistos Recientemente",
+    "no_recent_contractors": "Los contratistas que visites aparecerán aquí.",
+    "contractor_active_jobs": "{count} trabajo activo | {count} trabajos activos",
     "recently_viewed_empty": "Los productos y documentos que abras aparecerán aquí."
   },
   "jobs": {

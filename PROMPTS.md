@@ -16,6 +16,6 @@ Work through these prompts in order for best results:
 
 7. *"Implement vue-i18n with locale files for English, Spanish, French, and Portuguese. Replace all hardcoded UI strings in every component with translation keys. Add a language selector dropdown to ProfileView.vue. Persist the choice in localStorage."* ✅
 
-8. *"Implement the RoleSwitcher using Vue's provide/inject. When toggled to Sales Rep, the HomeView should show alerts across all contractors, replace the recent job card with recently viewed contractors, and change the CTA to 'Add Contractor'."*
+8. *"Implement the RoleSwitcher using Vue's provide/inject. When toggled to Sales Rep, the HomeView should show alerts across all contractors, replace the recent job card with recently viewed contractors, and change the CTA to 'Add Contractor'."* ✅ ✅
 
 9. *"Add an Outdoor Mode toggle to ProfileView.vue. When enabled, it should: add an 'outdoor-mode' class to the document body, increase all base font sizes by one step, increase all tap targets by 8px, shift secondary text from #A8B8D0 to #FFFFFF, and disable non-essential CSS transitions. Persist the preference in localStorage via a useOutdoorMode.js composable."*

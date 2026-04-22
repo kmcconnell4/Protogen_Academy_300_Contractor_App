@@ -32,6 +32,10 @@
     "alert_count": "{count} élément | {count} éléments",
     "no_active_jobs": "Aucun chantier actif",
     "no_active_jobs_hint": "Les chantiers en cours apparaîtront ici.",
+    "cta_add_contractor": "Ajouter un Entrepreneur",
+    "section_recent_contractors": "Entrepreneurs Consultés Récemment",
+    "no_recent_contractors": "Les entrepreneurs que vous consultez apparaîtront ici.",
+    "contractor_active_jobs": "{count} chantier actif | {count} chantiers actifs",
     "recently_viewed_empty": "Les produits et documents ouverts apparaîtront ici."
   },
   "jobs": {

@@ -32,6 +32,10 @@
     "alert_count": "{count} item | {count} itens",
     "no_active_jobs": "Sem obras ativas",
     "no_active_jobs_hint": "Os trabalhos em andamento aparecerão aqui.",
+    "cta_add_contractor": "Adicionar Contratante",
+    "section_recent_contractors": "Contratantes Vistos Recentemente",
+    "no_recent_contractors": "Os contratantes que você visualizar aparecerão aqui.",
+    "contractor_active_jobs": "{count} obra ativa | {count} obras ativas",
     "recently_viewed_empty": "Os produtos e documentos que abrir aparecerão aqui."
   },
   "jobs": {

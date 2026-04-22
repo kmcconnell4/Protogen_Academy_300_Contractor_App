@@ -1,0 +1,30 @@
+[
+  {
+    "id": "contractor-001",
+    "name": "Rivera Roofing LLC",
+    "contact": "Marcus Rivera",
+    "region": "Ohio / Indiana",
+    "lastActivity": "2026-04-20"
+  },
+  {
+    "id": "contractor-002",
+    "name": "Great Lakes Roofing Co.",
+    "contact": "Dana Chen",
+    "region": "Michigan / Ohio",
+    "lastActivity": "2026-04-17"
+  },
+  {
+    "id": "contractor-003",
+    "name": "Summit Commercial Roofing",
+    "contact": "Troy Simmons",
+    "region": "Indiana / Illinois",
+    "lastActivity": "2026-04-12"
+  },
+  {
+    "id": "contractor-004",
+    "name": "Midwest Roof Systems",
+    "contact": "Patrice Washington",
+    "region": "Ohio",
+    "lastActivity": "2026-04-08"
+  }
+]

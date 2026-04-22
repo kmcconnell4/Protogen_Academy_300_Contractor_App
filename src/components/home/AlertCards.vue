@@ -6,9 +6,16 @@ import inspections from '@/data/inspections.json'
 import quotes from '@/data/quotes.json'
 import orders from '@/data/orders.json'
 import jobs from '@/data/jobs.json'
+import contractors from '@/data/contractors.json'
+import { useRole } from '@/composables/useRole'
 
 const { t } = useI18n()
 const router = useRouter()
+const { role } = useRole()
+
+function contractorName(contractorId) {
+  return contractors.find((c) => c.id === contractorId)?.name ?? ''
+}
 
 const alerts = computed(() => {
   const items = []
@@ -24,6 +31,7 @@ const alerts = computed(() => {
         urgency: i.status === 'Response Overdue' ? 'error' : 'amber',
         heading: i.status === 'Response Overdue' ? t('home.alert_response_overdue') : t('home.alert_response_required'),
         jobName: job?.name ?? '',
+        contractorName: contractorName(job?.contractorId),
         route: { name: 'job-detail', params: { id: i.jobId } },
       })
     })
@@ -39,6 +47,7 @@ const alerts = computed(() => {
         urgency: 'amber',
         heading: t('home.alert_quote_awaiting', { version: q.version }),
         jobName: job?.name ?? '',
+        contractorName: contractorName(job?.contractorId),
         route: { name: 'job-detail', params: { id: q.jobId } },
       })
     })
@@ -54,6 +63,7 @@ const alerts = computed(() => {
         urgency: 'emerald',
         heading: t('home.alert_shipment_in_transit'),
         jobName: job?.name ?? '',
+        contractorName: contractorName(job?.contractorId),
         route: { name: 'job-detail', params: { id: o.jobId } },
       })
     })
@@ -106,6 +116,10 @@ const config = {
         <!-- Job name: secondary, clipped to one line -->
         <p class="text-text-secondary text-xs font-medium truncate">
           {{ alert.jobName }}
+        </p>
+        <!-- Contractor identifier: shown in rep mode only -->
+        <p v-if="role === 'rep'" class="text-text-secondary/70 text-[11px] font-medium truncate mt-0.5">
+          {{ alert.contractorName }}
         </p>
       </button>
       <!-- Trailing spacer to reveal peek of overflow on last card -->

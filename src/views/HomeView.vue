@@ -1,12 +1,15 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
+import { useRole } from '@/composables/useRole'
 import GreetingWeather from '@/components/home/GreetingWeather.vue'
 import AlertCards from '@/components/home/AlertCards.vue'
 import RecentJobCard from '@/components/home/RecentJobCard.vue'
+import RecentContractors from '@/components/home/RecentContractors.vue'
 import RecentlyViewed from '@/components/home/RecentlyViewed.vue'
 import QuickAccess from '@/components/home/QuickAccess.vue'
 
 const { t } = useI18n()
+const { role } = useRole()
 </script>
 
 <template>
@@ -16,15 +19,16 @@ const { t } = useI18n()
       <GreetingWeather />
     </div>
 
-    <!-- Alerts: renders flush, horizontal scroll bleeds to edges -->
+    <!-- Alerts: contractor sees their own, rep sees across all contractors -->
     <AlertCards />
 
-    <!-- Recent job: primary action zone -->
+    <!-- Recent job (contractor) / Recent contractors (rep) -->
     <section class="px-4 mt-6">
       <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-text-secondary mb-3">
-        {{ t('home.section_continue') }}
+        {{ role === 'rep' ? t('home.section_recent_contractors') : t('home.section_continue') }}
       </p>
-      <RecentJobCard />
+      <RecentJobCard v-if="role === 'contractor'" />
+      <RecentContractors v-else />
     </section>
 
     <!-- Recently viewed: label padded, row bleeds to edges for natural scroll -->
@@ -43,15 +47,23 @@ const { t } = useI18n()
       <QuickAccess />
     </section>
 
-    <!-- CTA: generous separation, full-width, primary interactive blue -->
+    <!-- CTA: contractor starts a job, rep adds a contractor -->
     <div class="px-4 mt-8">
       <router-link
+        v-if="role === 'contractor'"
         to="/jobs/new"
         class="flex items-center justify-center w-full h-[52px] rounded-xl bg-interactive text-white font-bold text-base tracking-wide transition-opacity active:opacity-80"
         style="font-family: var(--font-body);"
       >
         + {{ t('home.cta_new_job') }}
       </router-link>
+      <button
+        v-else
+        class="flex items-center justify-center w-full h-[52px] rounded-xl bg-amber text-bg font-bold text-base tracking-wide transition-opacity active:opacity-80"
+        style="font-family: var(--font-body);"
+      >
+        + {{ t('home.cta_add_contractor') }}
+      </button>
     </div>
   </main>
 </template>
