@@ -17,9 +17,6 @@ const { role } = useRole()
 
     <!-- Page header -->
     <div class="px-4 pt-6 pb-5 border-b border-border">
-      <p class="text-[11px] font-[700] uppercase tracking-[0.12em] text-text-secondary mb-1 leading-none">
-        {{ t('profile.section_label') }}
-      </p>
       <h1
         class="text-[2.25rem] font-[800] text-white leading-none"
         style="font-family: var(--font-heading);"

@@ -9,7 +9,12 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="bg-surface border border-border rounded-xl overflow-hidden flex flex-col">
+  <a
+    :href="video.videoUrl"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="bg-surface border border-border rounded-xl overflow-hidden flex flex-col active:opacity-80 transition-opacity"
+  >
     <img
       :src="video.thumbnailUrl"
       :alt="video.title"
@@ -22,15 +27,6 @@ const props = defineProps({
         {{ video.category }} &middot; {{ t('videos.duration') }}: {{ video.duration }}
       </p>
       <p class="text-text-secondary text-sm line-clamp-2 flex-1">{{ video.description }}</p>
-      <a
-        :href="video.videoUrl"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="mt-2 inline-flex items-center justify-center gap-2 h-tap rounded-lg bg-interactive text-white font-bold text-sm"
-      >
-        <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5,3 19,12 5,21" /></svg>
-        {{ t('videos.watch') }}
-      </a>
     </div>
-  </div>
+  </a>
 </template>

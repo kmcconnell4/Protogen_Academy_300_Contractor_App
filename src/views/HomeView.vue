@@ -59,26 +59,6 @@ const recentJob = computed(() =>
       <QuickAccess />
     </section>
 
-    <!-- CTA: contractor starts a job, rep adds a contractor -->
-    <div class="px-4 mt-8">
-      <router-link
-        v-if="role === 'contractor'"
-        to="/jobs"
-        class="flex items-center justify-center w-full h-tap rounded-xl bg-interactive text-white font-bold text-base tracking-wide transition-opacity active:opacity-80"
-        style="font-family: var(--font-body);"
-      >
-        {{ t('home.cta_new_job') }}
-      </router-link>
-      <button
-        v-else
-        disabled
-        class="flex items-center justify-center w-full h-tap rounded-xl bg-amber/30 text-bg/50 font-bold text-base tracking-wide cursor-not-allowed"
-        style="font-family: var(--font-body);"
-        :title="t('common.coming_soon')"
-      >
-        + {{ t('home.cta_add_contractor') }}
-      </button>
-    </div>
   </main>
 </template>
 
