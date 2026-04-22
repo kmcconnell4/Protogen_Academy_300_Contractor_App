@@ -1,17 +1,29 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRoute } from 'vue-router'
 import videos from '@/data/videos.json'
 import VideoCard from '@/components/videos/VideoCard.vue'
 
 const { t } = useI18n()
+const route = useRoute()
 
 const CATEGORIES = [...new Set(videos.map((v) => v.category))]
 const activeCategory = ref('All')
+const searchQuery = ref('')
+
+onMounted(() => {
+  if (route.query.search) searchQuery.value = route.query.search
+})
 
 const filtered = computed(() => {
-  if (activeCategory.value === 'All') return videos
-  return videos.filter((v) => v.category === activeCategory.value)
+  let list = videos
+  if (activeCategory.value !== 'All') list = list.filter((v) => v.category === activeCategory.value)
+  if (searchQuery.value.trim()) {
+    const q = searchQuery.value.trim().toLowerCase()
+    list = list.filter((v) => v.title.toLowerCase().includes(q))
+  }
+  return list
 })
 </script>
 

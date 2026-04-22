@@ -15,6 +15,8 @@ const props = defineProps({
 })
 
 const isExpanded = ref(false)
+// Tracks rep's client-side "Mark as Reviewed" action
+const localStatus = ref(props.inspection.status)
 
 const resultConfig = {
   Pass: { cls: 'text-emerald', indicator: 'bg-emerald' },
@@ -61,7 +63,7 @@ const severityConfig = {
       </div>
 
       <div class="flex items-center gap-2 shrink-0">
-        <StatusBadge :status="inspection.status" />
+        <StatusBadge :status="localStatus" />
         <svg
           :class="['w-4 h-4 text-text-secondary transition-transform duration-200', isExpanded ? 'rotate-180' : '']"
           viewBox="0 0 24 24"
@@ -133,8 +135,11 @@ const severityConfig = {
       </div>
 
       <!-- Rep: mark reviewed -->
-      <div v-if="role === 'rep' && inspection.status !== 'Reviewed'">
-        <button class="w-full h-tap rounded-xl bg-interactive font-[700] text-white">
+      <div v-if="role === 'rep' && localStatus !== 'Reviewed'">
+        <button
+          class="w-full h-tap rounded-xl bg-interactive font-[700] text-white transition-opacity active:opacity-80"
+          @click="localStatus = 'Reviewed'"
+        >
           {{ t('inspections.mark_reviewed') }}
         </button>
       </div>

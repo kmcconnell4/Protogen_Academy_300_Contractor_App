@@ -1,6 +1,7 @@
 {
   "nav": {
     "home": "Aller à l'accueil",
+    "home_tab": "Accueil",
     "jobs": "Chantiers",
     "catalog": "Catalogue",
     "docs": "Documents",
@@ -258,6 +259,7 @@
     "close": "Fermer",
     "back": "Retour",
     "view_all": "Voir Tout",
-    "sq_ft": "pi²"
+    "sq_ft": "pi²",
+    "coming_soon": "Bientôt disponible"
   }
 }

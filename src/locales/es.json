@@ -1,6 +1,7 @@
 {
   "nav": {
     "home": "Ir al inicio",
+    "home_tab": "Inicio",
     "jobs": "Trabajos",
     "catalog": "Catálogo",
     "docs": "Documentos",
@@ -258,6 +259,7 @@
     "close": "Cerrar",
     "back": "Atrás",
     "view_all": "Ver Todo",
-    "sq_ft": "pie²"
+    "sq_ft": "pie²",
+    "coming_soon": "Próximamente"
   }
 }

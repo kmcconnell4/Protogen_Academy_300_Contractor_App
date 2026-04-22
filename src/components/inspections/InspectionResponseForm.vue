@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useFormatDate } from '@/composables/useFormatDate'
 
@@ -10,12 +10,20 @@ const props = defineProps({
   inspectionId: { type: String, required: true },
 })
 
+const STORAGE_KEY = () => `carlisle_inspection_resp_${props.inspectionId}`
+
 const response = ref('')
 const submitted = ref(false)
 
+onMounted(() => {
+  if (localStorage.getItem(STORAGE_KEY())) {
+    submitted.value = true
+  }
+})
+
 function submit() {
   if (!response.value.trim()) return
-  // TODO: wire to data layer / API
+  localStorage.setItem(STORAGE_KEY(), new Date().toISOString().slice(0, 10))
   submitted.value = true
 }
 </script>

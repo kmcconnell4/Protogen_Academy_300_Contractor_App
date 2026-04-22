@@ -11,6 +11,14 @@ const route = useRoute()
 const router = useRouter()
 
 const job = computed(() => jobs.find((j) => j.id === route.params.id))
+
+function goBack() {
+  if (window.history.state?.back) {
+    router.back()
+  } else {
+    router.push({ name: 'jobs' })
+  }
+}
 </script>
 
 <template>
@@ -20,7 +28,7 @@ const job = computed(() => jobs.find((j) => j.id === route.params.id))
     <div class="px-4 pt-4">
       <button
         class="flex items-center gap-1.5 h-[52px] -ml-1 pl-1 text-text-secondary text-[11px] font-[700] uppercase tracking-[0.12em] transition-colors active:text-white"
-        @click="router.back()"
+        @click="goBack()"
       >
         <svg
           class="w-4 h-4 shrink-0"

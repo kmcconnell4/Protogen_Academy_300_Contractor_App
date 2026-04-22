@@ -1,6 +1,7 @@
 {
   "nav": {
     "home": "Go to home",
+    "home_tab": "Home",
     "jobs": "Jobs",
     "catalog": "Catalog",
     "docs": "Docs",
@@ -258,6 +259,7 @@
     "close": "Close",
     "back": "Back",
     "view_all": "View All",
-    "sq_ft": "sq ft"
+    "sq_ft": "sq ft",
+    "coming_soon": "Coming soon"
   }
 }

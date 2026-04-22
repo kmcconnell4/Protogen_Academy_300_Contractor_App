@@ -32,7 +32,7 @@ const alerts = computed(() => {
         heading: i.status === 'Response Overdue' ? t('home.alert_response_overdue') : t('home.alert_response_required'),
         jobName: job?.name ?? '',
         contractorName: contractorName(job?.contractorId),
-        route: { name: 'job-detail', params: { id: i.jobId } },
+        route: { name: 'job-detail', params: { id: i.jobId }, query: { tab: 'inspections' } },
       })
     })
 
@@ -48,7 +48,7 @@ const alerts = computed(() => {
         heading: t('home.alert_quote_awaiting', { version: q.version }),
         jobName: job?.name ?? '',
         contractorName: contractorName(job?.contractorId),
-        route: { name: 'job-detail', params: { id: q.jobId } },
+        route: { name: 'job-detail', params: { id: q.jobId }, query: { tab: 'quotes' } },
       })
     })
 
@@ -64,7 +64,7 @@ const alerts = computed(() => {
         heading: t('home.alert_shipment_in_transit'),
         jobName: job?.name ?? '',
         contractorName: contractorName(job?.contractorId),
-        route: { name: 'job-detail', params: { id: o.jobId } },
+        route: { name: 'job-detail', params: { id: o.jobId }, query: { tab: 'orders' } },
       })
     })
 

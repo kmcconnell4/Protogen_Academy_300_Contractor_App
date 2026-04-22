@@ -12,12 +12,11 @@ const props = defineProps({
 
 const productDocs = documents.filter((d) => props.product.documentIds.includes(d.id))
 
-// Solid-fill only; PDS = blue, SDS = amber, Spec = surface-alt
-// No outlined badges per design system
+// Solid-fill only; canonical colors match DocTypeBadge
 const docTypeConfig = {
-  PDS:  { cls: 'bg-interactive/20 text-highlight',       label: 'PDS' },
-  SDS:  { cls: 'bg-amber/20 text-amber',                 label: 'SDS' },
-  Spec: { cls: 'bg-surface-alt text-text-secondary',     label: 'Spec' },
+  PDS:  { cls: 'bg-interactive text-white',             label: 'PDS' },
+  SDS:  { cls: 'bg-amber text-bg',                      label: 'SDS' },
+  Spec: { cls: 'bg-surface-alt text-text-secondary',    label: 'Spec' },
 }
 
 function formatPrice(price, unit) {

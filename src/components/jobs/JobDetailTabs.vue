@@ -1,6 +1,7 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRoute } from 'vue-router'
 import quotes from '@/data/quotes.json'
 import orders from '@/data/orders.json'
 import inspections from '@/data/inspections.json'
@@ -12,6 +13,7 @@ import InspectionCard from '@/components/inspections/InspectionCard.vue'
 
 const { t } = useI18n()
 const { formatDate } = useFormatDate()
+const route = useRoute()
 
 const props = defineProps({
   job: { type: Object, required: true },
@@ -31,6 +33,12 @@ const tabs = computed(() => [
   { key: 'orders',       label: t('jobs.tabs.orders'),       count: jobOrders.value.length },
   { key: 'inspections',  label: t('jobs.tabs.inspections'),  count: jobInspections.value.length },
 ])
+
+onMounted(() => {
+  const tabParam = route.query.tab
+  const valid = ['overview', 'quotes', 'orders', 'inspections']
+  if (tabParam && valid.includes(tabParam)) activeTab.value = tabParam
+})
 </script>
 
 <template>

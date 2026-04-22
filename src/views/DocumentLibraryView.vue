@@ -1,16 +1,22 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRoute } from 'vue-router'
 import documents from '@/data/documents.json'
 import products from '@/data/products.json'
 import DocumentCard from '@/components/documents/DocumentCard.vue'
 
 const { t } = useI18n()
+const route = useRoute()
 
 const DOC_TYPES = ['PDS', 'SDS', 'Spec']
 const searchQuery = ref('')
 const activeType = ref('All')
 const activeProduct = ref('All')
+
+onMounted(() => {
+  if (route.query.search) searchQuery.value = route.query.search
+})
 
 const filtered = computed(() => {
   let list = documents

@@ -1,14 +1,24 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRoute } from 'vue-router'
 import products from '@/data/products.json'
 import ProductCard from '@/components/products/ProductCard.vue'
 
 const { t } = useI18n()
+const route = useRoute()
 
 const CATEGORIES = [...new Set(products.map((p) => p.category))]
 const searchQuery = ref('')
 const activeCategory = ref('All')
+
+onMounted(() => {
+  const productId = route.query.product
+  if (productId) {
+    const match = products.find((p) => p.id === productId)
+    if (match) searchQuery.value = match.name
+  }
+})
 
 const filtered = computed(() => {
   let list = products

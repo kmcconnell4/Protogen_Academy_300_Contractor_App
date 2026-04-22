@@ -69,8 +69,8 @@ const ROUTE_MAP = {
   jobs:      (item) => ({ name: 'job-detail', params: { id: item.id } }),
   products:  (item) => ({ name: 'catalog', query: { product: item.id } }),
   quotes:    (item) => ({ name: 'job-detail', params: { id: item.jobId } }),
-  documents: ()     => ({ name: 'documents' }),
-  videos:    ()     => ({ name: 'videos' }),
+  documents: (item) => ({ name: 'documents', query: { search: item.name } }),
+  videos:    (item) => ({ name: 'videos', query: { search: item.title } }),
 }
 
 function navigate(type, item) {

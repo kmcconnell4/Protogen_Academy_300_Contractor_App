@@ -1,9 +1,10 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRole } from '@/composables/useRole'
 import { useFormatDate } from '@/composables/useFormatDate'
 import QuoteLineItems from './QuoteLineItems.vue'
+import StatusBadge from '@/components/shared/StatusBadge.vue'
 
 const { t } = useI18n()
 const { role } = useRole()
@@ -19,15 +20,23 @@ const sortedQuotes = computed(() => [...props.quotes].sort((a, b) => b.version -
 // Default-open the latest quote
 const expandedId = ref(sortedQuotes.value[0]?.id ?? null)
 
-const statusConfig = {
-  Draft:     { cls: 'bg-surface-alt text-text-secondary' },
-  Submitted: { cls: 'bg-amber/90 text-nav' },
-  Approved:  { cls: 'bg-emerald text-nav' },
-  Rejected:  { cls: 'bg-error text-white' },
+// Client-side status overrides for rep approve/reject actions
+const statusOverrides = reactive({})
+
+function effectiveStatus(quote) {
+  return statusOverrides[quote.id] ?? quote.status
 }
 
 function toggle(id) {
   expandedId.value = expandedId.value === id ? null : id
+}
+
+function approveQuote(quote) {
+  statusOverrides[quote.id] = 'Approved'
+}
+
+function rejectQuote(quote) {
+  statusOverrides[quote.id] = 'Rejected'
 }
 </script>
 
@@ -69,14 +78,7 @@ function toggle(id) {
         </div>
 
         <div class="flex items-center gap-2 shrink-0">
-          <span
-            :class="[
-              'inline-flex items-center px-2.5 py-[5px] rounded text-[11px] font-[700] uppercase tracking-widest leading-none',
-              statusConfig[quote.status]?.cls ?? 'bg-surface-alt text-text-secondary',
-            ]"
-          >
-            {{ t(`quotes.status_${quote.status.toLowerCase()}`) }}
-          </span>
+          <StatusBadge :status="effectiveStatus(quote)" />
           <!-- Chevron -->
           <svg
             :class="['w-4 h-4 text-text-secondary transition-transform duration-200', expandedId === quote.id ? 'rotate-180' : '']"
@@ -121,13 +123,19 @@ function toggle(id) {
 
         <!-- Rep: Approve / Reject actions -->
         <div
-          v-if="role === 'rep' && quote.status === 'Submitted'"
+          v-if="role === 'rep' && effectiveStatus(quote) === 'Submitted'"
           class="flex gap-2 p-4 pt-0"
         >
-          <button class="flex-1 h-tap rounded-lg bg-emerald font-[700] text-nav">
+          <button
+            class="flex-1 h-tap rounded-lg bg-emerald font-[700] text-nav transition-opacity active:opacity-80"
+            @click="approveQuote(quote)"
+          >
             {{ t('quotes.approve') }}
           </button>
-          <button class="flex-1 h-tap rounded-lg bg-error font-[700] text-white">
+          <button
+            class="flex-1 h-tap rounded-lg bg-error font-[700] text-white transition-opacity active:opacity-80"
+            @click="rejectQuote(quote)"
+          >
             {{ t('quotes.reject') }}
           </button>
         </div>

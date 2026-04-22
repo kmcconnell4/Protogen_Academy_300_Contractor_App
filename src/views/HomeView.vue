@@ -59,8 +59,10 @@ const { role } = useRole()
       </router-link>
       <button
         v-else
-        class="flex items-center justify-center w-full h-tap rounded-xl bg-amber text-bg font-bold text-base tracking-wide transition-opacity active:opacity-80"
+        disabled
+        class="flex items-center justify-center w-full h-tap rounded-xl bg-amber/30 text-bg/50 font-bold text-base tracking-wide cursor-not-allowed"
         style="font-family: var(--font-body);"
+        :title="t('common.coming_soon')"
       >
         + {{ t('home.cta_add_contractor') }}
       </button>

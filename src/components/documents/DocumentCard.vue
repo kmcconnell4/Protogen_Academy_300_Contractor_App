@@ -2,6 +2,7 @@
 import { useI18n } from 'vue-i18n'
 import { useRecentlyViewed } from '@/composables/useRecentlyViewed'
 import products from '@/data/products.json'
+import DocTypeBadge from '@/components/shared/DocTypeBadge.vue'
 
 const { t } = useI18n()
 const { addItem } = useRecentlyViewed()
@@ -11,12 +12,6 @@ const props = defineProps({
 })
 
 const product = products.find((p) => p.id === props.doc.productId) ?? null
-
-const docTypeBadge = {
-  PDS:  'bg-interactive text-white',
-  SDS:  'bg-amber text-bg',
-  Spec: 'bg-surface-alt text-text-secondary border border-border',
-}
 
 function handleDownload() {
   addItem({
@@ -33,9 +28,7 @@ function handleDownload() {
   <div class="bg-surface border border-border rounded-xl p-4 flex flex-col gap-2">
     <div class="flex items-start justify-between gap-2">
       <p class="text-white font-bold text-sm leading-snug">{{ doc.name }}</p>
-      <span :class="['shrink-0 px-2 py-1 rounded text-xs font-bold uppercase tracking-wide', docTypeBadge[doc.type]]">
-        {{ doc.type }}
-      </span>
+      <DocTypeBadge :type="doc.type" class="shrink-0" />
     </div>
     <div class="flex flex-col gap-0.5 text-xs text-text-secondary">
       <span v-if="product">{{ t('documents.associated_product') }}: {{ product.name }}</span>

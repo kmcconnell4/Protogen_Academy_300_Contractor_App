@@ -6,6 +6,7 @@ const { t } = useI18n()
 const route = useRoute()
 
 const navTabs = [
+  { label: 'nav.home_tab', route: 'home' },
   { label: 'nav.jobs',    route: 'jobs' },
   { label: 'nav.catalog', route: 'catalog' },
   { label: 'nav.docs',    route: 'documents' },
@@ -13,7 +14,7 @@ const navTabs = [
 ]
 
 function isActive(routeName) {
-  return route.name === routeName || (routeName === 'jobs' && route.name === 'home')
+  return route.name === routeName || (routeName === 'jobs' && route.name === 'job-detail')
 }
 </script>
 
@@ -28,8 +29,13 @@ function isActive(routeName) {
         isActive(tab.route) ? 'text-highlight' : 'text-text-secondary',
       ]"
     >
+      <!-- Home -->
+      <svg v-if="tab.route === 'home'" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+        <polyline points="9 22 9 12 15 12 15 22" />
+      </svg>
       <!-- Jobs -->
-      <svg v-if="tab.route === 'jobs'" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <svg v-else-if="tab.route === 'jobs'" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
         <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" />
       </svg>
