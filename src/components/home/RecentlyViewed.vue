@@ -1,7 +1,9 @@
 <script setup>
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { useRecentlyViewed } from '@/composables/useRecentlyViewed'
 
+const { t } = useI18n()
 const router = useRouter()
 const { recentlyViewed } = useRecentlyViewed()
 
@@ -35,7 +37,7 @@ function navigate(item) {
   <!-- Empty state: teaches the interface, not just "nothing here" -->
   <div v-else class="px-4">
     <p class="text-text-secondary text-sm">
-      Products and documents you open will appear here for quick return.
+      {{ t('home.recently_viewed_empty') }}
     </p>
   </div>
 </template>

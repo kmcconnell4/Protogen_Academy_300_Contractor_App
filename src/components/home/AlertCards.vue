@@ -22,7 +22,7 @@ const alerts = computed(() => {
         id: i.id,
         type: 'Inspection',
         urgency: i.status === 'Response Overdue' ? 'error' : 'amber',
-        heading: i.status === 'Response Overdue' ? 'Response overdue' : 'Response required',
+        heading: i.status === 'Response Overdue' ? t('home.alert_response_overdue') : t('home.alert_response_required'),
         jobName: job?.name ?? '',
         route: { name: 'job-detail', params: { id: i.jobId } },
       })
@@ -37,7 +37,7 @@ const alerts = computed(() => {
         id: q.id,
         type: 'Quote',
         urgency: 'amber',
-        heading: `v${q.version} awaiting approval`,
+        heading: t('home.alert_quote_awaiting', { version: q.version }),
         jobName: job?.name ?? '',
         route: { name: 'job-detail', params: { id: q.jobId } },
       })
@@ -52,7 +52,7 @@ const alerts = computed(() => {
         id: o.id,
         type: 'Order',
         urgency: 'emerald',
-        heading: 'Shipment in transit',
+        heading: t('home.alert_shipment_in_transit'),
         jobName: job?.name ?? '',
         route: { name: 'job-detail', params: { id: o.jobId } },
       })
@@ -74,10 +74,10 @@ const config = {
     <!-- Section header: urgency label left, count right -->
     <div class="flex items-center justify-between px-4 mb-3">
       <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-amber">
-        Action Required
+        {{ t('home.section_action_required') }}
       </p>
       <span class="text-[11px] font-bold text-text-secondary tabular-nums">
-        {{ alerts.length }} {{ alerts.length === 1 ? 'item' : 'items' }}
+        {{ t('home.alert_count', { count: alerts.length }, alerts.length) }}
       </span>
     </div>
 

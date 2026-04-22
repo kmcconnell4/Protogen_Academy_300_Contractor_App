@@ -107,7 +107,7 @@ const job = computed(() => jobs.find((j) => j.id === route.params.id))
     </div>
 
     <div v-else class="px-4 py-12 text-center">
-      <p class="text-error font-[700]">Job not found.</p>
+      <p class="text-error font-[700]">{{ t('jobs.not_found') }}</p>
     </div>
 
   </main>

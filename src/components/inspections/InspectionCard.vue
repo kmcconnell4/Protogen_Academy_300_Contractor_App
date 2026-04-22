@@ -120,7 +120,7 @@ function formatDate(iso) {
               </span>
               <span class="text-text-secondary text-[12px] font-[700] uppercase tracking-[0.08em]">{{ finding.category }}</span>
               <!-- Resolved checkmark -->
-              <span v-if="finding.resolved" class="ml-auto text-emerald text-[12px] font-[700]">✓ Resolved</span>
+              <span v-if="finding.resolved" class="ml-auto text-emerald text-[12px] font-[700]">{{ t('inspections.finding_resolved') }}</span>
             </div>
             <p class="text-white text-[14px] leading-snug">{{ finding.description }}</p>
           </div>

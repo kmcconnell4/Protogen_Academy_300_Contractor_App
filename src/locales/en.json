@@ -21,10 +21,24 @@
     "quick_videos": "Videos",
     "no_alerts": "No action items right now.",
     "products_count": "{count} products",
-    "orders_count": "{count} orders"
+    "orders_count": "{count} orders",
+    "greeting_label_morning": "Good morning,",
+    "greeting_label_afternoon": "Good afternoon,",
+    "greeting_label_evening": "Good evening,",
+    "alert_response_overdue": "Response overdue",
+    "alert_response_required": "Response required",
+    "alert_quote_awaiting": "v{version} awaiting approval",
+    "alert_shipment_in_transit": "Shipment in transit",
+    "alert_count": "{count} item | {count} items",
+    "no_active_jobs": "No active jobs",
+    "no_active_jobs_hint": "Jobs you're working on will appear here.",
+    "recently_viewed_empty": "Products and documents you open will appear here for quick return."
   },
   "jobs": {
     "title": "Jobs",
+    "sort_label": "Sort",
+    "count": "{count} job | {count} jobs",
+    "not_found": "Job not found.",
     "filter_all": "All",
     "filter_bid": "Bid",
     "filter_in_progress": "In Progress",
@@ -109,6 +123,7 @@
     "response_submitted": "Response submitted {date}",
     "reviewed_on": "Reviewed {date}",
     "mark_reviewed": "Mark as Reviewed",
+    "finding_resolved": "✓ Resolved",
     "no_findings": "No findings recorded.",
     "no_inspections": "No inspections for this job."
   },
@@ -121,6 +136,7 @@
     "unit_price": "Unit Price",
     "per": "per",
     "documents": "Documents",
+    "count": "{count} product | {count} products",
     "no_products": "No products found.",
     "doc_types": {
       "PDS": "PDS",
@@ -158,6 +174,8 @@
   },
   "search": {
     "placeholder": "Search jobs, products, docs…",
+    "jump_to": "Jump to",
+    "no_results_heading": "No results",
     "results_jobs": "Jobs",
     "results_products": "Products",
     "results_quotes": "Quotes",

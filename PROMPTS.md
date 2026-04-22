@@ -14,7 +14,7 @@ Work through these prompts in order for best results:
 
 6. *"Add a universal search overlay component triggered from the top nav. It should search across jobs, products, quotes, documents, and videos from their JSON files and group results by category. On mobile, render as a full-screen overlay."* ✅
 
-7. *"Implement vue-i18n with locale files for English, Spanish, French, and Portuguese. Replace all hardcoded UI strings in every component with translation keys. Add a language selector dropdown to ProfileView.vue. Persist the choice in localStorage."*
+7. *"Implement vue-i18n with locale files for English, Spanish, French, and Portuguese. Replace all hardcoded UI strings in every component with translation keys. Add a language selector dropdown to ProfileView.vue. Persist the choice in localStorage."* ✅
 
 8. *"Implement the RoleSwitcher using Vue's provide/inject. When toggled to Sales Rep, the HomeView should show alerts across all contractors, replace the recent job card with recently viewed contractors, and change the CTA to 'Add Contractor'."*
 

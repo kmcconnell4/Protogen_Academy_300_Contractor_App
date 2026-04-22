@@ -21,10 +21,24 @@
     "quick_videos": "Videos",
     "no_alerts": "Sin elementos pendientes.",
     "products_count": "{count} productos",
-    "orders_count": "{count} órdenes"
+    "orders_count": "{count} órdenes",
+    "greeting_label_morning": "Buenos días,",
+    "greeting_label_afternoon": "Buenas tardes,",
+    "greeting_label_evening": "Buenas noches,",
+    "alert_response_overdue": "Respuesta vencida",
+    "alert_response_required": "Respuesta requerida",
+    "alert_quote_awaiting": "v{version} esperando aprobación",
+    "alert_shipment_in_transit": "Envío en tránsito",
+    "alert_count": "{count} elemento | {count} elementos",
+    "no_active_jobs": "Sin trabajos activos",
+    "no_active_jobs_hint": "Los trabajos en progreso aparecerán aquí.",
+    "recently_viewed_empty": "Los productos y documentos que abras aparecerán aquí."
   },
   "jobs": {
     "title": "Trabajos",
+    "sort_label": "Ordenar",
+    "count": "{count} trabajo | {count} trabajos",
+    "not_found": "Trabajo no encontrado.",
     "filter_all": "Todos",
     "filter_bid": "Oferta",
     "filter_in_progress": "En Progreso",
@@ -109,6 +123,7 @@
     "response_submitted": "Respuesta enviada {date}",
     "reviewed_on": "Revisado {date}",
     "mark_reviewed": "Marcar como Revisado",
+    "finding_resolved": "✓ Resuelto",
     "no_findings": "No se registraron hallazgos.",
     "no_inspections": "No hay inspecciones para este trabajo."
   },
@@ -121,6 +136,7 @@
     "unit_price": "Precio Unitario",
     "per": "por",
     "documents": "Documentos",
+    "count": "{count} producto | {count} productos",
     "no_products": "No se encontraron productos.",
     "doc_types": {
       "PDS": "FTD",
@@ -158,6 +174,8 @@
   },
   "search": {
     "placeholder": "Buscar trabajos, productos, documentos…",
+    "jump_to": "Ir a",
+    "no_results_heading": "Sin resultados",
     "results_jobs": "Trabajos",
     "results_products": "Productos",
     "results_quotes": "Cotizaciones",

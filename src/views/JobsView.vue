@@ -45,7 +45,7 @@ const allFilters = computed(() => {
     <!-- Page header -->
     <div class="px-4 pt-6 pb-5 border-b border-border">
       <p class="text-[11px] font-[700] uppercase tracking-[0.12em] text-text-secondary mb-1 leading-none">
-        {{ filtered.length }}&nbsp;{{ filtered.length === 1 ? 'job' : 'jobs' }}
+        {{ t('jobs.count', { count: filtered.length }, filtered.length) }}
       </p>
       <h1
         class="text-[2.25rem] font-[800] text-white leading-none"
@@ -84,7 +84,7 @@ const allFilters = computed(() => {
       <!-- Sort toggle -->
       <div class="flex items-center gap-1">
         <span class="text-[11px] font-[600] uppercase tracking-widest text-text-secondary mr-0.5">
-          Sort:
+          {{ t('jobs.sort_label') }}:
         </span>
         <button
           :class="[

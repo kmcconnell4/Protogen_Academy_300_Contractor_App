@@ -6,9 +6,9 @@ const { t } = useI18n()
 
 const hour = new Date().getHours()
 const greetingLabel = computed(() => {
-  if (hour < 12) return 'Good morning'
-  if (hour < 17) return 'Good afternoon'
-  return 'Good evening'
+  if (hour < 12) return t('home.greeting_label_morning')
+  if (hour < 17) return t('home.greeting_label_afternoon')
+  return t('home.greeting_label_evening')
 })
 
 // Mock: weather tied to most recent active job location

@@ -181,7 +181,7 @@ const QUICK_JUMPS = [
           <!-- No query — quick jump shortcuts -->
           <div v-if="!query" class="px-4 pt-5 pb-6">
             <p class="text-[11px] font-[700] uppercase tracking-[0.12em] text-text-secondary mb-3">
-              Jump to
+              {{ t('search.jump_to') }}
             </p>
             <div class="grid grid-cols-2 gap-2">
               <button
@@ -300,7 +300,7 @@ const QUICK_JUMPS = [
                 <path d="M21 21l-4.35-4.35" />
               </svg>
             </div>
-            <p class="text-white font-[700] text-[16px]">No results</p>
+            <p class="text-white font-[700] text-[16px]">{{ t('search.no_results_heading') }}</p>
             <p class="text-text-secondary text-[14px]">
               {{ t('search.no_results', { query }) }}
             </p>

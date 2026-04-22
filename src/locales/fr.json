@@ -21,10 +21,24 @@
     "quick_videos": "Vidéos",
     "no_alerts": "Aucun élément en attente.",
     "products_count": "{count} produits",
-    "orders_count": "{count} commandes"
+    "orders_count": "{count} commandes",
+    "greeting_label_morning": "Bonjour,",
+    "greeting_label_afternoon": "Bon après-midi,",
+    "greeting_label_evening": "Bonsoir,",
+    "alert_response_overdue": "Réponse en retard",
+    "alert_response_required": "Réponse requise",
+    "alert_quote_awaiting": "v{version} en attente d'approbation",
+    "alert_shipment_in_transit": "Envoi en transit",
+    "alert_count": "{count} élément | {count} éléments",
+    "no_active_jobs": "Aucun chantier actif",
+    "no_active_jobs_hint": "Les chantiers en cours apparaîtront ici.",
+    "recently_viewed_empty": "Les produits et documents ouverts apparaîtront ici."
   },
   "jobs": {
     "title": "Chantiers",
+    "sort_label": "Trier",
+    "count": "{count} chantier | {count} chantiers",
+    "not_found": "Chantier introuvable.",
     "filter_all": "Tous",
     "filter_bid": "Offre",
     "filter_in_progress": "En Cours",
@@ -109,6 +123,7 @@
     "response_submitted": "Réponse soumise le {date}",
     "reviewed_on": "Examiné le {date}",
     "mark_reviewed": "Marquer comme Examiné",
+    "finding_resolved": "✓ Résolu",
     "no_findings": "Aucune constatation enregistrée.",
     "no_inspections": "Aucune inspection pour ce chantier."
   },
@@ -121,6 +136,7 @@
     "unit_price": "Prix Unitaire",
     "per": "par",
     "documents": "Documents",
+    "count": "{count} produit | {count} produits",
     "no_products": "Aucun produit trouvé.",
     "doc_types": {
       "PDS": "FTP",
@@ -158,6 +174,8 @@
   },
   "search": {
     "placeholder": "Rechercher chantiers, produits, documents…",
+    "jump_to": "Aller à",
+    "no_results_heading": "Aucun résultat",
     "results_jobs": "Chantiers",
     "results_products": "Produits",
     "results_quotes": "Devis",

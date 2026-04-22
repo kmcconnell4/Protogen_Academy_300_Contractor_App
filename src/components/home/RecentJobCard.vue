@@ -44,15 +44,15 @@ const inspectionCount = computed(() => recentJob.value?.inspectionIds?.length ??
     <div class="border-t border-border grid grid-cols-3 divide-x divide-border">
       <div class="flex flex-col items-center justify-center py-3 gap-0.5">
         <p class="text-white font-bold text-xl tabular-nums leading-none">{{ quoteCount }}</p>
-        <p class="text-text-secondary text-[10px] font-bold uppercase tracking-wider">Quotes</p>
+        <p class="text-text-secondary text-[10px] font-bold uppercase tracking-wider">{{ t('jobs.tabs.quotes') }}</p>
       </div>
       <div class="flex flex-col items-center justify-center py-3 gap-0.5">
         <p class="text-white font-bold text-xl tabular-nums leading-none">{{ orderCount }}</p>
-        <p class="text-text-secondary text-[10px] font-bold uppercase tracking-wider">Orders</p>
+        <p class="text-text-secondary text-[10px] font-bold uppercase tracking-wider">{{ t('jobs.tabs.orders') }}</p>
       </div>
       <div class="flex flex-col items-center justify-center py-3 gap-0.5">
         <p class="text-white font-bold text-xl tabular-nums leading-none">{{ inspectionCount }}</p>
-        <p class="text-text-secondary text-[10px] font-bold uppercase tracking-wider">Inspections</p>
+        <p class="text-text-secondary text-[10px] font-bold uppercase tracking-wider">{{ t('jobs.tabs.inspections') }}</p>
       </div>
     </div>
 
@@ -69,8 +69,8 @@ const inspectionCount = computed(() => recentJob.value?.inspectionIds?.length ??
 
   <!-- Empty state: teaches the interface -->
   <div v-else class="bg-surface border border-border rounded-xl px-4 py-8 text-center">
-    <p class="text-white font-bold mb-1">No active jobs</p>
-    <p class="text-text-secondary text-sm">Jobs you're working on will appear here.</p>
+    <p class="text-white font-bold mb-1">{{ t('home.no_active_jobs') }}</p>
+    <p class="text-text-secondary text-sm">{{ t('home.no_active_jobs_hint') }}</p>
   </div>
 </template>
 

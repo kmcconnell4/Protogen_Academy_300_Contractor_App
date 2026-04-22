@@ -21,11 +21,23 @@
     "quick_videos": "Vídeos",
     "no_alerts": "Nenhum item pendente.",
     "products_count": "{count} produtos",
-    "orders_count": "{count} pedidos"
+    "orders_count": "{count} pedidos",
+    "greeting_label_morning": "Bom dia,",
+    "greeting_label_afternoon": "Boa tarde,",
+    "greeting_label_evening": "Boa noite,",
+    "alert_response_overdue": "Resposta em atraso",
+    "alert_response_required": "Resposta necessária",
+    "alert_quote_awaiting": "v{version} aguardando aprovação",
+    "alert_shipment_in_transit": "Envio em trânsito",
+    "alert_count": "{count} item | {count} itens",
+    "no_active_jobs": "Sem obras ativas",
+    "no_active_jobs_hint": "Os trabalhos em andamento aparecerão aqui.",
+    "recently_viewed_empty": "Os produtos e documentos que abrir aparecerão aqui."
   },
   "jobs": {
-    "title": "Obras",
-    "filter_all": "Todas",
+    "title": "Obras",    "sort_label": "Ordenar",
+    "count": "{count} obra | {count} obras",
+    "not_found": "Obra não encontrada.",    "filter_all": "Todas",
     "filter_bid": "Proposta",
     "filter_in_progress": "Em Andamento",
     "filter_inspection": "Inspeção",
@@ -109,6 +121,7 @@
     "response_submitted": "Resposta enviada em {date}",
     "reviewed_on": "Revisado em {date}",
     "mark_reviewed": "Marcar como Revisado",
+    "finding_resolved": "✓ Resolvido",
     "no_findings": "Nenhuma constatação registrada.",
     "no_inspections": "Nenhuma inspeção para esta obra."
   },
@@ -121,6 +134,7 @@
     "unit_price": "Preço Unitário",
     "per": "por",
     "documents": "Documentos",
+    "count": "{count} produto | {count} produtos",
     "no_products": "Nenhum produto encontrado.",
     "doc_types": {
       "PDS": "FTD",
@@ -158,6 +172,8 @@
   },
   "search": {
     "placeholder": "Buscar obras, produtos, documentos…",
+    "jump_to": "Ir para",
+    "no_results_heading": "Sem resultados",
     "results_jobs": "Obras",
     "results_products": "Produtos",
     "results_quotes": "Cotações",
