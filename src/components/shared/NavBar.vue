@@ -16,6 +16,7 @@ const searchOpen = ref(false)
     <button
       class="font-[800] text-[1.125rem] tracking-tight text-white leading-none"
       style="font-family: var(--font-heading);"
+      :aria-label="t('nav.home')"
       @click="router.push({ name: 'home' })"
     >
       Carlisle

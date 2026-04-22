@@ -15,6 +15,7 @@ const props = defineProps({
 const emit = defineEmits(['update:modelValue'])
 
 const inputRef = ref(null)
+const dialogRef = ref(null)
 
 // Autofocus when overlay opens; clear when it closes
 watch(
@@ -33,8 +34,34 @@ function close() {
   emit('update:modelValue', false)
 }
 
+const FOCUSABLE = 'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])'
+
 function handleKeydown(e) {
-  if (e.key === 'Escape') close()
+  if (e.key === 'Escape') {
+    close()
+    return
+  }
+  if (e.key !== 'Tab' || !dialogRef.value) return
+
+  const focusable = Array.from(dialogRef.value.querySelectorAll(FOCUSABLE)).filter(
+    (el) => !el.closest('[hidden]') && el.offsetParent !== null,
+  )
+  if (!focusable.length) return
+
+  const first = focusable[0]
+  const last  = focusable[focusable.length - 1]
+
+  if (e.shiftKey) {
+    if (document.activeElement === first) {
+      e.preventDefault()
+      last.focus()
+    }
+  } else {
+    if (document.activeElement === last) {
+      e.preventDefault()
+      first.focus()
+    }
+  }
 }
 
 // Navigation targets per category
@@ -122,6 +149,7 @@ const QUICK_JUMPS = [
     >
       <div
         v-if="modelValue"
+        ref="dialogRef"
         class="fixed inset-0 z-50 flex flex-col bg-bg"
         role="dialog"
         aria-modal="true"

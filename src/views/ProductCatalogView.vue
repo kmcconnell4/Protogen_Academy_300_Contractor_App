@@ -69,6 +69,7 @@ const categoryCounts = computed(() =>
           v-model="searchQuery"
           type="search"
           :placeholder="t('catalog.search_placeholder')"
+          :aria-label="t('catalog.search_placeholder')"
           class="w-full h-[52px] pl-10 pr-4 rounded-xl bg-surface border border-border text-white placeholder:text-text-secondary text-[15px] font-[500] focus:outline-none focus:border-highlight transition-colors"
         />
       </div>

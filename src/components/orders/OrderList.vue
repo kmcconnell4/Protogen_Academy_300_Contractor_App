@@ -1,9 +1,12 @@
 <script setup>
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useFormatDate } from '@/composables/useFormatDate'
+import StatusBadge from '@/components/shared/StatusBadge.vue'
 import OrderLineItems from './OrderLineItems.vue'
 
 const { t } = useI18n()
+const { formatDate } = useFormatDate()
 
 const props = defineProps({
   orders: { type: Array, required: true },
@@ -11,22 +14,8 @@ const props = defineProps({
 
 const expandedId = ref(null)
 
-const statusConfig = {
-  Processing: { cls: 'bg-amber/90 text-nav' },
-  Shipped:    { cls: 'bg-interactive text-white' },
-  Delivered:  { cls: 'bg-emerald text-nav' },
-  Cancelled:  { cls: 'bg-error text-white' },
-}
-
 function toggle(id) {
   expandedId.value = expandedId.value === id ? null : id
-}
-
-function formatDate(iso) {
-  if (!iso) return null
-  return new Intl.DateTimeFormat('en-US', {
-    month: 'short', day: 'numeric', year: 'numeric',
-  }).format(new Date(iso + 'T00:00:00'))
 }
 </script>
 
@@ -42,6 +31,7 @@ function formatDate(iso) {
       <!-- Header row -->
       <button
         class="w-full flex items-start justify-between gap-3 p-4 text-left active:bg-surface-alt transition-colors"
+        :aria-expanded="expandedId === order.id"
         @click="toggle(order.id)"
       >
         <div class="min-w-0">
@@ -57,14 +47,7 @@ function formatDate(iso) {
         </div>
 
         <div class="flex items-center gap-2 shrink-0">
-          <span
-            :class="[
-              'inline-flex items-center px-2.5 py-[5px] rounded text-[11px] font-[700] uppercase tracking-widest leading-none',
-              statusConfig[order.status]?.cls ?? 'bg-surface-alt text-text-secondary',
-            ]"
-          >
-            {{ t(`orders.status_${order.status.toLowerCase()}`) }}
-          </span>
+          <StatusBadge :status="order.status" />
           <svg
             :class="['w-4 h-4 text-text-secondary transition-transform duration-200', expandedId === order.id ? 'rotate-180' : '']"
             viewBox="0 0 24 24"

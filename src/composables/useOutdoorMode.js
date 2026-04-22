@@ -4,8 +4,8 @@ const STORAGE_KEY = 'carlisle_outdoor_mode'
 
 const isOutdoorMode = ref(localStorage.getItem(STORAGE_KEY) === 'true')
 
-// Apply initial state without waiting for a component to mount
-if (isOutdoorMode.value) {
+// Apply initial state safely — guard against SSR / non-browser environments
+if (typeof document !== 'undefined' && isOutdoorMode.value) {
   document.body.classList.add('outdoor-mode')
 }
 

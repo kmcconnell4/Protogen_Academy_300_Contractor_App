@@ -39,9 +39,14 @@ const weather = {
     <!-- Weather: right-aligned utility widget, secondary info -->
     <div class="flex flex-col items-end gap-0.5 shrink-0 pb-1">
       <p class="text-white font-bold text-xl leading-none">{{ weather.temp }}</p>
-      <p class="text-text-secondary text-[11px] font-medium leading-snug text-right">
-        {{ weather.icon }} {{ weather.city }}
-      </p>
+      <div class="flex items-center gap-1 text-text-secondary text-[11px] font-medium leading-snug">
+        <!-- Partly cloudy SVG icon -->
+        <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 2v1M4.22 4.22l.7.7M2 12h1M4.22 19.78l.7-.7M12 20v1M19.78 19.78l-.7-.7M22 12h-1M19.78 4.22l-.7.7" />
+          <path d="M9 18H7a4 4 0 010-8 5 5 0 019.9-1A3.5 3.5 0 0118 16H9" />
+        </svg>
+        {{ weather.city }}
+      </div>
     </div>
   </div>
 </template>

@@ -76,7 +76,9 @@ const filtered = computed(() => {
     </div>
 
     <!-- Product filter -->
+    <label for="product-filter" class="sr-only">{{ t('documents.filter_product') }}</label>
     <select
+      id="product-filter"
       v-model="activeProduct"
       class="w-full h-[52px] px-4 rounded-xl bg-surface border border-border text-white text-base focus:outline-none focus:border-highlight"
     >

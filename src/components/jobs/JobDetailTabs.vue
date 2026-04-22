@@ -5,11 +5,13 @@ import quotes from '@/data/quotes.json'
 import orders from '@/data/orders.json'
 import inspections from '@/data/inspections.json'
 import reps from '@/data/reps.json'
+import { useFormatDate } from '@/composables/useFormatDate'
 import QuoteVersionList from '@/components/quotes/QuoteVersionList.vue'
 import OrderList from '@/components/orders/OrderList.vue'
 import InspectionCard from '@/components/inspections/InspectionCard.vue'
 
 const { t } = useI18n()
+const { formatDate } = useFormatDate()
 
 const props = defineProps({
   job: { type: Object, required: true },
@@ -29,13 +31,6 @@ const tabs = computed(() => [
   { key: 'orders',       label: t('jobs.tabs.orders'),       count: jobOrders.value.length },
   { key: 'inspections',  label: t('jobs.tabs.inspections'),  count: jobInspections.value.length },
 ])
-
-function formatDate(iso) {
-  if (!iso) return '—'
-  return new Intl.DateTimeFormat('en-US', {
-    month: 'short', day: 'numeric', year: 'numeric',
-  }).format(new Date(iso + 'T00:00:00'))
-}
 </script>
 
 <template>

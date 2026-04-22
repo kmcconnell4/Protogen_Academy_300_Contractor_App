@@ -2,22 +2,19 @@
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRole } from '@/composables/useRole'
+import { useFormatDate } from '@/composables/useFormatDate'
+import StatusBadge from '@/components/shared/StatusBadge.vue'
 import InspectionResponseForm from './InspectionResponseForm.vue'
 
 const { t } = useI18n()
 const { role } = useRole()
+const { formatDate } = useFormatDate()
 
 const props = defineProps({
   inspection: { type: Object, required: true },
 })
 
 const isExpanded = ref(false)
-
-const statusConfig = {
-  'Pending Response': { cls: 'bg-amber/90 text-nav' },
-  'Response Overdue': { cls: 'bg-error text-white' },
-  'Reviewed':         { cls: 'bg-emerald text-nav' },
-}
 
 const resultConfig = {
   Pass: { cls: 'text-emerald', indicator: 'bg-emerald' },
@@ -29,13 +26,6 @@ const severityConfig = {
   Minor:  { cls: 'bg-amber/90 text-nav' },
   None:   { cls: 'bg-surface text-text-secondary' },
 }
-
-function formatDate(iso) {
-  if (!iso) return null
-  return new Intl.DateTimeFormat('en-US', {
-    month: 'short', day: 'numeric', year: 'numeric',
-  }).format(new Date(iso + 'T00:00:00'))
-}
 </script>
 
 <template>
@@ -44,6 +34,7 @@ function formatDate(iso) {
     <!-- Card header / tap target -->
     <button
       class="w-full flex items-start justify-between gap-3 p-4 text-left active:bg-surface-alt transition-colors"
+      :aria-expanded="isExpanded"
       @click="isExpanded = !isExpanded"
     >
       <div class="min-w-0">
@@ -70,14 +61,7 @@ function formatDate(iso) {
       </div>
 
       <div class="flex items-center gap-2 shrink-0">
-        <span
-          :class="[
-            'inline-flex items-center px-2.5 py-[5px] rounded text-[11px] font-[700] uppercase tracking-widest leading-none',
-            statusConfig[inspection.status]?.cls ?? 'bg-surface-alt text-text-secondary',
-          ]"
-        >
-          {{ inspection.status }}
-        </span>
+        <StatusBadge :status="inspection.status" />
         <svg
           :class="['w-4 h-4 text-text-secondary transition-transform duration-200', isExpanded ? 'rotate-180' : '']"
           viewBox="0 0 24 24"

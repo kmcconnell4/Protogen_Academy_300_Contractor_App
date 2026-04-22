@@ -55,7 +55,9 @@ const { role } = useRole()
     <!-- Language selector -->
     <section class="bg-surface border border-border rounded-xl p-4">
       <p class="text-xs font-bold uppercase tracking-widest text-text-secondary mb-3">{{ t('profile.language') }}</p>
+      <label for="language-select" class="sr-only">{{ t('profile.language') }}</label>
       <select
+        id="language-select"
         :value="currentLocale"
         class="w-full h-[52px] px-4 rounded-xl bg-surface-alt border border-border text-white text-base focus:outline-none focus:border-highlight"
         @change="setLocale($event.target.value)"

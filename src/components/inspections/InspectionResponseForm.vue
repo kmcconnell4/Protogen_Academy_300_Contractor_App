@@ -24,7 +24,9 @@ function submit() {
       {{ t('inspections.your_response') }}
     </p>
     <div v-if="!submitted">
+      <label for="inspection-response" class="sr-only">{{ t('inspections.your_response') }}</label>
       <textarea
+        id="inspection-response"
         v-model="response"
         :placeholder="t('inspections.response_placeholder')"
         rows="4"
@@ -38,6 +40,11 @@ function submit() {
         {{ t('inspections.submit_response') }}
       </button>
     </div>
-    <p v-else class="text-emerald font-bold text-sm">✓ {{ t('inspections.response_submitted', { date: new Date().toISOString().slice(0, 10) }) }}</p>
+    <div v-else class="flex items-center gap-2 text-emerald font-bold text-sm">
+      <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 6L9 17l-5-5" />
+      </svg>
+      {{ t('inspections.response_submitted', { date: new Date().toISOString().slice(0, 10) }) }}
+    </div>
   </div>
 </template>

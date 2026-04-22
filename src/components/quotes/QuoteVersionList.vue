@@ -2,10 +2,12 @@
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRole } from '@/composables/useRole'
+import { useFormatDate } from '@/composables/useFormatDate'
 import QuoteLineItems from './QuoteLineItems.vue'
 
 const { t } = useI18n()
 const { role } = useRole()
+const { formatDate } = useFormatDate()
 
 const props = defineProps({
   quotes: { type: Array, required: true },
@@ -27,13 +29,6 @@ const statusConfig = {
 function toggle(id) {
   expandedId.value = expandedId.value === id ? null : id
 }
-
-function formatDate(iso) {
-  if (!iso) return null
-  return new Intl.DateTimeFormat('en-US', {
-    month: 'short', day: 'numeric', year: 'numeric',
-  }).format(new Date(iso + 'T00:00:00'))
-}
 </script>
 
 <template>
@@ -48,6 +43,7 @@ function formatDate(iso) {
       <!-- Accordion header -->
       <button
         class="w-full flex items-start justify-between gap-3 p-4 text-left active:bg-surface-alt transition-colors"
+        :aria-expanded="expandedId === quote.id"
         @click="toggle(quote.id)"
       >
         <div class="min-w-0">

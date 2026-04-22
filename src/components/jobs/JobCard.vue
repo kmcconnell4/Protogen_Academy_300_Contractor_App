@@ -1,22 +1,16 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import { useFormatDate } from '@/composables/useFormatDate'
 import StatusBadge from '@/components/shared/StatusBadge.vue'
 
 const { t } = useI18n()
 const router = useRouter()
+const { formatDate } = useFormatDate()
 
 const props = defineProps({
   job: { type: Object, required: true },
 })
-
-function formatDate(iso) {
-  return new Intl.DateTimeFormat('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  }).format(new Date(iso + 'T00:00:00'))
-}
 </script>
 
 <template>

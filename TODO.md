@@ -52,29 +52,29 @@ Issues identified in a full codebase scan on 2026-04-22. Organized by severity.
 
 ### Accessibility
 
-- [ ] **`SearchOverlay.vue` — No focus trap.** When the overlay is open, pressing Tab cycles through all interactive elements behind it (bottom nav, job cards, etc.) instead of being contained within the dialog. Implement a focus trap (e.g. `focus-trap` library or manual `keydown` handling). `src/components/search/SearchOverlay.vue`
+- [x] **`SearchOverlay.vue` — No focus trap.** When the overlay is open, pressing Tab cycles through all interactive elements behind it (bottom nav, job cards, etc.) instead of being contained within the dialog. Implement a focus trap (e.g. `focus-trap` library or manual `keydown` handling). `src/components/search/SearchOverlay.vue`
 
-- [ ] **`InspectionCard.vue`, `OrderList.vue`, `QuoteVersionList.vue` — Expand/collapse buttons missing `aria-expanded`.** Screen readers cannot announce the toggle state. Add `:aria-expanded="isExpanded"` (or `expandedId === item.id`) to each trigger button.
+- [x] **`InspectionCard.vue`, `OrderList.vue`, `QuoteVersionList.vue` — Expand/collapse buttons missing `aria-expanded`.** Screen readers cannot announce the toggle state. Add `:aria-expanded="isExpanded"` (or `expandedId === item.id`) to each trigger button.
 
-- [ ] **`DocumentLibraryView.vue` — Product filter `<select>` has no `<label>`.** Add a visually hidden `<label for="product-filter">` or use `aria-label`. `src/views/DocumentLibraryView.vue`
+- [x] **`DocumentLibraryView.vue` — Product filter `<select>` has no `<label>`.** Add a visually hidden `<label for="product-filter">` or use `aria-label`. `src/views/DocumentLibraryView.vue`
 
-- [ ] **`ProductCatalogView.vue` — Search input missing `aria-label`.** The field is only identified by its placeholder. Add `aria-label` or a visually hidden `<label>`. `src/views/ProductCatalogView.vue`
+- [x] **`ProductCatalogView.vue` — Search input missing `aria-label`.** The field is only identified by its placeholder. Add `aria-label` or a visually hidden `<label>`. `src/views/ProductCatalogView.vue`
 
-- [ ] **`ProfileView.vue` — Language `<select>` missing `aria-label`.** Add `aria-label` or associate a `<label>`. `src/views/ProfileView.vue`
+- [x] **`ProfileView.vue` — Language `<select>` missing `aria-label`.** Add `aria-label` or associate a `<label>`. `src/views/ProfileView.vue`
 
-- [ ] **`NavBar.vue` — Home/brand button missing `aria-label`.** The button text "Carlisle" doesn't communicate its action (navigate home). Add `aria-label="Go to home"` or equivalent i18n key. `src/components/shared/NavBar.vue`
+- [x] **`NavBar.vue` — Home/brand button missing `aria-label`.** The button text "Carlisle" doesn't communicate its action (navigate home). Add `aria-label="Go to home"` or equivalent i18n key. `src/components/shared/NavBar.vue`
 
-- [ ] **`InspectionResponseForm.vue` — `<textarea>` missing `id` and associated `<label>`.** The response textarea is only identified by its placeholder. Add a visually hidden label. `src/components/inspections/InspectionResponseForm.vue`
+- [x] **`InspectionResponseForm.vue` — `<textarea>` missing `id` and associated `<label>`.** The response textarea is only identified by its placeholder. Add a visually hidden label. `src/components/inspections/InspectionResponseForm.vue`
 
 ### Code Quality / DRY
 
-- [ ] **`formatDate` is duplicated in 6+ files.** Identical function appears in `JobCard.vue`, `JobDetailView.vue` (inline), `JobDetailTabs.vue`, `OrderList.vue`, `QuoteVersionList.vue`, and `InspectionCard.vue`. Extract to a shared composable `src/composables/useFormatDate.js`.
+- [x] **`formatDate` is duplicated in 6+ files.** Identical function appears in `JobCard.vue`, `JobDetailView.vue` (inline), `JobDetailTabs.vue`, `OrderList.vue`, `QuoteVersionList.vue`, and `InspectionCard.vue`. Extract to a shared composable `src/composables/useFormatDate.js`.
 
-- [ ] **Status badge styles are manually duplicated in `InspectionCard.vue` and `OrderList.vue`** instead of using the shared `<StatusBadge>` component. Both define their own `statusConfig` objects. Use `<StatusBadge :status="..." />` to stay in sync with the central color map.
+- [x] **Status badge styles are manually duplicated in `InspectionCard.vue` and `OrderList.vue`** instead of using the shared `<StatusBadge>` component. Both define their own `statusConfig` objects. Use `<StatusBadge :status="..." />` to stay in sync with the central color map.
 
-- [ ] **`formatDate` calls hardcode `'en-US'` locale.** For Spanish/French/Portuguese users, dates (e.g. "Apr 5, 2025") should respect the active i18n locale. Pass `useI18n().locale.value` to `Intl.DateTimeFormat`.
+- [x] **`formatDate` calls hardcode `'en-US'` locale.** For Spanish/French/Portuguese users, dates (e.g. "Apr 5, 2025") should respect the active i18n locale. Pass `useI18n().locale.value` to `Intl.DateTimeFormat`.
 
-- [ ] **`useOutdoorMode.js` — Module-level DOM side effect.** The line `document.body.classList.add('outdoor-mode')` runs at import time outside any composable function. Wrap it in a guard: `if (typeof document !== 'undefined')` or move initial sync into the exported function. `src/composables/useOutdoorMode.js`
+- [x] **`useOutdoorMode.js` — Module-level DOM side effect.** The line `document.body.classList.add('outdoor-mode')` runs at import time outside any composable function. Wrap it in a guard: `if (typeof document !== 'undefined')` or move initial sync into the exported function. `src/composables/useOutdoorMode.js`
 
 ### Localization Gaps
 
@@ -82,13 +82,13 @@ Issues identified in a full codebase scan on 2026-04-22. Organized by severity.
 
 ### Design System — Visual Consistency
 
-- [ ] **`StatusBadge.vue` — `'Bid'` and `'Inspection'` share the same amber color.** On the Jobs list, these two distinct statuses are visually indistinguishable. Give `'Inspection'` a different color (e.g. the highlight blue `bg-highlight/90 text-nav`) to differentiate. `src/components/shared/StatusBadge.vue`
+- [x] **`StatusBadge.vue` — `'Bid'` and `'Inspection'` share the same amber color.** On the Jobs list, these two distinct statuses are visually indistinguishable. Give `'Inspection'` a different color (e.g. the highlight blue `bg-highlight/90 text-nav`) to differentiate. `src/components/shared/StatusBadge.vue`
 
-- [ ] **`RecentlyViewed.vue` — Unicode symbols `⬡` and `⬗` are used as type icons.** These render inconsistently across OS/fonts. Replace with small SVG icons matching the icon language used in the rest of the app. `src/components/home/RecentlyViewed.vue`
+- [x] **`RecentlyViewed.vue` — Unicode symbols `⬡` and `⬗` are used as type icons.** These render inconsistently across OS/fonts. Replace with small SVG icons matching the icon language used in the rest of the app. `src/components/home/RecentlyViewed.vue`
 
-- [ ] **`GreetingWeather.vue` — Weather condition icon is an emoji (`⛅`).** The rest of the app uses SVG icons exclusively. Use an SVG weather icon or a simple icon-mapping approach. `src/components/home/GreetingWeather.vue`
+- [x] **`GreetingWeather.vue` — Weather condition icon is an emoji (`⛅`).** The rest of the app uses SVG icons exclusively. Use an SVG weather icon or a simple icon-mapping approach. `src/components/home/GreetingWeather.vue`
 
-- [ ] **`InspectionResponseForm.vue` — Success state uses `✓` emoji.** Replace with an SVG checkmark consistent with the icon language used elsewhere. `src/components/inspections/InspectionResponseForm.vue`
+- [x] **`InspectionResponseForm.vue` — Success state uses `✓` emoji.** Replace with an SVG checkmark consistent with the icon language used elsewhere. `src/components/inspections/InspectionResponseForm.vue`
 
 ---
 
