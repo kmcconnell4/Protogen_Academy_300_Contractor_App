@@ -6,7 +6,7 @@ Work through these prompts in order for best results:
 
 2. *"Build the HomeView for a contractor using Tailwind CSS. It should include: a greeting with a weather widget tied to the most recent job's location, horizontally swipeable alert cards for pending actions, a large recent job card with an 'Open Job' CTA, a horizontally scrollable recently viewed row, two large quick-access cards for Documents and Videos, and a full-width 'Start New Job' button in Interactive Blue (#2E6FD8). Use a dark navy-black background (#151C28), blue-tinted dark card surfaces (#1E2A3E), white primary text, and amber (#F5A623) for alerts. Mobile-first, minimum 52px tap targets, high contrast for outdoor readability."* ✅
 
-3. *"Build the JobsView with a filterable list of jobs using `jobs.json`. Each job card should show name, address, status badge, and last updated date."*
+3. *"Build the JobsView with a filterable list of jobs using `jobs.json`. Each job card should show name, address, status badge, and last updated date."* ✅
 
 4. *"Build the JobDetailView with four tabs: Overview, Quotes, Orders, Inspections. Each tab loads related data by matching the jobId from the route params. The Quotes tab should support multiple versioned quotes (v1, v2). The Orders tab should link to the product detail page."*
 
