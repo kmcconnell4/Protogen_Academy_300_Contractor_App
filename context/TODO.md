@@ -97,9 +97,21 @@ Phases are ordered by dependency. Complete Phase 1 before starting Phases 5, 7, 
 - [x] **Created `src/views/LibraryView.vue`** — Three sections: Featured Products (horizontal scroll + ProductCard), Featured Documents (bordered list + DocumentCard), Featured Videos (2-col grid + VideoCard). Each section has "See All →" link.
 - [x] **`src/components/shared/BottomNav.vue`** — Replaced Videos tab with Library tab: layers icon, `t('nav.library')`, active on both `library` and `videos` routes.
 
+### Phase 11 — Library Card Polish *(critique follow-up)*
+
+- [x] **[P1] `DocumentCard` — remove Download button, make entire card tappable.** Convert the root `<div>` to `<a :href="doc.fileUrl" target="_blank" rel="noopener noreferrer">` with `@click="handleOpen"` and `active:opacity-80 transition-opacity`. Removed the full-width `bg-interactive` download button. `src/components/documents/DocumentCard.vue`
+
+- [x] **[P2] `ProductCard` — add tap feedback to match VideoCard.** Added `active:opacity-80 transition-opacity` to the `<router-link>` root. `src/components/products/ProductCard.vue`
+
+- [x] **[P2] Library — consistent card height across all three sections.** Products wrapper: `flex flex-col` added. VideoCard root: `h-full` added so 2-col grid cells stretch equally. `src/views/LibraryView.vue`, `src/components/videos/VideoCard.vue`
+
+- [x] **[P3] Typography — normalize card name scale.** DocumentCard and VideoCard names updated to `text-[1rem] font-[800]` in `var(--font-heading)`. `src/components/documents/DocumentCard.vue`, `src/components/videos/VideoCard.vue`
+
+- [x] **[P3] Products horizontal scroll — improve peek.** Changed from `w-[72vw] max-w-[300px]` to `w-[80vw] max-w-[280px]` so the second card visibly peeks. `src/views/LibraryView.vue`
+
 -----
 
 ## Ideas
 
 - Add in map view similar to help details page with button to get directions
-- Rework Action required a bit
+- Rework Action required a bitAdd feature to preview a PDF

@@ -29,7 +29,7 @@ function formatPrice(price, unit) {
 <template>
   <router-link
     :to="{ name: 'product-detail', params: { id: product.id } }"
-    class="block bg-surface border border-border rounded-xl p-4 flex flex-col gap-3"
+    class="block bg-surface border border-border rounded-xl p-4 flex flex-col gap-3 active:opacity-80 transition-opacity"
   >
 
     <!-- Category + SKU meta row -->

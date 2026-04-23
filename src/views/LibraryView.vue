@@ -56,7 +56,7 @@ const featuredVideos = computed(() => videosData.filter((v) => v.featured))
           <div
             v-for="product in featuredProducts"
             :key="product.id"
-            class="shrink-0 w-[72vw] max-w-[300px]"
+            class="shrink-0 w-[80vw] max-w-[280px] flex flex-col"
           >
             <ProductCard :product="product" />
           </div>

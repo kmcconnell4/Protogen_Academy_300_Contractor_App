@@ -18,7 +18,7 @@ function openVideo() {
 <template>
   <button
     type="button"
-    class="bg-surface border border-border rounded-xl overflow-hidden flex flex-col active:opacity-80 transition-opacity w-full text-left"
+    class="bg-surface border border-border rounded-xl overflow-hidden flex flex-col active:opacity-80 transition-opacity w-full text-left h-full"
     @click="openVideo"
   >
     <img
@@ -28,7 +28,10 @@ function openVideo() {
       class="w-full aspect-video object-cover"
     />
     <div class="p-4 flex flex-col gap-2 flex-1">
-      <p class="text-white font-bold leading-snug">{{ video.title }}</p>
+      <p
+        class="text-white font-[800] text-[1rem] leading-snug"
+        style="font-family: var(--font-heading);"
+      >{{ video.title }}</p>
       <p class="text-text-secondary text-xs">
         {{ video.category }} &middot; {{ t('videos.duration') }}: {{ video.duration }}
       </p>
