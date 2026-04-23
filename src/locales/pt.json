@@ -154,7 +154,9 @@
     "mark_reviewed": "Marcar como Revisado",
     "finding_resolved": "Resolvido",
     "no_findings": "Nenhuma constatação registrada.",
-    "no_inspections": "Nenhuma inspeção para esta obra."
+    "no_inspections": "Nenhuma inspeção para esta obra.",
+    "add_photo": "Adicionar Foto",
+    "mark_finding_resolved": "Marcar como Resolvido"
   },
   "catalog": {
     "title": "Catálogo",

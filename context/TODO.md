@@ -53,8 +53,8 @@ Phases are ordered by dependency. Complete Phase 1 before starting Phases 5, 7, 
 
 ### Phase 9 — Per-Finding Inspection Responses
 
-- [ ] **`src/components/inspections/InspectionCard.vue`** — In the expanded section, replace the single `InspectionResponseForm` with a per-finding loop. Each finding renders: its `photoUrls` images, a response textarea (`v-model` bound to a `responses[finding.id]` map), an "Add Photo" upload affordance (styled button + labeled drop zone — **no file input required for demo**), and a "Mark Resolved" toggle (`resolved[finding.id]`). Keep a single "Submit Response" button at the bottom of the expanded card that bundles all responses.
-- [ ] **`src/components/inspections/InspectionResponseForm.vue`** — Refactor into `InspectionFindingResponse.vue`: accepts `finding` prop, emits `update:response` and `update:resolved`. Used by the loop above.
+- [x] **`src/components/inspections/InspectionCard.vue`** — In the expanded section, replace the single `InspectionResponseForm` with a per-finding loop. Each finding renders: its `photoUrls` images, a response textarea (`v-model` bound to a `responses[finding.id]` map), an "Add Photo" upload affordance (styled button + labeled drop zone — **no file input required for demo**), and a "Mark Resolved" toggle (`resolved[finding.id]`). Keep a single "Submit Response" button at the bottom of the expanded card that bundles all responses.
+- [x] **`src/components/inspections/InspectionResponseForm.vue`** — Refactor into `InspectionFindingResponse.vue`: accepts `finding` prop, emits `update:response` and `update:resolved`. Used by the loop above.
 
 ---
 

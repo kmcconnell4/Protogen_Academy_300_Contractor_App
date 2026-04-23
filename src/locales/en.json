@@ -156,7 +156,9 @@
     "mark_reviewed": "Mark as Reviewed",
     "finding_resolved": "Resolved",
     "no_findings": "No findings recorded.",
-    "no_inspections": "No inspections for this job."
+    "no_inspections": "No inspections for this job.",
+    "add_photo": "Add Photo",
+    "mark_finding_resolved": "Mark Resolved"
   },
   "catalog": {
     "title": "Catalog",

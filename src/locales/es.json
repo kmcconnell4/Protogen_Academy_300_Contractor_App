@@ -156,7 +156,9 @@
     "mark_reviewed": "Marcar como Revisado",
     "finding_resolved": "Resuelto",
     "no_findings": "No se registraron hallazgos.",
-    "no_inspections": "No hay inspecciones para este trabajo."
+    "no_inspections": "No hay inspecciones para este trabajo.",
+    "add_photo": "Agregar Foto",
+    "mark_finding_resolved": "Marcar como Resuelto"
   },
   "catalog": {
     "title": "Catálogo",

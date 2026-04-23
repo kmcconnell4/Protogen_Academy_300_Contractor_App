@@ -1,10 +1,10 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRole } from '@/composables/useRole'
 import { useFormatDate } from '@/composables/useFormatDate'
 import StatusBadge from '@/components/shared/StatusBadge.vue'
-import InspectionResponseForm from './InspectionResponseForm.vue'
+import InspectionFindingResponse from './InspectionFindingResponse.vue'
 
 const { t } = useI18n()
 const { role } = useRole()
@@ -20,6 +20,21 @@ const emit = defineEmits(['toggle'])
 // Tracks rep's client-side "Mark as Reviewed" action
 const localStatus = ref(props.inspection.status)
 
+// Per-finding response text and resolved state
+const responses = reactive({})
+const resolvedMap = reactive({})
+const submitted = ref(false)
+
+onMounted(() => {
+  const stored = localStorage.getItem(`carlisle_inspection_resp_${props.inspection.id}`)
+  if (stored) submitted.value = true
+
+  props.inspection.findings.forEach((f) => {
+    responses[f.id] = ''
+    resolvedMap[f.id] = f.resolved ?? false
+  })
+})
+
 const resultConfig = {
   Pass: { cls: 'text-emerald', indicator: 'bg-emerald' },
   Fail: { cls: 'text-error',   indicator: 'bg-error' },
@@ -29,6 +44,13 @@ const severityConfig = {
   Major:  { cls: 'bg-error text-white' },
   Minor:  { cls: 'bg-amber/90 text-nav' },
   None:   { cls: 'bg-surface text-text-secondary' },
+}
+
+function submitAllResponses() {
+  const hasAnyResponse = props.inspection.findings.some((f) => responses[f.id]?.trim())
+  if (!hasAnyResponse) return
+  localStorage.setItem(`carlisle_inspection_resp_${props.inspection.id}`, new Date().toISOString().slice(0, 10))
+  submitted.value = true
 }
 </script>
 
@@ -90,13 +112,13 @@ const severityConfig = {
           {{ t('inspections.findings') }}
         </p>
 
-        <div v-if="inspection.findings.length" class="flex flex-col gap-2">
+        <div v-if="inspection.findings.length" class="flex flex-col gap-4">
           <div
             v-for="finding in inspection.findings"
             :key="finding.id"
-            class="bg-surface-alt rounded-xl p-3 flex flex-col gap-2"
+            class="bg-surface-alt rounded-xl p-3 flex flex-col gap-3"
           >
-            <!-- Severity + category -->
+            <!-- Severity + category header -->
             <div class="flex items-center gap-2">
               <span
                 :class="[
@@ -107,24 +129,49 @@ const severityConfig = {
                 {{ finding.severity }}
               </span>
               <span class="text-text-secondary text-[12px] font-[700] uppercase tracking-[0.08em]">{{ finding.category }}</span>
-              <!-- Resolved checkmark -->
-              <span v-if="finding.resolved" class="ml-auto inline-flex items-center gap-1 text-emerald text-[12px] font-[700]">
+              <span v-if="resolvedMap[finding.id]" class="ml-auto inline-flex items-center gap-1 text-emerald text-[12px] font-[700]">
                 <svg class="w-3 h-3 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
                 {{ t('inspections.finding_resolved') }}
               </span>
             </div>
             <p class="text-white text-[14px] leading-snug">{{ finding.description }}</p>
+
+            <!-- Per-finding response (contractor only, open inspection) -->
+            <InspectionFindingResponse
+              v-if="['Pending Response', 'Response Overdue'].includes(inspection.status) && role === 'contractor' && !submitted"
+              :finding="finding"
+              :response="responses[finding.id]"
+              :resolved="resolvedMap[finding.id]"
+              @update:response="responses[finding.id] = $event"
+              @update:resolved="resolvedMap[finding.id] = $event"
+            />
           </div>
         </div>
 
         <p v-else class="text-text-secondary text-[14px]">{{ t('inspections.no_findings') }}</p>
       </div>
 
-      <!-- Contractor response form (open inspections) -->
-      <InspectionResponseForm
+      <!-- Single Submit Response button (contractor, open, not yet submitted) -->
+      <div
         v-if="['Pending Response', 'Response Overdue'].includes(inspection.status) && role === 'contractor'"
-        :inspection-id="inspection.id"
-      />
+        class="flex flex-col gap-3"
+      >
+        <div v-if="!submitted">
+          <button
+            :disabled="!inspection.findings.some((f) => responses[f.id]?.trim())"
+            class="flex items-center justify-center w-full h-[52px] rounded-xl bg-interactive text-white font-[700] uppercase tracking-[0.1em] text-[14px] transition-colors active:bg-highlight disabled:opacity-40 disabled:cursor-not-allowed"
+            @click="submitAllResponses"
+          >
+            {{ t('inspections.submit_response') }}
+          </button>
+        </div>
+        <div v-else class="flex items-center gap-2 text-emerald font-[700] text-[14px]">
+          <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 6L9 17l-5-5" />
+          </svg>
+          {{ t('inspections.response_submitted_confirmation') }}
+        </div>
+      </div>
 
       <!-- Existing contractor response -->
       <div v-else-if="inspection.contractorResponse" class="flex flex-col gap-2">

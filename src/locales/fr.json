@@ -156,7 +156,9 @@
     "mark_reviewed": "Marquer comme Examiné",
     "finding_resolved": "Résolu",
     "no_findings": "Aucune constatation enregistrée.",
-    "no_inspections": "Aucune inspection pour ce chantier."
+    "no_inspections": "Aucune inspection pour ce chantier.",
+    "add_photo": "Ajouter une Photo",
+    "mark_finding_resolved": "Marquer comme Résolu"
   },
   "catalog": {
     "title": "Catalogue",
