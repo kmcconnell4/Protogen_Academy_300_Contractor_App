@@ -232,6 +232,7 @@
   "search": {
     "placeholder": "Rechercher chantiers, produits, documents…",
     "jump_to": "Aller à",
+    "start_voice_search": "Lancer la recherche vocale",
     "no_results_heading": "Aucun résultat",
     "results_jobs": "Chantiers",
     "results_products": "Produits",

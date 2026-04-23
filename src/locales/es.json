@@ -232,6 +232,7 @@
   "search": {
     "placeholder": "Buscar trabajos, productos, documentos…",
     "jump_to": "Ir a",
+    "start_voice_search": "Iniciar búsqueda por voz",
     "no_results_heading": "Sin resultados",
     "results_jobs": "Trabajos",
     "results_products": "Productos",

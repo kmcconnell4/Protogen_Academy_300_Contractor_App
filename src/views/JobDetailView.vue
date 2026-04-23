@@ -22,7 +22,7 @@ function goBack() {
 </script>
 
 <template>
-  <main class="pb-24">
+  <main class="pb-36">
 
     <!-- Back navigation -->
     <div class="px-4 pt-4">

@@ -109,9 +109,26 @@ Phases are ordered by dependency. Complete Phase 1 before starting Phases 5, 7, 
 
 - [x] **[P3] Products horizontal scroll — improve peek.** Changed from `w-[72vw] max-w-[300px]` to `w-[80vw] max-w-[280px]` so the second card visibly peeks. `src/views/LibraryView.vue`
 
+### Phase 12 — Floating Search Bar + Voice Search
+
+**Decisions:** BottomNav Search tab removed (→ 4 tabs: Home · Jobs · Library · Profile). Floating bar hidden on `/search` and `/profile`. Mic button hidden silently on browsers without Web Speech API support.
+
+- [x] **Create `src/components/shared/FloatingSearchBar.vue`** — `fixed bottom-16 inset-x-0 z-39 mx-4`. 52px pill: `bg-surface border border-border rounded-xl` with box shadow. Three zones: search SVG icon (left, non-interactive) · placeholder text `t('search.placeholder')` (flex-1, non-interactive) · mic `<button>` (right, hidden if no `SpeechRecognition`). Entire bar (minus mic) is a `<button>` → `router.push({ name: 'search' })`. Mic: instantiates `SpeechRecognition`, on result calls `useSearch().setQuery(transcript)` then pushes to `/search`. Mic icon pulses amber (`animate-pulse text-amber`) while listening. `aria-label` from `search.start_voice_search` i18n key.
+
+- [x] **`src/App.vue`** \u2014 Import `useRoute`. Add `showSearchBar` computed: `!['profile', 'search'].includes(route.name)`. Add `<FloatingSearchBar v-if="showSearchBar" />` between `<RouterView>` and `<BottomNav />`.
+
+- [x] **`src/components/shared/BottomNav.vue`** \u2014 Remove the Search center tab. Redistribute to 4 equal tabs: **Home · Jobs · Library · Profile**. Remove `isActive('search')` branch.
+
+- [x] **`src/components/shared/CreateJobFab.vue`** \u2014 Change `bottom-24` \u2192 `bottom-36` so the FAB clears the floating bar.
+
+- [x] **Page bottom padding** \u2014 Update all views that show the floating bar from `pb-24` \u2192 `pb-36`: `HomeView.vue`, `JobsView.vue`, `JobDetailView.vue`, `LibraryView.vue`, `ProductDetailView.vue`, `VideosView.vue`, `DocumentLibraryView.vue`, `ProductCatalogView.vue`, `CreateJobView.vue`, `CreateQuoteView.vue`. `ProfileView.vue` and `SearchView.vue` keep existing padding.
+
+- [x] **i18n** \u2014 Add `search.start_voice_search` key to all 4 locale files (`en.json`, `es.json`, `fr.json`, `pt.json`).
+
 -----
 
 ## Ideas
 
-- Add in map view similar to help details page with button to get directions
-- Rework Action required a bitAdd feature to preview a PDF
+- Add in map view similar Yelp with button to get directions
+- Introduce a notification center with intro on the home page
+- Add feature to preview a PDF 

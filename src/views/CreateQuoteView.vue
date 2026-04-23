@@ -103,7 +103,7 @@ function handleSubmit() {
 </script>
 
 <template>
-  <div class="flex flex-col min-h-dvh bg-bg pb-16">
+  <div class="flex flex-col min-h-dvh bg-bg pb-36">
 
     <!-- ── Back nav ── -->
     <div class="flex items-center gap-3 px-4 pt-4 pb-2 shrink-0">

@@ -39,20 +39,6 @@ function isActive(routeName) {
       <span class="text-[10px] font-[700] uppercase tracking-[0.08em] leading-none">{{ t('nav.jobs') }}</span>
     </router-link>
 
-    <!-- Search — featured center tab -->
-    <router-link
-      :to="{ name: 'search' }"
-      class="flex-1 flex flex-col items-center justify-center gap-1 h-full transition-colors"
-      :aria-label="t('nav.search')"
-    >
-      <div :class="['w-11 h-11 rounded-full flex items-center justify-center transition-colors', isActive('search') ? 'bg-highlight' : 'bg-interactive']">
-        <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="11" cy="11" r="8" />
-          <path d="M21 21l-4.35-4.35" />
-        </svg>
-      </div>
-    </router-link>
-
     <!-- Library -->
     <router-link
       :to="{ name: 'library' }"

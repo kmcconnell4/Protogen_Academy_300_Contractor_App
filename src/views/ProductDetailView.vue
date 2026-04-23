@@ -77,7 +77,7 @@ onMounted(() => {
     </router-link>
   </div>
 
-  <div v-else class="flex flex-col min-h-dvh bg-bg pb-20">
+  <div v-else class="flex flex-col min-h-dvh bg-bg pb-36">
 
     <!-- ── Back nav ── -->
     <div class="flex items-center gap-3 px-4 pt-4 pb-2 shrink-0">

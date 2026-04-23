@@ -1,9 +1,15 @@
 <script setup>
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 import BottomNav from '@/components/shared/BottomNav.vue'
+import FloatingSearchBar from '@/components/shared/FloatingSearchBar.vue'
 import { setupRole } from '@/composables/useRole'
 
 // Provide global role state to all child components
 setupRole()
+
+const route = useRoute()
+const showSearchBar = computed(() => !['profile', 'search'].includes(route.name))
 </script>
 
 <template>
@@ -13,6 +19,7 @@ setupRole()
         <component :is="Component" class="flex-1" />
       </Transition>
     </RouterView>
+    <FloatingSearchBar v-if="showSearchBar" />
     <BottomNav />
   </div>
 </template>

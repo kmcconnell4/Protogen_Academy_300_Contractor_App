@@ -57,7 +57,7 @@ const allFilters = computed(() => {
 </script>
 
 <template>
-  <main class="flex flex-col pb-24">
+  <main class="flex flex-col pb-36">
 
     <!-- Page header -->
     <div class="px-4 pt-6 pb-5 border-b border-border">

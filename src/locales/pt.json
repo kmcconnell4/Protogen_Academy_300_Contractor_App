@@ -229,6 +229,7 @@
   "search": {
     "placeholder": "Buscar obras, produtos, documentos…",
     "jump_to": "Ir para",
+    "start_voice_search": "Iniciar pesquisa por voz",
     "no_results_heading": "Sem resultados",
     "results_jobs": "Obras",
     "results_products": "Produtos",

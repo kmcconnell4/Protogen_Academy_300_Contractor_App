@@ -119,10 +119,11 @@ Tabs: **Overview · Quotes · Orders · Inspections**
 - Route: `/videos` (still exists as a standalone route; Library is the nav entry point)
 
 ### 9. Global Search
-- Full-page view at `/search` — the **center tab** of the bottom nav
+- Full-page view at `/search` — accessed via the **floating search bar** (see Layout below)
 - Searches across: Jobs, Products, Quotes, Orders, Inspections, Documents, Videos
 - Results grouped by category with tap-to-navigate
 - Products → Product Detail page; Documents → opens file in new tab; Videos → opens video in new tab
+- The floating search bar is hidden when the user is already on `/search` (SearchView has its own autofocused full-width input)
 
 ### 10. Profile & Settings
 - Language selector: **English, Spanish, French, Portuguese**
@@ -192,8 +193,9 @@ The primary user journey this screen enables is: **Job → Product → Document.
 
 #### 1. Global Chrome
 - **No top navigation bar.** The app uses bottom navigation only.
-- Bottom nav: **5 tabs — Home · Jobs · Search (center, visually featured with filled circle) · Library · Profile**
-- A **floating action button (FAB)** — `fixed bottom-24 right-4` — provides job creation, visible on every page, contractor role only
+- Bottom nav: **4 tabs — Home · Jobs · Library · Profile**
+- A **floating search bar** sits above the BottomNav on every page except Profile and SearchView. Tapping navigates to `/search`. Mic button enables voice-to-text.
+- A **floating action button (FAB)** — `fixed bottom-36 right-4` — provides job creation, visible on every page, contractor role only
 
 #### 2. Greeting + Weather Widget
 - Personalized greeting using contractor's first name
@@ -455,8 +457,9 @@ This should be implemented as a CSS class on `<body>` (e.g. `class="outdoor-mode
 ---
 
 ### Layout
-- **Mobile-first:** bottom navigation bar with **5 tabs — Home · Jobs · Search (center) · Library · Profile**. No top navigation bar.
-- **FAB:** `position: fixed; bottom: 6rem; right: 1rem` — contractor role only, routes to `/jobs/new`
+- **Mobile-first:** bottom navigation bar with **4 tabs — Home · Jobs · Library · Profile**. No top navigation bar. Search is accessed via a **floating search bar** (see below) rather than a dedicated nav tab.
+- **Floating Search Bar:** A persistent `fixed bottom-16 inset-x-0` pill anchored above the BottomNav on every page except `/profile` and `/search`. Tapping navigates to `/search`. Contains a mic button that triggers Web Speech API voice-to-text, pre-fills the query, and navigates to `/search`. Mic button is hidden silently on browsers without Speech API support.
+- **FAB:** `position: fixed; bottom: 9rem; right: 1rem` (`bottom-36`) — clears the floating search bar. Contractor role only, routes to `/jobs/new`.
 - **Desktop breakpoint:** left sidebar nav using `--color-nav` background
 - Tailwind utility classes throughout — extend `tailwind.config.js` with the custom color tokens above
 - No custom CSS files beyond `main.css` for the custom property definitions

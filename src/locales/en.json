@@ -232,6 +232,7 @@
   "search": {
     "placeholder": "Search jobs, products, docs…",
     "jump_to": "Jump to",
+    "start_voice_search": "Start voice search",
     "no_results_heading": "No results",
     "results_jobs": "Jobs",
     "results_products": "Products",

@@ -21,7 +21,7 @@ const recentJob = computed(() =>
 </script>
 
 <template>
-  <main class="flex flex-col pb-24 bg-bg">
+  <main class="flex flex-col pb-36 bg-bg">
     <!-- Greeting: generous top space, comfortable bottom clearance before alerts -->
     <div class="px-4 pt-7 pb-8">
       <GreetingWeather />
