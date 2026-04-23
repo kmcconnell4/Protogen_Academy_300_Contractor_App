@@ -83,13 +83,16 @@ const featuredVideos = computed(() => videosData.filter((v) => v.featured))
           </button>
         </div>
 
-        <!-- Compact list -->
-        <div class="mx-4 rounded-xl overflow-hidden border border-border divide-y divide-border">
-          <DocumentCard
+        <!-- Horizontal scroll row -->
+        <div class="flex gap-3 overflow-x-auto no-scrollbar px-4 pb-1">
+          <div
             v-for="doc in featuredDocs"
             :key="doc.id"
-            :doc="doc"
-          />
+            class="shrink-0 w-[80vw] max-w-[280px] flex flex-col"
+          >
+            <DocumentCard :doc="doc" />
+          </div>
+          <div class="shrink-0 w-4" aria-hidden="true" />
         </div>
       </section>
 
@@ -112,13 +115,16 @@ const featuredVideos = computed(() => videosData.filter((v) => v.featured))
           </button>
         </div>
 
-        <!-- 2-col grid -->
-        <div class="grid grid-cols-2 gap-3 px-4">
-          <VideoCard
+        <!-- Horizontal scroll row -->
+        <div class="flex gap-3 overflow-x-auto no-scrollbar px-4 pb-1">
+          <div
             v-for="video in featuredVideos"
             :key="video.id"
-            :video="video"
-          />
+            class="shrink-0 w-[80vw] max-w-[280px] flex flex-col"
+          >
+            <VideoCard :video="video" />
+          </div>
+          <div class="shrink-0 w-4" aria-hidden="true" />
         </div>
       </section>
 
