@@ -44,8 +44,8 @@ Phases are ordered by dependency. Complete Phase 1 before starting Phases 5, 7, 
 
 ### Phase 7 — Add Quote from Job Detail *(depends on Phase 1)*
 
-- [ ] **`src/components/jobs/JobDetailTabs.vue`** — In the Quotes tab panel, add an "Add Quote" button above `<QuoteVersionList>`. Contractor role only (`v-if="role === 'contractor'"`). Routes to `{ name: 'create-quote', params: { id: job.id } }`.
-- [ ] **Create `src/views/CreateQuoteView.vue`** — Receives `:id` (jobId). Line item rows: product `<select>` (from `products.json`), description text (auto-fills on product select), qty (number), unit price (auto-fills, editable), row total (computed). Add row / remove row buttons. Computed: subtotal, tax 8%, grand total. "Save Quote" calls `useQuotesData().addQuote({ id: 'quote-' + Date.now(), jobId, status: 'Draft', lineItems, ... })`. Navigates to `{ name: 'job-detail', params: { id: jobId }, query: { tab: 'quotes' } }`.
+- [x] **`src/components/jobs/JobDetailTabs.vue`** — In the Quotes tab panel, add an "Add Quote" button above `<QuoteVersionList>`. Contractor role only (`v-if="role === 'contractor'"`). Routes to `{ name: 'create-quote', params: { id: job.id } }`.
+- [x] **Create `src/views/CreateQuoteView.vue`** — Receives `:id` (jobId). Line item rows: product `<select>` (from `products.json`), description text (auto-fills on product select), qty (number), unit price (auto-fills, editable), row total (computed). Add row / remove row buttons. Computed: subtotal, tax 8%, grand total. "Save Quote" calls `useQuotesData().addQuote({ id: 'quote-' + Date.now(), jobId, status: 'Draft', lineItems, ... })`. Navigates to `{ name: 'job-detail', params: { id: jobId }, query: { tab: 'quotes' } }`.
 
 ### Phase 8 — Finalize Quote → Order *(depends on Phases 1 + 7)*
 
@@ -78,3 +78,12 @@ Phases are ordered by dependency. Complete Phase 1 before starting Phases 5, 7, 
 - [x] **Three different accordion expand behaviors.** Standardize Orders, Quotes, and Inspections on the `expandedId` pattern (one open at a time). `src/components/orders/OrderList.vue`, `src/components/quotes/QuoteVersionList.vue`, `src/components/inspections/InspectionCard.vue`
 - [x] **"Job not found" uses `text-error` (red).** An absent job is not a destructive failure. Change to `text-text-secondary` and add a "Go to Jobs" router-link. `src/views/JobDetailView.vue`
 - [x] **`RecentContractors.vue` has no empty state.** Add `v-if="contractorsWithStats.length"` guard with a `v-else` message. `src/components/home/RecentContractors.vue`
+
+
+-----
+
+## Ideas
+
+- Add in map view similar to help details page with button to get directions
+- Rmeove floating + button in favor of the new button under jobs
+- Consolidate videos and docs into a resources page 

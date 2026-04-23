@@ -105,7 +105,14 @@
     "line_total": "Total",
     "no_quotes": "Nenhuma cotação para esta obra.",
     "approve": "Aprovar Cotação",
-    "reject": "Rejeitar Cotação"
+    "reject": "Rejeitar Cotação",
+    "add_quote": "Adicionar Cotação",
+    "create_title": "Nova Cotação",
+    "select_product": "Selecionar produto…",
+    "description": "Descrição",
+    "add_line": "Adicionar Item",
+    "remove_line": "Remover",
+    "save_quote": "Salvar Cotação"
   },
   "orders": {
     "title": "Pedidos",

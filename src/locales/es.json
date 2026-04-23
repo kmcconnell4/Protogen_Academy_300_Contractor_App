@@ -107,7 +107,14 @@
     "line_total": "Total",
     "no_quotes": "No hay cotizaciones para este trabajo.",
     "approve": "Aprobar Cotización",
-    "reject": "Rechazar Cotización"
+    "reject": "Rechazar Cotización",
+    "add_quote": "Agregar Cotización",
+    "create_title": "Nueva Cotización",
+    "select_product": "Seleccionar producto…",
+    "description": "Descripción",
+    "add_line": "Agregar Partida",
+    "remove_line": "Eliminar",
+    "save_quote": "Guardar Cotización"
   },
   "orders": {
     "title": "Órdenes",

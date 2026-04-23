@@ -107,7 +107,14 @@
     "line_total": "Total",
     "no_quotes": "Aucun devis pour ce chantier.",
     "approve": "Approuver le Devis",
-    "reject": "Rejeter le Devis"
+    "reject": "Rejeter le Devis",
+    "add_quote": "Ajouter un Devis",
+    "create_title": "Nouveau Devis",
+    "select_product": "Sélectionner un produit…",
+    "description": "Description",
+    "add_line": "Ajouter une Ligne",
+    "remove_line": "Supprimer",
+    "save_quote": "Enregistrer le Devis"
   },
   "orders": {
     "title": "Commandes",

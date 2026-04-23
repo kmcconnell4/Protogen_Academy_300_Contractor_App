@@ -107,7 +107,14 @@
     "line_total": "Total",
     "no_quotes": "No quotes for this job.",
     "approve": "Approve Quote",
-    "reject": "Reject Quote"
+    "reject": "Reject Quote",
+    "add_quote": "Add Quote",
+    "create_title": "New Quote",
+    "select_product": "Select a product…",
+    "description": "Description",
+    "add_line": "Add Line Item",
+    "remove_line": "Remove",
+    "save_quote": "Save Quote"
   },
   "orders": {
     "title": "Orders",

@@ -1,12 +1,13 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useRoute } from 'vue-router'
-import quotes from '@/data/quotes.json'
-import orders from '@/data/orders.json'
+import { useRoute, useRouter } from 'vue-router'
 import inspections from '@/data/inspections.json'
 import reps from '@/data/reps.json'
 import { useFormatDate } from '@/composables/useFormatDate'
+import { useRole } from '@/composables/useRole'
+import { useQuotesData } from '@/composables/useQuotesData'
+import { useOrdersData } from '@/composables/useOrdersData'
 import QuoteVersionList from '@/components/quotes/QuoteVersionList.vue'
 import OrderList from '@/components/orders/OrderList.vue'
 import InspectionCard from '@/components/inspections/InspectionCard.vue'
@@ -14,6 +15,10 @@ import InspectionCard from '@/components/inspections/InspectionCard.vue'
 const { t } = useI18n()
 const { formatDate } = useFormatDate()
 const route = useRoute()
+const router = useRouter()
+const { role } = useRole()
+const { quotes } = useQuotesData()
+const { orders } = useOrdersData()
 
 const props = defineProps({
   job: { type: Object, required: true },
@@ -22,8 +27,8 @@ const props = defineProps({
 const activeTab = ref('overview')
 const expandedInspectionId = ref(null)
 
-const jobQuotes     = computed(() => quotes.filter((q) => props.job.quoteIds.includes(q.id)))
-const jobOrders     = computed(() => orders.filter((o) => props.job.orderIds.includes(o.id)))
+const jobQuotes      = computed(() => quotes.value.filter((q) => props.job.quoteIds.includes(q.id)))
+const jobOrders      = computed(() => orders.value.filter((o) => props.job.orderIds.includes(o.id)))
 const jobInspections = computed(() => inspections.filter((i) => props.job.inspectionIds.includes(i.id)))
 
 const repName = computed(() => reps.find((r) => r.id === props.job.repId)?.name ?? props.job.repId)
@@ -123,7 +128,18 @@ onMounted(() => {
       </div>
 
       <!-- ── QUOTES ── -->
-      <div v-else-if="activeTab === 'quotes'">
+      <div v-else-if="activeTab === 'quotes'" class="flex flex-col gap-4">
+        <button
+          v-if="role === 'contractor'"
+          class="w-full h-[52px] rounded-xl border border-dashed border-highlight text-highlight text-[13px] font-[700] uppercase tracking-[0.1em] flex items-center justify-center gap-2 transition-colors active:bg-highlight/10"
+          @click="router.push({ name: 'create-quote', params: { id: job.id } })"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="12" y1="5" x2="12" y2="19" />
+            <line x1="5" y1="12" x2="19" y2="12" />
+          </svg>
+          {{ t('quotes.add_quote') }}
+        </button>
         <QuoteVersionList v-if="jobQuotes.length" :quotes="jobQuotes" />
         <p v-else class="text-text-secondary text-center py-12 text-[15px]">{{ t('quotes.no_quotes') }}</p>
       </div>

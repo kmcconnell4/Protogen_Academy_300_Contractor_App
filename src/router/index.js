@@ -18,6 +18,11 @@ const routes = [
     component: () => import('@/views/CreateJobView.vue'),
   },
   {
+    path: '/jobs/:id/quotes/new',
+    name: 'create-quote',
+    component: () => import('@/views/CreateQuoteView.vue'),
+  },
+  {
     path: '/jobs/:id',
     name: 'job-detail',
     component: () => import('@/views/JobDetailView.vue'),
