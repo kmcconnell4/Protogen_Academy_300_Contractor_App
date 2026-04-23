@@ -114,7 +114,8 @@
     "description": "Descripción",
     "add_line": "Agregar Partida",
     "remove_line": "Eliminar",
-    "save_quote": "Guardar Cotización"
+    "save_quote": "Guardar Cotización",
+    "place_order": "Realizar Pedido"
   },
   "orders": {
     "title": "Órdenes",

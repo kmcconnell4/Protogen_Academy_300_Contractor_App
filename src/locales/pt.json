@@ -112,7 +112,8 @@
     "description": "Descrição",
     "add_line": "Adicionar Item",
     "remove_line": "Remover",
-    "save_quote": "Salvar Cotação"
+    "save_quote": "Salvar Cotação",
+    "place_order": "Fazer Pedido"
   },
   "orders": {
     "title": "Pedidos",

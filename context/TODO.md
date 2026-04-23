@@ -49,7 +49,7 @@ Phases are ordered by dependency. Complete Phase 1 before starting Phases 5, 7, 
 
 ### Phase 8 — Finalize Quote → Order *(depends on Phases 1 + 7)*
 
-- [ ] **`src/components/quotes/QuoteVersionList.vue`** — Add a "Place Order" CTA on quotes where `status === 'Approved'`. On click: calls `useQuotesData().finalizeQuoteAsOrder(quote.id)` which (1) sets `quote.status = 'Ordered'`, (2) calls `useOrdersData().addOrder()` with a stub (generated `poNumber`, `jobId`, `lineItems` from quote, `status: 'Processing'`), (3) pushes the new `orderId` into `useJobsData().jobById(quote.jobId).orderIds`. Navigates to Orders tab on completion (`{ query: { tab: 'orders' } }`).
+- [x] **`src/components/quotes/QuoteVersionList.vue`** — Add a "Place Order" CTA on quotes where `status === 'Approved'`. On click: calls `useQuotesData().finalizeQuoteAsOrder(quote.id)` which (1) sets `quote.status = 'Ordered'`, (2) calls `useOrdersData().addOrder()` with a stub (generated `poNumber`, `jobId`, `lineItems` from quote, `status: 'Processing'`), (3) pushes the new `orderId` into `useJobsData().jobById(quote.jobId).orderIds`. Navigates to Orders tab on completion (`{ query: { tab: 'orders' } }`).
 
 ### Phase 9 — Per-Finding Inspection Responses
 
@@ -87,3 +87,4 @@ Phases are ordered by dependency. Complete Phase 1 before starting Phases 5, 7, 
 - Add in map view similar to help details page with button to get directions
 - Rmeove floating + button in favor of the new button under jobs
 - Consolidate videos and docs into a resources page 
+- Rework Action required a bit

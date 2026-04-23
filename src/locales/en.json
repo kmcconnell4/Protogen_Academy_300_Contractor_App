@@ -114,7 +114,8 @@
     "description": "Description",
     "add_line": "Add Line Item",
     "remove_line": "Remove",
-    "save_quote": "Save Quote"
+    "save_quote": "Save Quote",
+    "place_order": "Place Order"
   },
   "orders": {
     "title": "Orders",

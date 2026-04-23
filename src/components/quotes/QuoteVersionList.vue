@@ -1,14 +1,18 @@
 <script setup>
-import { ref, computed, reactive } from 'vue'
+import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRole } from '@/composables/useRole'
 import { useFormatDate } from '@/composables/useFormatDate'
+import { useQuotesData } from '@/composables/useQuotesData'
+import { useRouter } from 'vue-router'
 import QuoteLineItems from './QuoteLineItems.vue'
 import StatusBadge from '@/components/shared/StatusBadge.vue'
 
 const { t } = useI18n()
 const { role } = useRole()
 const { formatDate } = useFormatDate()
+const { quotes, finalizeQuoteAsOrder } = useQuotesData()
+const router = useRouter()
 
 const props = defineProps({
   quotes: { type: Array, required: true },
@@ -20,11 +24,11 @@ const sortedQuotes = computed(() => [...props.quotes].sort((a, b) => b.version -
 // Default-open the latest quote
 const expandedId = ref(sortedQuotes.value[0]?.id ?? null)
 
-// Client-side status overrides for rep approve/reject actions
-const statusOverrides = reactive({})
+const placingOrderId = ref(null)
 
 function effectiveStatus(quote) {
-  return statusOverrides[quote.id] ?? quote.status
+  // Read from reactive singleton so status mutations are reflected immediately
+  return quotes.value.find((q) => q.id === quote.id)?.status ?? quote.status
 }
 
 function toggle(id) {
@@ -32,11 +36,23 @@ function toggle(id) {
 }
 
 function approveQuote(quote) {
-  statusOverrides[quote.id] = 'Approved'
+  const liveQuote = quotes.value.find((q) => q.id === quote.id)
+  if (liveQuote) liveQuote.status = 'Approved'
 }
 
 function rejectQuote(quote) {
-  statusOverrides[quote.id] = 'Rejected'
+  const liveQuote = quotes.value.find((q) => q.id === quote.id)
+  if (liveQuote) liveQuote.status = 'Rejected'
+}
+
+function placeOrder(quote) {
+  if (placingOrderId.value) return
+  placingOrderId.value = quote.id
+  const newOrder = finalizeQuoteAsOrder(quote.id)
+  if (newOrder) {
+    router.push({ query: { tab: 'orders' } })
+  }
+  placingOrderId.value = null
 }
 </script>
 
@@ -137,6 +153,26 @@ function rejectQuote(quote) {
             @click="rejectQuote(quote)"
           >
             {{ t('quotes.reject') }}
+          </button>
+        </div>
+
+        <!-- Contractor: Place Order CTA for Approved quotes -->
+        <div
+          v-if="role === 'contractor' && effectiveStatus(quote) === 'Approved'"
+          class="p-4 pt-0"
+        >
+          <button
+            :disabled="placingOrderId === quote.id"
+            class="w-full h-[52px] rounded-xl bg-interactive text-white text-[14px] font-[700] uppercase tracking-[0.1em] flex items-center justify-center gap-2 transition-colors active:bg-highlight disabled:opacity-40 disabled:cursor-not-allowed"
+            @click="placeOrder(quote)"
+          >
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="1" y="3" width="15" height="13" rx="1" />
+              <path d="M16 8h4l3 5v3h-7V8z" />
+              <circle cx="5.5" cy="18.5" r="2.5" />
+              <circle cx="18.5" cy="18.5" r="2.5" />
+            </svg>
+            {{ t('quotes.place_order') }}
           </button>
         </div>
 

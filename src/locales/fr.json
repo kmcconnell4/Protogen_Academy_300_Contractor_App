@@ -114,7 +114,8 @@
     "description": "Description",
     "add_line": "Ajouter une Ligne",
     "remove_line": "Supprimer",
-    "save_quote": "Enregistrer le Devis"
+    "save_quote": "Enregistrer le Devis",
+    "place_order": "Passer la Commande"
   },
   "orders": {
     "title": "Commandes",
