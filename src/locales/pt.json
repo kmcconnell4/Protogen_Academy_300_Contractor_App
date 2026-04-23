@@ -77,7 +77,8 @@
       "created": "Criado em",
       "square_footage": "Área",
       "sq_ft": "pé²",
-      "notes": "Observações"
+      "notes": "Observações",
+      "get_directions": "Como chegar"
     },
     "create_job": "Nova Obra",
     "create_name_placeholder": "Ex. Reforma Comercial Rua dos Olmos",

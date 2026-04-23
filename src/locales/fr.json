@@ -79,7 +79,8 @@
       "created": "Créé le",
       "square_footage": "Surface",
       "sq_ft": "pi²",
-      "notes": "Notes"
+      "notes": "Notes",
+      "get_directions": "Itinéraire"
     },
     "create_job": "Nouveau Chantier",
     "create_name_placeholder": "Ex. Réfection commerciale Rue des Ormes",

@@ -79,7 +79,8 @@
       "created": "Created",
       "square_footage": "Square Footage",
       "sq_ft": "sq ft",
-      "notes": "Notes"
+      "notes": "Notes",
+      "get_directions": "Get Directions"
     },
     "create_job": "New Job",
     "create_name_placeholder": "e.g. Elm Street Commercial Reroof",

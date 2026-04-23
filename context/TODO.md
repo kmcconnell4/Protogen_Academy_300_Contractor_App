@@ -40,7 +40,7 @@ Phases are ordered by dependency. Complete Phase 1 before starting Phases 5, 7, 
 
 ### Phase 6 — Map / Directions on Job Detail *(parallel with Phase 5)*
 
-- [ ] **`src/views/JobDetailView.vue`** — In the address block, wrap the address paragraph in an `<a>` with `:href="'https://maps.google.com/?q=' + encodeURIComponent(job.address)"` `target="_blank" rel="noopener noreferrer"`. Add a sibling "Get Directions" link (with inline SVG arrow) using the same href, styled `text-highlight text-[13px] font-[700]`.
+- [x] **`src/views/JobDetailView.vue`** — In the address block, wrap the address paragraph in an `<a>` with `:href="'https://maps.google.com/?q=' + encodeURIComponent(job.address)"` `target="_blank" rel="noopener noreferrer"`. Add a sibling "Get Directions" link (with inline SVG arrow) using the same href, styled `text-highlight text-[13px] font-[700]`.
 
 ### Phase 7 — Add Quote from Job Detail *(depends on Phase 1)*
 

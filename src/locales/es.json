@@ -79,7 +79,8 @@
       "created": "Creado",
       "square_footage": "Metros Cuadrados",
       "sq_ft": "pie²",
-      "notes": "Notas"
+      "notes": "Notas",
+      "get_directions": "Cómo llegar"
     },
     "create_job": "Nuevo Trabajo",
     "create_name_placeholder": "Ej. Reparación Comercial Calle Olmo",
