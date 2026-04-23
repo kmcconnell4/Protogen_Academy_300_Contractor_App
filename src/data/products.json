@@ -8,7 +8,8 @@
     "unit": "sq",
     "pricePerUnit": 180.00,
     "documentIds": ["doc-001", "doc-002", "doc-003"],
-    "tags": ["TPO", "single-ply", "reflective", "energy-star"]
+    "tags": ["TPO", "single-ply", "reflective", "energy-star"],
+    "featured": true
   },
   {
     "id": "prod-002",
@@ -19,7 +20,8 @@
     "unit": "sq",
     "pricePerUnit": 155.00,
     "documentIds": ["doc-004", "doc-005", "doc-006"],
-    "tags": ["EPDM", "single-ply", "black", "large-format"]
+    "tags": ["EPDM", "single-ply", "black", "large-format"],
+    "featured": true
   },
   {
     "id": "prod-003",
@@ -74,7 +76,8 @@
     "unit": "roll",
     "pricePerUnit": 197.50,
     "documentIds": ["doc-013", "doc-014"],
-    "tags": ["flashing", "self-adhesive", "penetration", "curb"]
+    "tags": ["flashing", "self-adhesive", "penetration", "curb"],
+    "featured": true
   },
   {
     "id": "prod-008",

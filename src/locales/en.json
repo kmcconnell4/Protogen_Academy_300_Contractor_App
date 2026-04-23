@@ -7,7 +7,8 @@
     "docs": "Documents",
     "videos": "Videos",
     "search": "Search",
-    "profile": "Profile"
+    "profile": "Profile",
+    "library": "Library"
   },
   "home": {
     "section_action_required": "Action Required",
@@ -241,6 +242,13 @@
     "results_inspections": "Inspections",
     "no_results": "No results for \"{query}\"",
     "searching": "Searching…"
+  },
+  "library": {
+    "title": "Library",
+    "featured_products": "Featured Products",
+    "featured_docs": "Featured Documents",
+    "featured_videos": "Featured Videos",
+    "see_all": "See All"
   },
   "profile": {
     "title": "Profile & Settings",

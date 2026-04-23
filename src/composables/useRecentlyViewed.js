@@ -4,10 +4,13 @@ const STORAGE_KEY = 'carlisle_recently_viewed'
 const MAX_ITEMS = 6
 
 /**
- * Tracks recently viewed products and documents.
+ * Tracks recently viewed products, documents, and videos.
  * Entries are persisted to localStorage and surfaced on the Home screen.
  *
- * Each entry: { id, type: 'product' | 'document', name, routeName, routeParams }
+ * Each entry:
+ *   { id, type: 'product', name, routeName, routeParams }
+ *   { id, type: 'document', name, routeName, routeParams }
+ *   { id, type: 'video', name, videoUrl }
  */
 export function useRecentlyViewed() {
   const stored = localStorage.getItem(STORAGE_KEY)

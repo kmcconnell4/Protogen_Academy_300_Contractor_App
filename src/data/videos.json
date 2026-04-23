@@ -8,7 +8,8 @@
     "videoUrl": "https://placehold.co/?text=Video+Unavailable+in+Demo",
     "category": "Installation",
     "tags": ["TPO", "seam-weld", "heat-weld", "technique"],
-    "publishedAt": "2025-09-10"
+    "publishedAt": "2025-09-10",
+    "featured": true
   },
   {
     "id": "vid-002",
@@ -19,7 +20,8 @@
     "videoUrl": "https://placehold.co/?text=Video+Unavailable+in+Demo",
     "category": "Warranty",
     "tags": ["warranty", "NDL", "inspection", "qualification"],
-    "publishedAt": "2025-11-03"
+    "publishedAt": "2025-11-03",
+    "featured": true
   },
   {
     "id": "vid-003",
@@ -41,7 +43,8 @@
     "videoUrl": "https://placehold.co/?text=Video+Unavailable+in+Demo",
     "category": "Detailing",
     "tags": ["flashing", "FlashBand", "penetration", "HVAC-curb"],
-    "publishedAt": "2026-01-14"
+    "publishedAt": "2026-01-14",
+    "featured": true
   },
   {
     "id": "vid-005",

@@ -79,11 +79,27 @@ Phases are ordered by dependency. Complete Phase 1 before starting Phases 5, 7, 
 - [x] **"Job not found" uses `text-error` (red).** An absent job is not a destructive failure. Change to `text-text-secondary` and add a "Go to Jobs" router-link. `src/views/JobDetailView.vue`
 - [x] **`RecentContractors.vue` has no empty state.** Add `v-if="contractorsWithStats.length"` guard with a `v-else` message. `src/components/home/RecentContractors.vue`
 
+---
+
+## Feature Expansion (v6)
+
+### Phase 10 — Library Hub Page *(complete)*
+
+- [x] **`src/data/products.json`** — Added `"featured": true` to 3 products: WeatherBond TPO 60-mil, EPDM Sure-Seal 60-mil, FlashBand Self-Adhesive Flashing.
+- [x] **`src/data/documents.json`** — Added `"featured": true` to 3 documents: WeatherBond TPO PDS, WeatherBond TPO Install Spec, EPDM Fully Adhered System Spec.
+- [x] **`src/data/videos.json`** — Added `"featured": true` to 3 videos: TPO Seam Welding, Warranty Program Overview, FlashBand Penetration Detailing.
+- [x] **`src/composables/useRecentlyViewed.js`** — Extended JSDoc to document `type: 'video'` with `videoUrl` field. Logic unchanged (already generic).
+- [x] **`src/components/home/RecentlyViewed.vue`** — Added video type handling: amber play-icon badge, `window.open(item.videoUrl)` on click.
+- [x] **`src/components/videos/VideoCard.vue`** — Converted from `<a>` to `<button>` with `openVideo()` handler that calls `addItem` + `window.open`. All video taps now log to Recently Viewed.
+- [x] **`src/views/SearchView.vue`** — Import `useRecentlyViewed`; ROUTE_MAP videos handler calls `addItem` before `window.open`.
+- [x] **`src/locales/en.json`, `es.json`, `fr.json`, `pt.json`** — Added `nav.library` and `library.*` section keys (title, featured_products, featured_docs, featured_videos, see_all).
+- [x] **`src/router/index.js`** — Added `{ path: '/library', name: 'library', component: LibraryView }`. `/videos` route retained.
+- [x] **Created `src/views/LibraryView.vue`** — Three sections: Featured Products (horizontal scroll + ProductCard), Featured Documents (bordered list + DocumentCard), Featured Videos (2-col grid + VideoCard). Each section has "See All →" link.
+- [x] **`src/components/shared/BottomNav.vue`** — Replaced Videos tab with Library tab: layers icon, `t('nav.library')`, active on both `library` and `videos` routes.
 
 -----
 
 ## Ideas
 
 - Add in map view similar to help details page with button to get directions
-- Consolidate videos and docs into a resources page 
 - Rework Action required a bit

@@ -4,11 +4,13 @@ import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { useSearch } from '@/composables/useSearch'
 import { useJobsData } from '@/composables/useJobsData'
+import { useRecentlyViewed } from '@/composables/useRecentlyViewed'
 
 const { t } = useI18n()
 const router = useRouter()
 const { query, results, hasResults, setQuery, clearQuery } = useSearch()
 const { jobs } = useJobsData()
+const { addItem } = useRecentlyViewed()
 
 const inputRef = ref(null)
 
@@ -26,7 +28,7 @@ const ROUTE_MAP = {
   products:    (item) => ({ name: 'product-detail', params: { id: item.id } }),
   quotes:      (item) => ({ name: 'job-detail', params: { id: item.jobId } }),
   documents:   (item) => { window.open(item.url, '_blank', 'noopener'); return null },
-  videos:      (item) => { window.open(item.videoUrl, '_blank', 'noopener'); return null },
+  videos:      (item) => { addItem({ id: item.id, type: 'video', name: item.title, videoUrl: item.videoUrl }); window.open(item.videoUrl, '_blank', 'noopener'); return null },
   orders:      (item) => ({ name: 'job-detail', params: { id: item.jobId }, query: { tab: 'orders' } }),
   inspections: (item) => ({ name: 'job-detail', params: { id: item.jobId }, query: { tab: 'inspections' } }),
 }

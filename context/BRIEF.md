@@ -114,8 +114,9 @@ Tabs: **Overview · Quotes · Orders · Inspections**
 
 ### 8. Training Videos
 - Grid of video cards with thumbnail, title, category, and duration
-- Each card is fully tappable (no separate Watch button) — opens `videoUrl` in a new tab
-- Accessible from the bottom nav (Videos tab) and from Search results
+- Each card is fully tappable (no separate Watch button) — opens `videoUrl` in a new tab and logs to Recently Viewed
+- Accessible via the Library hub ("See All Videos") and from Search results
+- Route: `/videos` (still exists as a standalone route; Library is the nav entry point)
 
 ### 9. Global Search
 - Full-page view at `/search` — the **center tab** of the bottom nav
@@ -128,6 +129,17 @@ Tabs: **Overview · Quotes · Orders · Inspections**
 - Role switcher (mirrored here from nav for convenience)
 - Outdoor Mode toggle
 - Mock contractor profile info (name, company, region)
+
+### 11. Library Hub
+- Hub page replacing the Videos tab in the bottom nav. Route: `/library`
+- Three curated sections: **Featured Products**, **Featured Documents**, **Featured Videos** — each showing items with `"featured": true` in the corresponding JSON data file
+- Each section has an all-caps section label and a "See All →" link to the full browse view:
+  - Featured Products → Product Catalog (redirects to Search)
+  - Featured Documents → Document Library (redirects to Search)
+  - Featured Videos → `/videos` (full Videos view)
+- Tapping a featured Video opens it in a new tab AND logs it to Recently Viewed
+- Tapping from Search results also logs videos to Recently Viewed
+- Featured items are manually curated via a `featured: true` field added to `products.json`, `documents.json`, and `videos.json`
 
 ---
 
@@ -172,7 +184,7 @@ The primary user journey this screen enables is: **Job → Product → Document.
 │  │  Search  │  │  Videos  │    │  ← 2-up grid, large tap targets
 │  └──────────┘  └──────────┘    │
 └─────────────────────────────────┘
-│  Home │ Jobs │ [⊕ Search] │ Videos │ Profile  │  ← Bottom nav
+│  Home │ Jobs │ [⊕ Search] │ Library │ Profile  │  ← Bottom nav
                                             [+]  ← FAB fixed bottom-right (contractor only)
 ```
 
@@ -180,7 +192,7 @@ The primary user journey this screen enables is: **Job → Product → Document.
 
 #### 1. Global Chrome
 - **No top navigation bar.** The app uses bottom navigation only.
-- Bottom nav: **5 tabs — Home · Jobs · Search (center, visually featured with filled circle) · Videos · Profile**
+- Bottom nav: **5 tabs — Home · Jobs · Search (center, visually featured with filled circle) · Library · Profile**
 - A **floating action button (FAB)** — `fixed bottom-24 right-4` — provides job creation, visible on every page, contractor role only
 
 #### 2. Greeting + Weather Widget
@@ -443,7 +455,7 @@ This should be implemented as a CSS class on `<body>` (e.g. `class="outdoor-mode
 ---
 
 ### Layout
-- **Mobile-first:** bottom navigation bar with **5 tabs — Home · Jobs · Search (center) · Videos · Profile**. No top navigation bar.
+- **Mobile-first:** bottom navigation bar with **5 tabs — Home · Jobs · Search (center) · Library · Profile**. No top navigation bar.
 - **FAB:** `position: fixed; bottom: 6rem; right: 1rem` — contractor role only, routes to `/jobs/new`
 - **Desktop breakpoint:** left sidebar nav using `--color-nav` background
 - Tailwind utility classes throughout — extend `tailwind.config.js` with the custom color tokens above
@@ -478,6 +490,7 @@ This should be implemented as a CSS class on `<body>` (e.g. `class="outdoor-mode
     CreateQuoteView.vue         ← /jobs/:id/quotes/new
     SearchView.vue              ← /search (center nav tab)
     ProductDetailView.vue       ← /catalog/:id
+    LibraryView.vue             ← /library (Library hub, bottom nav tab)
     VideosView.vue / ProfileView.vue
   /router
     index.js

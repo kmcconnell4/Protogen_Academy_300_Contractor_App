@@ -7,7 +7,8 @@
     "docs": "Documentos",
     "videos": "Videos",
     "search": "Buscar",
-    "profile": "Perfil"
+    "profile": "Perfil",
+    "library": "Biblioteca"
   },
   "home": {
     "section_action_required": "Acción Requerida",
@@ -241,6 +242,13 @@
     "results_inspections": "Inspecciones",
     "no_results": "Sin resultados para \"{query}\"",
     "searching": "Buscando…"
+  },
+  "library": {
+    "title": "Biblioteca",
+    "featured_products": "Productos Destacados",
+    "featured_docs": "Documentos Destacados",
+    "featured_videos": "Videos Destacados",
+    "see_all": "Ver Todos"
   },
   "profile": {
     "title": "Perfil y Configuración",

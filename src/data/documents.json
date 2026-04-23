@@ -7,7 +7,8 @@
     "fileUrl": "https://placehold.co/doc?text=WB-TPO-60-PDS.pdf",
     "fileSize": "1.2 MB",
     "updatedAt": "2025-11-01",
-    "version": "Rev. G"
+    "version": "Rev. G",
+    "featured": true
   },
   {
     "id": "doc-002",
@@ -27,7 +28,8 @@
     "fileUrl": "https://placehold.co/doc?text=WB-TPO-SPEC.pdf",
     "fileSize": "3.4 MB",
     "updatedAt": "2026-01-10",
-    "version": "CW-10 Rev. 5"
+    "version": "CW-10 Rev. 5",
+    "featured": true
   },
   {
     "id": "doc-004",
@@ -57,7 +59,8 @@
     "fileUrl": "https://placehold.co/doc?text=EPDM-ADHERED-SPEC.pdf",
     "fileSize": "2.9 MB",
     "updatedAt": "2025-12-05",
-    "version": "CW-20 Rev. 4"
+    "version": "CW-20 Rev. 4",
+    "featured": true
   },
   {
     "id": "doc-007",

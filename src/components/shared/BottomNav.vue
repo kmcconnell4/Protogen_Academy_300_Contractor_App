@@ -7,6 +7,7 @@ const route = useRoute()
 
 function isActive(routeName) {
   if (routeName === 'jobs') return route.name === 'jobs' || route.name === 'job-detail'
+  if (routeName === 'library') return route.name === 'library' || route.name === 'videos'
   return route.name === routeName
 }
 </script>
@@ -52,15 +53,17 @@ function isActive(routeName) {
       </div>
     </router-link>
 
-    <!-- Videos -->
+    <!-- Library -->
     <router-link
-      :to="{ name: 'videos' }"
-      :class="['flex-1 flex flex-col items-center justify-center gap-1 h-full transition-colors', isActive('videos') ? 'text-highlight' : 'text-text-secondary']"
+      :to="{ name: 'library' }"
+      :class="['flex-1 flex flex-col items-center justify-center gap-1 h-full transition-colors', isActive('library') ? 'text-highlight' : 'text-text-secondary']"
     >
-      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <polygon points="5 3 19 12 5 21 5 3" />
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="2" y="14" width="20" height="7" rx="1" />
+        <rect x="2" y="7" width="20" height="5" rx="1" />
+        <path d="M4 7V5a2 2 0 012-2h12a2 2 0 012 2v2" />
       </svg>
-      <span class="text-[10px] font-[700] uppercase tracking-[0.08em] leading-none">{{ t('nav.videos') }}</span>
+      <span class="text-[10px] font-[700] uppercase tracking-[0.08em] leading-none">{{ t('nav.library') }}</span>
     </router-link>
 
     <!-- Profile -->
