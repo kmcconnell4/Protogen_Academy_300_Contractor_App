@@ -13,6 +13,11 @@ const routes = [
     component: () => import('@/views/JobsView.vue'),
   },
   {
+    path: '/jobs/new',
+    name: 'create-job',
+    component: () => import('@/views/CreateJobView.vue'),
+  },
+  {
     path: '/jobs/:id',
     name: 'job-detail',
     component: () => import('@/views/JobDetailView.vue'),

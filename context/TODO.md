@@ -12,31 +12,31 @@ Phases are ordered by dependency. Complete Phase 1 before starting Phases 5, 7, 
 
 ### Phase 1 — Reactive Data Layer *(prerequisite for Phases 5, 7, 8)*
 
-- [ ] **Create `src/composables/useJobsData.js`** — module-level `ref([...jobsJson])` singleton. Expose: `jobs`, `addJob(newJob)`, `jobById(id)`. Follow `useOutdoorMode.js` pattern (no Pinia needed).
-- [ ] **Create `src/composables/useQuotesData.js`** — module-level `ref([...quotesJson])`. Expose: `quotes`, `addQuote(q)`, `quotesByJobId(id)`, `finalizeQuoteAsOrder(quoteId)` — sets quote status to `'Ordered'`, creates an order stub, returns the new order.
-- [ ] **Create `src/composables/useOrdersData.js`** — module-level `ref([...ordersJson])`. Expose: `orders`, `addOrder(o)`, `ordersByJobId(id)`.
-- [ ] **Update `src/composables/useSearch.js`** — replace direct JSON imports with refs from the three composables above so newly created records appear in search results immediately.
+- [x] **Create `src/composables/useJobsData.js`** — module-level `ref([...jobsJson])` singleton. Expose: `jobs`, `addJob(newJob)`, `jobById(id)`. Follow `useOutdoorMode.js` pattern (no Pinia needed).
+- [x] **Create `src/composables/useQuotesData.js`** — module-level `ref([...quotesJson])`. Expose: `quotes`, `addQuote(q)`, `quotesByJobId(id)`, `finalizeQuoteAsOrder(quoteId)` — sets quote status to `'Ordered'`, creates an order stub, returns the new order.
+- [x] **Create `src/composables/useOrdersData.js`** — module-level `ref([...ordersJson])`. Expose: `orders`, `addOrder(o)`, `ordersByJobId(id)`.
+- [x] **Update `src/composables/useSearch.js`** — replace direct JSON imports with refs from the three composables above so newly created records appear in search results immediately.
 
 ### Phase 2 — Navigation Restructure *(parallel with Phase 3)*
 
-- [ ] **`src/App.vue`** — Remove `<NavBar />` import and element. Add `<CreateJobFab />` between `<RouterView>` and `<BottomNav>`.
-- [ ] **`src/components/shared/BottomNav.vue`** — Rewrite for 5 tabs: **Home · Jobs · Search · Videos · Profile**. Search tab is the center item: visually featured (filled `bg-interactive` circle icon, no competing label or a minimal "Search" label). Update `isActive`: `search` route activates Search tab; `job-detail` still activates Jobs tab; home route activates Home tab only.
-- [ ] **`src/router/index.js`** — Add routes: `/search` → `SearchView`, `/jobs/new` → `CreateJobView`, `/catalog/:id` → `ProductDetailView`, `/jobs/:id/quotes/new` → `CreateQuoteView`. Add redirects: `/catalog` → `/search`, `/documents` → `/search`. Keep `/videos`.
+- [x] **`src/App.vue`** — Remove `<NavBar />` import and element. Add `<CreateJobFab />` between `<RouterView>` and `<BottomNav>`.
+- [x] **`src/components/shared/BottomNav.vue`** — Rewrite for 5 tabs: **Home · Jobs · Search · Videos · Profile**. Search tab is the center item: visually featured (filled `bg-interactive` circle icon, no competing label or a minimal "Search" label). Update `isActive`: `search` route activates Search tab; `job-detail` still activates Jobs tab; home route activates Home tab only.
+- [x] **`src/router/index.js`** — Add routes: `/search` → `SearchView`, `/jobs/new` → `CreateJobView`, `/catalog/:id` → `ProductDetailView`, `/jobs/:id/quotes/new` → `CreateQuoteView`. Add redirects: `/catalog` → `/search`, `/documents` → `/search`. Keep `/videos`.
 
 ### Phase 3 — SearchView *(parallel with Phase 2)*
 
-- [ ] **Create `src/views/SearchView.vue`** — Full-page route at `/search`. Autofocus input on mount. Reuses `useSearch` composable and `SearchResultGroup` component. Empty state with prompt copy (`"Search jobs, products, documents, videos…"`). Update `ROUTE_MAP`: products → `{ name: 'product-detail', params: { id } }`, documents → `window.open(doc.url, '_blank')`, videos → `window.open(item.videoUrl, '_blank')`.
-- [ ] **`src/components/search/SearchOverlay.vue`** — No longer mounted (NavBar removed). Delete after SearchView is verified working.
+- [x] **Create `src/views/SearchView.vue`** — Full-page route at `/search`. Autofocus input on mount. Reuses `useSearch` composable and `SearchResultGroup` component. Empty state with prompt copy (`"Search jobs, products, documents, videos…"`). Update `ROUTE_MAP`: products → `{ name: 'product-detail', params: { id } }`, documents → `window.open(doc.url, '_blank')`, videos → `window.open(item.videoUrl, '_blank')`.
+- [x] **`src/components/search/SearchOverlay.vue`** — No longer mounted (NavBar removed). Delete after SearchView is verified working.
 
 ### Phase 4 — Product Detail Page *(parallel with Phase 3)*
 
-- [ ] **Create `src/views/ProductDetailView.vue`** — Back nav (`router.back()`). Sections: hero (placehold.co image, name, SKU, category badge, price/unit), Description, Related Documents (filter by `product.documentIds`), Related Videos (match by category string), Installation Notes placeholder. Route: `/catalog/:id`.
-- [ ] **`src/components/products/ProductCard.vue`** — Wrap card root in `<router-link :to="{ name: 'product-detail', params: { id: product.id } }">`. Remove the existing click/recently-viewed handler (navigation itself is the action now).
+- [x] **Create `src/views/ProductDetailView.vue`** — Back nav (`router.back()`). Sections: hero (placehold.co image, name, SKU, category badge, price/unit), Description, Related Documents (filter by `product.documentIds`), Related Videos (match by category string), Installation Notes placeholder. Route: `/catalog/:id`.
+- [x] **`src/components/products/ProductCard.vue`** — Wrap card root in `<router-link :to="{ name: 'product-detail', params: { id: product.id } }">`. Remove the existing click/recently-viewed handler (navigation itself is the action now).
 
 ### Phase 5 — FAB + Create Job *(depends on Phase 1)*
 
-- [ ] **Create `src/components/shared/CreateJobFab.vue`** — `fixed bottom-24 right-4 z-50`. 56×56px circle, `bg-interactive`, "+" SVG icon 24px, `router-link` to `{ name: 'create-job' }`. `v-if="role === 'contractor'"`. Press state: `active:scale-95 transition-transform duration-100`.
-- [ ] **Create `src/views/CreateJobView.vue`** — Back nav, heading "New Job". Form: Name (text, required), Address (text, required), Type (select: Commercial / Residential / Multi-Unit), Square Footage (number). On submit: calls `useJobsData().addJob()` with `id: 'job-' + Date.now()`, `status: 'Bid'`, `createdAt/updatedAt: today`. Navigates to `{ name: 'job-detail', params: { id: newJob.id } }`.
+- [x] **Create `src/components/shared/CreateJobFab.vue`** — `fixed bottom-24 right-4 z-50`. 56×56px circle, `bg-interactive`, "+" SVG icon 24px, `router-link` to `{ name: 'create-job' }`. `v-if="role === 'contractor'"`. Press state: `active:scale-95 transition-transform duration-100`.
+- [x] **Create `src/views/CreateJobView.vue`** — Back nav, heading "New Job". Form: Name (text, required), Address (text, required), Type (select: Commercial / Residential / Multi-Unit), Square Footage (number). On submit: calls `useJobsData().addJob()` with `id: 'job-' + Date.now()`, `status: 'Bid'`, `createdAt/updatedAt: today`. Navigates to `{ name: 'job-detail', params: { id: newJob.id } }`.
 
 ### Phase 6 — Map / Directions on Job Detail *(parallel with Phase 5)*
 

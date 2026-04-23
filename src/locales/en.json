@@ -80,7 +80,12 @@
       "square_footage": "Square Footage",
       "sq_ft": "sq ft",
       "notes": "Notes"
-    }
+    },
+    "create_job": "New Job",
+    "create_name_placeholder": "e.g. Elm Street Commercial Reroof",
+    "create_address_placeholder": "123 Main St, City, OH 45202",
+    "create_sqft_placeholder": "e.g. 18000",
+    "create_save": "Create Job"
   },
   "quotes": {
     "title": "Quotes",

@@ -80,7 +80,12 @@
       "square_footage": "Metros Cuadrados",
       "sq_ft": "pie²",
       "notes": "Notas"
-    }
+    },
+    "create_job": "Nuevo Trabajo",
+    "create_name_placeholder": "Ej. Reparación Comercial Calle Olmo",
+    "create_address_placeholder": "Calle 123, Ciudad, Estado",
+    "create_sqft_placeholder": "Ej. 18000",
+    "create_save": "Crear Trabajo"
   },
   "quotes": {
     "title": "Cotizaciones",

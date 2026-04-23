@@ -78,7 +78,12 @@
       "square_footage": "Área",
       "sq_ft": "pé²",
       "notes": "Observações"
-    }
+    },
+    "create_job": "Nova Obra",
+    "create_name_placeholder": "Ex. Reforma Comercial Rua dos Olmos",
+    "create_address_placeholder": "Rua 123, Cidade, Estado",
+    "create_sqft_placeholder": "Ex. 18000",
+    "create_save": "Criar Obra"
   },
   "quotes": {
     "title": "Cotações",

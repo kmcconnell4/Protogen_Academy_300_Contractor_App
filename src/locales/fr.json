@@ -80,7 +80,12 @@
       "square_footage": "Surface",
       "sq_ft": "pi²",
       "notes": "Notes"
-    }
+    },
+    "create_job": "Nouveau Chantier",
+    "create_name_placeholder": "Ex. Réfection commerciale Rue des Ormes",
+    "create_address_placeholder": "123 rue Principale, Ville, Province",
+    "create_sqft_placeholder": "Ex. 18000",
+    "create_save": "Créer le chantier"
   },
   "quotes": {
     "title": "Devis",
