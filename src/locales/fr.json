@@ -245,9 +245,9 @@
   },
   "library": {
     "title": "Bibliothèque",
-    "featured_products": "Produits en Vedette",
-    "featured_docs": "Documents en Vedette",
-    "featured_videos": "Vidéos en Vedette",
+    "featured_products": "Produits Populaires",
+    "featured_docs": "Documents Fréquemment Consultés",
+    "featured_videos": "Vidéos Tendance",
     "see_all": "Tout Voir"
   },
   "profile": {

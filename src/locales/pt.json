@@ -242,9 +242,9 @@
   },
   "library": {
     "title": "Biblioteca",
-    "featured_products": "Produtos em Destaque",
-    "featured_docs": "Documentos em Destaque",
-    "featured_videos": "Vídeos em Destaque",
+    "featured_products": "Produtos Populares",
+    "featured_docs": "Documentos Frequentemente Consultados",
+    "featured_videos": "Vídeos em Alta",
     "see_all": "Ver Todos"
   },
   "profile": {
