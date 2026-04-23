@@ -170,7 +170,13 @@
       "Sheet Metal": "Sheet Metal",
       "System Packages": "System Packages",
       "Adhesives": "Adhesives"
-    }
+    },
+    "description": "Description",
+    "related_docs": "Related Documents",
+    "related_videos": "Related Videos",
+    "installation_notes": "Installation Notes",
+    "installation_notes_placeholder": "Installation notes coming soon.",
+    "not_found": "Product not found."
   },
   "documents": {
     "title": "Documents",

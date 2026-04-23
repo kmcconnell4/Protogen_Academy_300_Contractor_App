@@ -168,7 +168,13 @@
       "Sheet Metal": "Chapa Metálica",
       "System Packages": "Pacotes de Sistema",
       "Adhesives": "Adesivos"
-    }
+    },
+    "description": "Descrição",
+    "related_docs": "Documentos Relacionados",
+    "related_videos": "Vídeos Relacionados",
+    "installation_notes": "Notas de Instalação",
+    "installation_notes_placeholder": "Notas de instalação em breve.",
+    "not_found": "Produto não encontrado."
   },
   "documents": {
     "title": "Documentos",

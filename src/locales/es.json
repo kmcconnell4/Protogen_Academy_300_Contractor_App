@@ -170,7 +170,13 @@
       "Sheet Metal": "Lámina Metálica",
       "System Packages": "Paquetes de Sistema",
       "Adhesives": "Adhesivos"
-    }
+    },
+    "description": "Descripción",
+    "related_docs": "Documentos Relacionados",
+    "related_videos": "Videos Relacionados",
+    "installation_notes": "Notas de Instalación",
+    "installation_notes_placeholder": "Notas de instalación próximamente.",
+    "not_found": "Producto no encontrado."
   },
   "documents": {
     "title": "Documentos",

@@ -23,7 +23,7 @@ onBeforeUnmount(() => {
 // Navigation targets per category
 const ROUTE_MAP = {
   jobs:        (item) => ({ name: 'job-detail', params: { id: item.id } }),
-  products:    (item) => ({ name: 'search', query: { product: item.id } }),
+  products:    (item) => ({ name: 'product-detail', params: { id: item.id } }),
   quotes:      (item) => ({ name: 'job-detail', params: { id: item.jobId } }),
   documents:   (item) => { window.open(item.url, '_blank', 'noopener'); return null },
   videos:      (item) => { window.open(item.videoUrl, '_blank', 'noopener'); return null },

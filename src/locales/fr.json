@@ -170,7 +170,13 @@
       "Sheet Metal": "Tôle",
       "System Packages": "Systèmes Complets",
       "Adhesives": "Adhésifs"
-    }
+    },
+    "description": "Description",
+    "related_docs": "Documents Associés",
+    "related_videos": "Vidéos Associées",
+    "installation_notes": "Notes d'Installation",
+    "installation_notes_placeholder": "Notes d'installation à venir.",
+    "not_found": "Produit introuvable."
   },
   "documents": {
     "title": "Documents",

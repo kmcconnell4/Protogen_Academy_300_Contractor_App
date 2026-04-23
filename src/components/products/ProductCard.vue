@@ -1,10 +1,8 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
-import { useRecentlyViewed } from '@/composables/useRecentlyViewed'
 import documents from '@/data/documents.json'
 
 const { t } = useI18n()
-const { addItem } = useRecentlyViewed()
 
 const props = defineProps({
   product: { type: Object, required: true },
@@ -26,21 +24,12 @@ function formatPrice(price, unit) {
   return `${formatted} / ${unit}`
 }
 
-function track() {
-  addItem({
-    id: props.product.id,
-    type: 'product',
-    name: props.product.name,
-    routeName: 'catalog',
-    routeParams: {},
-  })
-}
 </script>
 
 <template>
-  <div
-    role="article"
-    class="bg-surface border border-border rounded-xl p-4 flex flex-col gap-3"
+  <router-link
+    :to="{ name: 'product-detail', params: { id: product.id } }"
+    class="block bg-surface border border-border rounded-xl p-4 flex flex-col gap-3"
   >
 
     <!-- Category + SKU meta row -->
@@ -87,7 +76,7 @@ function track() {
           'inline-flex items-center gap-1 h-[28px] px-2.5 rounded text-[11px] font-[700] uppercase tracking-[0.08em] leading-none transition-opacity hover:opacity-80',
           docTypeConfig[doc.type]?.cls ?? 'bg-surface-alt text-text-secondary',
         ]"
-        @click="track"
+        @click.stop
       >
         <!-- Mini document icon -->
         <svg class="w-3 h-3 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -98,5 +87,5 @@ function track() {
       </a>
     </div>
 
-  </div>
+  </router-link>
 </template>
