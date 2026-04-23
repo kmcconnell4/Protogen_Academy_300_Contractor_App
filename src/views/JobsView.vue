@@ -5,10 +5,12 @@ import { useRoute, useRouter } from 'vue-router'
 import jobs from '@/data/jobs.json'
 import contractors from '@/data/contractors.json'
 import JobCard from '@/components/jobs/JobCard.vue'
+import { useRole } from '@/composables/useRole'
 
 const { t } = useI18n()
 const route = useRoute()
 const router = useRouter()
+const { role } = useRole()
 
 const STATUSES = ['Bid', 'In Progress', 'Under Inspection', 'Warranty', 'Closed']
 const activeFilter = ref('All')
@@ -67,6 +69,7 @@ const allFilters = computed(() => {
           {{ t('jobs.title') }}
         </h1>
         <button
+          v-if="role === 'contractor'"
           class="shrink-0 inline-flex items-center gap-1.5 h-[32px] px-3 rounded-lg bg-interactive text-white text-[12px] font-[700] uppercase tracking-widest transition-opacity active:opacity-80"
           @click="router.push({ name: 'create-job' })"
         >

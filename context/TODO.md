@@ -85,6 +85,5 @@ Phases are ordered by dependency. Complete Phase 1 before starting Phases 5, 7, 
 ## Ideas
 
 - Add in map view similar to help details page with button to get directions
-- Rmeove floating + button in favor of the new button under jobs
 - Consolidate videos and docs into a resources page 
 - Rework Action required a bit

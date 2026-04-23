@@ -1,6 +1,5 @@
 <script setup>
 import BottomNav from '@/components/shared/BottomNav.vue'
-import CreateJobFab from '@/components/shared/CreateJobFab.vue'
 import { setupRole } from '@/composables/useRole'
 
 // Provide global role state to all child components
@@ -14,7 +13,6 @@ setupRole()
         <component :is="Component" class="flex-1" />
       </Transition>
     </RouterView>
-    <CreateJobFab />
     <BottomNav />
   </div>
 </template>

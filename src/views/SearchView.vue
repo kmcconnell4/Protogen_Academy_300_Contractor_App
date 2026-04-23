@@ -36,6 +36,14 @@ function navigate(type, item) {
   if (dest) router.push(dest)
 }
 
+// Quick-jump shortcuts shown when no query is entered
+const QUICK_JUMPS = [
+  { label: () => t('nav.jobs'),      icon: 'briefcase', color: 'text-interactive', route: { name: 'jobs' } },
+  { label: () => t('catalog.title'), icon: 'box',       color: 'text-highlight',   route: { name: 'catalog' } },
+  { label: () => t('videos.title'),   icon: 'play',     color: 'text-amber',       route: { name: 'videos' } },
+  { label: () => t('documents.title'), icon: 'document', color: 'text-amber',      route: { name: 'documents' } },
+]
+
 // Per-category display config
 const CAT_CONFIG = {
   jobs: {
@@ -146,16 +154,43 @@ const CATEGORY_LABELS = {
     <!-- ── Scrollable results area ── -->
     <div class="flex-1 overflow-y-auto overscroll-contain">
 
-      <!-- No query — empty prompt -->
-      <div v-if="!query" class="flex flex-col items-center px-8 pt-16 pb-8 gap-3 text-center">
-        <div class="w-14 h-14 rounded-full bg-surface-alt flex items-center justify-center mb-1">
-          <svg class="w-7 h-7 text-text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="11" cy="11" r="8" />
-            <path d="M21 21l-4.35-4.35" />
-          </svg>
+      <!-- No query — quick-jump shortcuts -->
+      <div v-if="!query" class="px-4 pt-5 pb-6">
+        <p class="text-[11px] font-[700] uppercase tracking-[0.12em] text-text-secondary mb-3">
+          {{ t('search.jump_to') }}
+        </p>
+        <div class="grid grid-cols-2 gap-2">
+          <button
+            v-for="jump in QUICK_JUMPS"
+            :key="jump.route.name"
+            class="flex items-center gap-3 h-[52px] px-4 bg-surface border border-border rounded-xl text-left transition-colors active:bg-surface-alt"
+            @click="router.push(jump.route)"
+          >
+            <span :class="['shrink-0', jump.color]">
+              <!-- Briefcase -->
+              <svg v-if="jump.icon === 'briefcase'" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" />
+              </svg>
+              <!-- Box -->
+              <svg v-else-if="jump.icon === 'box'" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" />
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                <line x1="12" y1="22.08" x2="12" y2="12" />
+              </svg>
+              <!-- Play -->
+              <svg v-else-if="jump.icon === 'play'" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <polygon points="5 3 19 12 5 21 5 3" />
+              </svg>
+              <!-- Document -->
+              <svg v-else-if="jump.icon === 'document'" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" />
+                <path d="M14 2v6h6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span class="text-[13px] font-[700] text-white truncate">{{ jump.label() }}</span>
+          </button>
         </div>
-        <p class="text-white font-[700] text-[16px]">{{ t('search.placeholder') }}</p>
-        <p class="text-text-secondary text-[14px]">{{ t('search.jump_to') }}</p>
       </div>
 
       <!-- Results by category -->
