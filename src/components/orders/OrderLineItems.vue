@@ -1,10 +1,5 @@
 <script setup>
-import { useI18n } from 'vue-i18n'
-import { useRouter } from 'vue-router'
 import products from '@/data/products.json'
-
-const { t } = useI18n()
-const router = useRouter()
 
 const props = defineProps({
   lineItems: { type: Array, required: true },
@@ -16,23 +11,28 @@ function getProduct(productId) {
 </script>
 
 <template>
-  <div class="p-4 flex flex-col gap-3 border-t border-border">
-    <div
+  <div class="p-4 flex flex-col gap-0 border-t border-border divide-y divide-border">
+    <component
       v-for="item in lineItems"
       :key="item.productId"
-      class="flex items-start justify-between gap-2"
+      :is="getProduct(item.productId) ? 'router-link' : 'div'"
+      v-bind="getProduct(item.productId) ? { to: { name: 'product-detail', params: { id: item.productId } } } : {}"
+      class="flex items-center justify-between gap-3 py-3 transition-colors"
+      :class="getProduct(item.productId) ? 'active:bg-surface-alt -mx-4 px-4' : ''"
     >
       <div class="min-w-0">
         <p class="text-white font-bold text-sm truncate">{{ item.description }}</p>
         <p class="text-text-secondary text-xs">{{ item.qty }} {{ item.unit }}</p>
       </div>
-      <button
+      <svg
         v-if="getProduct(item.productId)"
-        class="shrink-0 inline-flex items-center gap-1 h-[30px] px-2.5 rounded bg-interactive/15 text-highlight text-[11px] font-[700] uppercase tracking-[0.08em]"
-        @click="router.push({ name: 'catalog', query: { product: item.productId } })"
+        class="w-4 h-4 text-border shrink-0"
+        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+        aria-hidden="true"
       >
-        {{ t('orders.view_product') }}
-      </button>
-    </div>
+        <path d="M9 18l6-6-6-6" />
+      </svg>
+    </component>
   </div>
 </template>

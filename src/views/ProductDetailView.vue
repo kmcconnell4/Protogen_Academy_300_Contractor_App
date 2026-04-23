@@ -12,6 +12,14 @@ const route = useRoute()
 const router = useRouter()
 const { addItem } = useRecentlyViewed()
 
+function goBack() {
+  if (window.history.state?.back) {
+    router.back()
+  } else {
+    router.push({ name: 'search' })
+  }
+}
+
 const product = computed(() => productsData.find((p) => p.id === route.params.id) ?? null)
 
 const relatedDocs = computed(() => {
@@ -75,7 +83,7 @@ onMounted(() => {
     <div class="flex items-center gap-3 px-4 pt-4 pb-2 shrink-0">
       <button
         class="flex items-center gap-1.5 h-[44px] text-text-secondary hover:text-white transition-colors"
-        @click="router.back()"
+        @click="goBack()"
       >
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M15 18l-6-6 6-6" />

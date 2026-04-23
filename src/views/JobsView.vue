@@ -1,13 +1,14 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import jobs from '@/data/jobs.json'
 import contractors from '@/data/contractors.json'
 import JobCard from '@/components/jobs/JobCard.vue'
 
 const { t } = useI18n()
 const route = useRoute()
+const router = useRouter()
 
 const STATUSES = ['Bid', 'In Progress', 'Under Inspection', 'Warranty', 'Closed']
 const activeFilter = ref('All')
@@ -67,7 +68,7 @@ const allFilters = computed(() => {
         </h1>
         <button
           class="shrink-0 inline-flex items-center gap-1.5 h-[32px] px-3 rounded-lg bg-interactive text-white text-[12px] font-[700] uppercase tracking-widest transition-opacity active:opacity-80"
-          @click="router.push({ name: 'jobs' })"
+          @click="router.push({ name: 'create-job' })"
         >
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 5v14M5 12h14" />
