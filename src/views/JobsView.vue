@@ -107,7 +107,7 @@ const allFilters = computed(() => {
           :class="[
             'shrink-0 h-[52px] px-3.5 rounded-lg text-[11px] font-[700] uppercase tracking-[0.1em] transition-colors',
             activeFilter === f.value
-              ? 'bg-interactive text-white'
+              ? 'bg-interactive/20 text-highlight border-2 border-highlight'
               : 'bg-surface text-text-secondary border border-border',
           ]"
           @click="activeFilter = f.value"
@@ -116,7 +116,7 @@ const allFilters = computed(() => {
           <span
             :class="[
               'ml-1.5 tabular-nums',
-              activeFilter === f.value ? 'text-white/60' : 'text-text-secondary/50',
+              activeFilter === f.value ? 'text-highlight/60' : 'text-text-secondary/50',
             ]"
           >{{ f.count }}</span>
         </button>
