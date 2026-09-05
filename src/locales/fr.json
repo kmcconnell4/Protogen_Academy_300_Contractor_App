@@ -3,12 +3,13 @@
     "home": "Aller à l'accueil",
     "home_tab": "Accueil",
     "jobs": "Chantiers",
-    "catalog": "Catalogue",
+    "catalog": "Produits",
     "docs": "Documents",
     "videos": "Vidéos",
     "search": "Rechercher",
     "profile": "Profil",
-    "library": "Bibliothèque"
+    "library": "Bibliothèque",
+    "portal_label": "Portail de l'Entrepreneur"
   },
   "home": {
     "section_action_required": "Action Requise",
@@ -32,11 +33,6 @@
     "alert_count": "{count} élément | {count} éléments",
     "no_active_jobs": "Aucun chantier actif",
     "no_active_jobs_hint": "Les chantiers en cours apparaîtront ici.",
-    "cta_add_contractor": "Ajouter un Entrepreneur",
-    "section_recent_contractors": "Vos Entrepreneurs",
-    "no_recent_contractors": "Les entrepreneurs que vous consultez apparaîtront ici.",
-    "contractor_active_jobs": "{count} chantier actif | {count} chantiers actifs",
-    "view_contractor_jobs": "Voir les chantiers de {name}",
     "recently_viewed_empty": "Les produits et documents ouverts apparaîtront ici."
   },
   "jobs": {
@@ -61,8 +57,6 @@
     "detail_updated": "Dernière Mise à Jour",
     "no_jobs": "Aucun chantier trouvé.",
     "no_jobs_filtered": "Aucun chantier ne correspond à ce filtre.",
-    "no_jobs_contractor": "Aucun chantier trouvé pour {name}.",
-    "filtered_by": "Chantiers pour",
     "clear_filter": "Tout afficher",
     "last_updated": "Mis à jour {date}",
     "tabs": {
@@ -75,6 +69,9 @@
       "job_name": "Nom du Chantier",
       "address": "Adresse",
       "type": "Type",
+      "owner": "Propriétaire",
+      "contractor": "Entrepreneur",
+      "roof_system": "Système de Toiture",
       "status": "Statut",
       "assigned_rep": "Représentant Assigné",
       "created": "Créé le",
@@ -87,6 +84,7 @@
     "create_name_placeholder": "Ex. Réfection commerciale Rue des Ormes",
     "create_address_placeholder": "123 rue Principale, Ville, Province",
     "create_sqft_placeholder": "Ex. 18000",
+    "create_owner_placeholder": "Ex. Elm Street Retail Partners LLC",
     "create_save": "Créer le chantier"
   },
   "quotes": {
@@ -107,8 +105,6 @@
     "unit_price": "Prix Unitaire",
     "line_total": "Total",
     "no_quotes": "Aucun devis pour ce chantier.",
-    "approve": "Approuver le Devis",
-    "reject": "Rejeter le Devis",
     "add_quote": "Ajouter un Devis",
     "create_title": "Nouveau Devis",
     "select_product": "Sélectionner un produit…",
@@ -152,9 +148,8 @@
     "response_placeholder": "Décrivez les mesures correctives prises…",
     "submit_response": "Soumettre la Réponse",
     "response_submitted": "Réponse soumise le {date}",
-    "response_submitted_confirmation": "Réponse soumise. Votre représentant Carlisle l’examinera sous peu.",
+    "response_submitted_confirmation": "Réponse soumise. Votre représentant Ridgeline l’examinera sous peu.",
     "reviewed_on": "Examiné le {date}",
-    "mark_reviewed": "Marquer comme Examiné",
     "finding_resolved": "Résolu",
     "no_findings": "Aucune constatation enregistrée.",
     "no_inspections": "Aucune inspection pour ce chantier.",
@@ -162,7 +157,7 @@
     "mark_finding_resolved": "Marquer comme Résolu"
   },
   "catalog": {
-    "title": "Catalogue",
+    "title": "Produits",
     "search_placeholder": "Rechercher par nom ou SKU…",
     "filter_all": "Tous",
     "sku": "SKU",
@@ -187,6 +182,9 @@
       "Sheet Metal": "Tôle",
       "System Packages": "Systèmes Complets",
       "Adhesives": "Adhésifs"
+    },
+    "groups": {
+      "Membranes": "Membranes"
     },
     "description": "Description",
     "related_docs": "Documents Associés",
@@ -258,11 +256,8 @@
     "company": "Entreprise",
     "region": "Région",
     "language": "Langue",
-    "role": "Rôle",
     "outdoor_mode": "Mode Extérieur",
     "outdoor_mode_hint": "Texte et cibles plus grands pour une utilisation sur site",
-    "role_contractor": "Entrepreneur",
-    "role_rep": "Rep. Commerciale",
     "languages": {
       "en": "English",
       "es": "Español",
@@ -277,11 +272,6 @@
     "order_shipped": "Commande expédiée",
     "order_delivered": "Commande livrée",
     "new_document": "Nouveau document ajouté"
-  },
-  "role_switcher": {
-    "label": "Vue en tant que",
-    "contractor": "Entrepreneur",
-    "rep": "Rep. Commerciale"
   },
   "common": {
     "loading": "Chargement…",

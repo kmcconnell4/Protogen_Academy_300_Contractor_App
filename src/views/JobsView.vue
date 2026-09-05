@@ -1,33 +1,20 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useRoute, useRouter } from 'vue-router'
-import jobs from '@/data/jobs.json'
-import contractors from '@/data/contractors.json'
+import { useRouter } from 'vue-router'
+import { useJobsData } from '@/composables/useJobsData'
 import JobCard from '@/components/jobs/JobCard.vue'
-import { useRole } from '@/composables/useRole'
 
 const { t } = useI18n()
-const route = useRoute()
 const router = useRouter()
-const { role } = useRole()
+const { jobs } = useJobsData()
 
 const STATUSES = ['Bid', 'In Progress', 'Under Inspection', 'Warranty', 'Closed']
 const activeFilter = ref('All')
 const sortBy = ref('updated')
 
-// Contractor filter applied when navigating from the rep's contractor cards
-const contractorId = computed(() => route.query.contractor ?? null)
-const contractorName = computed(() => {
-  if (!contractorId.value) return null
-  return contractors.find((c) => c.id === contractorId.value)?.name ?? null
-})
-
 const filtered = computed(() => {
-  let list = jobs
-  if (contractorId.value) {
-    list = list.filter((j) => j.contractorId === contractorId.value)
-  }
+  let list = jobs.value
   if (activeFilter.value !== 'All') {
     list = list.filter((j) => j.status === activeFilter.value)
   }
@@ -39,14 +26,13 @@ const filtered = computed(() => {
   return list
 })
 
-// Build filter chips with per-status counts (scoped to contractor if filtered)
-const baseList = computed(() => contractorId.value ? jobs.filter((j) => j.contractorId === contractorId.value) : jobs)
+// Build filter chips with per-status counts
 const allFilters = computed(() => {
   const counts = Object.fromEntries(
-    STATUSES.map((s) => [s, baseList.value.filter((j) => j.status === s).length]),
+    STATUSES.map((s) => [s, jobs.value.filter((j) => j.status === s).length]),
   )
   return [
-    { label: t('jobs.filter_all'), value: 'All', count: baseList.value.length },
+    { label: t('jobs.filter_all'), value: 'All', count: jobs.value.length },
     ...STATUSES.map((s) => ({
       label: t(`jobs.filter_${s.toLowerCase().replace(' ', '_')}`),
       value: s,
@@ -69,7 +55,6 @@ const allFilters = computed(() => {
           {{ t('jobs.title') }}
         </h1>
         <button
-          v-if="role === 'contractor'"
           class="shrink-0 inline-flex items-center gap-1.5 h-[32px] px-3 rounded-lg bg-interactive text-white text-[12px] font-[700] uppercase tracking-widest transition-opacity active:opacity-80"
           @click="router.push({ name: 'create-job' })"
         >
@@ -78,21 +63,6 @@ const allFilters = computed(() => {
           </svg>
           {{ t('common.new') }}
         </button>
-      </div>
-      <!-- Contractor filter banner: shown when navigated from a rep's contractor card -->
-      <div v-if="contractorName" class="mt-3 flex items-center gap-2">
-        <span class="text-[11px] font-[700] uppercase tracking-[0.1em] text-text-secondary">
-          {{ t('jobs.filtered_by') }}:
-        </span>
-        <span class="inline-flex items-center gap-1.5 bg-interactive/20 text-highlight text-[11px] font-[700] uppercase tracking-[0.1em] px-2.5 py-1 rounded">
-          {{ contractorName }}
-        </span>
-        <router-link
-          :to="{ name: 'jobs' }"
-          class="ml-auto text-[11px] font-[700] text-text-secondary hover:text-white transition-colors"
-        >
-          {{ t('jobs.clear_filter') }}
-        </router-link>
       </div>
     </div>
 
@@ -141,10 +111,7 @@ const allFilters = computed(() => {
         <JobCard v-for="job in filtered" :key="job.id" :job="job" />
       </div>
       <div v-else class="py-12 text-center flex flex-col items-center gap-3">
-        <p v-if="contractorId" class="text-text-secondary text-[15px]">
-          {{ t('jobs.no_jobs_contractor', { name: contractorName ?? '' }) }}
-        </p>
-        <p v-else-if="activeFilter !== 'All'" class="text-text-secondary text-[15px]">
+        <p v-if="activeFilter !== 'All'" class="text-text-secondary text-[15px]">
           {{ t('jobs.no_jobs_filtered') }}
         </p>
         <p v-else class="text-text-secondary text-[15px]">
@@ -157,13 +124,6 @@ const allFilters = computed(() => {
         >
           {{ t('jobs.clear_filter') }}
         </button>
-        <router-link
-          v-if="contractorId"
-          :to="{ name: 'jobs' }"
-          class="text-highlight text-[13px] font-[700] uppercase tracking-[0.1em] hover:underline"
-        >
-          {{ t('jobs.clear_filter') }}
-        </router-link>
       </div>
     </div>
 

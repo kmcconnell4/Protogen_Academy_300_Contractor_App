@@ -2,15 +2,19 @@
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import jobs from '@/data/jobs.json'
+import { useJobsData } from '@/composables/useJobsData'
+import reps from '@/data/reps.json'
+import profile from '@/data/profile.json'
 import JobDetailTabs from '@/components/jobs/JobDetailTabs.vue'
 import StatusBadge from '@/components/shared/StatusBadge.vue'
 
 const { t } = useI18n()
 const route = useRoute()
 const router = useRouter()
+const { jobs } = useJobsData()
 
-const job = computed(() => jobs.find((j) => j.id === route.params.id))
+const job = computed(() => jobs.value.find((j) => j.id === route.params.id))
+const repName = computed(() => reps.find((r) => r.id === job.value?.repId)?.name ?? job.value?.repId ?? '—')
 
 function goBack() {
   if (window.history.state?.back) {
@@ -93,6 +97,34 @@ function goBack() {
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
         </a>
+
+        <!-- At-a-glance job details -->
+        <div class="grid grid-cols-2 gap-x-4 gap-y-3 mt-4 pt-4 border-t border-border">
+          <div>
+            <p class="text-[10px] font-[700] uppercase tracking-[0.1em] text-text-secondary leading-none mb-1">
+              {{ t('jobs.detail.owner') }}
+            </p>
+            <p class="text-white font-[600] text-[14px] leading-snug">{{ job.ownerName ?? '—' }}</p>
+          </div>
+          <div>
+            <p class="text-[10px] font-[700] uppercase tracking-[0.1em] text-text-secondary leading-none mb-1">
+              {{ t('jobs.detail.contractor') }}
+            </p>
+            <p class="text-white font-[600] text-[14px] leading-snug">{{ profile.company }}</p>
+          </div>
+          <div>
+            <p class="text-[10px] font-[700] uppercase tracking-[0.1em] text-text-secondary leading-none mb-1">
+              {{ t('jobs.detail.assigned_rep') }}
+            </p>
+            <p class="text-white font-[600] text-[14px] leading-snug">{{ repName }}</p>
+          </div>
+          <div>
+            <p class="text-[10px] font-[700] uppercase tracking-[0.1em] text-text-secondary leading-none mb-1">
+              {{ t('jobs.detail.roof_system') }}
+            </p>
+            <p class="text-white font-[600] text-[14px] leading-snug">{{ job.roofSystem ?? '—' }}</p>
+          </div>
+        </div>
       </div>
 
       <JobDetailTabs :job="job" />

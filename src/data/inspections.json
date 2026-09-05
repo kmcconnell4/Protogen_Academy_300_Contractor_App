@@ -23,7 +23,7 @@
         "id": "finding-001-02",
         "category": "Flashing",
         "severity": "Major",
-        "description": "Penetration flashing at HVAC curbs on east side does not meet Carlisle CW-25 spec. Flashing must be replaced before membrane can be warranted.",
+        "description": "Penetration flashing at HVAC curbs on east side does not meet Ridgeline CW-25 spec. Flashing must be replaced before membrane can be warranted.",
         "photoUrls": ["https://placehold.co/600x400?text=Finding+02"],
         "resolved": false
       }
@@ -69,12 +69,12 @@
         "id": "finding-003-01",
         "category": "General",
         "severity": "None",
-        "description": "Phase 1 area passes all Carlisle warranty requirements. Seams tested to spec. Flashings complete.",
+        "description": "Phase 1 area passes all Ridgeline warranty requirements. Seams tested to spec. Flashings complete.",
         "photoUrls": [],
         "resolved": true
       }
     ],
-    "contractorResponse": "All Phase 1 items addressed per Carlisle spec. Replaced 2 sections of wet deck, re-flashed both affected drains, and passed seam probe test. Ready for warranty registration."
+    "contractorResponse": "All Phase 1 items addressed per Ridgeline spec. Replaced 2 sections of wet deck, re-flashed both affected drains, and passed seam probe test. Ready for warranty registration."
   },
   {
     "id": "inspection-004",
@@ -88,7 +88,7 @@
     "responseSubmittedAt": "2025-10-10",
     "reviewedAt": "2025-10-14",
     "findings": [],
-    "contractorResponse": "No issues found. System installed per Carlisle specifications. Ready for 20-year warranty registration."
+    "contractorResponse": "No issues found. System installed per Ridgeline specifications. Ready for 20-year warranty registration."
   },
   {
     "id": "inspection-005",
@@ -111,6 +111,6 @@
         "resolved": true
       }
     ],
-    "contractorResponse": "Drip edge overlap corrected on-site per rep direction. All other system components meet Carlisle specifications."
+    "contractorResponse": "Drip edge overlap corrected on-site per rep direction. All other system components meet Ridgeline specifications."
   }
 ]

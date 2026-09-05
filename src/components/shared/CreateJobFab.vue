@@ -1,14 +1,11 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
-import { useRole } from '@/composables/useRole'
 
 const { t } = useI18n()
-const { role } = useRole()
 </script>
 
 <template>
   <router-link
-    v-if="role === 'contractor'"
     :to="{ name: 'create-job' }"
     :aria-label="t('jobs.create_job')"
     class="fixed bottom-36 right-4 z-50 w-14 h-14 rounded-full bg-interactive flex items-center justify-center shadow-lg transition-transform duration-100 active:scale-95"

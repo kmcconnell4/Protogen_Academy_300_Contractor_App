@@ -3,16 +3,17 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { useFormatDate } from '@/composables/useFormatDate'
-import jobs from '@/data/jobs.json'
+import { useJobsData } from '@/composables/useJobsData'
 import StatusBadge from '@/components/shared/StatusBadge.vue'
 
 const { t } = useI18n()
 const router = useRouter()
 const { formatDate } = useFormatDate()
+const { jobs } = useJobsData()
 
 // Most recently updated non-closed job
 const recentJob = computed(() =>
-  [...jobs]
+  [...jobs.value]
     .filter((j) => j.status !== 'Closed')
     .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))[0] ?? null
 )

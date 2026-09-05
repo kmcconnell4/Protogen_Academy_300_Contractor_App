@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270">
+  <rect width="480" height="270" fill="#1E2A3E"/>
+  <rect x="0.5" y="0.5" width="479" height="269" fill="none" stroke="#2E3A52"/>
+  <!-- technical cross-section: plate + fastener through insulation into deck -->
+  <rect x="120" y="150" width="240" height="26" fill="#C9A66B"/>
+  <rect x="120" y="176" width="240" height="14" fill="#4A5570"/>
+  <circle cx="240" cy="140" r="24" fill="#A8B8D0"/>
+  <circle cx="240" cy="140" r="24" fill="none" stroke="#728098" stroke-width="2"/>
+  <rect x="236" y="90" width="8" height="100" fill="#5B9BF0"/>
+  <path d="M228 90 L252 90 L240 76 Z" fill="#5B9BF0"/>
+  <!-- thread lines -->
+  <g stroke="#2E6FD8" stroke-width="2">
+    <path d="M236 110 L244 114"/><path d="M236 122 L244 126"/>
+    <path d="M236 134 L244 138"/><path d="M236 146 L244 150"/>
+    <path d="M236 158 L244 162"/><path d="M236 170 L244 174"/>
+  </g>
+  <!-- callout -->
+  <line x1="264" y1="140" x2="330" y2="110" stroke="#F5A623" stroke-width="1.5"/>
+  <circle cx="330" cy="110" r="2.5" fill="#F5A623"/>
+  <text x="336" y="107" fill="#F5A623" font-family="Barlow, sans-serif" font-size="11" font-weight="700">FM 1-90</text>
+  <text x="24" y="240" fill="#A8B8D0" font-family="Barlow, sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">INSULATION FASTENERS</text>
+  <text x="24" y="30" fill="#5B9BF0" font-family="Barlow, sans-serif" font-size="11" font-weight="700" letter-spacing="2">#12 · SELF-DRILLING</text>
+</svg>

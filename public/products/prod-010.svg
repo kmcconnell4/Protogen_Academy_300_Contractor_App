@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270">
+  <rect width="480" height="270" fill="#1E2A3E"/>
+  <rect x="0.5" y="0.5" width="479" height="269" fill="none" stroke="#2E3A52"/>
+  <!-- adhesive pail -->
+  <path d="M182 110 L298 110 L288 205 L192 205 Z" fill="#243044" stroke="#5B9BF0" stroke-width="2.5"/>
+  <ellipse cx="240" cy="110" rx="58" ry="12" fill="#2E6FD8"/>
+  <ellipse cx="240" cy="110" rx="58" ry="12" fill="none" stroke="#5B9BF0" stroke-width="2"/>
+  <path d="M210 98 Q240 70 270 98" fill="none" stroke="#A8B8D0" stroke-width="6" stroke-linecap="round"/>
+  <!-- amber warning band -->
+  <rect x="192" y="150" width="96" height="18" fill="#F5A623"/>
+  <text x="24" y="240" fill="#A8B8D0" font-family="Barlow, sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">EPDM BONDING ADHESIVE</text>
+  <text x="24" y="30" fill="#5B9BF0" font-family="Barlow, sans-serif" font-size="11" font-weight="700" letter-spacing="2">5-GAL · SOLVENT-BASED</text>
+</svg>

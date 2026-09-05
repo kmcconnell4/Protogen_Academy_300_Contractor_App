@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270">
+  <rect width="480" height="270" fill="#1E2A3E"/>
+  <rect x="0.5" y="0.5" width="479" height="269" fill="none" stroke="#2E3A52"/>
+  <!-- page shadow -->
+  <rect x="166" y="24" width="200" height="228" rx="4" fill="#0B0F16" opacity="0.45"/>
+  <!-- page -->
+  <rect x="160" y="18" width="200" height="228" rx="4" fill="#F4F6F9"/>
+  <!-- masthead -->
+  <rect x="160" y="18" width="200" height="30" rx="4" fill="#2E6FD8"/>
+  <rect x="160" y="34" width="200" height="14" fill="#2E6FD8"/>
+  <text x="172" y="38" fill="#FFFFFF" font-family="Barlow, sans-serif" font-size="9" font-weight="800" letter-spacing="1.5">PDS</text>
+  <!-- headline -->
+  <text x="172" y="76" fill="#151C28" font-family="Barlow, sans-serif" font-size="16" font-weight="800">EPDM 60-mil</text>
+  <text x="172" y="96" fill="#151C28" font-family="Barlow, sans-serif" font-size="16" font-weight="800">Product Data Sheet</text>
+  <!-- body line rules -->
+  <rect x="172" y="112" width="176" height="4" rx="2" fill="#D7DEE8"/>
+  <rect x="172" y="124" width="150" height="4" rx="2" fill="#D7DEE8"/>
+  <rect x="172" y="136" width="164" height="4" rx="2" fill="#D7DEE8"/>
+  <rect x="172" y="148" width="120" height="4" rx="2" fill="#D7DEE8"/>
+  <!-- motif -->
+  
+        <rect x="228" y="180" width="64" height="40" rx="3" fill="#171E29" stroke="#2E3A52" stroke-width="1.5"/>
+        <ellipse cx="228" cy="200" rx="8" ry="20" fill="#171E29" stroke="#2E3A52" stroke-width="1.5"/>
+        <ellipse cx="228" cy="200" rx="3.2" ry="8" fill="#164da6"/>
+        
+  <!-- footer -->
+  <rect x="160" y="228" width="200" height="1" fill="#D7DEE8"/>
+  <text x="172" y="240" fill="#728098" font-family="Barlow, sans-serif" font-size="8" font-weight="600">RIDGELINE ROOFING SYSTEMS</text>
+</svg>

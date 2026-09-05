@@ -1,94 +1,165 @@
 [
   {
     "id": "prod-001",
-    "name": "WeatherBond TPO Membrane 60-mil",
-    "sku": "WB-TPO-60-W",
+    "name": "TPO Membrane 60-mil",
+    "sku": "TPO-60-WHT",
     "category": "TPO Membrane",
     "description": "High-performance 60-mil TPO single-ply roofing membrane with heat-weldable seams. Industry-leading reflectivity reduces cooling loads. Available in white, gray, and tan.",
     "unit": "sq",
-    "pricePerUnit": 180.00,
-    "documentIds": ["doc-001", "doc-002", "doc-003"],
-    "tags": ["TPO", "single-ply", "reflective", "energy-star"],
-    "featured": true
+    "pricePerUnit": 180.0,
+    "documentIds": [
+      "doc-001",
+      "doc-002",
+      "doc-003"
+    ],
+    "tags": [
+      "TPO",
+      "single-ply",
+      "reflective",
+      "energy-star"
+    ],
+    "featured": true,
+    "imageUrl": "/products/prod-001.svg"
   },
   {
     "id": "prod-002",
-    "name": "EPDM Sure-Seal Membrane 60-mil",
-    "sku": "SS-EPDM-60-B",
+    "name": "EPDM Membrane 60-mil",
+    "sku": "EPDM-60-BLK",
     "category": "EPDM Membrane",
     "description": "Premium 60-mil EPDM membrane in black. Exceptional weathering resistance and elongation properties. Ideal for large-area commercial and industrial roofs.",
     "unit": "sq",
-    "pricePerUnit": 155.00,
-    "documentIds": ["doc-004", "doc-005", "doc-006"],
-    "tags": ["EPDM", "single-ply", "black", "large-format"],
-    "featured": true
+    "pricePerUnit": 155.0,
+    "documentIds": [
+      "doc-004",
+      "doc-005",
+      "doc-006"
+    ],
+    "tags": [
+      "EPDM",
+      "single-ply",
+      "black",
+      "large-format"
+    ],
+    "featured": true,
+    "imageUrl": "/products/prod-002.svg"
   },
   {
     "id": "prod-003",
-    "name": "FleeceBACK TPO Membrane 80-mil",
-    "sku": "FB-TPO-80-W",
+    "name": "Fleece-Back TPO Membrane 80-mil",
+    "sku": "TPO-FB-80-WHT",
     "category": "TPO Membrane",
     "description": "80-mil fleece-backed TPO membrane for adhered applications. The fleece backing allows direct-to-deck adhesion eliminating the need for separate insulation fasteners on re-roofing projects.",
     "unit": "sq",
-    "pricePerUnit": 230.00,
-    "documentIds": ["doc-007", "doc-008"],
-    "tags": ["TPO", "fleece-back", "adhered", "re-roof"]
+    "pricePerUnit": 230.0,
+    "documentIds": [
+      "doc-007",
+      "doc-008"
+    ],
+    "tags": [
+      "TPO",
+      "fleece-back",
+      "adhered",
+      "re-roof"
+    ],
+    "imageUrl": "/products/prod-003.svg"
   },
   {
     "id": "prod-004",
-    "name": "CavGard Polyiso Insulation",
-    "sku": "CG-POLY-ISO",
+    "name": "Polyiso Insulation",
+    "sku": "POLYISO-STD",
     "category": "Insulation",
     "description": "Polyisocyanurate foam insulation board with glass-fiber mats on both faces. Class A fire rated. Available in 2-in, 2.5-in, and 3-in thicknesses. R-value per inch: 6.5.",
     "unit": "sq",
-    "pricePerUnit": 58.00,
-    "documentIds": ["doc-009", "doc-010"],
-    "tags": ["insulation", "polyiso", "class-a", "energy"]
+    "pricePerUnit": 58.0,
+    "documentIds": [
+      "doc-009",
+      "doc-010"
+    ],
+    "tags": [
+      "insulation",
+      "polyiso",
+      "class-a",
+      "energy"
+    ],
+    "imageUrl": "/products/prod-004.svg"
   },
   {
     "id": "prod-005",
-    "name": "SecurTAPE Seam Tape 6-in",
+    "name": "Seam Tape 6-in",
     "sku": "ST-6IN-ROLL",
     "category": "Accessories",
-    "description": "6-inch wide pressure-sensitive seam tape for Carlisle TPO systems. Bonds edge-of-membrane to adjacent sheet without a heat welder. For detail work and T-joint covers.",
+    "description": "6-inch wide pressure-sensitive seam tape for Ridgeline TPO systems. Bonds edge-of-membrane to adjacent sheet without a heat welder. For detail work and T-joint covers.",
     "unit": "roll",
-    "pricePerUnit": 19.00,
-    "documentIds": ["doc-011"],
-    "tags": ["seam-tape", "accessory", "TPO", "detail"]
+    "pricePerUnit": 19.0,
+    "documentIds": [
+      "doc-011"
+    ],
+    "tags": [
+      "seam-tape",
+      "accessory",
+      "TPO",
+      "detail"
+    ],
+    "imageUrl": "/products/prod-005.svg"
   },
   {
     "id": "prod-006",
-    "name": "Sure-Grip Insulation Fasteners",
-    "sku": "SG-FAST-#12",
+    "name": "Insulation Fasteners",
+    "sku": "INSFAST-12",
     "category": "Accessories",
     "description": "#12 x 3-in self-drilling insulation fastener with 3-in steel plate for securing insulation boards to structural steel and wood decks. Meets FM 1-90 wind uplift.",
     "unit": "ea",
     "pricePerUnit": 0.47,
-    "documentIds": ["doc-012"],
-    "tags": ["fastener", "accessory", "wind-uplift", "FM-approved"]
+    "documentIds": [
+      "doc-012"
+    ],
+    "tags": [
+      "fastener",
+      "accessory",
+      "wind-uplift",
+      "FM-approved"
+    ],
+    "imageUrl": "/products/prod-006.svg"
   },
   {
     "id": "prod-007",
-    "name": "FlashBand Self-Adhesive Flashing",
+    "name": "Self-Adhesive Flashing",
     "sku": "FLASH-6IN-SA",
     "category": "Flashing",
-    "description": "Self-adhesive flashing membrane for use at penetrations, curbs, and perimeter edges. Aggressive adhesive for positive bond in temperatures above 40°F. Available in 6-in and 9-in widths.",
+    "description": "Self-adhesive flashing membrane for use at penetrations, curbs, and perimeter edges. Aggressive adhesive for positive bond in temperatures above 40\u00b0F. Available in 6-in and 9-in widths.",
     "unit": "roll",
-    "pricePerUnit": 197.50,
-    "documentIds": ["doc-013", "doc-014"],
-    "tags": ["flashing", "self-adhesive", "penetration", "curb"],
-    "featured": true
+    "pricePerUnit": 197.5,
+    "documentIds": [
+      "doc-013",
+      "doc-014"
+    ],
+    "tags": [
+      "flashing",
+      "self-adhesive",
+      "penetration",
+      "curb"
+    ],
+    "featured": true,
+    "imageUrl": "/products/prod-007.svg"
   },
   {
     "id": "prod-008",
     "name": "Coated Metal Drip Edge",
     "sku": "CM-DRIP-24G",
     "category": "Sheet Metal",
-    "description": "24-gauge Galvalume drip edge pre-coated with Kynar 500 PVDF fluoropolymer coating. 10-ft lengths. Coordinates with Carlisle TPO and EPDM systems. Available in 12 standard colors.",
+    "description": "24-gauge Galvalume drip edge pre-coated with Kynar 500 PVDF fluoropolymer coating. 10-ft lengths. Coordinates with Ridgeline TPO and EPDM systems. Available in 12 standard colors.",
     "unit": "lf",
-    "pricePerUnit": 7.20,
-    "documentIds": ["doc-015"],
-    "tags": ["sheet-metal", "drip-edge", "galvalume", "perimeter"]
+    "pricePerUnit": 7.2,
+    "documentIds": [
+      "doc-015"
+    ],
+    "tags": [
+      "sheet-metal",
+      "drip-edge",
+      "galvalume",
+      "perimeter"
+    ],
+    "imageUrl": "/products/prod-008.svg"
   },
   {
     "id": "prod-009",
@@ -97,9 +168,18 @@
     "category": "System Packages",
     "description": "Roof Uplift Safety System kit for large commercial projects. Includes membrane anchor bars, seam plates, and all fasteners required to meet FM Global 1-90 to 1-210 uplift ratings. Each kit covers 10 squares.",
     "unit": "kit",
-    "pricePerUnit": 3800.00,
-    "documentIds": ["doc-016", "doc-017"],
-    "tags": ["system", "FM-approved", "uplift", "commercial"]
+    "pricePerUnit": 3800.0,
+    "documentIds": [
+      "doc-016",
+      "doc-017"
+    ],
+    "tags": [
+      "system",
+      "FM-approved",
+      "uplift",
+      "commercial"
+    ],
+    "imageUrl": "/products/prod-009.svg"
   },
   {
     "id": "prod-010",
@@ -108,8 +188,17 @@
     "category": "Adhesives",
     "description": "Solvent-based contact adhesive for fully adhered EPDM roofing systems. Neoprene-based formula with excellent open time. Apply to both membrane and substrate; allow open time before mating surfaces. 5-gallon pail covers approximately 2 squares.",
     "unit": "pail",
-    "pricePerUnit": 148.00,
-    "documentIds": ["doc-018", "doc-019"],
-    "tags": ["adhesive", "EPDM", "fully-adhered", "solvent"]
+    "pricePerUnit": 148.0,
+    "documentIds": [
+      "doc-018",
+      "doc-019"
+    ],
+    "tags": [
+      "adhesive",
+      "EPDM",
+      "fully-adhered",
+      "solvent"
+    ],
+    "imageUrl": "/products/prod-010.svg"
   }
 ]

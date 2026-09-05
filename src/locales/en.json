@@ -3,12 +3,13 @@
     "home": "Go to home",
     "home_tab": "Home",
     "jobs": "Jobs",
-    "catalog": "Catalog",
+    "catalog": "Products",
     "docs": "Documents",
     "videos": "Videos",
     "search": "Search",
     "profile": "Profile",
-    "library": "Library"
+    "library": "Library",
+    "portal_label": "Contractor Portal"
   },
   "home": {
     "section_action_required": "Action Required",
@@ -32,12 +33,7 @@
     "alert_count": "{count} item | {count} items",
     "no_active_jobs": "No active jobs",
     "no_active_jobs_hint": "Jobs you're working on will appear here.",
-    "recently_viewed_empty": "Products and documents you open will appear here for quick return.",
-    "cta_add_contractor": "Add Contractor",
-    "section_recent_contractors": "Your Contractors",
-    "no_recent_contractors": "Contractors you view will appear here.",
-    "contractor_active_jobs": "{count} active job | {count} active jobs",
-    "view_contractor_jobs": "View jobs for {name}"
+    "recently_viewed_empty": "Products and documents you open will appear here for quick return."
   },
   "jobs": {
     "title": "Jobs",
@@ -61,8 +57,6 @@
     "detail_updated": "Last Updated",
     "no_jobs": "No jobs found.",
     "no_jobs_filtered": "No jobs match this filter.",
-    "no_jobs_contractor": "No jobs found for {name}.",
-    "filtered_by": "Showing jobs for",
     "clear_filter": "Show All",
     "last_updated": "Updated {date}",
     "tabs": {
@@ -75,6 +69,9 @@
       "job_name": "Job Name",
       "address": "Address",
       "type": "Type",
+      "owner": "Owner",
+      "contractor": "Contractor",
+      "roof_system": "Roof System",
       "status": "Status",
       "assigned_rep": "Assigned Rep",
       "created": "Created",
@@ -87,6 +84,7 @@
     "create_name_placeholder": "e.g. Elm Street Commercial Reroof",
     "create_address_placeholder": "123 Main St, City, OH 45202",
     "create_sqft_placeholder": "e.g. 18000",
+    "create_owner_placeholder": "e.g. Elm Street Retail Partners LLC",
     "create_save": "Create Job"
   },
   "quotes": {
@@ -107,8 +105,6 @@
     "unit_price": "Unit Price",
     "line_total": "Total",
     "no_quotes": "No quotes for this job.",
-    "approve": "Approve Quote",
-    "reject": "Reject Quote",
     "add_quote": "Add Quote",
     "create_title": "New Quote",
     "select_product": "Select a product…",
@@ -152,9 +148,8 @@
     "response_placeholder": "Describe corrective actions taken…",
     "submit_response": "Submit Response",
     "response_submitted": "Response submitted {date}",
-    "response_submitted_confirmation": "Response submitted. Your Carlisle rep will review it shortly.",
+    "response_submitted_confirmation": "Response submitted. Your Ridgeline rep will review it shortly.",
     "reviewed_on": "Reviewed {date}",
-    "mark_reviewed": "Mark as Reviewed",
     "finding_resolved": "Resolved",
     "no_findings": "No findings recorded.",
     "no_inspections": "No inspections for this job.",
@@ -162,7 +157,7 @@
     "mark_finding_resolved": "Mark Resolved"
   },
   "catalog": {
-    "title": "Catalog",
+    "title": "Products",
     "search_placeholder": "Search by name or SKU…",
     "filter_all": "All",
     "sku": "SKU",
@@ -187,6 +182,9 @@
       "Sheet Metal": "Sheet Metal",
       "System Packages": "System Packages",
       "Adhesives": "Adhesives"
+    },
+    "groups": {
+      "Membranes": "Membranes"
     },
     "description": "Description",
     "related_docs": "Related Documents",
@@ -258,11 +256,8 @@
     "company": "Company",
     "region": "Region",
     "language": "Language",
-    "role": "Role",
     "outdoor_mode": "Outdoor Mode",
     "outdoor_mode_hint": "Larger text and tap targets for on-site use",
-    "role_contractor": "Contractor",
-    "role_rep": "Sales Rep",
     "languages": {
       "en": "English",
       "es": "Español",
@@ -277,11 +272,6 @@
     "order_shipped": "Order shipped",
     "order_delivered": "Order delivered",
     "new_document": "New document added"
-  },
-  "role_switcher": {
-    "label": "Viewing as",
-    "contractor": "Contractor",
-    "rep": "Sales Rep"
   },
   "common": {
     "loading": "Loading…",

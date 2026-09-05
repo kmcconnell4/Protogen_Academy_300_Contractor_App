@@ -1,7 +1,15 @@
-# 🏗️ Carlisle Contractor Portal — GitHub Copilot Brief (v5)
+# 🏗️ Ridgeline Contractor Portal — GitHub Copilot Brief (v6)
 
 ## Project Overview
-A mobile-first demo web app for roofing contractors to manage their relationship with Carlisle SynTec. **Jobs are the central entity** — all orders, quotes, and inspections are children of a job. Two user roles exist — **Contractors** and **Carlisle Sales Reps** — toggled via a role switcher (no auth required for demo).
+A mobile-first demo web app for roofing contractors to manage their relationship with Ridgeline, a fictional roofing materials manufacturer. **Jobs are the central entity** — all orders, quotes, and inspections are children of a job. Single-user, contractor-only — no auth, no role switching. (v5 had a Sales Rep role switcher; it was cut in v6 to keep the demo scoped to the primary contractor journey. Rep identity survives only as read-only job data.)
+
+### What changed in v6
+- Removed the Contractor/Sales Rep role switcher and every rep-only view (approve/reject quotes, mark-inspection-reviewed, the multi-contractor Home/Jobs views). The app is contractor-only now.
+- Rebranded off Carlisle to a fictional manufacturer, Ridgeline, including product names (no more real trademarked names like WeatherBond, Sure-Seal, FleeceBACK, CavGard, SecurTAPE, Sure-Grip, FlashBand — replaced with generic material descriptors).
+- Shipped the desktop left-sidebar nav described below (previously spec'd but not built).
+- Added a password gate in front of the whole app for the deployed demo.
+- Fixed a real bug: `JobsView`, `JobDetailView`, `HomeView`, and `AlertCards` were reading the static `jobs.json` import directly instead of the reactive `useJobsData()` singleton, so a job created via `CreateJobView` never appeared anywhere except Search. All four now consume the reactive composable. Also fixed a crash on newly created jobs with blank Square Footage (`null.toLocaleString()`).
+- Added generated SVG product illustrations (`public/products/*.svg`) in place of `placehold.co` boxes.
 
 ---
 
@@ -13,6 +21,8 @@ A mobile-first demo web app for roofing contractors to manage their relationship
 | i18n | vue-i18n |
 | Data | Local JSON files |
 | Deployment | Vercel |
+
+`@` resolves to `./src` throughout the codebase.
 
 ---
 
@@ -56,19 +66,17 @@ Document Library
 
 ---
 
-## Roles & Permissions
+## User & Context
 
-**Contractor**
-- Sees only their own jobs and all related data
-- Can create/edit quotes and orders on their jobs
+**Primary — Contractor** (the only user in this build): roofing contractors in the field — on rooftops or job sites, one hand free, often gloved, in direct sunlight. They are not browsing — they are executing: get to the right document, check an order status, or respond to an inspection before climbing back up. Speed and orientation are the entire UX.
+- Sees their own jobs and all related data
+- Can create jobs, add quotes and orders on their jobs
 - Can submit inspection responses
+- No authentication — this is a single-tenant demo
 
-**Carlisle Sales Rep**
-- Sees all contractors' jobs in a combined view
-- Can approve or reject quotes
-- Can mark inspection responses as reviewed
+**Secondary:** none in this build. An earlier version had a Sales Rep-facing role switcher; it was cut to keep the demo scoped to the primary contractor journey (see `context/decisions.md`). Rep identity survives only as read-only job data ("Assigned Rep").
 
-> Implement a **RoleSwitcher** component in the top nav that toggles global role state via Vue's `provide/inject`.
+**Context of use:** bright sun on a phone screen, with gloves, under time pressure. White UIs are unreadable outdoors — glare defeats contrast. The dark theme (see Design Direction below) is a functional decision, not an aesthetic preference.
 
 ---
 
@@ -86,9 +94,9 @@ The primary landing screen — purpose-built for a contractor on a job site.
 Tabs: **Overview · Quotes · Orders · Inspections**
 
 - **Overview tab:** Job name, address (tappable — opens Google/Apple Maps for directions), type, status, assigned rep, creation date
-- **Quotes tab:** List of quote versions with status (Draft, Submitted, Approved, Rejected, Ordered). Tap to view line items. Contractor can add a new quote. Sales Rep can approve/reject. Approved quotes show a "Place Order" button that finalizes them as an order.
+- **Quotes tab:** List of quote versions with status (Draft, Submitted, Approved, Rejected, Ordered — approval happens off-app, on the rep side). Tap to view line items. Contractor can add a new quote. Approved quotes show a "Place Order" button that finalizes them as an order.
 - **Orders tab:** List of orders with status (Processing, Shipped, Delivered). Tap to view line items linked to products.
-- **Inspections tab:** Expanding an inspection shows each **finding** individually — with its photos, a per-finding response textarea, an upload affordance for a remediation photo, and a "Mark Resolved" toggle. A single "Submit Response" button sends all finding responses. Sales Rep can mark the inspection as reviewed.
+- **Inspections tab:** Expanding an inspection shows each **finding** individually — with its photos, a per-finding response textarea, an upload affordance for a remediation photo, and a "Mark Resolved" toggle. A single "Submit Response" button sends all finding responses. Review happens off-app, on the rep side.
 
 ### 4. Create Job
 - Accessible via a floating action button (FAB) fixed `bottom-24 right-4` — visible on all pages, contractor role only
@@ -103,14 +111,19 @@ Tabs: **Overview · Quotes · Orders · Inspections**
 - On submit: quote appears immediately in the job's Quotes tab
 - Route: `/jobs/:id/quotes/new`
 
-### 6. Product Detail
-- Each product card navigates to `/catalog/:id`
-- Not a top-level nav destination — accessed from search results or product cards
-- Sections: hero (placeholder image, name, SKU, category, price/unit), Description, Related Documents (filtered by `product.documentIds`), Related Videos (matched by category), Installation Notes
+### 6. Products & Product Detail
+- **Products** (titled "Products" in the UI; route `/catalog`, component `CatalogView.vue` — the internal name predates the UI copy change and wasn't worth a route rename) is a full browse page — accessed via Search's "Jump to" tile, Library's "See All" under Popular Products, and directly. Search input (name/SKU/tags), plus **two-tier category filters**:
+  - Row 1 — top-level groups: All, Membranes, Insulation, Accessories, Flashing, Sheet Metal, System Packages, Adhesives. Membranes is a UI-only grouping over `TPO Membrane` + `EPDM Membrane` — `products.json`'s `category` field is untouched.
+  - Row 2 — appears only when the active group covers more than one category (today, only Membranes): All / TPO Membrane / EPDM Membrane.
+  - Grid of `ProductCard`s, `grid-cols-1 sm:grid-cols-2`.
+- Each product card navigates to `/catalog/:id` (**Product Detail**, unchanged by the above)
+- Product Detail sections: hero (real illustrated `imageUrl`, name, SKU, category, price/unit), Description, Related Documents (filtered by `product.documentIds`), Related Videos (matched by category), Installation Notes
 
-### 7. Document Library
-- No longer a dedicated nav destination — documents are accessed via **Global Search**
-- Document search results open the file directly in a new tab (`window.open`)
+### 7. Documents
+- Full browse page at `/documents` — accessed via Search's "Jump to" tile, Library's "See All" under Frequently Referenced Documents, and Home's Quick Access "Docs" tile.
+- Search input (name/type) + single-tier type filter chips (All / PDS / SDS / Spec) + a secondary "filter by product" dropdown.
+- List (not grid) of `DocumentCard`s — each shows a unique generated preview image (`previewUrl`, a stylized fake-PDF page keyed to doc type and product), not a flat placeholder.
+- Document search results (here or in Global Search) open the file directly in a new tab (`window.open`) and log to Recently Viewed, which reopens the file directly on a later tap — same pattern as Videos.
 
 ### 8. Training Videos
 - Grid of video cards with thumbnail, title, category, and duration
@@ -127,7 +140,6 @@ Tabs: **Overview · Quotes · Orders · Inspections**
 
 ### 10. Profile & Settings
 - Language selector: **English, Spanish, French, Portuguese**
-- Role switcher (mirrored here from nav for convenience)
 - Outdoor Mode toggle
 - Mock contractor profile info (name, company, region)
 
@@ -135,8 +147,8 @@ Tabs: **Overview · Quotes · Orders · Inspections**
 - Hub page replacing the Videos tab in the bottom nav. Route: `/library`
 - Three curated sections: **Featured Products**, **Featured Documents**, **Featured Videos** — each showing items with `"featured": true` in the corresponding JSON data file
 - Each section has an all-caps section label and a "See All →" link to the full browse view:
-  - Featured Products → Product Catalog (redirects to Search)
-  - Featured Documents → Document Library (redirects to Search)
+  - Featured Products → `/catalog` (the "Products" browse page)
+  - Featured Documents → `/documents` (Documents browse page)
   - Featured Videos → `/videos` (full Videos view)
 - Tapping a featured Video opens it in a new tab AND logs it to Recently Viewed
 - Tapping from Search results also logs videos to Recently Viewed
@@ -243,14 +255,6 @@ The primary user journey this screen enables is: **Job → Product → Document.
 | FAB for job creation | Creation is less frequent than retrieval — persistent but unobtrusive |
 | No stats or charts | On a roof with gloves — data visualization is noise |
 
-### Sales Rep Home Screen (Role Switch)
-When role is toggled to **Sales Rep**, the home screen adapts:
-- Greeting remains, weather is removed
-- "Action Required" shows quotes pending approval and inspection responses to review — **across all contractors**
-- "Continue Where You Left Off" becomes **"Recently Viewed Contractors"**
-- Quick Access becomes **"All Jobs"** and **"Contractor Accounts"**
-- FAB is hidden (rep role cannot create jobs)
-
 ---
 
 ## Internationalization (i18n)
@@ -266,7 +270,7 @@ When role is toggled to **Sales Rep**, the home screen adapts:
 ## Design Direction
 
 ### Philosophy
-This app is used **on rooftops, in direct sunlight, with one hand, often with gloves.** Every design decision must serve that context. The UI uses a **dark-anchored, blue-branded theme** — dark backgrounds eliminate glare (white UIs reflect sunlight and become unreadable outdoors), and Carlisle blue provides a stable, high-visibility brand anchor.
+This app is used **on rooftops, in direct sunlight, with one hand, often with gloves.** Every design decision must serve that context. The UI uses a **dark-anchored, blue-branded theme** — dark backgrounds eliminate glare (white UIs reflect sunlight and become unreadable outdoors), and Ridgeline blue provides a stable, high-visibility brand anchor.
 
 ---
 
@@ -294,7 +298,7 @@ Every navigation decision, information hierarchy choice, and interaction pattern
 ### References & Anti-References
 
 **References (aim for or surpass):**
-- Carlisle's own Elevate Technical App — this portal should feel more polished and faster than it
+- Leading manufacturer field-service apps in the roofing/building-materials space — this portal should feel more polished and faster than those
 - Angi's List — but more rugged, more premium, zero consumer-facing softness
 
 **Anti-references (explicitly avoid):**
@@ -325,7 +329,7 @@ All colors are defined as CSS custom properties in `main.css` and mapped to Tail
 #### Brand Blues
 | Role | Name | Hex |
 |---|---|---|
-| Logo, headers, card accents | Carlisle Blue | `#164da6` |
+| Logo, headers, card accents | Ridgeline Blue | `#164da6` |
 | Buttons, active states, links | Interactive Blue | `#2E6FD8` |
 | Hover states, focus rings | Blue Highlight | `#5B9BF0` |
 
@@ -337,7 +341,7 @@ All colors are defined as CSS custom properties in `main.css` and mapped to Tail
 | Nested / alt card surface | Deep Blue Card | `#243044` |
 | Bottom nav | Darkest Anchor | `#0F1520` |
 
-> All background colors carry a blue undertone to tie the dark UI back to the Carlisle brand. Pure charcoal (`#1A1A1A`) should not be used.
+> All background colors carry a blue undertone to tie the dark UI back to the Ridgeline brand. Pure charcoal (`#1A1A1A`) should not be used.
 
 #### Text
 | Role | Hex |
@@ -428,6 +432,7 @@ Define these in `/src/assets/main.css`:
 - **Cards:** differentiate with full border (`border border-border`) + background tint (`bg-surface`) — do NOT use side-stripe accent borders (border-left/border-right wider than 1px); side-stripes are visually weak and inconsistent with the premium aesthetic
 - **Bottom nav:** large icons (28px+) with text labels — never icons alone
 - **Avoid:** gradients on interactive elements, thin dividing lines under 1px, gray-on-gray text combinations, glassmorphism, cyan/neon accent colors
+- **Standard:** WCAG AA minimum for all text contrast
 
 ---
 
@@ -479,7 +484,7 @@ This should be implemented as a CSS class on `<body>` (e.g. `class="outdoor-mode
     /documents    (DocumentCard)
     /videos       (VideoCard)
     /search       (SearchResultGroup)
-    /shared       (BottomNav, CreateJobFab, RoleSwitcher, StatusBadge, DocTypeBadge)
+    /shared       (BottomNav, SidebarNav, CreateJobFab, PasswordGate, StatusBadge, DocTypeBadge)
   /data
     jobs.json / quotes.json / orders.json
     inspections.json / products.json
@@ -492,7 +497,9 @@ This should be implemented as a CSS class on `<body>` (e.g. `class="outdoor-mode
     CreateJobView.vue           ← /jobs/new
     CreateQuoteView.vue         ← /jobs/:id/quotes/new
     SearchView.vue              ← /search (center nav tab)
+    CatalogView.vue             ← /catalog (two-tier group/category filters)
     ProductDetailView.vue       ← /catalog/:id
+    DocumentsView.vue           ← /documents (type filters + product filter)
     LibraryView.vue             ← /library (Library hub, bottom nav tab)
     VideosView.vue / ProfileView.vue
   /router

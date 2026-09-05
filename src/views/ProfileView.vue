@@ -2,14 +2,11 @@
 import { useI18n } from 'vue-i18n'
 import { useLocale } from '@/composables/useLocale'
 import { useOutdoorMode } from '@/composables/useOutdoorMode'
-import { useRole } from '@/composables/useRole'
-import RoleSwitcher from '@/components/shared/RoleSwitcher.vue'
 import profile from '@/data/profile.json'
 
 const { t } = useI18n()
 const { currentLocale, supportedLocales, setLocale } = useLocale()
 const { isOutdoorMode, toggle: toggleOutdoor } = useOutdoorMode()
-const { role } = useRole()
 </script>
 
 <template>
@@ -41,12 +38,6 @@ const { role } = useRole()
         <p class="section-label text-text-secondary mb-0.5">{{ t('profile.region') }}</p>
         <p class="text-white font-bold">{{ profile.region }}</p>
       </div>
-    </section>
-
-    <!-- Role switcher -->
-    <section class="bg-surface border border-border rounded-xl p-4">
-      <p class="section-label text-text-secondary mb-3">{{ t('profile.role') }}</p>
-      <RoleSwitcher />
     </section>
 
     <!-- Language selector -->

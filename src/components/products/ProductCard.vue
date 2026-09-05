@@ -9,8 +9,6 @@ function formatPrice(price, unit) {
     : `$${price.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`
   return `${formatted} / ${unit}`
 }
-
-const placeholderImg = `https://placehold.co/480x220/243044/A8B8D0?text=${encodeURIComponent(props.product.category)}`
 </script>
 
 <template>
@@ -20,7 +18,7 @@ const placeholderImg = `https://placehold.co/480x220/243044/A8B8D0?text=${encode
   >
     <!-- Product image -->
     <img
-      :src="placeholderImg"
+      :src="product.imageUrl"
       :alt="product.name"
       loading="lazy"
       class="w-full aspect-[16/9] object-cover"

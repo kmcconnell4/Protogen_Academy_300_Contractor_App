@@ -1,10 +1,10 @@
-# GitHub Copilot Instructions — Carlisle Contractor Portal
+# GitHub Copilot Instructions — Ridgeline Contractor Portal
 
 ## Project Overview
 
-A mobile-first demo web app for roofing contractors to manage their relationship with Carlisle SynTec. Jobs are the central entity — all orders, quotes, and inspections are children of a job. Two user roles: **Contractors** and **Carlisle Sales Reps**, toggled via a role switcher (no auth required). See `BRIEF.md` for the full spec.
+A mobile-first demo web app for roofing contractors to manage their relationship with Ridgeline, a fictional roofing materials manufacturer. Jobs are the central entity — all orders, quotes, and inspections are children of a job. Single-user, contractor-only (no auth, no role switching). See `BRIEF.md` for the full spec.
 
-**Stack:** Vue 3 + Vite · Tailwind CSS v4 (`@tailwindcss/vite`) · vue-i18n · Local JSON data · Vercel
+**Stack:** Vue 3 + Vite · Tailwind CSS v4 (`@tailwindcss/vite`) · vue-i18n · Local JSON data · Vercel (behind a password gate)
 
 **Path alias:** `@` resolves to `./src`
 
@@ -16,7 +16,7 @@ A mobile-first demo web app for roofing contractors to manage their relationship
 
 **Primary:** Roofing contractors in the field — on rooftops or job sites, one hand free, often gloved, in direct sunlight. Their job-to-be-done is fast: get to the right document, check an order status, or respond to an inspection. They are not browsing — they are executing.
 
-**Secondary:** Carlisle Sales Reps reviewing quotes and inspection responses at a desk or tablet.
+**Secondary:** none in this build — Ridgeline sales reps are referenced as read-only job data (assigned rep name), not a distinct app user. A prior build had a rep-facing role switcher; it was removed to keep the demo scoped to the primary contractor journey.
 
 **Context of use:** Bright sun on a phone screen, with gloves, under time pressure. White UIs are unreadable outdoors.
 
@@ -61,7 +61,7 @@ This is the premium tier of the roofing industry. Every surface should feel engi
 --color-border:         #2E3A52   Card borders, dividers.
 ```
 
-**References:** Elevate Technical App (Carlisle's own — this should exceed it). Angi's List but more rugged and premium.
+**References:** Leading manufacturer field-service apps in the roofing/building-materials space — this should exceed them. Angi's List but more rugged and premium.
 
 **Anti-references:** Generic Tailwind admin templates. Consumer-soft apps (rounded-everything, pastel states). Procore-style corporate nav density.
 

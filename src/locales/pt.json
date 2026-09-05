@@ -3,12 +3,13 @@
     "home": "Ir para o início",
     "home_tab": "Início",
     "jobs": "Obras",
-    "catalog": "Catálogo",
+    "catalog": "Produtos",
     "docs": "Documentos",
     "videos": "Vídeos",
     "search": "Pesquisar",
     "profile": "Perfil",
-    "library": "Biblioteca"
+    "library": "Biblioteca",
+    "portal_label": "Portal do Contratante"
   },
   "home": {
     "section_action_required": "Ação Necessária",
@@ -32,17 +33,14 @@
     "alert_count": "{count} item | {count} itens",
     "no_active_jobs": "Sem obras ativas",
     "no_active_jobs_hint": "Os trabalhos em andamento aparecerão aqui.",
-    "cta_add_contractor": "Adicionar Contratante",
-    "section_recent_contractors": "Seus Contratantes",
-    "no_recent_contractors": "Os contratantes que você visualizar aparecerão aqui.",
-    "contractor_active_jobs": "{count} obra ativa | {count} obras ativas",
-    "view_contractor_jobs": "Ver obras de {name}",
     "recently_viewed_empty": "Os produtos e documentos que abrir aparecerão aqui."
   },
   "jobs": {
-    "title": "Obras",    "sort_label": "Ordenar",
+    "title": "Obras",
+    "sort_label": "Ordenar",
     "count": "{count} obra | {count} obras",
-    "not_found": "Obra não encontrada.",    "filter_all": "Todas",
+    "not_found": "Obra não encontrada.",
+    "filter_all": "Todas",
     "filter_bid": "Proposta",
     "filter_in_progress": "Em Andamento",
     "filter_inspection": "Inspeção",
@@ -59,8 +57,6 @@
     "detail_updated": "Última Atualização",
     "no_jobs": "Nenhuma obra encontrada.",
     "no_jobs_filtered": "Nenhuma obra corresponde a este filtro.",
-    "no_jobs_contractor": "Nenhuma obra encontrada para {name}.",
-    "filtered_by": "Exibindo trabalhos de",
     "clear_filter": "Mostrar Todos",
     "last_updated": "Atualizado em {date}",
     "tabs": {
@@ -73,6 +69,9 @@
       "job_name": "Nome da Obra",
       "address": "Endereço",
       "type": "Tipo",
+      "owner": "Proprietário",
+      "contractor": "Empreiteiro",
+      "roof_system": "Sistema de Telhado",
       "status": "Status",
       "assigned_rep": "Representante Designado",
       "created": "Criado em",
@@ -85,6 +84,7 @@
     "create_name_placeholder": "Ex. Reforma Comercial Rua dos Olmos",
     "create_address_placeholder": "Rua 123, Cidade, Estado",
     "create_sqft_placeholder": "Ex. 18000",
+    "create_owner_placeholder": "Ex. Elm Street Retail Partners LLC",
     "create_save": "Criar Obra"
   },
   "quotes": {
@@ -105,8 +105,6 @@
     "unit_price": "Preço Unitário",
     "line_total": "Total",
     "no_quotes": "Nenhuma cotação para esta obra.",
-    "approve": "Aprovar Cotação",
-    "reject": "Rejeitar Cotação",
     "add_quote": "Adicionar Cotação",
     "create_title": "Nova Cotação",
     "select_product": "Selecionar produto…",
@@ -150,9 +148,8 @@
     "response_placeholder": "Descreva as ações corretivas tomadas…",
     "submit_response": "Enviar Resposta",
     "response_submitted": "Resposta enviada em {date}",
-    "response_submitted_confirmation": "Resposta enviada. Seu representante Carlisle a revisará em breve.",
+    "response_submitted_confirmation": "Resposta enviada. Seu representante Ridgeline a revisará em breve.",
     "reviewed_on": "Revisado em {date}",
-    "mark_reviewed": "Marcar como Revisado",
     "finding_resolved": "Resolvido",
     "no_findings": "Nenhuma constatação registrada.",
     "no_inspections": "Nenhuma inspeção para esta obra.",
@@ -160,7 +157,7 @@
     "mark_finding_resolved": "Marcar como Resolvido"
   },
   "catalog": {
-    "title": "Catálogo",
+    "title": "Produtos",
     "search_placeholder": "Buscar por nome ou SKU…",
     "filter_all": "Todos",
     "sku": "SKU",
@@ -186,6 +183,9 @@
       "System Packages": "Pacotes de Sistema",
       "Adhesives": "Adesivos"
     },
+    "groups": {
+      "Membranes": "Membranas"
+    },
     "description": "Descrição",
     "related_docs": "Documentos Relacionados",
     "related_videos": "Vídeos Relacionados",
@@ -195,6 +195,7 @@
   },
   "documents": {
     "title": "Documentos",
+    "search_placeholder": "Buscar documentos…",
     "count": "{count} documento | {count} documentos",
     "filter_all": "Todos",
     "filter_pds": "FTD",
@@ -255,11 +256,8 @@
     "company": "Empresa",
     "region": "Região",
     "language": "Idioma",
-    "role": "Função",
     "outdoor_mode": "Modo Externo",
     "outdoor_mode_hint": "Texto e alvos maiores para uso em campo",
-    "role_contractor": "Empreiteiro",
-    "role_rep": "Rep. de Vendas",
     "languages": {
       "en": "English",
       "es": "Español",
@@ -274,11 +272,6 @@
     "order_shipped": "Pedido enviado",
     "order_delivered": "Pedido entregue",
     "new_document": "Novo documento adicionado"
-  },
-  "role_switcher": {
-    "label": "Visualizando como",
-    "contractor": "Empreiteiro",
-    "rep": "Rep. de Vendas"
   },
   "common": {
     "loading": "Carregando…",

@@ -1,13 +1,11 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useRole } from '@/composables/useRole'
 import { useFormatDate } from '@/composables/useFormatDate'
 import StatusBadge from '@/components/shared/StatusBadge.vue'
 import InspectionFindingResponse from './InspectionFindingResponse.vue'
 
 const { t } = useI18n()
-const { role } = useRole()
 const { formatDate } = useFormatDate()
 
 const props = defineProps({
@@ -17,16 +15,13 @@ const props = defineProps({
 
 const emit = defineEmits(['toggle'])
 
-// Tracks rep's client-side "Mark as Reviewed" action
-const localStatus = ref(props.inspection.status)
-
 // Per-finding response text and resolved state
 const responses = reactive({})
 const resolvedMap = reactive({})
 const submitted = ref(false)
 
 onMounted(() => {
-  const stored = localStorage.getItem(`carlisle_inspection_resp_${props.inspection.id}`)
+  const stored = localStorage.getItem(`ridgeline_inspection_resp_${props.inspection.id}`)
   if (stored) submitted.value = true
 
   props.inspection.findings.forEach((f) => {
@@ -49,7 +44,7 @@ const severityConfig = {
 function submitAllResponses() {
   const hasAnyResponse = props.inspection.findings.some((f) => responses[f.id]?.trim())
   if (!hasAnyResponse) return
-  localStorage.setItem(`carlisle_inspection_resp_${props.inspection.id}`, new Date().toISOString().slice(0, 10))
+  localStorage.setItem(`ridgeline_inspection_resp_${props.inspection.id}`, new Date().toISOString().slice(0, 10))
   submitted.value = true
 }
 </script>
@@ -87,7 +82,7 @@ function submitAllResponses() {
       </div>
 
       <div class="flex items-center gap-2 shrink-0">
-        <StatusBadge :status="localStatus" />
+        <StatusBadge :status="inspection.status" />
         <svg
           :class="['w-4 h-4 text-text-secondary transition-transform duration-200', isExpanded ? 'rotate-180' : '']"
           viewBox="0 0 24 24"
@@ -138,7 +133,7 @@ function submitAllResponses() {
 
             <!-- Per-finding response (contractor only, open inspection) -->
             <InspectionFindingResponse
-              v-if="['Pending Response', 'Response Overdue'].includes(inspection.status) && role === 'contractor' && !submitted"
+              v-if="['Pending Response', 'Response Overdue'].includes(inspection.status) && !submitted"
               :finding="finding"
               :response="responses[finding.id]"
               :resolved="resolvedMap[finding.id]"
@@ -153,7 +148,7 @@ function submitAllResponses() {
 
       <!-- Single Submit Response button (contractor, open, not yet submitted) -->
       <div
-        v-if="['Pending Response', 'Response Overdue'].includes(inspection.status) && role === 'contractor'"
+        v-if="['Pending Response', 'Response Overdue'].includes(inspection.status)"
         class="flex flex-col gap-3"
       >
         <div v-if="!submitted">
@@ -184,16 +179,6 @@ function submitAllResponses() {
         <p v-if="inspection.responseSubmittedAt" class="text-text-secondary text-[12px]">
           {{ t('inspections.response_submitted', { date: formatDate(inspection.responseSubmittedAt) }) }}
         </p>
-      </div>
-
-      <!-- Rep: mark reviewed -->
-      <div v-if="role === 'rep' && localStatus !== 'Reviewed'">
-        <button
-          class="flex items-center justify-center w-full h-tap rounded-xl bg-interactive font-[700] text-white transition-opacity active:opacity-80"
-          @click="localStatus = 'Reviewed'"
-        >
-          {{ t('inspections.mark_reviewed') }}
-        </button>
       </div>
 
     </div>

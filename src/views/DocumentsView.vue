@@ -25,9 +25,9 @@ const typeCounts = computed(() => {
     base = base.filter((d) => d.name.toLowerCase().includes(q) || d.type.toLowerCase().includes(q))
   }
   return Object.fromEntries(
-    ['All', ...DOC_TYPES].map((t) => [
-      t,
-      t === 'All' ? base.length : base.filter((d) => d.type === t).length,
+    ['All', ...DOC_TYPES].map((type) => [
+      type,
+      type === 'All' ? base.length : base.filter((d) => d.type === type).length,
     ])
   )
 })
@@ -54,6 +54,12 @@ const filtered = computed(() => {
   }
   return list
 })
+
+function clearFilters() {
+  searchQuery.value = ''
+  activeType.value = 'All'
+  activeProduct.value = 'All'
+}
 </script>
 
 <template>
@@ -71,16 +77,28 @@ const filtered = computed(() => {
 
     <div class="px-4 pt-4 flex flex-col gap-3">
 
-    <!-- Search input -->
-    <input
-      v-model="searchQuery"
-      type="search"
-      :placeholder="t('documents.search_placeholder')"
-      class="w-full h-[52px] px-4 rounded-xl bg-surface border border-border text-white placeholder:text-text-secondary text-base focus:outline-none focus:border-highlight"
-    />
+      <!-- Search input -->
+      <div class="relative">
+        <svg
+          class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-text-secondary pointer-events-none"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="11" cy="11" r="8" />
+          <path d="M21 21l-4.35-4.35" />
+        </svg>
+        <input
+          v-model="searchQuery"
+          type="search"
+          :placeholder="t('documents.search_placeholder')"
+          :aria-label="t('documents.search_placeholder')"
+          class="w-full h-[52px] pl-10 pr-4 rounded-xl bg-surface border border-border text-white placeholder:text-text-secondary text-[15px] font-[500] focus:outline-none focus:border-highlight transition-colors"
+        />
+      </div>
 
-    <!-- Type filter chips -->
-    <div class="flex gap-2 overflow-x-auto pb-1 no-scrollbar -mx-4 px-4">
+      <!-- Type filter chips -->
+      <div class="flex gap-2 overflow-x-auto pb-0.5 no-scrollbar -mx-4 px-4">
         <button
           v-for="type in ['All', ...DOC_TYPES]"
           :key="type"
@@ -100,35 +118,39 @@ const filtered = computed(() => {
             ]"
           >{{ typeCounts[type] }}</span>
         </button>
-    </div>
+      </div>
 
-    <!-- Product filter -->
-    <label for="product-filter" class="sr-only">{{ t('documents.filter_product') }}</label>
-    <select
-      id="product-filter"
-      v-model="activeProduct"
-      class="select-field w-full h-[52px] px-4 rounded-xl bg-surface border border-border text-white text-base focus:outline-none focus:border-highlight"
-    >
-      <option value="All">{{ t('documents.filter_product') }}</option>
-      <option v-for="p in products" :key="p.id" :value="p.id">{{ p.name }}</option>
-    </select>
+      <!-- Product filter -->
+      <label for="document-product-filter" class="sr-only">{{ t('documents.filter_product') }}</label>
+      <select
+        id="document-product-filter"
+        v-model="activeProduct"
+        class="select-field w-full h-[52px] px-4 rounded-xl bg-surface border border-border text-white text-base focus:outline-none focus:border-highlight"
+      >
+        <option value="All">{{ t('documents.filter_product') }}</option>
+        <option v-for="p in products" :key="p.id" :value="p.id">{{ p.name }}</option>
+      </select>
+
+    </div>
 
     <!-- Document list -->
-    <div v-if="filtered.length" class="flex flex-col gap-3">
-      <DocumentCard v-for="doc in filtered" :key="doc.id" :doc="doc" />
+    <div class="px-4 mt-4">
+      <div v-if="filtered.length" class="flex flex-col gap-3">
+        <DocumentCard v-for="doc in filtered" :key="doc.id" :doc="doc" />
+      </div>
+      <div v-else class="py-12 text-center flex flex-col items-center gap-3">
+        <p class="text-text-secondary text-[15px]">
+          {{ searchQuery.trim() || activeType !== 'All' || activeProduct !== 'All' ? t('documents.no_documents_filtered') : t('documents.no_documents') }}
+        </p>
+        <button
+          v-if="searchQuery.trim() || activeType !== 'All' || activeProduct !== 'All'"
+          class="text-highlight text-[13px] font-[700] uppercase tracking-[0.1em] hover:underline"
+          @click="clearFilters"
+        >
+          {{ t('documents.filter_all') }}
+        </button>
+      </div>
     </div>
-    <div v-else class="py-12 text-center flex flex-col items-center gap-3">
-      <p class="text-text-secondary text-[15px]">
-        {{ searchQuery.trim() || activeType !== 'All' || activeProduct !== 'All' ? t('documents.no_documents_filtered') : t('documents.no_documents') }}
-      </p>
-      <button
-        v-if="searchQuery.trim() || activeType !== 'All' || activeProduct !== 'All'"
-        class="text-highlight text-[13px] font-[700] uppercase tracking-[0.1em] hover:underline"
-        @click="searchQuery = ''; activeType = 'All'; activeProduct = 'All'"
-      >
-        {{ t('documents.filter_all') }}
-      </button>
-    </div>
-  </div>
+
   </main>
 </template>

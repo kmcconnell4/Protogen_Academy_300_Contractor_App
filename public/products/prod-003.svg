@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270">
+  <rect width="480" height="270" fill="#1E2A3E"/>
+  <rect x="0.5" y="0.5" width="479" height="269" fill="none" stroke="#2E3A52"/>
+  <rect x="150" y="70" width="220" height="130" rx="6" fill="#E9EDF3"/>
+  <ellipse cx="150" cy="135" rx="26" ry="65" fill="#D7DEE8"/>
+  <ellipse cx="150" cy="135" rx="26" ry="65" fill="none" stroke="#A8B8D0" stroke-width="2"/>
+  <ellipse cx="150" cy="135" rx="10" ry="26" fill="#164da6"/>
+  <ellipse cx="370" cy="135" rx="10" ry="26" fill="#164da6"/>
+  <!-- peeled corner revealing fleece backing -->
+  <path d="M290 70 L370 70 L370 140 L320 110 Z" fill="#C9B08A"/>
+  <g stroke="#9C8158" stroke-width="1.2">
+    <path d="M296 78 L310 92"/><path d="M304 74 L322 92"/><path d="M312 72 L334 94"/>
+    <path d="M320 72 L346 98"/><path d="M330 74 L358 102"/><path d="M340 78 L368 106"/>
+  </g>
+  <text x="24" y="240" fill="#A8B8D0" font-family="Barlow, sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">FLEECE-BACK TPO</text>
+  <text x="24" y="30" fill="#5B9BF0" font-family="Barlow, sans-serif" font-size="11" font-weight="700" letter-spacing="2">80-MIL · WHITE</text>
+</svg>

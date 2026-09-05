@@ -5,7 +5,6 @@ import { useRoute, useRouter } from 'vue-router'
 import inspections from '@/data/inspections.json'
 import reps from '@/data/reps.json'
 import { useFormatDate } from '@/composables/useFormatDate'
-import { useRole } from '@/composables/useRole'
 import { useQuotesData } from '@/composables/useQuotesData'
 import { useOrdersData } from '@/composables/useOrdersData'
 import QuoteVersionList from '@/components/quotes/QuoteVersionList.vue'
@@ -16,7 +15,6 @@ const { t } = useI18n()
 const { formatDate } = useFormatDate()
 const route = useRoute()
 const router = useRouter()
-const { role } = useRole()
 const { quotes } = useQuotesData()
 const { orders } = useOrdersData()
 
@@ -94,8 +92,8 @@ onMounted(() => {
             <div class="px-4 py-3 flex items-center justify-between gap-3">
               <p class="text-[11px] font-[700] uppercase tracking-[0.1em] text-text-secondary shrink-0">{{ t('jobs.detail.square_footage') }}</p>
               <p class="text-white font-[600] text-[15px]">
-                {{ job.squareFootage.toLocaleString() }}
-                <span class="text-text-secondary"> {{ t('jobs.detail.sq_ft') }}</span>
+                {{ job.squareFootage != null ? job.squareFootage.toLocaleString() : '—' }}
+                <span v-if="job.squareFootage != null" class="text-text-secondary"> {{ t('jobs.detail.sq_ft') }}</span>
               </p>
             </div>
           </div>
@@ -130,7 +128,6 @@ onMounted(() => {
       <!-- ── QUOTES ── -->
       <div v-else-if="activeTab === 'quotes'" class="flex flex-col gap-4">
         <button
-          v-if="role === 'contractor'"
           class="w-full h-[52px] rounded-xl border border-dashed border-highlight text-highlight text-[13px] font-[700] uppercase tracking-[0.1em] flex items-center justify-center gap-2 transition-colors active:bg-highlight/10"
           @click="router.push({ name: 'create-quote', params: { id: job.id } })"
         >

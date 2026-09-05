@@ -2,92 +2,133 @@
   {
     "id": "vid-001",
     "title": "How to Heat-Weld TPO Seams Like a Pro",
-    "description": "Step-by-step demonstration of proper heat-welding technique for WeatherBond TPO membranes. Covers welder temperature settings, speed, and quality probe testing.",
+    "description": "Step-by-step demonstration of proper heat-welding technique for TPO membranes. Covers welder temperature settings, speed, and quality probe testing.",
     "duration": "14:32",
     "thumbnailUrl": "https://placehold.co/640x360/164da6/ffffff?text=TPO+Seam+Welding",
     "videoUrl": "https://placehold.co/?text=Video+Unavailable+in+Demo",
     "category": "Installation",
-    "tags": ["TPO", "seam-weld", "heat-weld", "technique"],
+    "tags": [
+      "TPO",
+      "seam-weld",
+      "heat-weld",
+      "technique"
+    ],
     "publishedAt": "2025-09-10",
     "featured": true
   },
   {
     "id": "vid-002",
-    "title": "Carlisle Warranty Program Overview",
-    "description": "Understand exactly what's required to qualify for Carlisle's 10-, 15-, and 20-year NDL warranties. Covers inspection process, registered contractor requirements, and submittal deadlines.",
+    "title": "Ridgeline Warranty Program Overview",
+    "description": "Understand exactly what's required to qualify for Ridgeline's 10-, 15-, and 20-year NDL warranties. Covers inspection process, registered contractor requirements, and submittal deadlines.",
     "duration": "22:05",
     "thumbnailUrl": "https://placehold.co/640x360/164da6/ffffff?text=Warranty+Overview",
     "videoUrl": "https://placehold.co/?text=Video+Unavailable+in+Demo",
     "category": "Warranty",
-    "tags": ["warranty", "NDL", "inspection", "qualification"],
+    "tags": [
+      "warranty",
+      "NDL",
+      "inspection",
+      "qualification"
+    ],
     "publishedAt": "2025-11-03",
     "featured": true
   },
   {
     "id": "vid-003",
     "title": "EPDM Fully Adhered Installation Walkthrough",
-    "description": "Full field installation walkthrough for the Sure-Seal EPDM fully adhered system. Covers deck prep, insulation layout, adhesive application, membrane placement, and seam splicing.",
+    "description": "Full field installation walkthrough for the EPDM fully adhered system. Covers deck prep, insulation layout, adhesive application, membrane placement, and seam splicing.",
     "duration": "38:44",
     "thumbnailUrl": "https://placehold.co/640x360/164da6/ffffff?text=EPDM+Install+Walkthrough",
     "videoUrl": "https://placehold.co/?text=Video+Unavailable+in+Demo",
     "category": "Installation",
-    "tags": ["EPDM", "fully-adhered", "bonding-adhesive", "installation"],
+    "tags": [
+      "EPDM",
+      "fully-adhered",
+      "bonding-adhesive",
+      "installation"
+    ],
     "publishedAt": "2025-08-22"
   },
   {
     "id": "vid-004",
-    "title": "FlashBand Penetration Detailing",
-    "description": "Exact technique for flashing pipes, conduit, and HVAC curbs with FlashBand self-adhesive membrane. Includes temperature minimum guidelines and surface prep requirements.",
+    "title": "Self-Adhesive Flashing Penetration Detailing",
+    "description": "Exact technique for flashing pipes, conduit, and HVAC curbs with self-adhesive membrane. Includes temperature minimum guidelines and surface prep requirements.",
     "duration": "11:18",
     "thumbnailUrl": "https://placehold.co/640x360/164da6/ffffff?text=Penetration+Detailing",
     "videoUrl": "https://placehold.co/?text=Video+Unavailable+in+Demo",
     "category": "Detailing",
-    "tags": ["flashing", "FlashBand", "penetration", "HVAC-curb"],
+    "tags": [
+      "flashing",
+      "self-adhesive",
+      "penetration",
+      "HVAC-curb"
+    ],
     "publishedAt": "2026-01-14",
     "featured": true
   },
   {
     "id": "vid-005",
     "title": "Insulation Layout and Fastening Patterns",
-    "description": "Best practices for CavGard Polyiso layout, staggered joint patterns, and Sure-Grip fastener placement to meet FM 1-90 uplift requirements without over-fastening.",
+    "description": "Best practices for Polyiso layout, staggered joint patterns, and fastener placement to meet FM 1-90 uplift requirements without over-fastening.",
     "duration": "17:27",
     "thumbnailUrl": "https://placehold.co/640x360/164da6/ffffff?text=Insulation+Fastening",
     "videoUrl": "https://placehold.co/?text=Video+Unavailable+in+Demo",
     "category": "Installation",
-    "tags": ["insulation", "polyiso", "fastener", "FM-approved", "wind-uplift"],
+    "tags": [
+      "insulation",
+      "polyiso",
+      "fastener",
+      "FM-approved",
+      "wind-uplift"
+    ],
     "publishedAt": "2025-10-07"
   },
   {
     "id": "vid-006",
-    "title": "Completing the Carlisle Inspection Response Form",
+    "title": "Completing the Ridgeline Inspection Response Form",
     "description": "Walkthrough of the digital inspection response workflow. Learn how to document corrective actions, attach photos, and submit your response within the required 14-day window.",
     "duration": "8:52",
     "thumbnailUrl": "https://placehold.co/640x360/164da6/ffffff?text=Inspection+Response",
     "videoUrl": "https://placehold.co/?text=Video+Unavailable+in+Demo",
     "category": "Admin",
-    "tags": ["inspection", "response", "compliance", "workflow"],
+    "tags": [
+      "inspection",
+      "response",
+      "compliance",
+      "workflow"
+    ],
     "publishedAt": "2026-02-28"
   },
   {
     "id": "vid-007",
-    "title": "FleeceBACK TPO Adhered System on Re-Roof",
-    "description": "Demonstrates the FleeceBACK TPO advantage on re-roof projects where mechanical fastening is restricted. Covers adhesive selection, open time, and critical substrate moisture requirements.",
+    "title": "Fleece-Back TPO Adhered System on Re-Roof",
+    "description": "Demonstrates the Fleece-Back TPO advantage on re-roof projects where mechanical fastening is restricted. Covers adhesive selection, open time, and critical substrate moisture requirements.",
     "duration": "24:11",
-    "thumbnailUrl": "https://placehold.co/640x360/164da6/ffffff?text=FleeceBACK+Re-Roof",
+    "thumbnailUrl": "https://placehold.co/640x360/164da6/ffffff?text=Fleece-Back+Re-Roof",
     "videoUrl": "https://placehold.co/?text=Video+Unavailable+in+Demo",
     "category": "Installation",
-    "tags": ["FleeceBACK", "TPO", "adhered", "re-roof"],
+    "tags": [
+      "Fleece-Back",
+      "TPO",
+      "adhered",
+      "re-roof"
+    ],
     "publishedAt": "2026-03-05"
   },
   {
     "id": "vid-008",
-    "title": "Reading a Carlisle Product Data Sheet",
-    "description": "How to find what you need in a Carlisle PDS — physical properties, fire ratings, substrate compatibility, and application temperature ranges. A primer for new field crews.",
+    "title": "Reading a Ridgeline Product Data Sheet",
+    "description": "How to find what you need in a Ridgeline PDS \u2014 physical properties, fire ratings, substrate compatibility, and application temperature ranges. A primer for new field crews.",
     "duration": "6:40",
     "thumbnailUrl": "https://placehold.co/640x360/164da6/ffffff?text=Reading+a+PDS",
     "videoUrl": "https://placehold.co/?text=Video+Unavailable+in+Demo",
     "category": "Training",
-    "tags": ["PDS", "documentation", "training", "new-crew"],
+    "tags": [
+      "PDS",
+      "documentation",
+      "training",
+      "new-crew"
+    ],
     "publishedAt": "2025-07-19"
   }
 ]

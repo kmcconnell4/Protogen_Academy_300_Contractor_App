@@ -52,16 +52,15 @@ const routes = [
     name: 'profile',
     component: () => import('@/views/ProfileView.vue'),
   },
-  // Legacy routes — redirect to search
   {
     path: '/catalog',
     name: 'catalog',
-    redirect: { name: 'search' },
+    component: () => import('@/views/CatalogView.vue'),
   },
   {
     path: '/documents',
     name: 'documents',
-    redirect: { name: 'search' },
+    component: () => import('@/views/DocumentsView.vue'),
   },
 ]
 

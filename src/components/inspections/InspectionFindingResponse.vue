@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
@@ -10,6 +11,30 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['update:response', 'update:resolved'])
+
+const fileInputRef = ref(null)
+const addedPhotos = ref([])
+
+function openFilePicker() {
+  fileInputRef.value?.click()
+}
+
+function handleFileSelect(event) {
+  const files = [...(event.target.files ?? [])]
+  files.forEach((file) => {
+    const reader = new FileReader()
+    reader.onload = () => {
+      addedPhotos.value.push({ id: `${Date.now()}-${Math.random()}`, url: reader.result, name: file.name })
+    }
+    reader.readAsDataURL(file)
+  })
+  // Reset so selecting the same file again still fires @change
+  event.target.value = ''
+}
+
+function removeAddedPhoto(id) {
+  addedPhotos.value = addedPhotos.value.filter((p) => p.id !== id)
+}
 </script>
 
 <template>
@@ -41,10 +66,19 @@ const emit = defineEmits(['update:response', 'update:resolved'])
       />
     </div>
 
-    <!-- Add Photo affordance (demo — no file input) -->
+    <!-- Add Photo — native file picker; mobile OSes offer camera + library, desktop opens a file browser -->
+    <input
+      ref="fileInputRef"
+      type="file"
+      accept="image/*"
+      multiple
+      class="hidden"
+      @change="handleFileSelect"
+    />
     <button
       type="button"
       class="flex items-center gap-2 h-[44px] px-3 rounded-xl border border-dashed border-border text-text-secondary text-[12px] font-[700] uppercase tracking-[0.08em] hover:border-highlight hover:text-highlight transition-colors"
+      @click="openFilePicker"
     >
       <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <rect x="3" y="3" width="18" height="18" rx="2" />
@@ -55,6 +89,31 @@ const emit = defineEmits(['update:response', 'update:resolved'])
       </svg>
       {{ t('inspections.add_photo') }}
     </button>
+
+    <!-- Staged remediation photos -->
+    <div v-if="addedPhotos.length" class="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
+      <div
+        v-for="photo in addedPhotos"
+        :key="photo.id"
+        class="relative h-24 w-24 shrink-0"
+      >
+        <img
+          :src="photo.url"
+          :alt="photo.name"
+          class="h-full w-full rounded-lg object-cover border border-border"
+        />
+        <button
+          type="button"
+          class="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-nav border border-border flex items-center justify-center text-text-secondary hover:text-white transition-colors"
+          :aria-label="t('common.close')"
+          @click="removeAddedPhoto(photo.id)"
+        >
+          <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true">
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
 
     <!-- Mark Resolved toggle -->
     <button

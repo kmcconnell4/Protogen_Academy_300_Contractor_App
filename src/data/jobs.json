@@ -10,10 +10,20 @@
     "createdAt": "2026-02-10",
     "updatedAt": "2026-04-15",
     "squareFootage": 18400,
-    "quoteIds": ["quote-001", "quote-002"],
-    "orderIds": ["order-001", "order-002"],
-    "inspectionIds": ["inspection-001"],
-    "notes": "Full TPO membrane replacement. Owner requested upgraded insulation package."
+    "quoteIds": [
+      "quote-001",
+      "quote-002"
+    ],
+    "orderIds": [
+      "order-001",
+      "order-002"
+    ],
+    "inspectionIds": [
+      "inspection-001"
+    ],
+    "notes": "Full TPO membrane replacement. Owner requested upgraded insulation package.",
+    "ownerName": "Elm Street Retail Partners LLC",
+    "roofSystem": "TPO"
   },
   {
     "id": "job-002",
@@ -26,10 +36,14 @@
     "createdAt": "2026-03-28",
     "updatedAt": "2026-04-18",
     "squareFootage": 32000,
-    "quoteIds": ["quote-003"],
+    "quoteIds": [
+      "quote-003"
+    ],
     "orderIds": [],
     "inspectionIds": [],
-    "notes": "Owner comparing three bids. Emphasis on warranty documentation."
+    "notes": "Owner comparing three bids. Emphasis on warranty documentation.",
+    "ownerName": "Park Avenue Condominium Association",
+    "roofSystem": "EPDM"
   },
   {
     "id": "job-003",
@@ -42,10 +56,19 @@
     "createdAt": "2026-01-05",
     "updatedAt": "2026-04-10",
     "squareFootage": 54000,
-    "quoteIds": ["quote-004"],
-    "orderIds": ["order-003"],
-    "inspectionIds": ["inspection-002", "inspection-003"],
-    "notes": "Phase 2 of 3. Inspection response overdue — flagged for follow-up."
+    "quoteIds": [
+      "quote-004"
+    ],
+    "orderIds": [
+      "order-003"
+    ],
+    "inspectionIds": [
+      "inspection-002",
+      "inspection-003"
+    ],
+    "notes": "Phase 2 of 3. Inspection response overdue \u2014 flagged for follow-up.",
+    "ownerName": "Riverside Logistics Group",
+    "roofSystem": "TPO"
   },
   {
     "id": "job-004",
@@ -58,10 +81,18 @@
     "createdAt": "2025-08-14",
     "updatedAt": "2026-03-02",
     "squareFootage": 12800,
-    "quoteIds": ["quote-005"],
-    "orderIds": ["order-004"],
-    "inspectionIds": ["inspection-004"],
-    "notes": "20-year Carlisle warranty registered. Annual inspection scheduled."
+    "quoteIds": [
+      "quote-005"
+    ],
+    "orderIds": [
+      "order-004"
+    ],
+    "inspectionIds": [
+      "inspection-004"
+    ],
+    "notes": "20-year Ridgeline warranty registered. Annual inspection scheduled.",
+    "ownerName": "Lakewood Properties LLC",
+    "roofSystem": "EPDM"
   },
   {
     "id": "job-005",
@@ -74,10 +105,18 @@
     "createdAt": "2025-04-01",
     "updatedAt": "2025-12-19",
     "squareFootage": 41200,
-    "quoteIds": ["quote-006"],
-    "orderIds": ["order-005"],
-    "inspectionIds": ["inspection-005"],
-    "notes": "Project closed. All punch-list items resolved. Final invoice paid."
+    "quoteIds": [
+      "quote-006"
+    ],
+    "orderIds": [
+      "order-005"
+    ],
+    "inspectionIds": [
+      "inspection-005"
+    ],
+    "notes": "Project closed. All punch-list items resolved. Final invoice paid.",
+    "ownerName": "Fountain Square Holdings LLC",
+    "roofSystem": "TPO"
   },
   {
     "id": "job-006",
@@ -90,9 +129,15 @@
     "createdAt": "2026-03-15",
     "updatedAt": "2026-04-20",
     "squareFootage": 78500,
-    "quoteIds": ["quote-007"],
-    "orderIds": ["order-006"],
+    "quoteIds": [
+      "quote-007"
+    ],
+    "orderIds": [
+      "order-006"
+    ],
     "inspectionIds": [],
-    "notes": "Large EPDM system. Materials staged on site. Crew mobilizing next week."
+    "notes": "Large EPDM system. Materials staged on site. Crew mobilizing next week.",
+    "ownerName": "Northside Logistics Partners",
+    "roofSystem": "EPDM"
   }
 ]

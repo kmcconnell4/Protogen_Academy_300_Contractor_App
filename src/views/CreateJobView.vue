@@ -12,9 +12,12 @@ const name        = ref('')
 const address     = ref('')
 const type        = ref('Commercial')
 const sqFootage   = ref('')
+const ownerName   = ref('')
+const roofSystem  = ref('TPO')
 const submitting  = ref(false)
 
 const JOB_TYPES = ['Commercial', 'Residential', 'Multi-Unit']
+const ROOF_SYSTEMS = ['TPO', 'EPDM']
 
 function today() {
   return new Date().toISOString().slice(0, 10)
@@ -32,6 +35,8 @@ function handleSubmit() {
     type:         type.value,
     status:       'Bid',
     squareFootage: sqFootage.value ? Number(sqFootage.value) : null,
+    ownerName:    ownerName.value.trim() || null,
+    roofSystem:   roofSystem.value,
     createdAt:    today(),
     updatedAt:    today(),
     contractorId: null,
@@ -136,6 +141,35 @@ function handleSubmit() {
           :placeholder="t('jobs.create_sqft_placeholder')"
           class="w-full h-[52px] px-4 rounded-xl bg-surface border border-border text-white text-[15px] font-[500] placeholder:text-text-secondary focus:outline-none focus:border-highlight transition-colors"
         />
+      </div>
+
+      <!-- Owner -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-[11px] font-[700] uppercase tracking-[0.12em] text-text-secondary" for="job-owner">
+          {{ t('jobs.detail.owner') }}
+        </label>
+        <input
+          id="job-owner"
+          v-model="ownerName"
+          type="text"
+          autocomplete="off"
+          :placeholder="t('jobs.create_owner_placeholder')"
+          class="w-full h-[52px] px-4 rounded-xl bg-surface border border-border text-white text-[15px] font-[500] placeholder:text-text-secondary focus:outline-none focus:border-highlight transition-colors"
+        />
+      </div>
+
+      <!-- Roof System -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-[11px] font-[700] uppercase tracking-[0.12em] text-text-secondary" for="job-roof-system">
+          {{ t('jobs.detail.roof_system') }}
+        </label>
+        <select
+          id="job-roof-system"
+          v-model="roofSystem"
+          class="select-field w-full h-[52px] px-4 rounded-xl bg-surface border border-border text-white text-[15px] font-[500] focus:outline-none focus:border-highlight transition-colors"
+        >
+          <option v-for="rs in ROOF_SYSTEMS" :key="rs" :value="rs">{{ rs }}</option>
+        </select>
       </div>
 
       <!-- Submit -->

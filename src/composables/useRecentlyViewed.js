@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 
-const STORAGE_KEY = 'carlisle_recently_viewed'
+const STORAGE_KEY = 'ridgeline_recently_viewed'
 const MAX_ITEMS = 6
 
 /**
@@ -9,7 +9,7 @@ const MAX_ITEMS = 6
  *
  * Each entry:
  *   { id, type: 'product', name, routeName, routeParams }
- *   { id, type: 'document', name, routeName, routeParams }
+ *   { id, type: 'document', name, fileUrl }
  *   { id, type: 'video', name, videoUrl }
  */
 export function useRecentlyViewed() {

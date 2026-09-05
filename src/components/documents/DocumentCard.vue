@@ -1,5 +1,4 @@
 <script setup>
-import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRecentlyViewed } from '@/composables/useRecentlyViewed'
 import products from '@/data/products.json'
@@ -14,20 +13,12 @@ const props = defineProps({
 
 const product = products.find((p) => p.id === props.doc.productId) ?? null
 
-// Per-type image background colors matching DocTypeBadge
-const imgColors = { PDS: '2E6FD8/FFFFFF', SDS: 'F5A623/151C28', Spec: '243044/A8B8D0' }
-const placeholderImg = computed(() => {
-  const colors = imgColors[props.doc.type] ?? '243044/A8B8D0'
-  return `https://placehold.co/480x220/${colors}?text=${encodeURIComponent(props.doc.type)}`
-})
-
 function handleOpen() {
   addItem({
     id: props.doc.id,
     type: 'document',
     name: props.doc.name,
-    routeName: 'documents',
-    routeParams: {},
+    fileUrl: props.doc.fileUrl,
   })
 }
 </script>
@@ -42,8 +33,8 @@ function handleOpen() {
   >
     <!-- Document preview image -->
     <img
-      :src="placeholderImg"
-      :alt="doc.type"
+      :src="doc.previewUrl"
+      :alt="doc.name"
       loading="lazy"
       class="w-full aspect-[16/9] object-cover"
     />

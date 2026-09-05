@@ -1,7 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useRole } from '@/composables/useRole'
 import { useFormatDate } from '@/composables/useFormatDate'
 import { useQuotesData } from '@/composables/useQuotesData'
 import { useRouter } from 'vue-router'
@@ -9,7 +8,6 @@ import QuoteLineItems from './QuoteLineItems.vue'
 import StatusBadge from '@/components/shared/StatusBadge.vue'
 
 const { t } = useI18n()
-const { role } = useRole()
 const { formatDate } = useFormatDate()
 const { quotes, finalizeQuoteAsOrder } = useQuotesData()
 const router = useRouter()
@@ -33,16 +31,6 @@ function effectiveStatus(quote) {
 
 function toggle(id) {
   expandedId.value = expandedId.value === id ? null : id
-}
-
-function approveQuote(quote) {
-  const liveQuote = quotes.value.find((q) => q.id === quote.id)
-  if (liveQuote) liveQuote.status = 'Approved'
-}
-
-function rejectQuote(quote) {
-  const liveQuote = quotes.value.find((q) => q.id === quote.id)
-  if (liveQuote) liveQuote.status = 'Rejected'
 }
 
 function placeOrder(quote) {
@@ -137,28 +125,9 @@ function placeOrder(quote) {
           :total="quote.total"
         />
 
-        <!-- Rep: Approve / Reject actions -->
+        <!-- Place Order CTA for Approved quotes -->
         <div
-          v-if="role === 'rep' && effectiveStatus(quote) === 'Submitted'"
-          class="flex gap-2 p-4 pt-0"
-        >
-          <button
-            class="flex-1 h-tap rounded-lg bg-emerald font-[700] text-nav transition-opacity active:opacity-80"
-            @click="approveQuote(quote)"
-          >
-            {{ t('quotes.approve') }}
-          </button>
-          <button
-            class="flex-1 h-tap rounded-lg bg-error font-[700] text-white transition-opacity active:opacity-80"
-            @click="rejectQuote(quote)"
-          >
-            {{ t('quotes.reject') }}
-          </button>
-        </div>
-
-        <!-- Contractor: Place Order CTA for Approved quotes -->
-        <div
-          v-if="role === 'contractor' && effectiveStatus(quote) === 'Approved'"
+          v-if="effectiveStatus(quote) === 'Approved'"
           class="p-4 pt-0"
         >
           <button

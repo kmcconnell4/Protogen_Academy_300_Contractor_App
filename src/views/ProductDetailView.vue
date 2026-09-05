@@ -35,12 +35,6 @@ const relatedVideos = computed(() => {
   )
 })
 
-const heroUrl = computed(() => {
-  if (!product.value) return ''
-  const label = encodeURIComponent(product.value.sku)
-  return `https://placehold.co/600x360/1E2A3E/A8B8D0?text=${label}`
-})
-
 function formatPrice(price, unit) {
   const formatted =
     price < 1
@@ -95,7 +89,7 @@ onMounted(() => {
     <!-- ── Hero ── -->
     <div class="mx-4 rounded-xl overflow-hidden bg-surface border border-border shrink-0">
       <img
-        :src="heroUrl"
+        :src="product.imageUrl"
         :alt="product.name"
         class="w-full aspect-[5/3] object-cover"
         loading="lazy"

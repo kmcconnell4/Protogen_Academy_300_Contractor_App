@@ -9,7 +9,7 @@ import es from './locales/es.json'
 import fr from './locales/fr.json'
 import pt from './locales/pt.json'
 
-const savedLocale = localStorage.getItem('carlisle_locale') ?? 'en'
+const savedLocale = localStorage.getItem('ridgeline_locale') ?? 'en'
 
 const i18n = createI18n({
   legacy: false,

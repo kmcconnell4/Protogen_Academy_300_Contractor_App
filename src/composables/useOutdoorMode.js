@@ -1,6 +1,6 @@
 import { ref, watch } from 'vue'
 
-const STORAGE_KEY = 'carlisle_outdoor_mode'
+const STORAGE_KEY = 'ridgeline_outdoor_mode'
 
 const isOutdoorMode = ref(localStorage.getItem(STORAGE_KEY) === 'true')
 

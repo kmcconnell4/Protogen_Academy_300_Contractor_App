@@ -2,9 +2,10 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import profile from '@/data/profile.json'
-import jobs from '@/data/jobs.json'
+import { useJobsData } from '@/composables/useJobsData'
 
 const { t } = useI18n()
+const { jobs } = useJobsData()
 
 const hour = new Date().getHours()
 const greetingLabel = computed(() => {
@@ -16,7 +17,7 @@ const greetingLabel = computed(() => {
 // Derive city from the most recently updated non-closed job address
 // Address format: "123 Street, City, ST 00000" — extract "City, ST"
 const weatherCity = computed(() => {
-  const recentJob = [...jobs]
+  const recentJob = [...jobs.value]
     .filter((j) => j.status !== 'Closed')
     .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))[0]
   if (!recentJob) return null

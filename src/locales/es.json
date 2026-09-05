@@ -3,12 +3,13 @@
     "home": "Ir al inicio",
     "home_tab": "Inicio",
     "jobs": "Trabajos",
-    "catalog": "Catálogo",
+    "catalog": "Productos",
     "docs": "Documentos",
     "videos": "Videos",
     "search": "Buscar",
     "profile": "Perfil",
-    "library": "Biblioteca"
+    "library": "Biblioteca",
+    "portal_label": "Portal del Contratista"
   },
   "home": {
     "section_action_required": "Acción Requerida",
@@ -32,11 +33,6 @@
     "alert_count": "{count} elemento | {count} elementos",
     "no_active_jobs": "Sin trabajos activos",
     "no_active_jobs_hint": "Los trabajos en progreso aparecerán aquí.",
-    "cta_add_contractor": "Agregar Contratista",
-    "section_recent_contractors": "Sus Contratistas",
-    "no_recent_contractors": "Los contratistas que visites aparecerán aquí.",
-    "contractor_active_jobs": "{count} trabajo activo | {count} trabajos activos",
-    "view_contractor_jobs": "Ver trabajos de {name}",
     "recently_viewed_empty": "Los productos y documentos que abras aparecerán aquí."
   },
   "jobs": {
@@ -61,8 +57,6 @@
     "detail_updated": "Última Actualización",
     "no_jobs": "No se encontraron trabajos.",
     "no_jobs_filtered": "No se encontraron trabajos con este filtro.",
-    "no_jobs_contractor": "No se encontraron trabajos para {name}.",
-    "filtered_by": "Mostrando trabajos de",
     "clear_filter": "Mostrar Todos",
     "last_updated": "Actualizado {date}",
     "tabs": {
@@ -75,6 +69,9 @@
       "job_name": "Nombre del Trabajo",
       "address": "Dirección",
       "type": "Tipo",
+      "owner": "Propietario",
+      "contractor": "Contratista",
+      "roof_system": "Sistema de Techo",
       "status": "Estado",
       "assigned_rep": "Representante Asignado",
       "created": "Creado",
@@ -87,6 +84,7 @@
     "create_name_placeholder": "Ej. Reparación Comercial Calle Olmo",
     "create_address_placeholder": "Calle 123, Ciudad, Estado",
     "create_sqft_placeholder": "Ej. 18000",
+    "create_owner_placeholder": "Ej. Elm Street Retail Partners LLC",
     "create_save": "Crear Trabajo"
   },
   "quotes": {
@@ -107,8 +105,6 @@
     "unit_price": "Precio Unitario",
     "line_total": "Total",
     "no_quotes": "No hay cotizaciones para este trabajo.",
-    "approve": "Aprobar Cotización",
-    "reject": "Rechazar Cotización",
     "add_quote": "Agregar Cotización",
     "create_title": "Nueva Cotización",
     "select_product": "Seleccionar producto…",
@@ -152,9 +148,8 @@
     "response_placeholder": "Describa las acciones correctivas tomadas…",
     "submit_response": "Enviar Respuesta",
     "response_submitted": "Respuesta enviada {date}",
-    "response_submitted_confirmation": "Respuesta enviada. Su representante de Carlisle la revisará en breve.",
+    "response_submitted_confirmation": "Respuesta enviada. Su representante de Ridgeline la revisará en breve.",
     "reviewed_on": "Revisado {date}",
-    "mark_reviewed": "Marcar como Revisado",
     "finding_resolved": "Resuelto",
     "no_findings": "No se registraron hallazgos.",
     "no_inspections": "No hay inspecciones para este trabajo.",
@@ -162,7 +157,7 @@
     "mark_finding_resolved": "Marcar como Resuelto"
   },
   "catalog": {
-    "title": "Catálogo",
+    "title": "Productos",
     "search_placeholder": "Buscar por nombre o SKU…",
     "filter_all": "Todos",
     "sku": "SKU",
@@ -187,6 +182,9 @@
       "Sheet Metal": "Lámina Metálica",
       "System Packages": "Paquetes de Sistema",
       "Adhesives": "Adhesivos"
+    },
+    "groups": {
+      "Membranes": "Membranas"
     },
     "description": "Descripción",
     "related_docs": "Documentos Relacionados",
@@ -258,11 +256,8 @@
     "company": "Empresa",
     "region": "Región",
     "language": "Idioma",
-    "role": "Rol",
     "outdoor_mode": "Modo Exterior",
     "outdoor_mode_hint": "Texto más grande para uso en campo",
-    "role_contractor": "Contratista",
-    "role_rep": "Rep. de Ventas",
     "languages": {
       "en": "English",
       "es": "Español",
@@ -277,11 +272,6 @@
     "order_shipped": "Orden enviada",
     "order_delivered": "Orden entregada",
     "new_document": "Nuevo documento agregado"
-  },
-  "role_switcher": {
-    "label": "Viendo como",
-    "contractor": "Contratista",
-    "rep": "Rep. de Ventas"
   },
   "common": {
     "loading": "Cargando…",

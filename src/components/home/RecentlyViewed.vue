@@ -10,6 +10,8 @@ const { recentlyViewed } = useRecentlyViewed()
 function navigate(item) {
   if (item.type === 'video') {
     window.open(item.videoUrl, '_blank', 'noopener')
+  } else if (item.type === 'document') {
+    window.open(item.fileUrl, '_blank', 'noopener')
   } else {
     router.push({ name: item.routeName, params: item.routeParams })
   }
