@@ -126,8 +126,8 @@
     "status": "In Progress",
     "contractorId": "contractor-001",
     "repId": "rep-001",
-    "createdAt": "2026-03-15",
-    "updatedAt": "2026-04-20",
+    "createdAt": "2026-08-12",
+    "updatedAt": "2026-09-04",
     "squareFootage": 78500,
     "quoteIds": [
       "quote-007"
