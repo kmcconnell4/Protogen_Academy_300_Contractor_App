@@ -77,8 +77,7 @@
       "created": "Créé le",
       "square_footage": "Surface",
       "sq_ft": "pi²",
-      "notes": "Notes",
-      "get_directions": "Itinéraire"
+      "notes": "Notes"
     },
     "create_job": "Nouveau Chantier",
     "create_name_placeholder": "Ex. Réfection commerciale Rue des Ormes",
@@ -198,8 +197,8 @@
     "count": "{count} document | {count} documents",
     "search_placeholder": "Rechercher des documents…",
     "filter_all": "Tous",
-    "filter_pds": "FTP",
-    "filter_sds": "FDS",
+    "filter_pds": "Fiche Technique Produit",
+    "filter_sds": "Fiche de Données de Sécurité",
     "filter_spec": "Spec",
     "filter_product": "Filtrer par Produit",
     "download": "Télécharger",

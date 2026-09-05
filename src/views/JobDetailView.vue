@@ -86,17 +86,6 @@ function goBack() {
             class="text-text-secondary text-[13px] hover:text-highlight transition-colors"
           >{{ job.address }}</a>
         </div>
-        <a
-          :href="'https://maps.google.com/?q=' + encodeURIComponent(job.address)"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-1 mt-1.5 text-highlight text-[13px] font-[700]"
-        >
-          {{ t('jobs.detail.get_directions') }}
-          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </a>
 
         <!-- At-a-glance job details -->
         <div class="grid grid-cols-2 gap-x-4 gap-y-3 mt-4 pt-4 border-t border-border">
